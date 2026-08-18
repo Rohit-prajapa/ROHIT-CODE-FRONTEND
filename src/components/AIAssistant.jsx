@@ -9,9 +9,13 @@ import {
   WandSparkles,
   Code2,
   Loader2,
+  Check,
 } from "lucide-react";
 
 import { useState } from "react";
+
+const AI_API_URL =
+  "https://rohit-code.onrender.com/api/ai/generate";
 
 function AIAssistant({
   isOpen = true,
@@ -22,9 +26,8 @@ function AIAssistant({
   onInsertCode = () => {},
 }) {
   const [message, setMessage] = useState("");
-
-  const [isThinking, setIsThinking] =
-    useState(false);
+  const [isThinking, setIsThinking] = useState(false);
+  const [copiedId, setCopiedId] = useState(null);
 
   const [messages, setMessages] = useState([
     {
@@ -35,17 +38,19 @@ function AIAssistant({
     },
   ]);
 
-  /* =====================================================
-     GEMINI AI
-     ===================================================== */
+  // =====================================================
+  // GEMINI AI REQUEST
+  // =====================================================
 
   const generateWithGemini = async (
     prompt,
-    displayMessage = prompt,
+    displayMessage = prompt
   ) => {
     const text = String(prompt || "").trim();
 
-    if (!text || isThinking) return;
+    if (!text || isThinking) {
+      return;
+    }
 
     const userMessage = {
       id: Date.now(),
@@ -62,44 +67,61 @@ function AIAssistant({
     setIsThinking(true);
 
     try {
-      const response = await fetch(
-       "https://rohit-code.onrender.com/api/ai/generate",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            prompt: text,
-            language,
-            currentCode: code || "",
-          }),
+      const response = await fetch(AI_API_URL, {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
 
-      const data = await response.json();
+        body: JSON.stringify({
+          prompt: text,
+          language,
+          currentCode: code || "",
+        }),
+      });
 
-      if (!response.ok || !data.success) {
+      let data = {};
+
+      try {
+        data = await response.json();
+      } catch {
         throw new Error(
-          data.message ||
-            data.error ||
-            "Gemini AI request failed.",
+          "The AI server returned an invalid response."
+        );
+      }
+
+      if (!response.ok) {
+        throw new Error(
+          data?.message ||
+            data?.error ||
+            `AI server error (${response.status})`
+        );
+      }
+
+      if (data?.success === false) {
+        throw new Error(
+          data?.message ||
+            data?.error ||
+            "Gemini AI request failed."
         );
       }
 
       const generatedCode =
-        typeof data.code === "string"
+        typeof data?.code === "string"
           ? data.code.trim()
           : "";
 
       const generatedText =
         generatedCode ||
-        data.message ||
-        data.output ||
+        data?.message ||
+        data?.output ||
+        data?.response ||
         "Gemini did not return a response.";
 
       setMessages((previous) => [
         ...previous,
+
         {
           id: Date.now() + 1,
           role: "assistant",
@@ -108,16 +130,19 @@ function AIAssistant({
         },
       ]);
     } catch (error) {
+      console.error("ROHIT AI Error:", error);
+
       setMessages((previous) => [
         ...previous,
+
         {
           id: Date.now() + 1,
           role: "assistant",
           content:
-            `❌ Gemini AI error:\n\n${
-              error.message ||
+            `❌ ROHIT AI Error\n\n${
+              error?.message ||
               "Unable to connect to the AI backend."
-            }`,
+            }\n\nPlease check that your backend is running and try again.`,
         },
       ]);
     } finally {
@@ -125,85 +150,159 @@ function AIAssistant({
     }
   };
 
+  // =====================================================
+  // SEND MESSAGE
+  // =====================================================
+
   const sendMessage = () => {
     const text = message.trim();
 
-    if (!text || isThinking) return;
+    if (!text || isThinking) {
+      return;
+    }
 
-    generateWithGemini(
-      text,
-      text,
-    );
+    generateWithGemini(text, text);
   };
 
-  /* =====================================================
-     QUICK ACTIONS
-     ===================================================== */
+  // =====================================================
+  // EXPLAIN CODE
+  // =====================================================
 
   const explainCode = () => {
     if (!code.trim()) {
       setMessage(
-        "There is no code open to explain.",
+        "There is no code open to explain."
       );
       return;
     }
 
     generateWithGemini(
-      `Explain this ${language} code step by step. Explain the logic, important functions, time complexity, space complexity, and any important concepts.\n\nCODE:\n${code}`,
-      `Explain this ${language} code step by step.`,
+      `Explain this ${language} code step by step.
+
+Include:
+1. What the code does
+2. How the logic works
+3. Important functions
+4. Important programming concepts
+5. Time complexity
+6. Space complexity
+7. Possible improvements
+
+CODE:
+
+${code}`,
+
+      `Explain this ${language} code step by step.`
     );
   };
+
+  // =====================================================
+  // DEBUG CODE
+  // =====================================================
 
   const debugCode = () => {
     if (!code.trim()) {
       setMessage(
-        "There is no code open to debug.",
+        "There is no code open to debug."
       );
       return;
     }
 
     generateWithGemini(
-      `Find bugs in this ${language} code. Explain every problem and then provide the complete corrected ${language} code. Return the corrected code clearly.\n\nCODE:\n${code}`,
-      `Debug my ${language} code and give me the corrected version.`,
+      `Debug this ${language} code.
+
+Find:
+1. Syntax errors
+2. Logical errors
+3. Runtime problems
+4. Input/output problems
+5. Edge cases
+6. Performance problems
+
+Explain every problem clearly.
+
+Then provide the COMPLETE corrected ${language} code.
+
+Do not remove working functionality.
+
+CODE:
+
+${code}`,
+
+      `Debug my ${language} code and give me the corrected version.`
     );
   };
+
+  // =====================================================
+  // OPTIMIZE CODE
+  // =====================================================
 
   const optimizeCode = () => {
     if (!code.trim()) {
       setMessage(
-        "There is no code open to optimize.",
+        "There is no code open to optimize."
       );
       return;
     }
 
     generateWithGemini(
-      `Optimize this ${language} code for performance, readability, memory usage, and best practices. Explain the important improvements and then provide the complete optimized ${language} code.\n\nCODE:\n${code}`,
-      `Optimize my ${language} code for performance and readability.`,
+      `Optimize this ${language} code.
+
+Focus on:
+1. Performance
+2. Readability
+3. Memory usage
+4. Clean code
+5. Best practices
+6. Time complexity
+7. Space complexity
+
+First explain the important improvements.
+
+Then provide the COMPLETE optimized ${language} code.
+
+CODE:
+
+${code}`,
+
+      `Optimize my ${language} code for performance and readability.`
     );
   };
+
+  // =====================================================
+  // GENERATE CODE
+  // =====================================================
 
   const generateCode = () => {
     setMessage(
-      `Generate clean ${language} code for: `,
+      `Generate clean ${language} code for: `
     );
   };
 
-  /* =====================================================
-     COPY
-     ===================================================== */
+  // =====================================================
+  // COPY RESPONSE
+  // =====================================================
 
-
-  const copyMessage = async (text) => {
+  const copyMessage = async (text, id) => {
     try {
       await navigator.clipboard.writeText(text);
-    } catch {
-      // Clipboard unavailable.
+
+      setCopiedId(id);
+
+      setTimeout(() => {
+        setCopiedId(null);
+      }, 1500);
+    } catch (error) {
+      console.error(
+        "Clipboard error:",
+        error
+      );
     }
   };
 
-  /* =====================================================
-     CLEAR
-     ===================================================== */
+  // =====================================================
+  // CLEAR CHAT
+  // =====================================================
 
   const clearConversation = () => {
     setMessages([
@@ -216,9 +315,9 @@ function AIAssistant({
     ]);
   };
 
-  /* =====================================================
-     CLOSE
-     ===================================================== */
+  // =====================================================
+  // CLOSE
+  // =====================================================
 
   if (!isOpen) {
     return null;
@@ -227,6 +326,7 @@ function AIAssistant({
   return (
     <aside className="rohit-ai-panel">
       <style>{`
+
         /* =================================================
            ROHIT AI PANEL
            ================================================= */
@@ -248,7 +348,11 @@ function AIAssistant({
 
           border-left: 1px solid #2b2b2b;
 
-          font-family: "Segoe UI", Inter, system-ui, sans-serif;
+          font-family:
+            "Segoe UI",
+            Inter,
+            system-ui,
+            sans-serif;
         }
 
         /* =================================================
@@ -292,7 +396,8 @@ function AIAssistant({
           color: #ffffff;
 
           box-shadow:
-            0 2px 8px rgba(0, 122, 204, .18);
+            0 2px 8px
+            rgba(0, 122, 204, 0.18);
         }
 
         .rohit-ai-title-text {
@@ -309,7 +414,7 @@ function AIAssistant({
 
           font-weight: 600;
 
-          letter-spacing: .2px;
+          letter-spacing: 0.2px;
         }
 
         .rohit-ai-title-text small {
@@ -399,7 +504,7 @@ function AIAssistant({
 
           text-transform: uppercase;
 
-          letter-spacing: .3px;
+          letter-spacing: 0.3px;
         }
 
         /* =================================================
@@ -429,22 +534,27 @@ function AIAssistant({
           padding: 0 9px;
 
           border: 1px solid #3b3b3b;
+
           border-radius: 5px;
 
           background: #252526;
 
           color: #bdbdbd;
 
-          font-family: "Segoe UI", Inter, system-ui, sans-serif;
+          font-family:
+            "Segoe UI",
+            Inter,
+            system-ui,
+            sans-serif;
 
           font-size: 11px;
 
           cursor: pointer;
 
           transition:
-            background .12s ease,
-            border-color .12s ease,
-            color .12s ease;
+            background 0.12s ease,
+            border-color 0.12s ease,
+            color 0.12s ease;
         }
 
         .rohit-ai-action:hover {
@@ -469,6 +579,7 @@ function AIAssistant({
 
         .rohit-ai-messages {
           flex: 1;
+
           min-height: 0;
 
           overflow-y: auto;
@@ -531,11 +642,11 @@ function AIAssistant({
 
           font-weight: 600;
 
-          letter-spacing: .3px;
+          letter-spacing: 0.3px;
         }
 
         .rohit-ai-message.user
-        .rohit-ai-message-role {
+          .rohit-ai-message-role {
           color: #c8e1ff;
         }
 
@@ -545,18 +656,18 @@ function AIAssistant({
 
         .rohit-ai-message-actions {
           position: absolute;
+
           top: 7px;
           right: 7px;
+
           display: flex;
           align-items: center;
+
           gap: 3px;
         }
 
         .rohit-ai-copy,
         .rohit-ai-insert {
-          position: static;
-
-
           width: 25px;
           height: 25px;
 
@@ -565,6 +676,7 @@ function AIAssistant({
           justify-content: center;
 
           border: 0;
+
           border-radius: 4px;
 
           background: transparent;
@@ -577,7 +689,9 @@ function AIAssistant({
         }
 
         .rohit-ai-message:hover
-        .rohit-ai-copy {
+          .rohit-ai-copy,
+        .rohit-ai-message:hover
+          .rohit-ai-insert {
           opacity: 1;
         }
 
@@ -663,7 +777,11 @@ function AIAssistant({
 
           color: #ffffff;
 
-          font-family: "Segoe UI", Inter, system-ui, sans-serif;
+          font-family:
+            "Segoe UI",
+            Inter,
+            system-ui,
+            sans-serif;
 
           font-size: 13px;
 
@@ -676,7 +794,8 @@ function AIAssistant({
           border-color: #007acc;
 
           box-shadow:
-            0 0 0 1px rgba(0, 122, 204, .12);
+            0 0 0 1px
+            rgba(0, 122, 204, 0.12);
         }
 
         .rohit-ai-textarea::placeholder {
@@ -685,7 +804,9 @@ function AIAssistant({
 
         .rohit-ai-input-footer {
           display: flex;
+
           align-items: center;
+
           justify-content: space-between;
 
           margin-top: 7px;
@@ -696,10 +817,12 @@ function AIAssistant({
           height: 30px;
 
           display: flex;
+
           align-items: center;
           justify-content: center;
 
           border: 0;
+
           border-radius: 5px;
 
           background: transparent;
@@ -719,6 +842,7 @@ function AIAssistant({
           height: 32px;
 
           display: flex;
+
           align-items: center;
 
           gap: 6px;
@@ -726,13 +850,18 @@ function AIAssistant({
           padding: 0 12px;
 
           border: 0;
+
           border-radius: 5px;
 
           background: #0e639c;
 
           color: #ffffff;
 
-          font-family: "Segoe UI", Inter, system-ui, sans-serif;
+          font-family:
+            "Segoe UI",
+            Inter,
+            system-ui,
+            sans-serif;
 
           font-size: 12px;
 
@@ -776,14 +905,16 @@ function AIAssistant({
         @media (max-width: 600px) {
           .rohit-ai-panel {
             width: 100%;
+
             max-width: none;
           }
         }
+
       `}</style>
 
       {/* ===================================================
           HEADER
-         =================================================== */}
+          =================================================== */}
 
       <header className="rohit-ai-header">
         <div className="rohit-ai-title">
@@ -793,6 +924,7 @@ function AIAssistant({
 
           <div className="rohit-ai-title-text">
             <strong>ROHIT AI</strong>
+
             <small>
               Your coding assistant
             </small>
@@ -810,12 +942,8 @@ function AIAssistant({
       </header>
 
       {/* ===================================================
-          FILE CONTEXT
-          Now shows the actual open file name, with the
-          language as a small badge alongside it — instead
-          of showing the language where a file name was
-          implied.
-         =================================================== */}
+          CURRENT FILE
+          =================================================== */}
 
       <div className="rohit-ai-context">
         <Code2 size={14} />
@@ -835,13 +963,14 @@ function AIAssistant({
 
       {/* ===================================================
           QUICK ACTIONS
-         =================================================== */}
+          =================================================== */}
 
       <div className="rohit-ai-actions">
         <button
           type="button"
           className="rohit-ai-action primary"
           onClick={explainCode}
+          disabled={isThinking}
         >
           <Sparkles size={13} />
           Explain
@@ -851,6 +980,7 @@ function AIAssistant({
           type="button"
           className="rohit-ai-action"
           onClick={debugCode}
+          disabled={isThinking}
         >
           <Bug size={13} />
           Debug
@@ -860,6 +990,7 @@ function AIAssistant({
           type="button"
           className="rohit-ai-action"
           onClick={optimizeCode}
+          disabled={isThinking}
         >
           <WandSparkles size={13} />
           Optimize
@@ -869,6 +1000,7 @@ function AIAssistant({
           type="button"
           className="rohit-ai-action"
           onClick={generateCode}
+          disabled={isThinking}
         >
           <Code2 size={13} />
           Generate
@@ -877,7 +1009,7 @@ function AIAssistant({
 
       {/* ===================================================
           MESSAGES
-         =================================================== */}
+          =================================================== */}
 
       <div className="rohit-ai-messages">
         {messages.map((item) => (
@@ -908,22 +1040,27 @@ function AIAssistant({
                     copyMessage(
                       item.generatedCode ||
                         item.content,
+                      item.id
                     )
                   }
                   title="Copy response"
                 >
-                  <Copy size={13} />
+                  {copiedId === item.id ? (
+                    <Check size={13} />
+                  ) : (
+                    <Copy size={13} />
+                  )}
                 </button>
 
                 {item.generatedCode && (
                   <button
                     type="button"
                     className="rohit-ai-insert"
-                    onClick={() => {
+                    onClick={() =>
                       onInsertCode(
-                        item.generatedCode,
-                      );
-                    }}
+                        item.generatedCode
+                      )
+                    }
                     title="Insert code into editor"
                   >
                     <Code2 size={13} />
@@ -937,6 +1074,7 @@ function AIAssistant({
         {isThinking && (
           <div className="rohit-ai-thinking">
             <Loader2 size={14} />
+
             ROHIT AI is thinking...
           </div>
         )}
@@ -944,16 +1082,14 @@ function AIAssistant({
 
       {/* ===================================================
           INPUT
-         =================================================== */}
+          =================================================== */}
 
       <div className="rohit-ai-input-area">
         <textarea
           className="rohit-ai-textarea"
           value={message}
           onChange={(event) =>
-            setMessage(
-              event.target.value,
-            )
+            setMessage(event.target.value)
           }
           onKeyDown={(event) => {
             if (
@@ -967,16 +1103,16 @@ function AIAssistant({
           }}
           placeholder="Ask ROHIT AI about your code..."
           rows={3}
+          disabled={isThinking}
         />
 
         <div className="rohit-ai-input-footer">
           <button
             type="button"
             className="rohit-ai-clear"
-            onClick={
-              clearConversation
-            }
+            onClick={clearConversation}
             title="Clear conversation"
+            disabled={isThinking}
           >
             <Trash2 size={15} />
           </button>
@@ -990,8 +1126,18 @@ function AIAssistant({
               isThinking
             }
           >
-            <Send size={14} />
-            Send
+            {isThinking ? (
+              <Loader2
+                size={14}
+                className="rohit-ai-send-spinner"
+              />
+            ) : (
+              <Send size={14} />
+            )}
+
+            {isThinking
+              ? "Thinking..."
+              : "Send"}
           </button>
         </div>
 
