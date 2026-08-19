@@ -67,6 +67,12 @@ function AIAssistant({
     setIsThinking(true);
 
     try {
+      console.log("ROHIT AI request:", {
+        url: AI_API_URL,
+        language,
+        prompt: text,
+      });
+
       const response = await fetch(AI_API_URL, {
         method: "POST",
 
@@ -274,8 +280,27 @@ ${code}`,
   // =====================================================
 
   const generateCode = () => {
-    setMessage(
-      `Generate clean ${language} code for: `
+    const prompt = message.trim();
+
+    if (!prompt) {
+      setMessage(
+        `Generate clean ${language} code for: `
+      );
+      return;
+    }
+
+    generateWithGemini(
+      `Generate clean, complete ${language} code for the following request.
+
+Requirements:
+1. Return working code.
+2. Include all required imports/includes.
+3. Keep the solution simple and readable.
+4. Do not add unnecessary explanation unless needed.
+
+REQUEST:
+${prompt}`,
+      prompt
     );
   };
 
