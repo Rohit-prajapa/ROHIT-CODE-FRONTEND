@@ -11,9 +11,9 @@ import SaveChangesModal from "./components/SaveChangesModal";
 import StatusBar from "./components/StatusBar";
 import SettingsPanel from "./components/SettingsPanel";
 
-const SOCKET_URL = "http://localhost:5000";
-const AI_API_URL = "http://localhost:5000/api/ai/generate";
-const EXECUTION_API_URL = "http://localhost:10000";
+const SOCKET_URL = "https://rohit-code-backend.onrender.com";
+const AI_API_URL = "https://rohit-code-backend.onrender.com/api/ai/generate";
+const EXECUTION_API_URL = "https://rohit-code-2.onrender.com";
 
 const STORAGE_KEY = "rohit-code-project";
 const THEME_STORAGE_KEY = "rohit-code-theme";
