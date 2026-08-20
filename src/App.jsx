@@ -13,6 +13,7 @@ import SettingsPanel from "./components/SettingsPanel";
 
 const SOCKET_URL = "http://localhost:5000";
 const AI_API_URL = "http://localhost:5000/api/ai/generate";
+const EXECUTION_API_URL = "http://localhost:10000";
 
 const STORAGE_KEY = "rohit-code-project";
 const THEME_STORAGE_KEY = "rohit-code-theme";
@@ -36,6 +37,8 @@ function App() {
   const socketRef = useRef(null);
   const executionStartRef = useRef(null);
   const aiInputRef = useRef(null);
+  const interactiveProcessRef = useRef(null);
+  const interactivePollRef = useRef(null);
 
   // =========================================================
   // DEFAULT PROJECT
@@ -97,26 +100,19 @@ int main() {
       ? savedProject.files.map((file) => ({
           ...file,
           folderId: file.folderId ?? null,
-          savedContent:
-            file.savedContent ?? file.content ?? "",
+          savedContent: file.savedContent ?? file.content ?? "",
         }))
       : defaultFiles,
   );
 
-  const [folders, setFolders] = useState(
-    savedProject?.folders || [],
-  );
+  const [folders, setFolders] = useState(savedProject?.folders || []);
 
   const [openFiles, setOpenFiles] = useState(
-    savedProject?.openFiles?.length
-      ? savedProject.openFiles
-      : [1],
+    savedProject?.openFiles?.length ? savedProject.openFiles : [1],
   );
 
   const [activeFile, setActiveFile] = useState(
-    savedProject?.activeFile ??
-      savedProject?.files?.[0]?.id ??
-      1,
+    savedProject?.activeFile ?? savedProject?.files?.[0]?.id ?? 1,
   );
 
   // =========================================================
@@ -125,81 +121,58 @@ int main() {
 
   const [output, setOutput] = useState([]);
 
-  const [terminalVisible, setTerminalVisible] =
-    useState(true);
+  const [terminalVisible, setTerminalVisible] = useState(true);
 
-  const [activeBottomPanel, setActiveBottomPanel] =
-    useState("terminal");
+  const [activeBottomPanel, setActiveBottomPanel] = useState("terminal");
 
   // =========================================================
   // UI STATE
   // =========================================================
 
-  const [commandPaletteOpen, setCommandPaletteOpen] =
-    useState(false);
+  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
 
-  const [quickOpen, setQuickOpen] =
-    useState(false);
+  const [quickOpen, setQuickOpen] = useState(false);
 
-  const [saveModalOpen, setSaveModalOpen] =
-    useState(false);
+  const [saveModalOpen, setSaveModalOpen] = useState(false);
 
-  const [filePendingClose, setFilePendingClose] =
-    useState(null);
+  const [filePendingClose, setFilePendingClose] = useState(null);
 
-  const [settingsOpen, setSettingsOpen] =
-    useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   // =========================================================
   // EDITOR STATE
   // =========================================================
 
-  const [cursorPosition, setCursorPosition] =
-    useState({
-      line: 1,
-      column: 1,
-    });
+  const [cursorPosition, setCursorPosition] = useState({
+    line: 1,
+    column: 1,
+  });
 
-  const [executionStatus, setExecutionStatus] =
-    useState("Ready");
+  const [executionStatus, setExecutionStatus] = useState("Ready");
 
-  const [executionTime, setExecutionTime] =
-    useState(null);
+  const [executionTime, setExecutionTime] = useState(null);
 
   // =========================================================
   // SETTINGS
   // =========================================================
 
   const [theme, setTheme] = useState(
-    () =>
-      localStorage.getItem(
-        THEME_STORAGE_KEY,
-      ) || "dark",
+    () => localStorage.getItem(THEME_STORAGE_KEY) || "dark",
   );
 
   const [fontSize, setFontSize] = useState(() => {
-    const saved = localStorage.getItem(
-      FONT_SIZE_KEY,
-    );
+    const saved = localStorage.getItem(FONT_SIZE_KEY);
 
     return saved ? Number(saved) : 14;
   });
 
-  const [wordWrap, setWordWrap] =
-    useState(
-      () =>
-        localStorage.getItem(
-          WORD_WRAP_KEY,
-        ) === "true",
-    );
+  const [wordWrap, setWordWrap] = useState(
+    () => localStorage.getItem(WORD_WRAP_KEY) === "true",
+  );
 
-  const [minimap, setMinimap] =
-    useState(
-      () =>
-        localStorage.getItem(
-          MINIMAP_KEY,
-        ) !== "false",
-    );
+  const [minimap, setMinimap] = useState(
+    () => localStorage.getItem(MINIMAP_KEY) !== "false",
+  );
 
   const [tabSize, setTabSize] = useState(() => {
     const saved = localStorage.getItem(TAB_SIZE_KEY);
@@ -224,32 +197,22 @@ int main() {
 
   const [aiOpen, setAiOpen] = useState(false);
 
-  const [aiPrompt, setAiPrompt] =
-    useState("");
+  const [aiPrompt, setAiPrompt] = useState("");
 
-  const [aiResponse, setAiResponse] =
-    useState("");
+  const [aiResponse, setAiResponse] = useState("");
 
-  const [aiLoading, setAiLoading] =
-    useState(false);
+  const [aiLoading, setAiLoading] = useState(false);
 
-  const [aiError, setAiError] =
-    useState("");
+  const [aiError, setAiError] = useState("");
 
   // =========================================================
   // CURRENT FILE
   // =========================================================
 
-  const currentFile = files.find(
-    (file) => file.id === activeFile,
-  );
+  const currentFile = files.find((file) => file.id === activeFile);
 
   const openFileObjects = openFiles
-    .map((id) =>
-      files.find(
-        (file) => file.id === id,
-      ),
-    )
+    .map((id) => files.find((file) => file.id === id))
     .filter(Boolean);
 
   // =========================================================
@@ -258,10 +221,7 @@ int main() {
 
   useEffect(() => {
     const socket = io(SOCKET_URL, {
-      transports: [
-        "polling",
-        "websocket",
-      ],
+      transports: ["polling", "websocket"],
       reconnection: true,
       reconnectionAttempts: 10,
       reconnectionDelay: 1000,
@@ -270,133 +230,84 @@ int main() {
     socketRef.current = socket;
 
     socket.on("connect", () => {
-      console.log(
-        "Connected to Rohit Code backend:",
-        socket.id,
-      );
+      console.log("Connected to Rohit Code backend:", socket.id);
     });
 
-    socket.on(
-      "connect_error",
-      (error) => {
-        console.error(
-          "Socket connection error:",
-          error,
-        );
+    socket.on("connect_error", (error) => {
+      console.error("Socket connection error:", error);
 
-        setExecutionStatus("Error");
-      },
-    );
+      setExecutionStatus("Error");
+    });
 
-    socket.on(
-      "disconnect",
-      (reason) => {
-        console.log(
-          "Backend disconnected:",
-          reason,
-        );
-      },
-    );
+    socket.on("disconnect", (reason) => {
+      console.log("Backend disconnected:", reason);
+    });
 
     // =======================================================
     // PROGRAM OUTPUT
     // =======================================================
 
-    socket.on(
-      "terminal-output",
-      (payload = {}) => {
-        const data =
-          typeof payload === "string"
-            ? payload
-            : payload.data;
+    socket.on("terminal-output", (payload = {}) => {
+      const data = typeof payload === "string" ? payload : payload.data;
 
-        if (
-          data === undefined ||
-          data === null
-        ) {
-          return;
+      if (data === undefined || data === null) {
+        return;
+      }
+
+      const text = String(data);
+
+      if (!text) return;
+
+      setOutput((previous) => {
+        const normalized = text.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+
+        const chunks = normalized.split("\n");
+
+        const updated = [...previous];
+
+        if (!updated.length) {
+          return chunks;
         }
 
-        const text = String(data);
+        updated[updated.length - 1] =
+          String(updated[updated.length - 1] ?? "") + chunks[0];
 
-        if (!text) return;
+        if (chunks.length > 1) {
+          updated.push(...chunks.slice(1));
+        }
 
-        setOutput((previous) => {
-          const normalized = text
-            .replace(/\r\n/g, "\n")
-            .replace(/\r/g, "\n");
-
-          const chunks =
-            normalized.split("\n");
-
-          const updated = [
-            ...previous,
-          ];
-
-          if (!updated.length) {
-            return chunks;
-          }
-
-          updated[
-            updated.length - 1
-          ] =
-            String(
-              updated[
-                updated.length - 1
-              ] ?? "",
-            ) + chunks[0];
-
-          if (chunks.length > 1) {
-            updated.push(
-              ...chunks.slice(1),
-            );
-          }
-
-          return updated;
-        });
-      },
-    );
+        return updated;
+      });
+    });
 
     // =======================================================
     // PROGRAM FINISHED
     // =======================================================
 
-    socket.on(
-      "program-finished",
-      ({ exitCode } = {}) => {
-        const code =
-          Number.isInteger(exitCode)
-            ? exitCode
-            : 1;
+    socket.on("program-finished", ({ exitCode } = {}) => {
+      const code = Number.isInteger(exitCode) ? exitCode : 1;
 
-        if (executionStartRef.current) {
-          const elapsed =
-            Date.now() -
-            executionStartRef.current;
+      if (executionStartRef.current) {
+        const elapsed = Date.now() - executionStartRef.current;
 
-          setExecutionTime(
-            `${(
-              elapsed / 1000
-            ).toFixed(2)}s`,
-          );
-        }
+        setExecutionTime(`${(elapsed / 1000).toFixed(2)}s`);
+      }
 
-        executionStartRef.current =
-          null;
+      executionStartRef.current = null;
 
-        setExecutionStatus(
-          code === 0
-            ? "Success"
-            : "Error",
-        );
-      },
-    );
+      setExecutionStatus(code === 0 ? "Success" : "Error");
+    });
 
     return () => {
       socket.removeAllListeners();
       socket.disconnect();
 
       socketRef.current = null;
+
+      if (interactivePollRef.current) {
+        clearInterval(interactivePollRef.current);
+        interactivePollRef.current = null;
+      }
     };
   }, []);
 
@@ -405,31 +316,19 @@ int main() {
   // =========================================================
 
   useEffect(() => {
-    localStorage.setItem(
-      THEME_STORAGE_KEY,
-      theme,
-    );
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
   }, [theme]);
 
   useEffect(() => {
-    localStorage.setItem(
-      FONT_SIZE_KEY,
-      String(fontSize),
-    );
+    localStorage.setItem(FONT_SIZE_KEY, String(fontSize));
   }, [fontSize]);
 
   useEffect(() => {
-    localStorage.setItem(
-      WORD_WRAP_KEY,
-      String(wordWrap),
-    );
+    localStorage.setItem(WORD_WRAP_KEY, String(wordWrap));
   }, [wordWrap]);
 
   useEffect(() => {
-    localStorage.setItem(
-      MINIMAP_KEY,
-      String(minimap),
-    );
+    localStorage.setItem(MINIMAP_KEY, String(minimap));
   }, [minimap]);
 
   useEffect(() => {
@@ -462,75 +361,60 @@ int main() {
         activeFile,
       }),
     );
-  }, [
-    files,
-    folders,
-    openFiles,
-    activeFile,
-  ]);
+  }, [files, folders, openFiles, activeFile]);
 
   // =========================================================
   // LANGUAGE
   // =========================================================
 
-  const getLanguageFromExtension =
-    (name) => {
-      const extension =
-        name
-          .split(".")
-          .pop()
-          .toLowerCase();
+  const getLanguageFromExtension = (name) => {
+    const extension = name.split(".").pop().toLowerCase();
 
-      const languages = {
-        c: "c",
-        cpp: "cpp",
-        cc: "cpp",
-        h: "cpp",
-        hpp: "cpp",
+    const languages = {
+      c: "c",
+      cpp: "cpp",
+      cc: "cpp",
+      h: "cpp",
+      hpp: "cpp",
 
-        py: "python",
-        java: "java",
+      py: "python",
+      java: "java",
 
-        js: "javascript",
-        jsx: "javascript",
+      js: "javascript",
+      jsx: "javascript",
 
-        ts: "typescript",
-        tsx: "typescript",
+      ts: "typescript",
+      tsx: "typescript",
 
-        go: "go",
-        rs: "rust",
-        php: "php",
+      go: "go",
+      rs: "rust",
+      php: "php",
 
-        html: "html",
-        css: "css",
-        json: "json",
+      html: "html",
+      css: "css",
+      json: "json",
 
-        sh: "shell",
-        bash: "shell",
+      sh: "shell",
+      bash: "shell",
 
-        xml: "xml",
-        sql: "sql",
-        rb: "ruby",
-        kt: "kotlin",
-      };
-
-      return (
-        languages[extension] ||
-        "plaintext"
-      );
+      xml: "xml",
+      sql: "sql",
+      rb: "ruby",
+      kt: "kotlin",
     };
+
+    return languages[extension] || "plaintext";
+  };
 
   // =========================================================
   // SAVE
   // =========================================================
 
   const handleSave = () => {
-    const updatedFiles =
-      files.map((file) => ({
-        ...file,
-        savedContent:
-          file.content,
-      }));
+    const updatedFiles = files.map((file) => ({
+      ...file,
+      savedContent: file.content,
+    }));
 
     setFiles(updatedFiles);
 
@@ -544,75 +428,55 @@ int main() {
       }),
     );
 
-    setOutput([
-      "✓ Project saved successfully.",
-    ]);
+    setOutput(["✓ Project saved successfully."]);
   };
 
   // =========================================================
   // CREATE FOLDER
   // =========================================================
 
-  const handleCreateFolder =
-    (folderName) => {
-      const name =
-        folderName.trim();
+  const handleCreateFolder = (folderName) => {
+    const name = folderName.trim();
 
-      if (!name) return;
+    if (!name) return;
 
-      const exists =
-        folders.some(
-          (folder) =>
-            folder.name
-              .toLowerCase() ===
-            name.toLowerCase(),
-        );
+    const exists = folders.some(
+      (folder) => folder.name.toLowerCase() === name.toLowerCase(),
+    );
 
-      if (exists) {
-        alert(
-          "Folder already exists.",
-        );
+    if (exists) {
+      alert("Folder already exists.");
 
-        return;
-      }
+      return;
+    }
 
-      setFolders((previous) => [
-        ...previous,
-        {
-          id: Date.now(),
-          name,
-          expanded: true,
-        },
-      ]);
-    };
+    setFolders((previous) => [
+      ...previous,
+      {
+        id: Date.now(),
+        name,
+        expanded: true,
+      },
+    ]);
+  };
 
   // =========================================================
   // CREATE FILE
   // =========================================================
 
-  const handleCreateFile = (
-    fileName,
-    folderId = null,
-  ) => {
-    const name =
-      fileName.trim();
+  const handleCreateFile = (fileName, folderId = null) => {
+    const name = fileName.trim();
 
     if (!name) return;
 
-    const exists =
-      files.some(
-        (file) =>
-          file.name
-            .toLowerCase() ===
-            name.toLowerCase() &&
-          file.folderId ===
-            folderId,
-      );
+    const exists = files.some(
+      (file) =>
+        file.name.toLowerCase() === name.toLowerCase() &&
+        file.folderId === folderId,
+    );
 
     if (exists) {
-      alert(
-        "File already exists.",
-      );
+      alert("File already exists.");
 
       return;
     }
@@ -620,294 +484,203 @@ int main() {
     const newFile = {
       id: Date.now(),
       name,
-      language:
-        getLanguageFromExtension(
-          name,
-        ),
+      language: getLanguageFromExtension(name),
       content: "",
       savedContent: "",
       folderId,
     };
 
-    setFiles((previous) => [
-      ...previous,
-      newFile,
-    ]);
+    setFiles((previous) => [...previous, newFile]);
 
-    setOpenFiles((previous) => [
-      ...previous,
-      newFile.id,
-    ]);
+    setOpenFiles((previous) => [...previous, newFile.id]);
 
-    setActiveFile(
-      newFile.id,
-    );
+    setActiveFile(newFile.id);
   };
 
   // =========================================================
   // DELETE FILE
   // =========================================================
 
-  const handleDeleteFile =
-    (fileId) => {
-      if (files.length === 1) {
-        alert(
-          "You must keep at least one file.",
-        );
+  const handleDeleteFile = (fileId) => {
+    if (files.length === 1) {
+      alert("You must keep at least one file.");
 
-        return;
-      }
+      return;
+    }
 
-      const remaining =
-        files.filter(
-          (file) =>
-            file.id !== fileId,
-        );
+    const remaining = files.filter((file) => file.id !== fileId);
 
-      setFiles(remaining);
+    setFiles(remaining);
 
-      setOpenFiles(
-        (previous) =>
-          previous.filter(
-            (id) =>
-              id !== fileId,
-          ),
-      );
+    setOpenFiles((previous) => previous.filter((id) => id !== fileId));
 
-      if (activeFile === fileId) {
-        setActiveFile(
-          remaining[0].id,
-        );
-      }
+    if (activeFile === fileId) {
+      setActiveFile(remaining[0].id);
+    }
 
-      setOutput([]);
-    };
+    setOutput([]);
+  };
 
   // =========================================================
   // RENAME FILE
   // =========================================================
 
-  const handleRenameFile =
-    (fileId, newName) => {
-      const name =
-        newName.trim();
+  const handleRenameFile = (fileId, newName) => {
+    const name = newName.trim();
 
-      if (!name) return;
+    if (!name) return;
 
-      setFiles((previous) =>
-        previous.map(
-          (file) =>
-            file.id === fileId
-              ? {
-                  ...file,
-                  name,
-                  language:
-                    getLanguageFromExtension(
-                      name,
-                    ),
-                }
-              : file,
-        ),
-      );
-    };
+    setFiles((previous) =>
+      previous.map((file) =>
+        file.id === fileId
+          ? {
+              ...file,
+              name,
+              language: getLanguageFromExtension(name),
+            }
+          : file,
+      ),
+    );
+  };
 
   // =========================================================
   // FILE SELECT
   // =========================================================
 
-  const handleFileSelect =
-    (fileId) => {
-      setActiveFile(fileId);
+  const handleFileSelect = (fileId) => {
+    setActiveFile(fileId);
 
-      setOpenFiles(
-        (previous) =>
-          previous.includes(
-            fileId,
-          )
-            ? previous
-            : [
-                ...previous,
-                fileId,
-              ],
-      );
+    setOpenFiles((previous) =>
+      previous.includes(fileId) ? previous : [...previous, fileId],
+    );
 
-      setOutput([]);
+    setOutput([]);
 
-      setCursorPosition({
-        line: 1,
-        column: 1,
-      });
-    };
+    setCursorPosition({
+      line: 1,
+      column: 1,
+    });
+  };
 
   // =========================================================
   // TAB SELECT
   // =========================================================
 
-  const handleTabSelect =
-    (fileId) => {
-      setActiveFile(fileId);
-      setOutput([]);
-    };
+  const handleTabSelect = (fileId) => {
+    setActiveFile(fileId);
+    setOutput([]);
+  };
 
   // =========================================================
   // CLOSE TAB
   // =========================================================
 
-  const closeTabImmediately =
-    (fileId) => {
-      const remaining =
-        openFiles.filter(
-          (id) => id !== fileId,
-        );
+  const closeTabImmediately = (fileId) => {
+    const remaining = openFiles.filter((id) => id !== fileId);
 
-      if (!remaining.length) {
-        return;
-      }
+    if (!remaining.length) {
+      return;
+    }
 
-      setOpenFiles(remaining);
+    setOpenFiles(remaining);
 
-      if (activeFile === fileId) {
-        setActiveFile(
-          remaining[0],
-        );
-      }
-    };
+    if (activeFile === fileId) {
+      setActiveFile(remaining[0]);
+    }
+  };
 
-  const handleTabClose =
-    (fileId) => {
-      const file =
-        files.find(
-          (item) =>
-            item.id === fileId,
-        );
+  const handleTabClose = (fileId) => {
+    const file = files.find((item) => item.id === fileId);
 
-      if (!file) return;
+    if (!file) return;
 
-      if (
-        file.content !==
-        file.savedContent
-      ) {
-        setFilePendingClose(
-          fileId,
-        );
+    if (file.content !== file.savedContent) {
+      setFilePendingClose(fileId);
 
-        setSaveModalOpen(
-          true,
-        );
+      setSaveModalOpen(true);
 
-        return;
-      }
+      return;
+    }
 
-      closeTabImmediately(
-        fileId,
-      );
-    };
+    closeTabImmediately(fileId);
+  };
 
   // =========================================================
   // SAVE MODAL
   // =========================================================
 
-  const handleModalSave =
-    () => {
-      if (!filePendingClose) {
-        return;
-      }
+  const handleModalSave = () => {
+    if (!filePendingClose) {
+      return;
+    }
 
-      setFiles((previous) =>
-        previous.map(
-          (file) =>
-            file.id ===
-            filePendingClose
-              ? {
-                  ...file,
-                  savedContent:
-                    file.content,
-                }
-              : file,
-        ),
-      );
+    setFiles((previous) =>
+      previous.map((file) =>
+        file.id === filePendingClose
+          ? {
+              ...file,
+              savedContent: file.content,
+            }
+          : file,
+      ),
+    );
 
-      closeTabImmediately(
-        filePendingClose,
-      );
+    closeTabImmediately(filePendingClose);
 
-      setFilePendingClose(null);
-      setSaveModalOpen(false);
-    };
+    setFilePendingClose(null);
+    setSaveModalOpen(false);
+  };
 
-  const handleModalDontSave =
-    () => {
-      if (!filePendingClose) {
-        return;
-      }
+  const handleModalDontSave = () => {
+    if (!filePendingClose) {
+      return;
+    }
 
-      closeTabImmediately(
-        filePendingClose,
-      );
+    closeTabImmediately(filePendingClose);
 
-      setFilePendingClose(null);
-      setSaveModalOpen(false);
-    };
+    setFilePendingClose(null);
+    setSaveModalOpen(false);
+  };
 
-  const handleModalCancel =
-    () => {
-      setFilePendingClose(null);
-      setSaveModalOpen(false);
-    };
+  const handleModalCancel = () => {
+    setFilePendingClose(null);
+    setSaveModalOpen(false);
+  };
 
   // =========================================================
   // NEW TAB
   // =========================================================
 
   const handleNewTab = () => {
-    const unopened =
-      files.find(
-        (file) =>
-          !openFiles.includes(
-            file.id,
-          ),
-      );
+    const unopened = files.find((file) => !openFiles.includes(file.id));
 
     if (unopened) {
-      setOpenFiles(
-        (previous) => [
-          ...previous,
-          unopened.id,
-        ],
-      );
+      setOpenFiles((previous) => [...previous, unopened.id]);
 
-      setActiveFile(
-        unopened.id,
-      );
+      setActiveFile(unopened.id);
 
       return;
     }
 
-    handleCreateFile(
-      `untitled-${files.length + 1}.cpp`,
-    );
+    handleCreateFile(`untitled-${files.length + 1}.cpp`);
   };
 
   // =========================================================
   // CODE CHANGE
   // =========================================================
 
-  const handleCodeChange = (
-    fileId,
-    code,
-  ) => {
+  const handleCodeChange = (fileId, code) => {
     setExecutionStatus("Ready");
     setExecutionTime(null);
 
     setFiles((previous) =>
-      previous.map(
-        (file) =>
-          file.id === fileId
-            ? {
-                ...file,
-                content: code,
-              }
-            : file,
+      previous.map((file) =>
+        file.id === fileId
+          ? {
+              ...file,
+              content: code,
+            }
+          : file,
       ),
     );
   };
@@ -916,167 +689,282 @@ int main() {
   // LANGUAGE CHANGE
   // =========================================================
 
-  const handleLanguageChange =
-    (language) => {
-      if (!currentFile) return;
+  const handleLanguageChange = (language) => {
+    if (!currentFile) return;
 
-      setFiles((previous) =>
-        previous.map(
-          (file) =>
-            file.id ===
-            currentFile.id
-              ? {
-                  ...file,
-                  language,
-                }
-              : file,
-        ),
-      );
-    };
+    setFiles((previous) =>
+      previous.map((file) =>
+        file.id === currentFile.id
+          ? {
+              ...file,
+              language,
+            }
+          : file,
+      ),
+    );
+  };
 
   // =========================================================
   // RUN PROGRAM
   // =========================================================
 
-  const handleRun = () => {
+  const handleRun = async () => {
     if (!currentFile) {
       return;
     }
 
-    const socket =
-      socketRef.current;
-
-    if (
-      !socket ||
-      !socket.connected
-    ) {
-      setOutput([
-        "❌ Backend connection unavailable.",
-        "Make sure server.js is running on port 5000.",
-      ]);
-
-      setExecutionStatus(
-        "Error",
-      );
-
+    if (!currentFile.content || !currentFile.content.trim()) {
+      setOutput(["❌ Code is empty."]);
+      setExecutionStatus("Error");
       setTerminalVisible(true);
-      setActiveBottomPanel(
-        "terminal",
-      );
-
+      setActiveBottomPanel("terminal");
       return;
     }
 
-    if (
-      !currentFile.content ||
-      !currentFile.content.trim()
-    ) {
-      setOutput([
-        "❌ Code is empty.",
-      ]);
-
-      setExecutionStatus(
-        "Error",
-      );
-
-      return;
+    if (interactivePollRef.current) {
+      clearInterval(interactivePollRef.current);
+      interactivePollRef.current = null;
     }
 
-    executionStartRef.current =
-      Date.now();
+    interactiveProcessRef.current = null;
+    executionStartRef.current = Date.now();
 
-    setExecutionStatus(
-      "Running",
-    );
-
+    setExecutionStatus("Running");
     setExecutionTime(null);
-
     setTerminalVisible(true);
+    setActiveBottomPanel("terminal");
 
-    setActiveBottomPanel(
-      "terminal",
-    );
+    setOutput([`> Running ${currentFile.name}...`, ""]);
 
-    setOutput([
-      `> Running ${currentFile.name}...`,
-      "",
-    ]);
+    try {
+      const response = await fetch(
+        `${EXECUTION_API_URL}/api/interactive/start`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            language: currentFile.language,
+            code: currentFile.content,
+          }),
+        },
+      );
 
-    socket.emit(
-      "run-interactive",
-      {
-        language:
-          currentFile.language,
-        code:
-          currentFile.content,
-      },
-    );
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(
+          result.message ||
+            result.output ||
+            "Failed to start interactive process.",
+        );
+      }
+
+      const processId = result.processId;
+
+      if (!processId) {
+        throw new Error("Execution service did not return a process ID.");
+      }
+
+      interactiveProcessRef.current = processId;
+
+      interactivePollRef.current = setInterval(async () => {
+        try {
+          const outputResponse = await fetch(
+            `${EXECUTION_API_URL}/api/interactive/output/${processId}`,
+          );
+
+          const outputResult = await outputResponse.json();
+
+          if (!outputResponse.ok || !outputResult.success) {
+            return;
+          }
+
+          const text = String(outputResult.output || "");
+
+          if (text) {
+            // PTY programs on Windows emit ANSI/OSC terminal
+            // control sequences. Remove them before displaying
+            // output in the React terminal.
+            const cleanTerminalOutput = (value) => {
+              return (
+                String(value || "")
+                  // Remove OSC escape sequences
+                  .replace(/\x1B\][^\x07]*(?:\x07|\x1B\\)/g, "")
+
+                  // Remove ANSI CSI sequences
+                  .replace(/\x1B\[[0-?]*[ -/]*[@-~]/g, "")
+
+                  // Remove remaining ANSI escape sequences
+                  .replace(/\x1B[@-_]/g, "")
+
+                  // Remove C1 control sequences
+                  .replace(/[\x80-\x9F]/g, "")
+
+                  // Normalize line endings
+                  .replace(/\r\n/g, "\n")
+                  .replace(/\r/g, "")
+
+                  // Remove unwanted terminal control remnants
+                  .replace(/\?[0-9;]*[a-zA-Z]/g, "")
+
+                  // Remove excessive blank lines
+                  .replace(/\n{3,}/g, "\n")
+
+                  .trim()
+              );
+            };
+
+            const normalized = cleanTerminalOutput(text);
+
+            if (normalized) {
+              const chunks = normalized.split("\n");
+
+              setOutput((previous) => {
+                const updated = Array.isArray(previous) ? [...previous] : [];
+
+                if (!updated.length) {
+                  return chunks;
+                }
+
+                updated[updated.length - 1] =
+                  String(updated[updated.length - 1] ?? "") + chunks[0];
+
+                if (chunks.length > 1) {
+                  updated.push(...chunks.slice(1));
+                }
+
+                return updated;
+              });
+            }
+          }
+
+          if (outputResult.finished) {
+            if (interactivePollRef.current) {
+              clearInterval(interactivePollRef.current);
+              interactivePollRef.current = null;
+            }
+
+            interactiveProcessRef.current = null;
+
+            if (executionStartRef.current) {
+              const elapsed = Date.now() - executionStartRef.current;
+
+              setExecutionTime(`${(elapsed / 1000).toFixed(2)}s`);
+            }
+
+            executionStartRef.current = null;
+
+            if (outputResult.timedOut) {
+              setOutput((previous) => [
+                ...(Array.isArray(previous) ? previous : []),
+                "",
+                "⏱ Program timed out.",
+              ]);
+
+              setExecutionStatus("Error");
+            } else {
+              setExecutionStatus(
+                Number(outputResult.exitCode) === 0 ? "Success" : "Error",
+              );
+            }
+          }
+        } catch (error) {
+          console.error("Interactive output error:", error);
+        }
+      }, 300);
+    } catch (error) {
+      console.error("Interactive start error:", error);
+
+      setOutput([`❌ ${error.message || "Unable to start program."}`]);
+
+      setExecutionStatus("Error");
+      executionStartRef.current = null;
+      interactiveProcessRef.current = null;
+    }
   };
 
   // =========================================================
   // TERMINAL INPUT
   // =========================================================
 
-  const handleTerminalInput = (input) => {
-    const socket = socketRef.current;
+  const handleTerminalInput = async (input) => {
+    const processId = interactiveProcessRef.current;
 
-    if (!socket || !socket.connected) {
+    if (!processId) {
       return;
     }
 
-    let value = String(input ?? "");
+    try {
+      const response = await fetch(
+        `${EXECUTION_API_URL}/api/interactive/input`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            processId,
+            input: String(input ?? ""),
+          }),
+        },
+      );
 
-    // Allow empty input (just Enter) for programs waiting for a blank line.
-    if (!value.endsWith("\n")) {
-      value += "\n";
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        console.error("Interactive input failed:", result.message);
+      }
+    } catch (error) {
+      console.error("Interactive input error:", error);
     }
-
-    // BottomPanel renders the submitted value locally so it appears exactly
-    // after the program prompt. Do not also add it to the parent output state,
-    // otherwise the value would be duplicated.
-    socket.emit("terminal-input", value);
   };
 
   // =========================================================
   // STOP EXECUTION
   // =========================================================
 
-  const handleStopExecution =
-    () => {
-      const socket =
-        socketRef.current;
+  const handleStopExecution = async () => {
+    const processId = interactiveProcessRef.current;
 
-      if (
-        socket &&
-        socket.connected
-      ) {
-        socket.emit(
-          "stop-execution",
-        );
+    if (interactivePollRef.current) {
+      clearInterval(interactivePollRef.current);
+      interactivePollRef.current = null;
+    }
+
+    if (processId) {
+      try {
+        await fetch(`${EXECUTION_API_URL}/api/interactive/stop`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            processId,
+          }),
+        });
+      } catch (error) {
+        console.error("Stop interactive process error:", error);
       }
+    }
 
-      executionStartRef.current =
-        null;
+    interactiveProcessRef.current = null;
+    executionStartRef.current = null;
 
-      setExecutionStatus(
-        "Ready",
-      );
-
-      setExecutionTime(null);
-    };
+    setExecutionStatus("Ready");
+    setExecutionTime(null);
+  };
 
   // =========================================================
   // CLEAR TERMINAL
   // =========================================================
 
-  const handleClearTerminal =
-    () => {
-      setOutput([]);
-      setExecutionStatus(
-        "Ready",
-      );
-      setExecutionTime(null);
-    };
+  const handleClearTerminal = () => {
+    setOutput([]);
+    setExecutionStatus("Ready");
+    setExecutionTime(null);
+  };
 
   // =========================================================
   // =========================================================
@@ -1105,21 +993,16 @@ int main() {
   // =========================================================
 
   const handleGenerateAI = async () => {
-    const prompt =
-      aiPrompt.trim();
+    const prompt = aiPrompt.trim();
 
     if (!prompt) {
-      setAiError(
-        "Please enter a request.",
-      );
+      setAiError("Please enter a request.");
 
       return;
     }
 
     if (!currentFile) {
-      setAiError(
-        "Please open a file first.",
-      );
+      setAiError("Please open a file first.");
 
       return;
     }
@@ -1129,61 +1012,35 @@ int main() {
     setAiResponse("");
 
     try {
-      const response =
-        await fetch(
-          AI_API_URL,
-          {
-            method: "POST",
+      const response = await fetch(AI_API_URL, {
+        method: "POST",
 
-            headers: {
-              "Content-Type":
-                "application/json",
-            },
+        headers: {
+          "Content-Type": "application/json",
+        },
 
-            body: JSON.stringify({
-              prompt,
-              language:
-                currentFile.language,
-              currentCode:
-                currentFile.content ||
-                "",
-            }),
-          },
-        );
+        body: JSON.stringify({
+          prompt,
+          language: currentFile.language,
+          currentCode: currentFile.content || "",
+        }),
+      });
 
-      const data =
-        await response.json();
+      const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(
-          data?.message ||
-            "AI request failed.",
-        );
+        throw new Error(data?.message || "AI request failed.");
       }
 
-      if (
-        !data?.success ||
-        !data?.code
-      ) {
-        throw new Error(
-          data?.message ||
-            "Gemini did not return code.",
-        );
+      if (!data?.success || !data?.code) {
+        throw new Error(data?.message || "Gemini did not return code.");
       }
 
-      setAiResponse(
-        data.code,
-      );
+      setAiResponse(data.code);
     } catch (error) {
-      console.error(
-        "Gemini AI error:",
-        error,
-      );
+      console.error("Gemini AI error:", error);
 
-      setAiError(
-        error.message ||
-          "Could not connect to Gemini.",
-      );
+      setAiError(error.message || "Could not connect to Gemini.");
     } finally {
       setAiLoading(false);
     }
@@ -1193,62 +1050,45 @@ int main() {
   // INSERT AI CODE
   // =========================================================
 
-  const handleInsertAI =
-    () => {
-      if (
-        !currentFile ||
-        !aiResponse
-      ) {
-        return;
-      }
+  const handleInsertAI = () => {
+    if (!currentFile || !aiResponse) {
+      return;
+    }
 
-      handleCodeChange(
-        currentFile.id,
-        aiResponse,
-      );
+    handleCodeChange(currentFile.id, aiResponse);
 
-      setOutput([
-        "✓ Gemini code inserted into editor.",
-      ]);
+    setOutput(["✓ Gemini code inserted into editor."]);
 
-      setAiOpen(false);
-    };
+    setAiOpen(false);
+  };
 
   // =========================================================
   // COPY AI CODE
   // =========================================================
 
-  const handleCopyAI =
-    async () => {
-      if (!aiResponse) {
-        return;
-      }
+  const handleCopyAI = async () => {
+    if (!aiResponse) {
+      return;
+    }
 
-      try {
-        await navigator.clipboard.writeText(
-          aiResponse,
-        );
+    try {
+      await navigator.clipboard.writeText(aiResponse);
 
-        setOutput([
-          "✓ AI code copied to clipboard.",
-        ]);
-      } catch {
-        setAiError(
-          "Could not copy code.",
-        );
-      }
-    };
+      setOutput(["✓ AI code copied to clipboard."]);
+    } catch {
+      setAiError("Could not copy code.");
+    }
+  };
 
   // =========================================================
   // CLEAR AI
   // =========================================================
 
-  const handleClearAI =
-    () => {
-      setAiPrompt("");
-      setAiResponse("");
-      setAiError("");
-    };
+  const handleClearAI = () => {
+    setAiPrompt("");
+    setAiResponse("");
+    setAiError("");
+  };
 
   // =========================================================
   // RESET SETTINGS
@@ -1280,179 +1120,107 @@ int main() {
   // COMMAND PALETTE
   // =========================================================
 
-  const handleCommandNewFile =
-    () => {
-      handleCreateFile(
-        `untitled-${files.length + 1}.cpp`,
-      );
-    };
+  const handleCommandNewFile = () => {
+    handleCreateFile(`untitled-${files.length + 1}.cpp`);
+  };
 
-  const handleCommandCloseTab =
-    () => {
-      if (currentFile) {
-        handleTabClose(
-          currentFile.id,
-        );
-      }
-    };
+  const handleCommandCloseTab = () => {
+    if (currentFile) {
+      handleTabClose(currentFile.id);
+    }
+  };
 
-  const handleCommandSearch =
-    () => {
-      window.dispatchEvent(
-        new CustomEvent(
-          "rohit-code-search",
-        ),
-      );
+  const handleCommandSearch = () => {
+    window.dispatchEvent(new CustomEvent("rohit-code-search"));
 
-      setCommandPaletteOpen(
-        false,
-      );
-    };
+    setCommandPaletteOpen(false);
+  };
 
   // =========================================================
   // KEYBOARD SHORTCUTS
   // =========================================================
 
   useEffect(() => {
-    const handleKeyboard =
-      (event) => {
-        const ctrl =
-          event.ctrlKey ||
-          event.metaKey;
+    const handleKeyboard = (event) => {
+      const ctrl = event.ctrlKey || event.metaKey;
 
-        // Ctrl + S
-        if (
-          ctrl &&
-          event.key.toLowerCase() ===
-            "s"
-        ) {
-          event.preventDefault();
+      // Ctrl + S
+      if (ctrl && event.key.toLowerCase() === "s") {
+        event.preventDefault();
 
-          handleSave();
+        handleSave();
+      }
+
+      // Ctrl + Enter
+      if (ctrl && event.key === "Enter") {
+        event.preventDefault();
+
+        if (executionStatus !== "Running") {
+          handleRun();
         }
+      }
 
-        // Ctrl + Enter
-        if (
-          ctrl &&
-          event.key === "Enter"
-        ) {
-          event.preventDefault();
+      // Ctrl + W
+      if (ctrl && event.key.toLowerCase() === "w") {
+        event.preventDefault();
 
-          if (
-            executionStatus !==
-            "Running"
-          ) {
-            handleRun();
-          }
+        if (currentFile) {
+          handleTabClose(currentFile.id);
         }
+      }
 
-        // Ctrl + W
-        if (
-          ctrl &&
-          event.key.toLowerCase() ===
-            "w"
-        ) {
-          event.preventDefault();
+      // Ctrl + Shift + P
+      if (ctrl && event.shiftKey && event.key.toLowerCase() === "p") {
+        event.preventDefault();
 
-          if (currentFile) {
-            handleTabClose(
-              currentFile.id,
-            );
-          }
+        setCommandPaletteOpen((previous) => !previous);
+
+        setQuickOpen(false);
+      }
+
+      // Ctrl + P
+      if (ctrl && !event.shiftKey && event.key.toLowerCase() === "p") {
+        event.preventDefault();
+
+        setQuickOpen(true);
+
+        setCommandPaletteOpen(false);
+      }
+
+      // Ctrl + `
+      if (ctrl && event.key === "`") {
+        event.preventDefault();
+
+        setTerminalVisible((previous) => !previous);
+      }
+
+      // Ctrl + Shift + A
+      if (ctrl && event.shiftKey && event.key.toLowerCase() === "a") {
+        event.preventDefault();
+
+        if (geminiAI) {
+          openAI();
         }
+      }
 
-        // Ctrl + Shift + P
-        if (
-          ctrl &&
-          event.shiftKey &&
-          event.key.toLowerCase() ===
-            "p"
-        ) {
-          event.preventDefault();
+      // Escape
+      if (event.key === "Escape") {
+        setCommandPaletteOpen(false);
 
-          setCommandPaletteOpen(
-            (previous) =>
-              !previous,
-          );
+        setQuickOpen(false);
 
-          setQuickOpen(false);
+        setSettingsOpen(false);
+
+        if (aiOpen && !aiLoading) {
+          setAiOpen(false);
         }
+      }
+    };
 
-        // Ctrl + P
-        if (
-          ctrl &&
-          !event.shiftKey &&
-          event.key.toLowerCase() ===
-            "p"
-        ) {
-          event.preventDefault();
-
-          setQuickOpen(true);
-
-          setCommandPaletteOpen(
-            false,
-          );
-        }
-
-        // Ctrl + `
-        if (
-          ctrl &&
-          event.key === "`"
-        ) {
-          event.preventDefault();
-
-          setTerminalVisible(
-            (previous) =>
-              !previous,
-          );
-        }
-
-        // Ctrl + Shift + A
-        if (
-          ctrl &&
-          event.shiftKey &&
-          event.key.toLowerCase() ===
-            "a"
-        ) {
-          event.preventDefault();
-
-          if (geminiAI) {
-            openAI();
-          }
-        }
-
-        // Escape
-        if (
-          event.key ===
-          "Escape"
-        ) {
-          setCommandPaletteOpen(
-            false,
-          );
-
-          setQuickOpen(false);
-
-          setSettingsOpen(false);
-
-          if (
-            aiOpen &&
-            !aiLoading
-          ) {
-            setAiOpen(false);
-          }
-        }
-      };
-
-    window.addEventListener(
-      "keydown",
-      handleKeyboard,
-    );
+    window.addEventListener("keydown", handleKeyboard);
 
     return () => {
-      window.removeEventListener(
-        "keydown",
-        handleKeyboard,
-      );
+      window.removeEventListener("keydown", handleKeyboard);
     };
   }, [
     currentFile,
@@ -1469,9 +1237,7 @@ int main() {
   // =========================================================
 
   return (
-    <div
-      className={`app theme-${theme}`}
-    >
+    <div className={`app theme-${theme}`}>
       {/* =====================================================
           HEADER
       ====================================================== */}
@@ -1479,26 +1245,11 @@ int main() {
       <Header
         onRun={handleRun}
         onSave={handleSave}
-        language={
-          currentFile?.language ||
-          "cpp"
-        }
-        onLanguageChange={
-          handleLanguageChange
-        }
-        onSettings={() =>
-          setSettingsOpen(
-            (previous) =>
-              !previous,
-          )
-        }
+        language={currentFile?.language || "cpp"}
+        onLanguageChange={handleLanguageChange}
+        onSettings={() => setSettingsOpen((previous) => !previous)}
         onAI={geminiAI ? openAI : undefined}
-        onToggleTerminal={() =>
-          setTerminalVisible(
-            (previous) =>
-              !previous,
-          )
-        }
+        onToggleTerminal={() => setTerminalVisible((previous) => !previous)}
       />
 
       {/* =====================================================
@@ -1537,13 +1288,9 @@ int main() {
           <div className="rohit-ai-panel">
             <div className="rohit-ai-header">
               <div>
-                <strong>
-                  ✦ Gemini AI
-                </strong>
+                <strong>✦ Gemini AI</strong>
 
-                <span>
-                  ROHIT-CODE Assistant
-                </span>
+                <span>ROHIT-CODE Assistant</span>
               </div>
 
               <button
@@ -1557,45 +1304,25 @@ int main() {
             </div>
 
             <div className="rohit-ai-context">
-              <span>
-                Language:
-              </span>
+              <span>Language:</span>
 
-              <strong>
-                {currentFile?.language ||
-                  "Unknown"}
-              </strong>
+              <strong>{currentFile?.language || "Unknown"}</strong>
 
-              <span>
-                File:
-              </span>
+              <span>File:</span>
 
-              <strong>
-                {currentFile?.name ||
-                  "No file"}
-              </strong>
+              <strong>{currentFile?.name || "No file"}</strong>
             </div>
 
             <div className="rohit-ai-input-area">
               <textarea
                 ref={aiInputRef}
                 value={aiPrompt}
-                onChange={(event) =>
-                  setAiPrompt(
-                    event.target.value,
-                  )
-                }
+                onChange={(event) => setAiPrompt(event.target.value)}
                 onKeyDown={(event) => {
-                  if (
-                    event.key ===
-                      "Enter" &&
-                    !event.shiftKey
-                  ) {
+                  if (event.key === "Enter" && !event.shiftKey) {
                     event.preventDefault();
 
-                    if (
-                      !aiLoading
-                    ) {
+                    if (!aiLoading) {
                       handleGenerateAI();
                     }
                   }
@@ -1607,146 +1334,90 @@ int main() {
               />
 
               <div className="rohit-ai-input-footer">
-                <span>
-                  Enter to send • Shift +
-                  Enter for new line
-                </span>
+                <span>Enter to send • Shift + Enter for new line</span>
 
                 <button
                   type="button"
-                  onClick={
-                    handleGenerateAI
-                  }
-                  disabled={
-                    aiLoading ||
-                    !aiPrompt.trim()
-                  }
+                  onClick={handleGenerateAI}
+                  disabled={aiLoading || !aiPrompt.trim()}
                 >
-                  {aiLoading
-                    ? "Generating..."
-                    : "Generate"}
+                  {aiLoading ? "Generating..." : "Generate"}
                 </button>
               </div>
             </div>
 
-            {aiError && (
-              <div className="rohit-ai-error">
-                ❌ {aiError}
-              </div>
-            )}
+            {aiError && <div className="rohit-ai-error">❌ {aiError}</div>}
 
             {aiResponse && (
               <div className="rohit-ai-result">
                 <div className="rohit-ai-result-header">
-                  <span>
-                    Generated Code
-                  </span>
+                  <span>Generated Code</span>
 
                   <div>
-                    <button
-                      type="button"
-                      onClick={
-                        handleCopyAI
-                      }
-                    >
+                    <button type="button" onClick={handleCopyAI}>
                       Copy
                     </button>
 
-                    <button
-                      type="button"
-                      onClick={
-                        handleInsertAI
-                      }
-                    >
+                    <button type="button" onClick={handleInsertAI}>
                       Insert into Editor
                     </button>
                   </div>
                 </div>
 
-                <pre>
-                  {aiResponse}
-                </pre>
+                <pre>{aiResponse}</pre>
               </div>
             )}
 
-            {!aiResponse &&
-              !aiLoading &&
-              !aiError && (
-                <div className="rohit-ai-empty">
-                  <div className="rohit-ai-empty-icon">
-                    ✦
-                  </div>
+            {!aiResponse && !aiLoading && !aiError && (
+              <div className="rohit-ai-empty">
+                <div className="rohit-ai-empty-icon">✦</div>
 
-                  <strong>
-                    Ask Gemini to help you
-                    code
-                  </strong>
+                <strong>Ask Gemini to help you code</strong>
 
-                  <p>
-                    Generate code, explain
-                    code, fix errors,
-                    optimize programs and
-                    more.
-                  </p>
+                <p>
+                  Generate code, explain code, fix errors, optimize programs and
+                  more.
+                </p>
 
-                  <div className="rohit-ai-examples">
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setAiPrompt(
-                          "Give me prime number code",
-                        )
-                      }
-                    >
-                      Prime number
-                    </button>
+                <div className="rohit-ai-examples">
+                  <button
+                    type="button"
+                    onClick={() => setAiPrompt("Give me prime number code")}
+                  >
+                    Prime number
+                  </button>
 
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setAiPrompt(
-                          "Explain my current code",
-                        )
-                      }
-                    >
-                      Explain code
-                    </button>
+                  <button
+                    type="button"
+                    onClick={() => setAiPrompt("Explain my current code")}
+                  >
+                    Explain code
+                  </button>
 
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setAiPrompt(
-                          "Find and fix errors in my current code",
-                        )
-                      }
-                    >
-                      Fix errors
-                    </button>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setAiPrompt("Find and fix errors in my current code")
+                    }
+                  >
+                    Fix errors
+                  </button>
 
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setAiPrompt(
-                          "Optimize my current code",
-                        )
-                      }
-                    >
-                      Optimize
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setAiPrompt("Optimize my current code")}
+                  >
+                    Optimize
+                  </button>
                 </div>
-              )}
+              </div>
+            )}
 
             {aiLoading && (
               <div className="rohit-ai-loading">
-                <div className="rohit-ai-spinner">
-                  ✦
-                </div>
+                <div className="rohit-ai-spinner">✦</div>
 
-                <span>
-                  Gemini is generating
-                  your code...
-                </span>
+                <span>Gemini is generating your code...</span>
               </div>
             )}
           </div>
@@ -1766,29 +1437,14 @@ int main() {
           files={files}
           folders={folders}
           activeFile={activeFile}
-          onFileSelect={
-            handleFileSelect
-          }
-          onCreateFile={
-            handleCreateFile
-          }
-          onCreateFolder={
-            handleCreateFolder
-          }
-          onDeleteFile={
-            handleDeleteFile
-          }
-          onRenameFile={
-            handleRenameFile
-          }
+          onFileSelect={handleFileSelect}
+          onCreateFile={handleCreateFile}
+          onCreateFolder={handleCreateFolder}
+          onDeleteFile={handleDeleteFile}
+          onRenameFile={handleRenameFile}
           onRun={handleRun}
-          onStop={
-            handleStopExecution
-          }
-          isRunning={
-            executionStatus ===
-            "Running"
-          }
+          onStop={handleStopExecution}
+          isRunning={executionStatus === "Running"}
         />
 
         {/* ===================================================
@@ -1804,32 +1460,15 @@ int main() {
             file={currentFile}
             files={openFileObjects}
             activeFile={activeFile}
-            onTabSelect={
-              handleTabSelect
-            }
-            onTabClose={
-              handleTabClose
-            }
-            onNewTab={
-              handleNewTab
-            }
-            onCodeChange={
-              handleCodeChange
-            }
+            onTabSelect={handleTabSelect}
+            onTabClose={handleTabClose}
+            onNewTab={handleNewTab}
+            onCodeChange={handleCodeChange}
             output={output}
             setOutput={setOutput}
-            terminalVisible={
-              terminalVisible
-            }
-            onToggleTerminal={() =>
-              setTerminalVisible(
-                (previous) =>
-                  !previous,
-              )
-            }
-            onCursorPositionChange={
-              setCursorPosition
-            }
+            terminalVisible={terminalVisible}
+            onToggleTerminal={() => setTerminalVisible((previous) => !previous)}
+            onCursorPositionChange={setCursorPosition}
             theme={theme}
             fontSize={fontSize}
             wordWrap={wordWrap}
@@ -1845,29 +1484,14 @@ int main() {
           {terminalVisible && (
             <section className="bottom-panel-area">
               <BottomPanel
-                activePanel={
-                  activeBottomPanel
-                }
-                onPanelChange={
-                  setActiveBottomPanel
-                }
+                activePanel={activeBottomPanel}
+                onPanelChange={setActiveBottomPanel}
                 output={output}
                 problems={[]}
-                onClose={() =>
-                  setTerminalVisible(
-                    false,
-                  )
-                }
-                onTerminalInput={
-                  handleTerminalInput
-                }
-                onStopExecution={
-                  handleStopExecution
-                }
-                isRunning={
-                  executionStatus ===
-                  "Running"
-                }
+                onClose={() => setTerminalVisible(false)}
+                onTerminalInput={handleTerminalInput}
+                onStopExecution={handleStopExecution}
+                isRunning={executionStatus === "Running"}
               />
             </section>
           )}
@@ -1878,15 +1502,9 @@ int main() {
 
           <StatusBar
             file={currentFile}
-            cursorPosition={
-              cursorPosition
-            }
-            status={
-              executionStatus
-            }
-            executionTime={
-              executionTime
-            }
+            cursorPosition={cursorPosition}
+            status={executionStatus}
+            executionTime={executionTime}
           />
 
           {/* =================================================
@@ -1894,28 +1512,14 @@ int main() {
           ================================================== */}
 
           <CommandPalette
-            isOpen={
-              commandPaletteOpen
-            }
-            onClose={() =>
-              setCommandPaletteOpen(
-                false,
-              )
-            }
+            isOpen={commandPaletteOpen}
+            onClose={() => setCommandPaletteOpen(false)}
             onRun={handleRun}
             onSave={handleSave}
-            onNewFile={
-              handleCommandNewFile
-            }
-            onSearch={
-              handleCommandSearch
-            }
-            onClearTerminal={
-              handleClearTerminal
-            }
-            onCloseTab={
-              handleCommandCloseTab
-            }
+            onNewFile={handleCommandNewFile}
+            onSearch={handleCommandSearch}
+            onClearTerminal={handleClearTerminal}
+            onCloseTab={handleCommandCloseTab}
           />
 
           {/* =================================================
@@ -1926,12 +1530,8 @@ int main() {
             isOpen={quickOpen}
             files={files}
             activeFile={activeFile}
-            onSelectFile={
-              handleFileSelect
-            }
-            onClose={() =>
-              setQuickOpen(false)
-            }
+            onSelectFile={handleFileSelect}
+            onClose={() => setQuickOpen(false)}
           />
 
           {/* =================================================
@@ -1939,25 +1539,13 @@ int main() {
           ================================================== */}
 
           <SaveChangesModal
-            isOpen={
-              saveModalOpen
-            }
+            isOpen={saveModalOpen}
             fileName={
-              files.find(
-                (file) =>
-                  file.id ===
-                  filePendingClose,
-              )?.name || ""
+              files.find((file) => file.id === filePendingClose)?.name || ""
             }
-            onSave={
-              handleModalSave
-            }
-            onDontSave={
-              handleModalDontSave
-            }
-            onCancel={
-              handleModalCancel
-            }
+            onSave={handleModalSave}
+            onDontSave={handleModalDontSave}
+            onCancel={handleModalCancel}
           />
         </main>
       </div>
