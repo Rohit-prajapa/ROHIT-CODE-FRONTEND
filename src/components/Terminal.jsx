@@ -1535,12 +1535,6 @@ function Terminal({
 
       {activeTab === "terminal" && (
         <div ref={terminalContentRef} className="terminal-content">
-          <div className="terminal-line terminal-welcome">
-            <span>Rohit Code Terminal</span>
-          </div>
-
-          <div className="terminal-line">Esc Clear Input</div>
-
           {outputLines.length > 0 && (
             <div className="terminal-output-area">
               {outputLines.map(renderOutputLine)}
