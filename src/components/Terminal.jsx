@@ -117,7 +117,7 @@ function Terminal({
     const text = String(line || "").toLowerCase();
 
     return (
-      text.includes("error") || text.startsWith("❌") || text.includes("failed")
+      text.includes("error") || text.startsWith("âŒ") || text.includes("failed")
     );
   });
 
@@ -442,14 +442,14 @@ function Terminal({
         setOutput?.((previous) => [
           ...(Array.isArray(previous) ? previous : []),
 
-          `❌ ${result.output || result.error || "Command failed."}`,
+          `âŒ ${result.output || result.error || "Command failed."}`,
         ]);
       }
     } catch (error) {
       setOutput?.((previous) => [
         ...(Array.isArray(previous) ? previous : []),
 
-        "❌ Unable to connect to Rohit Code backend.",
+        "âŒ Unable to connect to Rohit Code backend.",
       ]);
     } finally {
       setTimeout(() => {
@@ -704,7 +704,7 @@ function Terminal({
       );
     }
 
-    if (text.toLowerCase().includes("error") || text.startsWith("❌")) {
+    if (text.toLowerCase().includes("error") || text.startsWith("âŒ")) {
       return (
         <div key={index} className="terminal-error">
           {text}
@@ -713,7 +713,7 @@ function Terminal({
     }
 
     if (
-      text.startsWith("✓") ||
+      text.startsWith("âœ“") ||
       text.toLowerCase().includes("success") ||
       text.toLowerCase().includes("process exited with code 0")
     ) {
@@ -761,9 +761,11 @@ function Terminal({
           position: relative;
           display: flex;
           flex-direction: column;
+          width: 100%;
+          min-width: 0;
           background: #181818;
           color: #cccccc;
-          border-top: 1px solid #2b2b2b;
+          border-top: 1px solid #303030;
           font-family:
             -apple-system,
             BlinkMacSystemFont,
@@ -771,12 +773,19 @@ function Terminal({
             Arial,
             sans-serif;
           overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .terminal-panel *,
+        .terminal-panel *::before,
+        .terminal-panel *::after {
+          box-sizing: border-box;
         }
 
         .terminal-panel.terminal-light {
           background: #ffffff;
           color: #333333;
-          border-top-color: #e0e0e0;
+          border-top-color: #d4d4d4;
         }
 
         .terminal-panel.terminal-maximized {
@@ -785,10 +794,10 @@ function Terminal({
 
         .terminal-resize-handle {
           position: absolute;
-          top: -5px;
+          top: -4px;
           left: 0;
           right: 0;
-          height: 10px;
+          height: 8px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -803,61 +812,102 @@ function Terminal({
           background: rgba(255, 255, 255, 0.04);
         }
 
+        .terminal-resize-handle svg {
+          width: 16px;
+          height: 16px;
+        }
+
         .terminal-header {
-          height: 40px;
-          min-height: 40px;
+          height: 36px;
+          min-height: 36px;
           display: flex;
-          align-items: center;
+          align-items: stretch;
           justify-content: space-between;
-          padding: 0 8px;
+          padding: 0;
           border-bottom: 1px solid #2b2b2b;
           background: #181818;
+          user-select: none;
         }
 
         .terminal-light .terminal-header {
           background: #f3f3f3;
-          border-bottom-color: #e0e0e0;
+          border-bottom-color: #d4d4d4;
         }
 
         .terminal-tabs {
           display: flex;
-          align-items: center;
+          align-items: stretch;
           height: 100%;
+          min-width: 0;
         }
 
         .terminal-tab {
+          position: relative;
           height: 100%;
           display: flex;
           align-items: center;
-          gap: 6px;
-          padding: 0 12px;
+          gap: 7px;
+          padding: 0 14px;
           border: 0;
-          border-bottom: 1px solid transparent;
+          border-right: 1px solid transparent;
           background: transparent;
-          color: #8b8b8b;
+          color: #969696;
           font-family: inherit;
-          font-size: 12px;
+          font-size: 11px;
           font-weight: 600;
-          letter-spacing: .4px;
+          letter-spacing: 0.3px;
           cursor: pointer;
+          transition: color 80ms ease, background 80ms ease;
         }
 
         .terminal-tab:hover {
-          color: #d4d4d4;
+          color: #d7d7d7;
+          background: #1f1f1f;
         }
 
         .terminal-tab.active {
           color: #ffffff;
-          border-bottom-color: transparent;
-          background: #222222;
+          background: #1e1e1e;
+        }
+
+        .terminal-tab.active::after {
+          content: "";
+          position: absolute;
+          left: 12px;
+          right: 12px;
+          bottom: 0;
+          height: 1px;
+          background: #007acc;
+        }
+
+        .terminal-light .terminal-tab {
+          color: #666666;
+        }
+
+        .terminal-light .terminal-tab:hover {
+          color: #333333;
+          background: #e8e8e8;
+        }
+
+        .terminal-light .terminal-tab.active {
+          color: #1f1f1f;
+          background: #ffffff;
+        }
+
+        .terminal-light .terminal-tab.active::after {
+          background: #0078d4;
         }
 
         .terminal-session {
           display: flex;
           align-items: center;
           gap: 12px;
+          margin-left: auto;
+          padding: 0 10px;
           color: #858585;
-          font-size: 12px;
+          font-size: 11px;
+          white-space: nowrap;
+          overflow: hidden;
         }
 
         .terminal-session-item {
@@ -867,19 +917,21 @@ function Terminal({
         }
 
         .terminal-connected {
-          color: #3fb950;
+          color: #4ec9b0;
         }
 
         .terminal-session-directory {
-          font-family: Consolas, monospace;
+          color: #666666;
+          font-family: Consolas, "Cascadia Code", monospace;
           font-size: 11px;
-          color: #6a6a6a;
         }
 
         .terminal-actions {
           display: flex;
           align-items: center;
-          gap: 2px;
+          height: 100%;
+          padding: 0 4px;
+          gap: 1px;
         }
 
         .terminal-action {
@@ -889,10 +941,11 @@ function Terminal({
           align-items: center;
           justify-content: center;
           border: 0;
-          border-radius: 4px;
+          border-radius: 3px;
           background: transparent;
           color: #858585;
           cursor: pointer;
+          transition: background 80ms ease, color 80ms ease;
         }
 
         .terminal-action:hover {
@@ -900,38 +953,81 @@ function Terminal({
           color: #ffffff;
         }
 
+        .terminal-action:active {
+          background: #333333;
+        }
+
+        .terminal-light .terminal-action:hover {
+          background: #e5e5e5;
+          color: #222222;
+        }
+
         .terminal-content {
           flex: 1;
           min-height: 0;
+          overflow-x: auto;
           overflow-y: auto;
-          padding: 10px 14px;
+          padding: 12px 18px 14px;
+          background: #181818;
           font-family:
             "Cascadia Code",
+            "Cascadia Mono",
             Consolas,
             "SF Mono",
+            Menlo,
             monospace;
-          font-size: 14px;
-          line-height: 1.6;
+          font-size: 13px;
+          line-height: 1.55;
+          letter-spacing: 0;
+          scrollbar-width: thin;
+          scrollbar-color: #424242 transparent;
+        }
+
+        .terminal-light .terminal-content {
+          background: #ffffff;
+          scrollbar-color: #c1c1c1 transparent;
         }
 
         .terminal-content::-webkit-scrollbar {
-          width: 8px;
+          width: 10px;
+          height: 10px;
+        }
+
+        .terminal-content::-webkit-scrollbar-track {
+          background: transparent;
         }
 
         .terminal-content::-webkit-scrollbar-thumb {
-          background: #3a3a3a;
-          border-radius: 8px;
+          background: #424242;
+          border: 2px solid #181818;
+          border-radius: 0;
+        }
+
+        .terminal-content::-webkit-scrollbar-thumb:hover {
+          background: #555555;
+        }
+
+        .terminal-light .terminal-content::-webkit-scrollbar-thumb {
+          background: #c1c1c1;
+          border-color: #ffffff;
         }
 
         .terminal-line {
+          min-height: 20px;
           white-space: pre-wrap;
           word-break: break-word;
           color: #cccccc;
         }
 
+        .terminal-light .terminal-line {
+          color: #333333;
+        }
+
         .terminal-welcome {
           color: #4ec9b0;
-          margin-bottom: 6px;
+          margin-bottom: 8px;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          font-size: 12px;
         }
 
         .terminal-command {
@@ -948,61 +1044,62 @@ function Terminal({
 
         .terminal-time {
           color: #6a6a6a;
-          font-size: 12px;
+          font-size: 11px;
         }
 
         .terminal-session-details {
-          display: flex;
-          flex-direction: column;
-          gap: 2px;
-          margin-bottom: 10px;
-          color: #6a6a6a;
-          font-size: 12px;
-        }
-
-        .terminal-session-details > div {
-          display: flex;
-          align-items: center;
-          gap: 6px;
+          display: none;
         }
 
         .terminal-output-area {
-          margin: 6px 0;
+          margin: 8px 0 0;
         }
 
         .terminal-command-wrapper {
           position: relative;
-          margin-top: 4px;
+          margin-top: 2px;
         }
 
         .terminal-command-line {
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: 7px;
+          min-height: 22px;
         }
 
         .terminal-prompt {
-          color: #3fb950;
+          flex: 0 0 auto;
+          color: #4ec9b0;
+          font-family:
+            "Cascadia Code",
+            Consolas,
+            monospace;
+          font-size: 13px;
           font-weight: 700;
-          font-size: 14px;
         }
 
         .terminal-input {
           flex: 1;
           min-width: 0;
+          height: 22px;
+          padding: 0;
           border: 0;
           outline: 0;
           background: transparent;
-          color: #ffffff;
+          color: #f0f0f0;
+          caret-color: #ffffff;
           font-family:
             "Cascadia Code",
+            "Cascadia Mono",
             Consolas,
             monospace;
-          font-size: 14px;
+          font-size: 13px;
+          line-height: 22px;
         }
 
         .terminal-input::placeholder {
-          color: #5a5a5a;
+          color: #6a6a6a;
+          opacity: 1;
         }
 
         .terminal-input:disabled {
@@ -1010,41 +1107,35 @@ function Terminal({
         }
 
         .terminal-spinner {
+          flex: 0 0 auto;
           color: #4ec9b0;
-          animation:
-            terminal-spin .8s linear infinite;
+          animation: terminal-spin .8s linear infinite;
         }
 
         @keyframes terminal-spin {
-          from {
-            transform: rotate(0deg);
-          }
-
-          to {
-            transform: rotate(360deg);
-          }
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
         }
 
         .terminal-suggestions {
           position: absolute;
-          bottom: calc(100% + 4px);
+          bottom: calc(100% + 6px);
           left: 0;
-          min-width: 220px;
-          max-width: 420px;
-          max-height: 200px;
+          min-width: 240px;
+          max-width: 440px;
+          max-height: 220px;
           overflow-y: auto;
           background: #252526;
           border: 1px solid #454545;
-          border-radius: 4px;
-          box-shadow:
-            0 6px 20px rgba(0,0,0,.5);
+          border-radius: 2px;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, .45);
           z-index: 20;
         }
 
         .terminal-suggestion {
           display: block;
           width: 100%;
-          padding: 5px 10px;
+          padding: 6px 10px;
           border: 0;
           background: transparent;
           color: #cccccc;
@@ -1053,6 +1144,7 @@ function Terminal({
             Consolas,
             monospace;
           font-size: 12px;
+          line-height: 18px;
           text-align: left;
           cursor: pointer;
         }
@@ -1065,22 +1157,43 @@ function Terminal({
 
         .terminal-empty {
           height: 100%;
+          min-height: 120px;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           gap: 8px;
           color: #6a6a6a;
-          font-size: 14px;
+          font-size: 13px;
         }
 
         .problem-item {
           display: flex;
           align-items: flex-start;
           gap: 8px;
-          padding: 4px 0;
+          padding: 5px 0;
           font-size: 13px;
           color: #cccccc;
+        }
+
+        .terminal-resizing,
+        .terminal-resizing * {
+          cursor: ns-resize !important;
+        }
+
+        @media (max-width: 700px) {
+          .terminal-session {
+            display: none;
+          }
+
+          .terminal-tab {
+            padding: 0 10px;
+          }
+
+          .terminal-content {
+            padding-left: 12px;
+            padding-right: 12px;
+          }
         }
       `}</style>
 
@@ -1151,7 +1264,7 @@ function Terminal({
               title="Stop Program"
               onClick={onStopExecution}
             >
-              ■
+              â–
             </button>
           )}
 
@@ -1208,7 +1321,7 @@ function Terminal({
             </div>
           </div>
 
-          <div className="terminal-line">↑ ↓ Command History</div>
+          <div className="terminal-line">â†‘ â†“ Command History</div>
 
           <div className="terminal-line">Tab Autocomplete</div>
 
@@ -1314,12 +1427,12 @@ function Terminal({
         <div className="terminal-content">
           {problems.length === 0 ? (
             <div className="terminal-empty">
-              <span>✓ No problems detected</span>
+              <span>âœ“ No problems detected</span>
             </div>
           ) : (
             problems.map((problem, index) => (
               <div key={index} className="problem-item">
-                <span>❌</span>
+                <span>âŒ</span>
 
                 <span>{problem}</span>
               </div>
