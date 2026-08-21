@@ -385,8 +385,6 @@ int main() {
 
       ts: "typescript",
       tsx: "typescript",
-
-      go: "go",
       rs: "rust",
       php: "php",
 
