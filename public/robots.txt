@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rohit-code-frontend.onrender.com/sitemap.xml
