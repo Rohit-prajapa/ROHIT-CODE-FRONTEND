@@ -12,7 +12,7 @@ import {
 
 import { useEffect, useMemo, useRef, useState } from "react";
 
-const API_BASE = "https://rohit-code.onrender.com";
+const API_BASE = "http://localhost:5000";
 
 const TERMINAL_HEIGHT_KEY = "rohit-code-terminal-height";
 
@@ -480,11 +480,34 @@ function Terminal({
         return;
       }
 
-      // Echo interactive input into the terminal
-      setOutput?.((previous) => [
-        ...(Array.isArray(previous) ? previous : []),
-        `> ${value}`,
-      ]);
+      // ---------------------------------------
+      // VS CODE STYLE INTERACTIVE INPUT
+      // ---------------------------------------
+      // If the program has just printed a prompt
+      // such as "Enter three numbers:", place the
+      // first value on that same line. Subsequent
+      // values are placed on their own lines.
+      setOutput?.((previous) => {
+        const lines = Array.isArray(previous) ? [...previous] : [];
+
+        if (lines.length === 0) {
+          lines.push(value);
+          return lines;
+        }
+
+        const lastIndex = lines.length - 1;
+        const lastLine = String(lines[lastIndex] ?? "");
+
+        // Match normal interactive prompts ending
+        // with ':' or '?'.
+        if (/[?:]\s*$/.test(lastLine)) {
+          lines[lastIndex] = `${lastLine.trimEnd()} ${value}`;
+        } else {
+          lines.push(value);
+        }
+
+        return lines;
+      });
 
       setCommand("");
       setShowSuggestions(false);
@@ -734,702 +757,332 @@ function Terminal({
       style={panelStyle}
     >
       <style>{`
-  /* =====================================================
-     VS CODE TERMINAL
-     ===================================================== */
-
-  .terminal-panel {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    min-height: 160px;
-
-    background: #181818;
-    color: #cccccc;
-
-    border-top: 1px solid #2b2b2b;
-
-    font-family:
-      "Segoe UI",
-      -apple-system,
-      BlinkMacSystemFont,
-      sans-serif;
-
-    overflow: hidden;
-  }
-
-  /* =====================================================
-     LIGHT THEME
-     ===================================================== */
-
-  .terminal-panel.terminal-light {
-    background: #ffffff;
-    color: #333333;
-    border-top-color: #e5e5e5;
-  }
-
-  /* =====================================================
-     MAXIMIZED
-     ===================================================== */
-
-  .terminal-panel.terminal-maximized {
-    border-top: 0;
-    border-radius: 0;
-  }
-
-  /* =====================================================
-     RESIZE HANDLE
-     ===================================================== */
-
-  .terminal-resize-handle {
-    position: absolute;
-
-    top: -4px;
-    left: 0;
-    right: 0;
-
-    height: 8px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    cursor: ns-resize;
-
-    background: transparent;
-
-    color: transparent;
-
-    z-index: 100;
-  }
-
-  .terminal-resize-handle:hover {
-    background: rgba(255, 255, 255, 0.04);
-    color: #858585;
-  }
-
-  .terminal-light .terminal-resize-handle:hover {
-    background: rgba(0, 0, 0, 0.04);
-  }
-
-  /* =====================================================
-     HEADER
-     ===================================================== */
-
-  .terminal-header {
-    height: 36px;
-    min-height: 36px;
-
-    display: flex;
-    align-items: center;
-
-    background: #181818;
-
-    border-bottom: 1px solid #2b2b2b;
-
-    padding: 0 8px;
-
-    user-select: none;
-  }
-
-  .terminal-light .terminal-header {
-    background: #f3f3f3;
-    border-bottom-color: #e5e5e5;
-  }
-
-  /* =====================================================
-     TERMINAL TABS
-     ===================================================== */
-
-  .terminal-tabs {
-    display: flex;
-    align-items: stretch;
-
-    height: 100%;
-  }
-
-  .terminal-tab {
-    position: relative;
-
-    height: 100%;
-
-    display: flex;
-    align-items: center;
-
-    gap: 7px;
-
-    padding: 0 12px;
-
-    border: 0;
-
-    background: transparent;
-
-    color: #858585;
-
-    font-family: "Segoe UI", sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-
-    cursor: pointer;
-
-    transition:
-      color 0.12s ease,
-      background 0.12s ease;
-  }
-
-  .terminal-tab:hover {
-    color: #cccccc;
-    background: rgba(255, 255, 255, 0.04);
-  }
-
-  .terminal-tab.active {
-    color: #ffffff;
-    background: #1f1f1f;
-  }
-
-  .terminal-tab.active::after {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    height: 1px;
-
-    background: #ffffff;
-  }
-
-  .terminal-light .terminal-tab {
-    color: #666666;
-  }
-
-  .terminal-light .terminal-tab:hover {
-    color: #333333;
-    background: rgba(0, 0, 0, 0.04);
-  }
-
-  .terminal-light .terminal-tab.active {
-    color: #111111;
-    background: #ffffff;
-  }
-
-  .terminal-light .terminal-tab.active::after {
-    background: #0078d4;
-  }
-
-  /* =====================================================
-     SESSION INFO
-     ===================================================== */
-
-  .terminal-session {
-    display: flex;
-    align-items: center;
-
-    gap: 12px;
-
-    margin-left: auto;
-    margin-right: 8px;
-
-    color: #858585;
-
-    font-size: 12px;
-  }
-
-  .terminal-session-item {
-    display: flex;
-    align-items: center;
-
-    gap: 5px;
-  }
-
-  .terminal-connected {
-    color: #4ec9b0;
-  }
-
-  .terminal-session-directory {
-    font-family:
-      "Cascadia Code",
-      Consolas,
-      monospace;
-
-    font-size: 11px;
-
-    color: #666666;
-  }
-
-  /* =====================================================
-     HEADER ACTIONS
-     ===================================================== */
-
-  .terminal-actions {
-    display: flex;
-    align-items: center;
-
-    gap: 2px;
-  }
-
-  .terminal-action {
-    width: 28px;
-    height: 28px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 0;
-    border-radius: 3px;
-
-    background: transparent;
-
-    color: #858585;
-
-    cursor: pointer;
-
-    transition:
-      background 0.12s ease,
-      color 0.12s ease;
-  }
-
-  .terminal-action:hover {
-    background: #2a2d2e;
-    color: #ffffff;
-  }
-
-  .terminal-light .terminal-action:hover {
-    background: #e5e5e5;
-    color: #111111;
-  }
-
-  /* =====================================================
-     TERMINAL CONTENT
-     ===================================================== */
-
-  .terminal-content {
-    flex: 1;
-
-    min-height: 0;
-
-    overflow-y: auto;
-
-    padding: 8px 12px 12px 12px;
-
-    background: #181818;
-
-    font-family:
-      "Cascadia Code",
-      "Cascadia Mono",
-      Consolas,
-      "SF Mono",
-      Menlo,
-      monospace;
-
-    font-size: 13px;
-
-    line-height: 1.5;
-
-    letter-spacing: 0;
-
-    scrollbar-width: thin;
-    scrollbar-color: #424242 transparent;
-  }
-
-  .terminal-light .terminal-content {
-    background: #ffffff;
-  }
-
-  /* =====================================================
-     SCROLLBAR
-     ===================================================== */
-
-  .terminal-content::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  .terminal-content::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .terminal-content::-webkit-scrollbar-thumb {
-    background: #424242;
-
-    border-radius: 0;
-  }
-
-  .terminal-content::-webkit-scrollbar-thumb:hover {
-    background: #5a5a5a;
-  }
-
-  /* =====================================================
-     WELCOME
-     ===================================================== */
-
-  .terminal-welcome {
-    color: #cccccc;
-
-    margin-bottom: 4px;
-
-    font-size: 13px;
-  }
-
-  .terminal-welcome strong {
-    color: #cccccc;
-    font-weight: 500;
-  }
-
-  /* =====================================================
-     SESSION DETAILS
-     ===================================================== */
-
-  .terminal-session-details {
-    display: none;
-  }
-
-  /* =====================================================
-     HELP INFORMATION
-     ===================================================== */
-
-  .terminal-content > .terminal-line:not(
-    .terminal-welcome
-  ):not(
-    .terminal-command
-  ):not(
-    .terminal-error
-  ):not(
-    .terminal-success
-  ):not(
-    .terminal-time
-  ) {
-    color: #858585;
-  }
-
-  /* =====================================================
-     OUTPUT
-     ===================================================== */
-
-  .terminal-output-area {
-    margin: 5px 0;
-  }
-
-  .terminal-line {
-    min-height: 20px;
-
-    white-space: pre-wrap;
-
-    word-break: break-word;
-
-    color: #cccccc;
-
-    font-family:
-      "Cascadia Code",
-      "Cascadia Mono",
-      Consolas,
-      monospace;
-
-    font-size: 13px;
-
-    line-height: 1.5;
-  }
-
-  /* =====================================================
-     COMMAND
-     ===================================================== */
-
-  .terminal-command {
-    color: #cccccc;
-
-    font-weight: 400;
-  }
-
-  /* VS Code command prompt */
-
-  .terminal-command::first-letter {
-    color: #4ec9b0;
-  }
-
-  /* =====================================================
-     ERROR
-     ===================================================== */
-
-  .terminal-error {
-    color: #f48771;
-
-    white-space: pre-wrap;
-  }
-
-  /* =====================================================
-     SUCCESS
-     ===================================================== */
-
-  .terminal-success {
-    color: #4ec9b0;
-
-    white-space: pre-wrap;
-  }
-
-  /* =====================================================
-     TIME
-     ===================================================== */
-
-  .terminal-time {
-    color: #666666;
-
-    font-size: 11px;
-
-    margin-bottom: 2px;
-  }
-
-  /* =====================================================
-     COMMAND INPUT
-     ===================================================== */
-
-  .terminal-command-wrapper {
-    position: relative;
-
-    margin-top: 2px;
-  }
-
-  .terminal-command-line {
-    display: flex;
-    align-items: center;
-
-    gap: 7px;
-
-    min-height: 22px;
-  }
-
-  /* =====================================================
-     PROMPT
-     ===================================================== */
-
-  .terminal-prompt {
-    flex-shrink: 0;
-
-    color: #4ec9b0;
-
-    font-family:
-      "Cascadia Code",
-      Consolas,
-      monospace;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    line-height: 1;
-  }
-
-  /* =====================================================
-     INPUT
-     ===================================================== */
-
-  .terminal-input {
-    flex: 1;
-
-    min-width: 0;
-
-    height: 22px;
-
-    padding: 0;
-
-    border: 0;
-
-    outline: none;
-
-    background: transparent;
-
-    color: #cccccc;
-
-    caret-color: #ffffff;
-
-    font-family:
-      "Cascadia Code",
-      "Cascadia Mono",
-      Consolas,
-      monospace;
-
-    font-size: 13px;
-
-    line-height: 22px;
-  }
-
-  .terminal-input::selection {
-    background: #264f78;
-  }
-
-  .terminal-input::placeholder {
-    color: #666666;
-    opacity: 1;
-  }
-
-  .terminal-input:disabled {
-    color: #858585;
-  }
-
-  /* =====================================================
-     RUNNING SPINNER
-     ===================================================== */
-
-  .terminal-spinner {
-    flex-shrink: 0;
-
-    color: #4ec9b0;
-
-    animation:
-      terminal-spin 0.8s linear infinite;
-  }
-
-  @keyframes terminal-spin {
-    from {
-      transform: rotate(0deg);
-    }
-
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  /* =====================================================
-     AUTOCOMPLETE
-     ===================================================== */
-
-  .terminal-suggestions {
-    position: absolute;
-
-    bottom: calc(100% + 4px);
-
-    left: 0;
-
-    min-width: 220px;
-    max-width: 420px;
-
-    max-height: 220px;
-
-    overflow-y: auto;
-
-    background: #252526;
-
-    border: 1px solid #454545;
-
-    border-radius: 3px;
-
-    box-shadow:
-      0 8px 24px rgba(0, 0, 0, 0.45);
-
-    z-index: 1000;
-  }
-
-  .terminal-suggestion {
-    display: block;
-
-    width: 100%;
-
-    padding: 6px 10px;
-
-    border: 0;
-
-    background: transparent;
-
-    color: #cccccc;
-
-    font-family:
-      "Cascadia Code",
-      Consolas,
-      monospace;
-
-    font-size: 12px;
-
-    text-align: left;
-
-    cursor: pointer;
-  }
-
-  .terminal-suggestion:hover,
-  .terminal-suggestion.selected {
-    background: #094771;
-
-    color: #ffffff;
-  }
-
-  /* =====================================================
-     EMPTY STATE
-     ===================================================== */
-
-  .terminal-empty {
-    height: 100%;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 8px;
-
-    color: #858585;
-
-    font-size: 13px;
-  }
-
-  /* =====================================================
-     PROBLEMS
-     ===================================================== */
-
-  .problem-item {
-    display: flex;
-
-    align-items: flex-start;
-
-    gap: 8px;
-
-    padding: 4px 0;
-
-    font-family:
-      "Cascadia Code",
-      Consolas,
-      monospace;
-
-    font-size: 13px;
-
-    color: #cccccc;
-  }
-
-  /* =====================================================
-     LIGHT THEME TEXT
-     ===================================================== */
-
-  .terminal-light .terminal-line {
-    color: #333333;
-  }
-
-  .terminal-light .terminal-command {
-    color: #333333;
-  }
-
-  .terminal-light .terminal-input {
-    color: #333333;
-    caret-color: #111111;
-  }
-
-  .terminal-light .terminal-prompt {
-    color: #008000;
-  }
-
-  .terminal-light .terminal-success {
-    color: #008000;
-  }
-
-  .terminal-light .terminal-error {
-    color: #c72e0f;
-  }
-
-  .terminal-light .terminal-time {
-    color: #888888;
-  }
-`}</style>
+        .terminal-panel {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          background: #181818;
+          color: #cccccc;
+          border-top: 1px solid #2b2b2b;
+          font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Arial,
+            sans-serif;
+          overflow: hidden;
+        }
+
+        .terminal-panel.terminal-light {
+          background: #ffffff;
+          color: #333333;
+          border-top-color: #e0e0e0;
+        }
+
+        .terminal-panel.terminal-maximized {
+          border-top: 0;
+        }
+
+        .terminal-resize-handle {
+          position: absolute;
+          top: -5px;
+          left: 0;
+          right: 0;
+          height: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: ns-resize;
+          color: transparent;
+          z-index: 50;
+          background: transparent;
+        }
+
+        .terminal-resize-handle:hover {
+          color: #858585;
+          background: rgba(255, 255, 255, 0.04);
+        }
+
+        .terminal-header {
+          height: 40px;
+          min-height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 8px;
+          border-bottom: 1px solid #2b2b2b;
+          background: #181818;
+        }
+
+        .terminal-light .terminal-header {
+          background: #f3f3f3;
+          border-bottom-color: #e0e0e0;
+        }
+
+        .terminal-tabs {
+          display: flex;
+          align-items: center;
+          height: 100%;
+        }
+
+        .terminal-tab {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding: 0 12px;
+          border: 0;
+          border-bottom: 1px solid transparent;
+          background: transparent;
+          color: #8b8b8b;
+          font-family: inherit;
+          font-size: 12px;
+          font-weight: 600;
+          letter-spacing: .4px;
+          cursor: pointer;
+        }
+
+        .terminal-tab:hover {
+          color: #d4d4d4;
+        }
+
+        .terminal-tab.active {
+          color: #ffffff;
+          border-bottom-color: transparent;
+          background: #222222;
+        }
+
+        .terminal-session {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          color: #858585;
+          font-size: 12px;
+        }
+
+        .terminal-session-item {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+        }
+
+        .terminal-connected {
+          color: #3fb950;
+        }
+
+        .terminal-session-directory {
+          font-family: Consolas, monospace;
+          font-size: 11px;
+          color: #6a6a6a;
+        }
+
+        .terminal-actions {
+          display: flex;
+          align-items: center;
+          gap: 2px;
+        }
+
+        .terminal-action {
+          width: 30px;
+          height: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 0;
+          border-radius: 4px;
+          background: transparent;
+          color: #858585;
+          cursor: pointer;
+        }
+
+        .terminal-action:hover {
+          background: #2a2d2e;
+          color: #ffffff;
+        }
+
+        .terminal-content {
+          flex: 1;
+          min-height: 0;
+          overflow-y: auto;
+          padding: 10px 14px;
+          font-family:
+            "Cascadia Code",
+            Consolas,
+            "SF Mono",
+            monospace;
+          font-size: 14px;
+          line-height: 1.6;
+        }
+
+        .terminal-content::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        .terminal-content::-webkit-scrollbar-thumb {
+          background: #3a3a3a;
+          border-radius: 8px;
+        }
+
+        .terminal-line {
+          white-space: pre-wrap;
+          word-break: break-word;
+          color: #cccccc;
+        }
+
+        .terminal-welcome {
+          color: #4ec9b0;
+          margin-bottom: 6px;
+        }
+
+        .terminal-command {
+          color: #9cdcfe;
+        }
+
+        .terminal-error {
+          color: #f48771;
+        }
+
+        .terminal-success {
+          color: #4ec9b0;
+        }
+
+        .terminal-time {
+          color: #6a6a6a;
+          font-size: 12px;
+        }
+
+        .terminal-session-details {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          margin-bottom: 10px;
+          color: #6a6a6a;
+          font-size: 12px;
+        }
+
+        .terminal-session-details > div {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .terminal-output-area {
+          margin: 6px 0;
+        }
+
+        .terminal-command-wrapper {
+          position: relative;
+          margin-top: 4px;
+        }
+
+        .terminal-command-line {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .terminal-prompt {
+          color: #3fb950;
+          font-weight: 700;
+          font-size: 14px;
+        }
+
+        .terminal-input {
+          flex: 1;
+          min-width: 0;
+          border: 0;
+          outline: 0;
+          background: transparent;
+          color: #ffffff;
+          font-family:
+            "Cascadia Code",
+            Consolas,
+            monospace;
+          font-size: 14px;
+        }
+
+        .terminal-input::placeholder {
+          color: #5a5a5a;
+        }
+
+        .terminal-input:disabled {
+          color: #6a6a6a;
+        }
+
+        .terminal-spinner {
+          color: #4ec9b0;
+          animation:
+            terminal-spin .8s linear infinite;
+        }
+
+        @keyframes terminal-spin {
+          from {
+            transform: rotate(0deg);
+          }
+
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        .terminal-suggestions {
+          position: absolute;
+          bottom: calc(100% + 4px);
+          left: 0;
+          min-width: 220px;
+          max-width: 420px;
+          max-height: 200px;
+          overflow-y: auto;
+          background: #252526;
+          border: 1px solid #454545;
+          border-radius: 4px;
+          box-shadow:
+            0 6px 20px rgba(0,0,0,.5);
+          z-index: 20;
+        }
+
+        .terminal-suggestion {
+          display: block;
+          width: 100%;
+          padding: 5px 10px;
+          border: 0;
+          background: transparent;
+          color: #cccccc;
+          font-family:
+            "Cascadia Code",
+            Consolas,
+            monospace;
+          font-size: 12px;
+          text-align: left;
+          cursor: pointer;
+        }
+
+        .terminal-suggestion:hover,
+        .terminal-suggestion.selected {
+          background: #094771;
+          color: #ffffff;
+        }
+
+        .terminal-empty {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          color: #6a6a6a;
+          font-size: 14px;
+        }
+
+        .problem-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 8px;
+          padding: 4px 0;
+          font-size: 13px;
+          color: #cccccc;
+        }
+      `}</style>
 
       {!isMaximized && (
         <div
@@ -1535,6 +1188,36 @@ function Terminal({
 
       {activeTab === "terminal" && (
         <div ref={terminalContentRef} className="terminal-content">
+          <div className="terminal-line terminal-welcome">
+            <strong>Rohit Code Terminal</strong>
+          </div>
+
+          <div className="terminal-session-details">
+            <div>
+              <Server size={13} />
+              <span>Docker Terminal</span>
+            </div>
+
+            <div>
+              <Circle size={7} fill="currentColor" />
+              <span>Backend Connected</span>
+            </div>
+
+            <div>
+              <span>Working Directory: /</span>
+            </div>
+          </div>
+
+          <div className="terminal-line">↑ ↓ Command History</div>
+
+          <div className="terminal-line">Tab Autocomplete</div>
+
+          <div className="terminal-line">Ctrl + L Clear Terminal</div>
+
+          <div className="terminal-line">Ctrl + K Clear Input</div>
+
+          <div className="terminal-line">Esc Clear Input</div>
+
           {outputLines.length > 0 && (
             <div className="terminal-output-area">
               {outputLines.map(renderOutputLine)}
@@ -1543,7 +1226,7 @@ function Terminal({
 
           <div className="terminal-command-wrapper">
             <div className="terminal-line terminal-command-line">
-              <span className="terminal-prompt">{isRunning ? ">" : "$"}</span>
+              <span className="terminal-prompt">{isRunning ? "" : "$"}</span>
 
               <input
                 ref={terminalInputRef}
