@@ -39,6 +39,7 @@ function App() {
   const aiInputRef = useRef(null);
   const interactiveProcessRef = useRef(null);
   const interactivePollRef = useRef(null);
+  const interactiveInputEchoRef = useRef([]);
 
   // =========================================================
   // DEFAULT PROJECT
@@ -725,6 +726,7 @@ int main() {
     }
 
     interactiveProcessRef.current = null;
+    interactiveInputEchoRef.current = [];
     executionStartRef.current = Date.now();
 
     setExecutionStatus("Running");
@@ -817,24 +819,90 @@ int main() {
             const normalized = cleanTerminalOutput(text);
 
             if (normalized) {
-              const chunks = normalized.split("\n");
+              // The PTY echoes characters typed by the user. The terminal UI
+              // already renders the typed value locally, so remove only the
+              // matching pending input echo from process output. This prevents
+              // output such as 4 / 4, 5 / 5, 6 / 6 from appearing twice.
+              const pendingEchoes = interactiveInputEchoRef.current;
+              let filteredText = normalized;
 
-              setOutput((previous) => {
-                const updated = Array.isArray(previous) ? [...previous] : [];
+              if (pendingEchoes.length) {
+                const lines = filteredText.split("\n");
+                const filteredLines = [];
 
-                if (!updated.length) {
-                  return chunks;
+                for (let line of lines) {
+                  let currentLine = String(line);
+                  let consumed = false;
+
+                  while (pendingEchoes.length) {
+                    const expected = String(pendingEchoes[0] ?? "");
+
+                    if (!expected) {
+                      pendingEchoes.shift();
+                      continue;
+                    }
+
+                    const lineTrimmed = currentLine.trim();
+                    const expectedTrimmed = expected.trim();
+
+                    if (lineTrimmed === expectedTrimmed) {
+                      pendingEchoes.shift();
+                      currentLine = "";
+                      consumed = true;
+                      break;
+                    }
+
+                    // Handles prompts that do not end with a newline, e.g.
+                    // "Enter number: 4" where "4" is the PTY echo.
+                    if (
+                      expectedTrimmed &&
+                      lineTrimmed.endsWith(expectedTrimmed) &&
+                      lineTrimmed.length > expectedTrimmed.length
+                    ) {
+                      pendingEchoes.shift();
+                      const suffixIndex = currentLine
+                        .toLowerCase()
+                        .lastIndexOf(expectedTrimmed.toLowerCase());
+
+                      if (suffixIndex >= 0) {
+                        currentLine = currentLine.slice(0, suffixIndex);
+                      }
+                      break;
+                    }
+
+                    break;
+                  }
+
+                  // Keep empty lines that are real program output, but discard
+                  // a line that existed only for the local input echo.
+                  if (!consumed || currentLine !== "") {
+                    filteredLines.push(currentLine);
+                  }
                 }
 
-                updated[updated.length - 1] =
-                  String(updated[updated.length - 1] ?? "") + chunks[0];
+                filteredText = filteredLines.join("\n");
+              }
 
-                if (chunks.length > 1) {
-                  updated.push(...chunks.slice(1));
-                }
+              if (filteredText) {
+                const chunks = filteredText.split("\n");
 
-                return updated;
-              });
+                setOutput((previous) => {
+                  const updated = Array.isArray(previous) ? [...previous] : [];
+
+                  if (!updated.length) {
+                    return chunks;
+                  }
+
+                  updated[updated.length - 1] =
+                    String(updated[updated.length - 1] ?? "") + chunks[0];
+
+                  if (chunks.length > 1) {
+                    updated.push(...chunks.slice(1));
+                  }
+
+                  return updated;
+                });
+              }
             }
           }
 
@@ -845,6 +913,7 @@ int main() {
             }
 
             interactiveProcessRef.current = null;
+            interactiveInputEchoRef.current = [];
 
             if (executionStartRef.current) {
               const elapsed = Date.now() - executionStartRef.current;
@@ -895,6 +964,18 @@ int main() {
     }
 
     try {
+      const normalizedInput = String(input ?? "")
+        .replace(/\r\n/g, "\n")
+        .replace(/\r/g, "\n");
+
+      const inputLines = normalizedInput
+        .split("\n")
+        .filter((line) => line.length > 0);
+
+      if (inputLines.length) {
+        interactiveInputEchoRef.current.push(...inputLines);
+      }
+
       const response = await fetch(
         `${EXECUTION_API_URL}/api/interactive/input`,
         {
@@ -948,6 +1029,7 @@ int main() {
     }
 
     interactiveProcessRef.current = null;
+    interactiveInputEchoRef.current = [];
     executionStartRef.current = null;
 
     setExecutionStatus("Ready");
@@ -959,6 +1041,7 @@ int main() {
   // =========================================================
 
   const handleClearTerminal = () => {
+    interactiveInputEchoRef.current = [];
     setOutput([]);
     setExecutionStatus("Ready");
     setExecutionTime(null);
