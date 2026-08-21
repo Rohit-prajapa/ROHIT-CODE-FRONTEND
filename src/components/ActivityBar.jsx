@@ -4,6 +4,7 @@ import {
   GitBranch,
   PlaySquare,
   Blocks,
+  BookOpen,
   Settings,
   UserRound,
 } from "lucide-react";
@@ -41,6 +42,11 @@ function ActivityBar({
       icon: Blocks,
       badge: 5,
     },
+    {
+      id: "cheatsheet",
+      label: "Cheatsheet",
+      icon: BookOpen,
+    },
   ];
 
   const handlePanelClick = (id) => {
@@ -52,9 +58,6 @@ function ActivityBar({
   };
 
   const handleAccounts = () => {
-    // Falls back to onSettings only if no dedicated
-    // accounts handler is passed in, so this button
-    // doesn't silently do nothing.
     if (onAccounts) {
       onAccounts();
     } else {
@@ -69,54 +72,39 @@ function ActivityBar({
           width: 56px;
           min-width: 56px;
           height: 100%;
-
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: space-between;
-
           padding: 8px 0;
-
           background: #181818;
           border-right: 1px solid #2b2b2b;
-
           color: #858585;
-
           font-family: "Segoe UI", Inter, system-ui, sans-serif;
-
           user-select: none;
         }
 
         .rohit-activity-top,
         .rohit-activity-bottom {
           width: 100%;
-
           display: flex;
           flex-direction: column;
           align-items: center;
-
           gap: 5px;
         }
 
         .rohit-activity-button {
           position: relative;
-
           width: 54px;
           height: 50px;
-
           display: flex;
           align-items: center;
           justify-content: center;
-
           border: 0;
           border-left: 2px solid transparent;
-
           background: transparent;
-
           color: #858585;
-
           cursor: pointer;
-
           transition:
             background .12s ease,
             color .12s ease;
@@ -136,85 +124,54 @@ function ActivityBar({
         .rohit-activity-button svg {
           width: 23px;
           height: 23px;
-
           stroke-width: 1.55;
         }
 
         .rohit-extension-badge {
           position: absolute;
-
           top: 6px;
           right: 7px;
-
           min-width: 15px;
           height: 15px;
-
           display: flex;
           align-items: center;
           justify-content: center;
-
           padding: 0 3px;
-
           border-radius: 8px;
-
           background: #007acc;
           color: #ffffff;
-
-          font-family: "Segoe UI", Inter, system-ui, sans-serif;
-
           font-size: 9px;
           font-weight: 700;
-
           line-height: 1;
         }
 
         .rohit-activity-tooltip {
           position: absolute;
-
           left: 61px;
           top: 50%;
-
           transform: translateY(-50%);
-
           z-index: 10000;
-
           display: none;
-
           min-width: max-content;
-
           padding: 7px 10px;
-
           background: #252526;
-
           border: 1px solid #454545;
-
           border-radius: 4px;
-
-          box-shadow:
-            0 8px 24px rgba(0, 0, 0, .45);
-
+          box-shadow: 0 8px 24px rgba(0, 0, 0, .45);
           color: #ffffff;
-
-          font-family: "Segoe UI", Inter, system-ui, sans-serif;
-
           font-size: 12px;
-
           line-height: 1;
-
           pointer-events: none;
         }
 
-        .rohit-activity-button:hover
-        .rohit-activity-tooltip {
+        .rohit-activity-button:hover .rohit-activity-tooltip {
           display: block;
         }
 
         .rohit-activity-divider {
           width: 30px;
           height: 1px;
-
           margin: 4px 0 5px;
-
           background: #303030;
         }
 
@@ -245,14 +202,10 @@ function ActivityBar({
       `}</style>
 
       <aside className="rohit-activity-bar">
-        {/* TOP */}
-
         <div className="rohit-activity-top">
           {items.map((item) => {
             const Icon = item.icon;
-
-            const isActive =
-              activePanel === item.id;
+            const isActive = activePanel === item.id;
 
             return (
               <button
@@ -261,9 +214,7 @@ function ActivityBar({
                 className={`rohit-activity-button ${
                   isActive ? "active" : ""
                 }`}
-                onClick={() =>
-                  handlePanelClick(item.id)
-                }
+                onClick={() => handlePanelClick(item.id)}
                 title={item.label}
                 aria-label={item.label}
                 aria-pressed={isActive}
@@ -284,12 +235,8 @@ function ActivityBar({
           })}
         </div>
 
-        {/* BOTTOM */}
-
         <div className="rohit-activity-bottom">
           <div className="rohit-activity-divider" />
-
-          {/* ACCOUNT */}
 
           <button
             type="button"
@@ -299,13 +246,10 @@ function ActivityBar({
             aria-label="Accounts"
           >
             <UserRound />
-
             <span className="rohit-activity-tooltip">
               Accounts
             </span>
           </button>
-
-          {/* SETTINGS */}
 
           <button
             type="button"
@@ -315,7 +259,6 @@ function ActivityBar({
             aria-label="Settings"
           >
             <Settings />
-
             <span className="rohit-activity-tooltip">
               Settings
             </span>

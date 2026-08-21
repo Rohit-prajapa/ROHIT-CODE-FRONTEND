@@ -1,0 +1,2171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Complete JavaScript Cheat Sheet by CodeWithRohit"
+    >
+
+    <title>JavaScript Cheat Sheet | CodeWithRohit</title>
+
+    <!-- Common Cheat Sheet CSS -->
+    <link rel="stylesheet" href="../cheatsheet.css">
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="../prism/prism.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="cheat-navbar">
+
+        <a href="../index.html" class="brand">
+            &lt;/&gt; CodeWithRohit
+        </a>
+
+        <div class="cheat-title">
+            JavaScript Cheat Sheet
+        </div>
+
+        <a href="../index.html" class="home-btn">
+            ← Home
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="cheat-hero">
+
+        <h1>JavaScript Cheat Sheet</h1>
+
+        <p>
+            JavaScript quick reference from basics to DOM,
+            events, ES6+, promises, async/await and APIs.
+        </p>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <ol>
+
+            <!-- 1 -->
+
+            <li>
+                <h2>JavaScript in HTML</h2>
+
+                <pre class="language-html"><code>&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+            </li>
+
+
+            <!-- 2 -->
+
+            <li>
+                <h2>Console Output</h2>
+
+                <pre class="language-javascript"><code>console.log("Hello World");
+
+console.warn("Warning!");
+
+console.error("Error!");</code></pre>
+            </li>
+
+
+            <!-- 3 -->
+
+            <li>
+                <h2>Comments</h2>
+
+                <pre class="language-javascript"><code>// Single line comment
+
+/*
+    Multi-line
+    comment
+*/</code></pre>
+            </li>
+
+
+            <!-- 4 -->
+
+            <li>
+                <h2>Variables</h2>
+
+                <pre class="language-javascript"><code>let name = "Rohit";
+
+const age = 21;
+
+var city = "Pune";</code></pre>
+            </li>
+
+
+            <!-- 5 -->
+
+            <li>
+                <h2>let vs const vs var</h2>
+
+                <pre class="language-javascript"><code>let score = 10;
+
+score = 20;
+
+
+// Constant cannot be reassigned
+
+const country = "India";
+
+
+// Old JavaScript variable
+
+var language = "JavaScript";</code></pre>
+            </li>
+
+
+            <!-- 6 -->
+
+            <li>
+                <h2>Data Types</h2>
+
+                <pre class="language-javascript"><code>let name = "Rohit";       // String
+
+let age = 21;             // Number
+
+let isStudent = true;     // Boolean
+
+let value = null;         // Null
+
+let result;               // Undefined
+
+let bigNumber = 123n;     // BigInt
+
+let id = Symbol("id");    // Symbol</code></pre>
+            </li>
+
+
+            <!-- 7 -->
+
+            <li>
+                <h2>typeof Operator</h2>
+
+                <pre class="language-javascript"><code>console.log(typeof "Hello");
+
+console.log(typeof 100);
+
+console.log(typeof true);
+
+console.log(typeof undefined);</code></pre>
+            </li>
+
+
+            <!-- 8 -->
+
+            <li>
+                <h2>Arithmetic Operators</h2>
+
+                <pre class="language-javascript"><code>let a = 10;
+let b = 3;
+
+console.log(a + b);
+
+console.log(a - b);
+
+console.log(a * b);
+
+console.log(a / b);
+
+console.log(a % b);
+
+console.log(a ** b);</code></pre>
+            </li>
+
+
+            <!-- 9 -->
+
+            <li>
+                <h2>Increment & Decrement</h2>
+
+                <pre class="language-javascript"><code>let number = 10;
+
+number++;
+
+number--;
+
+console.log(number);</code></pre>
+            </li>
+
+
+            <!-- 10 -->
+
+            <li>
+                <h2>Assignment Operators</h2>
+
+                <pre class="language-javascript"><code>let x = 10;
+
+x += 5;
+
+x -= 2;
+
+x *= 3;
+
+x /= 2;
+
+x %= 4;</code></pre>
+            </li>
+
+
+            <!-- 11 -->
+
+            <li>
+                <h2>Comparison Operators</h2>
+
+                <pre class="language-javascript"><code>5 == "5";
+
+5 === "5";
+
+5 != "5";
+
+5 !== "5";
+
+10 > 5;
+
+10 < 20;
+
+10 >= 10;
+
+5 <= 10;</code></pre>
+            </li>
+
+
+            <!-- 12 -->
+
+            <li>
+                <h2>Logical Operators</h2>
+
+                <pre class="language-javascript"><code>let age = 21;
+
+age >= 18 && age <= 60;
+
+age < 18 || age > 60;
+
+!(age === 21);</code></pre>
+            </li>
+
+
+            <!-- 13 -->
+
+            <li>
+                <h2>if Statement</h2>
+
+                <pre class="language-javascript"><code>let age = 20;
+
+if (age >= 18) {
+
+    console.log("Adult");
+
+}</code></pre>
+            </li>
+
+
+            <!-- 14 -->
+
+            <li>
+                <h2>if...else</h2>
+
+                <pre class="language-javascript"><code>let age = 16;
+
+if (age >= 18) {
+
+    console.log("Adult");
+
+} else {
+
+    console.log("Minor");
+
+}</code></pre>
+            </li>
+
+
+            <!-- 15 -->
+
+            <li>
+                <h2>else if</h2>
+
+                <pre class="language-javascript"><code>let marks = 85;
+
+if (marks >= 90) {
+
+    console.log("A");
+
+} else if (marks >= 75) {
+
+    console.log("B");
+
+} else if (marks >= 60) {
+
+    console.log("C");
+
+} else {
+
+    console.log("D");
+
+}</code></pre>
+            </li>
+
+
+            <!-- 16 -->
+
+            <li>
+                <h2>Ternary Operator</h2>
+
+                <pre class="language-javascript"><code>let age = 20;
+
+let result =
+    age >= 18
+        ? "Adult"
+        : "Minor";
+
+console.log(result);</code></pre>
+            </li>
+
+
+            <!-- 17 -->
+
+            <li>
+                <h2>Switch Statement</h2>
+
+                <pre class="language-javascript"><code>let day = 2;
+
+switch (day) {
+
+    case 1:
+        console.log("Monday");
+        break;
+
+    case 2:
+        console.log("Tuesday");
+        break;
+
+    default:
+        console.log("Invalid");
+
+}</code></pre>
+            </li>
+
+
+            <!-- 18 -->
+
+            <li>
+                <h2>for Loop</h2>
+
+                <pre class="language-javascript"><code>for (let i = 1; i <= 5; i++) {
+
+    console.log(i);
+
+}</code></pre>
+            </li>
+
+
+            <!-- 19 -->
+
+            <li>
+                <h2>while Loop</h2>
+
+                <pre class="language-javascript"><code>let i = 1;
+
+while (i <= 5) {
+
+    console.log(i);
+
+    i++;
+
+}</code></pre>
+            </li>
+
+
+            <!-- 20 -->
+
+            <li>
+                <h2>do...while Loop</h2>
+
+                <pre class="language-javascript"><code>let i = 1;
+
+do {
+
+    console.log(i);
+
+    i++;
+
+} while (i <= 5);</code></pre>
+            </li>
+
+
+            <!-- 21 -->
+
+            <li>
+                <h2>break & continue</h2>
+
+                <pre class="language-javascript"><code>for (let i = 1; i <= 10; i++) {
+
+    if (i === 5) {
+        continue;
+    }
+
+    if (i === 9) {
+        break;
+    }
+
+    console.log(i);
+
+}</code></pre>
+            </li>
+
+
+            <!-- 22 -->
+
+            <li>
+                <h2>Basic Function</h2>
+
+                <pre class="language-javascript"><code>function greet() {
+
+    console.log("Hello!");
+
+}
+
+greet();</code></pre>
+            </li>
+
+
+            <!-- 23 -->
+
+            <li>
+                <h2>Function Parameters</h2>
+
+                <pre class="language-javascript"><code>function greet(name) {
+
+    console.log(
+        "Hello " + name
+    );
+
+}
+
+greet("Rohit");</code></pre>
+            </li>
+
+
+            <!-- 24 -->
+
+            <li>
+                <h2>Return Value</h2>
+
+                <pre class="language-javascript"><code>function add(a, b) {
+
+    return a + b;
+
+}
+
+const result = add(10, 20);
+
+console.log(result);</code></pre>
+            </li>
+
+
+            <!-- 25 -->
+
+            <li>
+                <h2>Function Expression</h2>
+
+                <pre class="language-javascript"><code>const greet = function () {
+
+    console.log("Hello");
+
+};
+
+greet();</code></pre>
+            </li>
+
+
+            <!-- 26 -->
+
+            <li>
+                <h2>Arrow Function</h2>
+
+                <pre class="language-javascript"><code>const greet = () => {
+
+    console.log("Hello");
+
+};
+
+greet();</code></pre>
+            </li>
+
+
+            <!-- 27 -->
+
+            <li>
+                <h2>Short Arrow Function</h2>
+
+                <pre class="language-javascript"><code>const add = (a, b) => a + b;
+
+console.log(
+    add(10, 20)
+);</code></pre>
+            </li>
+
+
+            <!-- 28 -->
+
+            <li>
+                <h2>Default Parameters</h2>
+
+                <pre class="language-javascript"><code>function greet(name = "Guest") {
+
+    console.log(
+        `Hello ${name}`
+    );
+
+}
+
+greet();
+
+greet("Rohit");</code></pre>
+            </li>
+
+
+            <!-- 29 -->
+
+            <li>
+                <h2>Template Literals</h2>
+
+                <pre class="language-javascript"><code>const name = "Rohit";
+
+const age = 21;
+
+console.log(
+    `My name is ${name} and I am ${age} years old.`
+);</code></pre>
+            </li>
+
+
+            <!-- 30 -->
+
+            <li>
+                <h2>String Properties & Methods</h2>
+
+                <pre class="language-javascript"><code>const text = "JavaScript";
+
+text.length;
+
+text.toUpperCase();
+
+text.toLowerCase();
+
+text.includes("Script");
+
+text.startsWith("Java");
+
+text.endsWith("Script");</code></pre>
+            </li>
+
+
+            <!-- 31 -->
+
+            <li>
+                <h2>More String Methods</h2>
+
+                <pre class="language-javascript"><code>const text = " Hello World ";
+
+text.trim();
+
+text.slice(1, 5);
+
+text.substring(1, 5);
+
+text.replace(
+    "World",
+    "JavaScript"
+);
+
+text.split(" ");</code></pre>
+            </li>
+
+
+            <!-- 32 -->
+
+            <li>
+                <h2>Array</h2>
+
+                <pre class="language-javascript"><code>const languages = [
+    "HTML",
+    "CSS",
+    "JavaScript"
+];
+
+console.log(languages);
+
+console.log(languages[0]);</code></pre>
+            </li>
+
+
+            <!-- 33 -->
+
+            <li>
+                <h2>Array Length</h2>
+
+                <pre class="language-javascript"><code>const numbers = [
+    10,
+    20,
+    30
+];
+
+console.log(
+    numbers.length
+);</code></pre>
+            </li>
+
+
+            <!-- 34 -->
+
+            <li>
+                <h2>push() & pop()</h2>
+
+                <pre class="language-javascript"><code>const fruits = [
+    "Apple",
+    "Banana"
+];
+
+fruits.push("Mango");
+
+fruits.pop();
+
+console.log(fruits);</code></pre>
+            </li>
+
+
+            <!-- 35 -->
+
+            <li>
+                <h2>shift() & unshift()</h2>
+
+                <pre class="language-javascript"><code>const fruits = [
+    "Apple",
+    "Banana"
+];
+
+fruits.unshift("Mango");
+
+fruits.shift();
+
+console.log(fruits);</code></pre>
+            </li>
+
+
+            <!-- 36 -->
+
+            <li>
+                <h2>Array slice()</h2>
+
+                <pre class="language-javascript"><code>const numbers = [
+    10,
+    20,
+    30,
+    40
+];
+
+const result =
+    numbers.slice(1, 3);
+
+console.log(result);</code></pre>
+            </li>
+
+
+            <!-- 37 -->
+
+            <li>
+                <h2>Array splice()</h2>
+
+                <pre class="language-javascript"><code>const fruits = [
+    "Apple",
+    "Banana",
+    "Mango"
+];
+
+fruits.splice(
+    1,
+    1,
+    "Orange"
+);
+
+console.log(fruits);</code></pre>
+            </li>
+
+
+            <!-- 38 -->
+
+            <li>
+                <h2>forEach()</h2>
+
+                <pre class="language-javascript"><code>const numbers = [
+    10,
+    20,
+    30
+];
+
+numbers.forEach(
+    (number) => {
+
+        console.log(number);
+
+    }
+);</code></pre>
+            </li>
+
+
+            <!-- 39 -->
+
+            <li>
+                <h2>map()</h2>
+
+                <pre class="language-javascript"><code>const numbers = [
+    1,
+    2,
+    3,
+    4
+];
+
+const doubled =
+    numbers.map(
+        number => number * 2
+    );
+
+console.log(doubled);</code></pre>
+            </li>
+
+
+            <!-- 40 -->
+
+            <li>
+                <h2>filter()</h2>
+
+                <pre class="language-javascript"><code>const numbers = [
+    10,
+    20,
+    30,
+    40
+];
+
+const result =
+    numbers.filter(
+        number => number >= 30
+    );
+
+console.log(result);</code></pre>
+            </li>
+
+
+            <!-- 41 -->
+
+            <li>
+                <h2>find()</h2>
+
+                <pre class="language-javascript"><code>const numbers = [
+    10,
+    20,
+    30
+];
+
+const result =
+    numbers.find(
+        number => number > 15
+    );
+
+console.log(result);</code></pre>
+            </li>
+
+
+            <!-- 42 -->
+
+            <li>
+                <h2>reduce()</h2>
+
+                <pre class="language-javascript"><code>const numbers = [
+    10,
+    20,
+    30
+];
+
+const total =
+    numbers.reduce(
+        (sum, number) => {
+            return sum + number;
+        },
+        0
+    );
+
+console.log(total);</code></pre>
+            </li>
+
+
+            <!-- 43 -->
+
+            <li>
+                <h2>some() & every()</h2>
+
+                <pre class="language-javascript"><code>const numbers = [
+    10,
+    20,
+    30
+];
+
+numbers.some(
+    number => number > 20
+);
+
+numbers.every(
+    number => number > 5
+);</code></pre>
+            </li>
+
+
+            <!-- 44 -->
+
+            <li>
+                <h2>includes()</h2>
+
+                <pre class="language-javascript"><code>const languages = [
+    "HTML",
+    "CSS",
+    "JavaScript"
+];
+
+console.log(
+    languages.includes(
+        "JavaScript"
+    )
+);</code></pre>
+            </li>
+
+
+            <!-- 45 -->
+
+            <li>
+                <h2>Array Sort</h2>
+
+                <pre class="language-javascript"><code>const numbers = [
+    40,
+    10,
+    30,
+    20
+];
+
+numbers.sort(
+    (a, b) => a - b
+);
+
+console.log(numbers);</code></pre>
+            </li>
+
+
+            <!-- 46 -->
+
+            <li>
+                <h2>Object</h2>
+
+                <pre class="language-javascript"><code>const student = {
+
+    name: "Rohit",
+
+    age: 21,
+
+    course: "B.Tech"
+
+};
+
+console.log(
+    student.name
+);
+
+console.log(
+    student["course"]
+);</code></pre>
+            </li>
+
+
+            <!-- 47 -->
+
+            <li>
+                <h2>Object Method</h2>
+
+                <pre class="language-javascript"><code>const user = {
+
+    name: "Rohit",
+
+    greet() {
+
+        console.log(
+            `Hello ${this.name}`
+        );
+
+    }
+
+};
+
+user.greet();</code></pre>
+            </li>
+
+
+            <!-- 48 -->
+
+            <li>
+                <h2>Object.keys(), values() & entries()</h2>
+
+                <pre class="language-javascript"><code>const user = {
+    name: "Rohit",
+    age: 21
+};
+
+Object.keys(user);
+
+Object.values(user);
+
+Object.entries(user);</code></pre>
+            </li>
+
+
+            <!-- 49 -->
+
+            <li>
+                <h2>Destructuring Array</h2>
+
+                <pre class="language-javascript"><code>const languages = [
+    "HTML",
+    "CSS",
+    "JavaScript"
+];
+
+const [
+    html,
+    css,
+    javascript
+] = languages;</code></pre>
+            </li>
+
+
+            <!-- 50 -->
+
+            <li>
+                <h2>Object Destructuring</h2>
+
+                <pre class="language-javascript"><code>const user = {
+    name: "Rohit",
+    age: 21
+};
+
+const {
+    name,
+    age
+} = user;
+
+console.log(name);</code></pre>
+            </li>
+
+
+            <!-- 51 -->
+
+            <li>
+                <h2>Spread Operator</h2>
+
+                <pre class="language-javascript"><code>const first = [
+    1,
+    2
+];
+
+const second = [
+    3,
+    4
+];
+
+const numbers = [
+    ...first,
+    ...second
+];
+
+console.log(numbers);</code></pre>
+            </li>
+
+
+            <!-- 52 -->
+
+            <li>
+                <h2>Spread with Objects</h2>
+
+                <pre class="language-javascript"><code>const user = {
+    name: "Rohit"
+};
+
+const updatedUser = {
+
+    ...user,
+
+    age: 21
+
+};
+
+console.log(updatedUser);</code></pre>
+            </li>
+
+
+            <!-- 53 -->
+
+            <li>
+                <h2>Rest Parameters</h2>
+
+                <pre class="language-javascript"><code>function add(...numbers) {
+
+    return numbers.reduce(
+        (sum, number) =>
+            sum + number,
+        0
+    );
+
+}
+
+console.log(
+    add(10, 20, 30)
+);</code></pre>
+            </li>
+
+
+            <!-- 54 -->
+
+            <li>
+                <h2>for...of</h2>
+
+                <pre class="language-javascript"><code>const languages = [
+    "HTML",
+    "CSS",
+    "JavaScript"
+];
+
+for (const language of languages) {
+
+    console.log(language);
+
+}</code></pre>
+            </li>
+
+
+            <!-- 55 -->
+
+            <li>
+                <h2>for...in</h2>
+
+                <pre class="language-javascript"><code>const user = {
+    name: "Rohit",
+    age: 21
+};
+
+for (const key in user) {
+
+    console.log(
+        key,
+        user[key]
+    );
+
+}</code></pre>
+            </li>
+
+
+            <!-- 56 -->
+
+            <li>
+                <h2>Math Object</h2>
+
+                <pre class="language-javascript"><code>Math.round(4.6);
+
+Math.floor(4.9);
+
+Math.ceil(4.1);
+
+Math.max(10, 20, 30);
+
+Math.min(10, 20, 30);
+
+Math.sqrt(25);
+
+Math.pow(2, 3);
+
+Math.abs(-10);</code></pre>
+            </li>
+
+
+            <!-- 57 -->
+
+            <li>
+                <h2>Random Number</h2>
+
+                <pre class="language-javascript"><code>// Random number 0 - 1
+
+Math.random();
+
+
+// Random integer 1 - 10
+
+const number =
+    Math.floor(
+        Math.random() * 10
+    ) + 1;
+
+console.log(number);</code></pre>
+            </li>
+
+
+            <!-- 58 -->
+
+            <li>
+                <h2>Date</h2>
+
+                <pre class="language-javascript"><code>const now = new Date();
+
+console.log(now);
+
+console.log(
+    now.getFullYear()
+);
+
+console.log(
+    now.getMonth()
+);
+
+console.log(
+    now.getDate()
+);
+
+console.log(
+    now.getHours()
+);</code></pre>
+            </li>
+
+
+            <!-- 59 -->
+
+            <li>
+                <h2>setTimeout()</h2>
+
+                <pre class="language-javascript"><code>setTimeout(
+    () => {
+
+        console.log(
+            "Hello after 2 seconds"
+        );
+
+    },
+    2000
+);</code></pre>
+            </li>
+
+
+            <!-- 60 -->
+
+            <li>
+                <h2>setInterval()</h2>
+
+                <pre class="language-javascript"><code>const timer =
+    setInterval(
+        () => {
+
+            console.log("Running");
+
+        },
+        1000
+    );
+
+
+// Stop interval
+
+clearInterval(timer);</code></pre>
+            </li>
+
+
+            <!-- 61 -->
+
+            <li>
+                <h2>Select Element by ID</h2>
+
+                <pre class="language-javascript"><code>const title =
+    document.getElementById(
+        "title"
+    );
+
+console.log(title);</code></pre>
+            </li>
+
+
+            <!-- 62 -->
+
+            <li>
+                <h2>querySelector()</h2>
+
+                <pre class="language-javascript"><code>const heading =
+    document.querySelector(
+        "h1"
+    );
+
+const card =
+    document.querySelector(
+        ".card"
+    );</code></pre>
+            </li>
+
+
+            <!-- 63 -->
+
+            <li>
+                <h2>querySelectorAll()</h2>
+
+                <pre class="language-javascript"><code>const cards =
+    document.querySelectorAll(
+        ".card"
+    );
+
+cards.forEach(
+    card => {
+
+        console.log(card);
+
+    }
+);</code></pre>
+            </li>
+
+
+            <!-- 64 -->
+
+            <li>
+                <h2>Change Text</h2>
+
+                <pre class="language-javascript"><code>const title =
+    document.querySelector(
+        "h1"
+    );
+
+title.textContent =
+    "JavaScript Cheat Sheet";</code></pre>
+            </li>
+
+
+            <!-- 65 -->
+
+            <li>
+                <h2>Change HTML</h2>
+
+                <pre class="language-javascript"><code>const container =
+    document.querySelector(
+        ".container"
+    );
+
+container.innerHTML =
+    "&lt;h2&gt;Hello World&lt;/h2&gt;";</code></pre>
+            </li>
+
+
+            <!-- 66 -->
+
+            <li>
+                <h2>Change CSS with JavaScript</h2>
+
+                <pre class="language-javascript"><code>const title =
+    document.querySelector(
+        "h1"
+    );
+
+title.style.color =
+    "blue";
+
+title.style.fontSize =
+    "40px";</code></pre>
+            </li>
+
+
+            <!-- 67 -->
+
+            <li>
+                <h2>classList</h2>
+
+                <pre class="language-javascript"><code>const card =
+    document.querySelector(
+        ".card"
+    );
+
+card.classList.add(
+    "active"
+);
+
+card.classList.remove(
+    "active"
+);
+
+card.classList.toggle(
+    "active"
+);
+
+card.classList.contains(
+    "active"
+);</code></pre>
+            </li>
+
+
+            <!-- 68 -->
+
+            <li>
+                <h2>Create Element</h2>
+
+                <pre class="language-javascript"><code>const paragraph =
+    document.createElement(
+        "p"
+    );
+
+paragraph.textContent =
+    "Hello World";
+
+document.body.appendChild(
+    paragraph
+);</code></pre>
+            </li>
+
+
+            <!-- 69 -->
+
+            <li>
+                <h2>Remove Element</h2>
+
+                <pre class="language-javascript"><code>const element =
+    document.querySelector(
+        ".box"
+    );
+
+element.remove();</code></pre>
+            </li>
+
+
+            <!-- 70 -->
+
+            <li>
+                <h2>setAttribute()</h2>
+
+                <pre class="language-javascript"><code>const image =
+    document.querySelector(
+        "img"
+    );
+
+image.setAttribute(
+    "alt",
+    "JavaScript Logo"
+);</code></pre>
+            </li>
+
+
+            <!-- 71 -->
+
+            <li>
+                <h2>getAttribute()</h2>
+
+                <pre class="language-javascript"><code>const link =
+    document.querySelector(
+        "a"
+    );
+
+const url =
+    link.getAttribute(
+        "href"
+    );
+
+console.log(url);</code></pre>
+            </li>
+
+
+            <!-- 72 -->
+
+            <li>
+                <h2>Click Event</h2>
+
+                <pre class="language-javascript"><code>const button =
+    document.querySelector(
+        "button"
+    );
+
+button.addEventListener(
+    "click",
+    () => {
+
+        console.log(
+            "Button clicked"
+        );
+
+    }
+);</code></pre>
+            </li>
+
+
+            <!-- 73 -->
+
+            <li>
+                <h2>Input Event</h2>
+
+                <pre class="language-javascript"><code>const input =
+    document.querySelector(
+        "input"
+    );
+
+input.addEventListener(
+    "input",
+    (event) => {
+
+        console.log(
+            event.target.value
+        );
+
+    }
+);</code></pre>
+            </li>
+
+
+            <!-- 74 -->
+
+            <li>
+                <h2>Form Submit Event</h2>
+
+                <pre class="language-javascript"><code>const form =
+    document.querySelector(
+        "form"
+    );
+
+form.addEventListener(
+    "submit",
+    (event) => {
+
+        event.preventDefault();
+
+        console.log(
+            "Form submitted"
+        );
+
+    }
+);</code></pre>
+            </li>
+
+
+            <!-- 75 -->
+
+            <li>
+                <h2>Keyboard Event</h2>
+
+                <pre class="language-javascript"><code>document.addEventListener(
+    "keydown",
+    (event) => {
+
+        console.log(
+            event.key
+        );
+
+    }
+);</code></pre>
+            </li>
+
+
+            <!-- 76 -->
+
+            <li>
+                <h2>Mouse Events</h2>
+
+                <pre class="language-javascript"><code>element.addEventListener(
+    "mouseenter",
+    () => {
+        console.log("Enter");
+    }
+);
+
+element.addEventListener(
+    "mouseleave",
+    () => {
+        console.log("Leave");
+    }
+);</code></pre>
+            </li>
+
+
+            <!-- 77 -->
+
+            <li>
+                <h2>Event Object</h2>
+
+                <pre class="language-javascript"><code>button.addEventListener(
+    "click",
+    (event) => {
+
+        console.log(
+            event.target
+        );
+
+        console.log(
+            event.type
+        );
+
+    }
+);</code></pre>
+            </li>
+
+
+            <!-- 78 -->
+
+            <li>
+                <h2>localStorage</h2>
+
+                <pre class="language-javascript"><code>localStorage.setItem(
+    "name",
+    "Rohit"
+);
+
+const name =
+    localStorage.getItem(
+        "name"
+    );
+
+console.log(name);
+
+localStorage.removeItem(
+    "name"
+);
+
+localStorage.clear();</code></pre>
+            </li>
+
+
+            <!-- 79 -->
+
+            <li>
+                <h2>Store Object in localStorage</h2>
+
+                <pre class="language-javascript"><code>const user = {
+    name: "Rohit",
+    age: 21
+};
+
+localStorage.setItem(
+    "user",
+    JSON.stringify(user)
+);
+
+const savedUser =
+    JSON.parse(
+        localStorage.getItem(
+            "user"
+        )
+    );
+
+console.log(savedUser);</code></pre>
+            </li>
+
+
+            <!-- 80 -->
+
+            <li>
+                <h2>JSON</h2>
+
+                <pre class="language-javascript"><code>const user = {
+    name: "Rohit",
+    age: 21
+};
+
+const json =
+    JSON.stringify(user);
+
+const object =
+    JSON.parse(json);</code></pre>
+            </li>
+
+
+            <!-- 81 -->
+
+            <li>
+                <h2>try...catch</h2>
+
+                <pre class="language-javascript"><code>try {
+
+    const result =
+        riskyOperation();
+
+    console.log(result);
+
+} catch (error) {
+
+    console.error(
+        error.message
+    );
+
+}</code></pre>
+            </li>
+
+
+            <!-- 82 -->
+
+            <li>
+                <h2>throw Error</h2>
+
+                <pre class="language-javascript"><code>function checkAge(age) {
+
+    if (age < 18) {
+
+        throw new Error(
+            "Age must be 18+"
+        );
+
+    }
+
+    return "Allowed";
+
+}</code></pre>
+            </li>
+
+
+            <!-- 83 -->
+
+            <li>
+                <h2>Promise</h2>
+
+                <pre class="language-javascript"><code>const promise =
+    new Promise(
+        (resolve, reject) => {
+
+            const success = true;
+
+            if (success) {
+
+                resolve(
+                    "Task completed"
+                );
+
+            } else {
+
+                reject(
+                    "Task failed"
+                );
+
+            }
+
+        }
+    );</code></pre>
+            </li>
+
+
+            <!-- 84 -->
+
+            <li>
+                <h2>.then(), .catch() & .finally()</h2>
+
+                <pre class="language-javascript"><code>promise
+    .then((result) => {
+
+        console.log(result);
+
+    })
+    .catch((error) => {
+
+        console.error(error);
+
+    })
+    .finally(() => {
+
+        console.log(
+            "Finished"
+        );
+
+    });</code></pre>
+            </li>
+
+
+            <!-- 85 -->
+
+            <li>
+                <h2>async / await</h2>
+
+                <pre class="language-javascript"><code>async function getData() {
+
+    try {
+
+        const result =
+            await promise;
+
+        console.log(result);
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+}
+
+getData();</code></pre>
+            </li>
+
+
+            <!-- 86 -->
+
+            <li>
+                <h2>Fetch API</h2>
+
+                <pre class="language-javascript"><code>fetch(
+    "https://example.com/api/users"
+)
+    .then(
+        response =>
+            response.json()
+    )
+    .then(
+        data =>
+            console.log(data)
+    )
+    .catch(
+        error =>
+            console.error(error)
+    );</code></pre>
+            </li>
+
+
+            <!-- 87 -->
+
+            <li>
+                <h2>Fetch with async / await</h2>
+
+                <pre class="language-javascript"><code>async function getUsers() {
+
+    try {
+
+        const response =
+            await fetch(
+                "https://example.com/api/users"
+            );
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Request failed"
+            );
+
+        }
+
+        const data =
+            await response.json();
+
+        console.log(data);
+
+    } catch (error) {
+
+        console.error(
+            error.message
+        );
+
+    }
+
+}
+
+getUsers();</code></pre>
+            </li>
+
+
+            <!-- 88 -->
+
+            <li>
+                <h2>Class</h2>
+
+                <pre class="language-javascript"><code>class Student {
+
+    constructor(
+        name,
+        age
+    ) {
+
+        this.name = name;
+
+        this.age = age;
+
+    }
+
+
+    greet() {
+
+        console.log(
+            `Hello ${this.name}`
+        );
+
+    }
+
+}
+
+
+const student =
+    new Student(
+        "Rohit",
+        21
+    );
+
+student.greet();</code></pre>
+            </li>
+
+
+            <!-- 89 -->
+
+            <li>
+                <h2>Class Inheritance</h2>
+
+                <pre class="language-javascript"><code>class Animal {
+
+    speak() {
+
+        console.log(
+            "Animal speaks"
+        );
+
+    }
+
+}
+
+
+class Dog extends Animal {
+
+    bark() {
+
+        console.log(
+            "Dog barks"
+        );
+
+    }
+
+}
+
+
+const dog =
+    new Dog();
+
+dog.speak();
+
+dog.bark();</code></pre>
+            </li>
+
+
+            <!-- 90 -->
+
+            <li>
+                <h2>Optional Chaining</h2>
+
+                <pre class="language-javascript"><code>const user = {
+
+    profile: {
+
+        name: "Rohit"
+
+    }
+
+};
+
+console.log(
+    user.profile?.name
+);
+
+console.log(
+    user.address?.city
+);</code></pre>
+            </li>
+
+
+            <!-- 91 -->
+
+            <li>
+                <h2>Nullish Coalescing</h2>
+
+                <pre class="language-javascript"><code>const username = null;
+
+const displayName =
+    username ?? "Guest";
+
+console.log(
+    displayName
+);</code></pre>
+            </li>
+
+
+            <!-- 92 -->
+
+            <li>
+                <h2>ES Modules — Export</h2>
+
+                <pre class="language-javascript"><code>export const name =
+    "Rohit";
+
+
+export function add(a, b) {
+
+    return a + b;
+
+}</code></pre>
+            </li>
+
+
+            <!-- 93 -->
+
+            <li>
+                <h2>ES Modules — Import</h2>
+
+                <pre class="language-javascript"><code>import {
+    name,
+    add
+} from "./utils.js";
+
+
+console.log(name);
+
+console.log(
+    add(10, 20)
+);</code></pre>
+            </li>
+
+
+            <!-- 94 -->
+
+            <li>
+                <h2>JavaScript Module in HTML</h2>
+
+                <pre class="language-html"><code>&lt;script
+    type="module"
+    src="script.js"
+&gt;&lt;/script&gt;</code></pre>
+            </li>
+
+
+            <!-- 95 -->
+
+            <li>
+                <h2>DOMContentLoaded</h2>
+
+                <pre class="language-javascript"><code>document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        console.log(
+            "DOM is ready"
+        );
+
+    }
+);</code></pre>
+            </li>
+
+
+            <!-- 96 -->
+
+            <li>
+                <h2>Window Size</h2>
+
+                <pre class="language-javascript"><code>console.log(
+    window.innerWidth
+);
+
+console.log(
+    window.innerHeight
+);</code></pre>
+            </li>
+
+
+            <!-- 97 -->
+
+            <li>
+                <h2>Scroll Position</h2>
+
+                <pre class="language-javascript"><code>window.addEventListener(
+    "scroll",
+    () => {
+
+        console.log(
+            window.scrollY
+        );
+
+    }
+);</code></pre>
+            </li>
+
+
+            <!-- 98 -->
+
+            <li>
+                <h2>JavaScript Quick Revision</h2>
+
+                <pre class="language-javascript"><code>// Variable
+
+const name = "Rohit";
+
+
+// Function
+
+const add =
+    (a, b) => a + b;
+
+
+// Array
+
+const numbers = [
+    1,
+    2,
+    3
+];
+
+
+// Object
+
+const user = {
+    name: "Rohit"
+};
+
+
+// Loop
+
+for (const number of numbers) {
+
+    console.log(number);
+
+}
+
+
+// Array Methods
+
+numbers.map(
+    n => n * 2
+);
+
+numbers.filter(
+    n => n > 1
+);
+
+
+// DOM
+
+const button =
+    document.querySelector(
+        "button"
+    );
+
+
+// Event
+
+button.addEventListener(
+    "click",
+    () => {
+
+        console.log(
+            "Clicked"
+        );
+
+    }
+);
+
+
+// Async
+
+async function getData() {
+
+    const response =
+        await fetch(
+            "/api/data"
+        );
+
+    const data =
+        await response.json();
+
+    return data;
+
+}</code></pre>
+            </li>
+
+
+            <!-- 99 -->
+
+            <li>
+                <h2>JavaScript Learning Roadmap</h2>
+
+                <pre class="language-javascript"><code>1. Variables
+
+2. Data Types
+
+3. Operators
+
+4. Conditions
+
+5. Loops
+
+6. Functions
+
+7. Strings
+
+8. Arrays
+
+9. Objects
+
+10. Array Methods
+
+11. ES6+
+
+12. DOM
+
+13. Events
+
+14. localStorage
+
+15. JSON
+
+16. Error Handling
+
+17. Promises
+
+18. async / await
+
+19. Fetch API
+
+20. Classes
+
+21. Modules
+
+22. Projects</code></pre>
+            </li>
+
+        </ol>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <p>
+            © 2026 CodeWithRohit |
+            JavaScript Cheat Sheet
+        </p>
+
+    </footer>
+
+
+    <!-- Prism -->
+    <script src="../prism/prism.js"></script>
+
+    <!-- Common Cheat Sheet JS -->
+    <script src="../cheatsheet.js"></script>
+
+</body>
+
+</html>

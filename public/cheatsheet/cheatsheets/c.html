@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Complete C Programming Cheat Sheet by CodeWithRohit"
+    >
+
+    <title>C Cheat Sheet | CodeWithRohit</title>
+
+    <!-- Common Cheat Sheet CSS -->
+    <link rel="stylesheet" href="../cheatsheet.css">
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="../prism/prism.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="cheat-navbar">
+
+        <a href="../index.html" class="brand">
+            &lt;/&gt; CodeWithRohit
+        </a>
+
+        <div class="cheat-title">
+            C Programming Cheat Sheet
+        </div>
+
+        <a href="../index.html" class="home-btn">
+            ← Home
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="cheat-hero">
+
+        <h1>C Programming Cheat Sheet</h1>
+
+        <p>
+            Complete C quick reference from basic syntax to arrays,
+            functions, pointers, structures, memory management and files.
+        </p>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <ol>
+
+            <!-- 1 -->
+            <li>
+                <h2>Hello World</h2>
+
+                <pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    printf("Hello, World!\n");
+
+    return 0;
+}</code></pre>
+            </li>
+
+
+            <!-- 2 -->
+            <li>
+                <h2>Comments</h2>
+
+                <pre class="language-c"><code>// Single-line comment
+
+/*
+    Multi-line
+    comment
+*/</code></pre>
+            </li>
+
+
+            <!-- 3 -->
+            <li>
+                <h2>Header Files</h2>
+
+                <pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;math.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;stdbool.h&gt;</code></pre>
+            </li>
+
+
+            <!-- 4 -->
+            <li>
+                <h2>Variables</h2>
+
+                <pre class="language-c"><code>int age = 21;
+
+float marks = 89.5f;
+
+double price = 199.99;
+
+char grade = 'A';</code></pre>
+            </li>
+
+
+            <!-- 5 -->
+            <li>
+                <h2>Basic Data Types</h2>
+
+                <pre class="language-c"><code>char letter = 'A';
+
+int number = 100;
+
+float decimal = 10.5f;
+
+double largeDecimal = 123.456;
+
+short smallNumber = 10;
+
+long largeNumber = 100000L;
+
+long long veryLarge = 10000000000LL;</code></pre>
+            </li>
+
+
+            <!-- 6 -->
+            <li>
+                <h2>Unsigned Data Types</h2>
+
+                <pre class="language-c"><code>unsigned int number = 100;
+
+unsigned char value = 255;
+
+unsigned long count = 5000UL;
+
+unsigned long long big = 100000ULL;</code></pre>
+            </li>
+
+
+            <!-- 7 -->
+            <li>
+                <h2>sizeof Operator</h2>
+
+                <pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    printf("%zu\n", sizeof(int));
+
+    printf("%zu\n", sizeof(double));
+
+    printf("%zu\n", sizeof(char));
+
+    return 0;
+}</code></pre>
+            </li>
+
+
+            <!-- 8 -->
+            <li>
+                <h2>Constants</h2>
+
+                <pre class="language-c"><code>const float PI = 3.14159f;
+
+const int MAX_USERS = 100;</code></pre>
+            </li>
+
+
+            <!-- 9 -->
+            <li>
+                <h2>#define Constant</h2>
+
+                <pre class="language-c"><code>#define PI 3.14159
+#define MAX_SIZE 100</code></pre>
+            </li>
+
+
+            <!-- 10 -->
+            <li>
+                <h2>printf()</h2>
+
+                <pre class="language-c"><code>int age = 21;
+
+printf("Hello World\n");
+
+printf("Age: %d\n", age);</code></pre>
+            </li>
+
+
+            <!-- 11 -->
+            <li>
+                <h2>Format Specifiers</h2>
+
+                <pre class="language-c"><code>%d   // int
+
+%u   // unsigned int
+
+%f   // float/double with printf
+
+%c   // char
+
+%s   // string
+
+%ld  // long int
+
+%lld // long long int
+
+%x   // hexadecimal
+
+%o   // octal
+
+%p   // pointer address
+
+%%   // percent sign</code></pre>
+            </li>
+
+
+            <!-- 12 -->
+            <li>
+                <h2>scanf()</h2>
+
+                <pre class="language-c"><code>int age;
+
+printf("Enter age: ");
+
+scanf("%d", &amp;age);
+
+printf("Age = %d\n", age);</code></pre>
+            </li>
+
+
+            <!-- 13 -->
+            <li>
+                <h2>Multiple Inputs</h2>
+
+                <pre class="language-c"><code>int a;
+int b;
+
+scanf(
+    "%d %d",
+    &amp;a,
+    &amp;b
+);
+
+printf(
+    "%d %d\n",
+    a,
+    b
+);</code></pre>
+            </li>
+
+
+            <!-- 14 -->
+            <li>
+                <h2>Character Input</h2>
+
+                <pre class="language-c"><code>char ch;
+
+scanf(" %c", &amp;ch);
+
+printf("%c\n", ch);</code></pre>
+            </li>
+
+
+            <!-- 15 -->
+            <li>
+                <h2>String Input with fgets()</h2>
+
+                <pre class="language-c"><code>char name[50];
+
+printf("Enter name: ");
+
+fgets(
+    name,
+    sizeof(name),
+    stdin
+);
+
+printf("%s", name);</code></pre>
+            </li>
+
+
+            <!-- 16 -->
+            <li>
+                <h2>Arithmetic Operators</h2>
+
+                <pre class="language-c"><code>int a = 10;
+int b = 3;
+
+printf("%d\n", a + b);
+
+printf("%d\n", a - b);
+
+printf("%d\n", a * b);
+
+printf("%d\n", a / b);
+
+printf("%d\n", a % b);</code></pre>
+            </li>
+
+
+            <!-- 17 -->
+            <li>
+                <h2>Increment & Decrement</h2>
+
+                <pre class="language-c"><code>int number = 10;
+
+number++;
+
+number--;
+
+++number;
+
+--number;</code></pre>
+            </li>
+
+
+            <!-- 18 -->
+            <li>
+                <h2>Assignment Operators</h2>
+
+                <pre class="language-c"><code>int x = 10;
+
+x += 5;
+
+x -= 2;
+
+x *= 3;
+
+x /= 2;
+
+x %= 3;</code></pre>
+            </li>
+
+
+            <!-- 19 -->
+            <li>
+                <h2>Comparison Operators</h2>
+
+                <pre class="language-c"><code>a == b
+
+a != b
+
+a &gt; b
+
+a &lt; b
+
+a &gt;= b
+
+a &lt;= b</code></pre>
+            </li>
+
+
+            <!-- 20 -->
+            <li>
+                <h2>Logical Operators</h2>
+
+                <pre class="language-c"><code>// AND
+a &gt; 0 &amp;&amp; b &gt; 0
+
+// OR
+a &gt; 0 || b &gt; 0
+
+// NOT
+!(a == b)</code></pre>
+            </li>
+
+
+            <!-- 21 -->
+            <li>
+                <h2>Bitwise Operators</h2>
+
+                <pre class="language-c"><code>a &amp; b    // AND
+
+a | b    // OR
+
+a ^ b    // XOR
+
+~a       // NOT
+
+a &lt;&lt; 1   // Left shift
+
+a &gt;&gt; 1   // Right shift</code></pre>
+            </li>
+
+
+            <!-- 22 -->
+            <li>
+                <h2>if Statement</h2>
+
+                <pre class="language-c"><code>int age = 20;
+
+if (age &gt;= 18)
+{
+    printf("Adult\n");
+}</code></pre>
+            </li>
+
+
+            <!-- 23 -->
+            <li>
+                <h2>if...else</h2>
+
+                <pre class="language-c"><code>int age = 16;
+
+if (age &gt;= 18)
+{
+    printf("Adult\n");
+}
+else
+{
+    printf("Minor\n");
+}</code></pre>
+            </li>
+
+
+            <!-- 24 -->
+            <li>
+                <h2>else if</h2>
+
+                <pre class="language-c"><code>int marks = 85;
+
+if (marks &gt;= 90)
+{
+    printf("Grade A\n");
+}
+else if (marks &gt;= 75)
+{
+    printf("Grade B\n");
+}
+else if (marks &gt;= 60)
+{
+    printf("Grade C\n");
+}
+else
+{
+    printf("Grade D\n");
+}</code></pre>
+            </li>
+
+
+            <!-- 25 -->
+            <li>
+                <h2>Ternary Operator</h2>
+
+                <pre class="language-c"><code>int age = 20;
+
+char *result =
+    age &gt;= 18
+        ? "Adult"
+        : "Minor";
+
+printf("%s\n", result);</code></pre>
+            </li>
+
+
+            <!-- 26 -->
+            <li>
+                <h2>switch Statement</h2>
+
+                <pre class="language-c"><code>int day = 2;
+
+switch (day)
+{
+    case 1:
+        printf("Monday\n");
+        break;
+
+    case 2:
+        printf("Tuesday\n");
+        break;
+
+    default:
+        printf("Invalid day\n");
+}</code></pre>
+            </li>
+
+
+            <!-- 27 -->
+            <li>
+                <h2>for Loop</h2>
+
+                <pre class="language-c"><code>for (int i = 1; i &lt;= 5; i++)
+{
+    printf("%d\n", i);
+}</code></pre>
+            </li>
+
+
+            <!-- 28 -->
+            <li>
+                <h2>while Loop</h2>
+
+                <pre class="language-c"><code>int i = 1;
+
+while (i &lt;= 5)
+{
+    printf("%d\n", i);
+
+    i++;
+}</code></pre>
+            </li>
+
+
+            <!-- 29 -->
+            <li>
+                <h2>do...while Loop</h2>
+
+                <pre class="language-c"><code>int i = 1;
+
+do
+{
+    printf("%d\n", i);
+
+    i++;
+}
+while (i &lt;= 5);</code></pre>
+            </li>
+
+
+            <!-- 30 -->
+            <li>
+                <h2>break</h2>
+
+                <pre class="language-c"><code>for (int i = 1; i &lt;= 10; i++)
+{
+    if (i == 5)
+    {
+        break;
+    }
+
+    printf("%d\n", i);
+}</code></pre>
+            </li>
+
+
+            <!-- 31 -->
+            <li>
+                <h2>continue</h2>
+
+                <pre class="language-c"><code>for (int i = 1; i &lt;= 5; i++)
+{
+    if (i == 3)
+    {
+        continue;
+    }
+
+    printf("%d\n", i);
+}</code></pre>
+            </li>
+
+
+            <!-- 32 -->
+            <li>
+                <h2>Nested Loop</h2>
+
+                <pre class="language-c"><code>for (int i = 1; i &lt;= 3; i++)
+{
+    for (int j = 1; j &lt;= 3; j++)
+    {
+        printf(
+            "%d %d\n",
+            i,
+            j
+        );
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 33 -->
+            <li>
+                <h2>1D Array</h2>
+
+                <pre class="language-c"><code>int numbers[5] = {
+    10,
+    20,
+    30,
+    40,
+    50
+};
+
+printf(
+    "%d\n",
+    numbers[0]
+);</code></pre>
+            </li>
+
+
+            <!-- 34 -->
+            <li>
+                <h2>Loop Through Array</h2>
+
+                <pre class="language-c"><code>int numbers[] = {
+    10,
+    20,
+    30,
+    40
+};
+
+int size =
+    sizeof(numbers)
+    / sizeof(numbers[0]);
+
+for (int i = 0; i &lt; size; i++)
+{
+    printf(
+        "%d\n",
+        numbers[i]
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 35 -->
+            <li>
+                <h2>2D Array</h2>
+
+                <pre class="language-c"><code>int matrix[2][3] = {
+    {1, 2, 3},
+    {4, 5, 6}
+};
+
+printf(
+    "%d\n",
+    matrix[1][2]
+);</code></pre>
+            </li>
+
+
+            <!-- 36 -->
+            <li>
+                <h2>Loop Through 2D Array</h2>
+
+                <pre class="language-c"><code>int matrix[2][2] = {
+    {1, 2},
+    {3, 4}
+};
+
+for (int i = 0; i &lt; 2; i++)
+{
+    for (int j = 0; j &lt; 2; j++)
+    {
+        printf(
+            "%d ",
+            matrix[i][j]
+        );
+    }
+
+    printf("\n");
+}</code></pre>
+            </li>
+
+
+            <!-- 37 -->
+            <li>
+                <h2>String</h2>
+
+                <pre class="language-c"><code>char name[] = "Rohit";
+
+printf("%s\n", name);</code></pre>
+            </li>
+
+
+            <!-- 38 -->
+            <li>
+                <h2>Character Array</h2>
+
+                <pre class="language-c"><code>char name[] = {
+    'R',
+    'o',
+    'h',
+    'i',
+    't',
+    '\0'
+};
+
+printf("%s\n", name);</code></pre>
+            </li>
+
+
+            <!-- 39 -->
+            <li>
+                <h2>strlen()</h2>
+
+                <pre class="language-c"><code>#include &lt;string.h&gt;
+
+char text[] = "Hello";
+
+size_t length =
+    strlen(text);
+
+printf(
+    "%zu\n",
+    length
+);</code></pre>
+            </li>
+
+
+            <!-- 40 -->
+            <li>
+                <h2>strcpy()</h2>
+
+                <pre class="language-c"><code>#include &lt;string.h&gt;
+
+char source[] = "Hello";
+
+char destination[20];
+
+strcpy(
+    destination,
+    source
+);
+
+printf(
+    "%s\n",
+    destination
+);</code></pre>
+            </li>
+
+
+            <!-- 41 -->
+            <li>
+                <h2>strcat()</h2>
+
+                <pre class="language-c"><code>#include &lt;string.h&gt;
+
+char first[30] = "Hello ";
+
+char second[] = "World";
+
+strcat(
+    first,
+    second
+);
+
+printf("%s\n", first);</code></pre>
+            </li>
+
+
+            <!-- 42 -->
+            <li>
+                <h2>strcmp()</h2>
+
+                <pre class="language-c"><code>#include &lt;string.h&gt;
+
+char a[] = "Hello";
+
+char b[] = "Hello";
+
+if (strcmp(a, b) == 0)
+{
+    printf(
+        "Strings are equal\n"
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 43 -->
+            <li>
+                <h2>Basic Function</h2>
+
+                <pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+void greet(void)
+{
+    printf("Hello!\n");
+}
+
+int main(void)
+{
+    greet();
+
+    return 0;
+}</code></pre>
+            </li>
+
+
+            <!-- 44 -->
+            <li>
+                <h2>Function Parameters</h2>
+
+                <pre class="language-c"><code>void greet(char name[])
+{
+    printf(
+        "Hello %s\n",
+        name
+    );
+}
+
+int main(void)
+{
+    greet("Rohit");
+
+    return 0;
+}</code></pre>
+            </li>
+
+
+            <!-- 45 -->
+            <li>
+                <h2>Function Return Value</h2>
+
+                <pre class="language-c"><code>int add(int a, int b)
+{
+    return a + b;
+}
+
+int main(void)
+{
+    int result =
+        add(10, 20);
+
+    printf(
+        "%d\n",
+        result
+    );
+
+    return 0;
+}</code></pre>
+            </li>
+
+
+            <!-- 46 -->
+            <li>
+                <h2>Function Prototype</h2>
+
+                <pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+int add(int, int);
+
+int main(void)
+{
+    printf(
+        "%d\n",
+        add(10, 20)
+    );
+
+    return 0;
+}
+
+int add(int a, int b)
+{
+    return a + b;
+}</code></pre>
+            </li>
+
+
+            <!-- 47 -->
+            <li>
+                <h2>Recursion</h2>
+
+                <pre class="language-c"><code>int factorial(int n)
+{
+    if (n &lt;= 1)
+    {
+        return 1;
+    }
+
+    return n * factorial(n - 1);
+}</code></pre>
+            </li>
+
+
+            <!-- 48 -->
+            <li>
+                <h2>Pointer</h2>
+
+                <pre class="language-c"><code>int number = 10;
+
+int *ptr = &amp;number;
+
+printf(
+    "%d\n",
+    *ptr
+);</code></pre>
+            </li>
+
+
+            <!-- 49 -->
+            <li>
+                <h2>Address Operator</h2>
+
+                <pre class="language-c"><code>int number = 10;
+
+printf(
+    "%p\n",
+    (void *)&amp;number
+);</code></pre>
+            </li>
+
+
+            <!-- 50 -->
+            <li>
+                <h2>Pointer Dereferencing</h2>
+
+                <pre class="language-c"><code>int number = 10;
+
+int *ptr = &amp;number;
+
+*ptr = 50;
+
+printf(
+    "%d\n",
+    number
+);</code></pre>
+            </li>
+
+
+            <!-- 51 -->
+            <li>
+                <h2>NULL Pointer</h2>
+
+                <pre class="language-c"><code>int *ptr = NULL;
+
+if (ptr == NULL)
+{
+    printf(
+        "Pointer is NULL\n"
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 52 -->
+            <li>
+                <h2>Pointer Arithmetic</h2>
+
+                <pre class="language-c"><code>int numbers[] = {
+    10,
+    20,
+    30
+};
+
+int *ptr = numbers;
+
+printf("%d\n", *ptr);
+
+ptr++;
+
+printf("%d\n", *ptr);</code></pre>
+            </li>
+
+
+            <!-- 53 -->
+            <li>
+                <h2>Array and Pointer</h2>
+
+                <pre class="language-c"><code>int numbers[] = {
+    10,
+    20,
+    30
+};
+
+int *ptr = numbers;
+
+for (int i = 0; i &lt; 3; i++)
+{
+    printf(
+        "%d\n",
+        *(ptr + i)
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 54 -->
+            <li>
+                <h2>Pointer to Pointer</h2>
+
+                <pre class="language-c"><code>int number = 10;
+
+int *ptr = &amp;number;
+
+int **doublePtr = &amp;ptr;
+
+printf(
+    "%d\n",
+    **doublePtr
+);</code></pre>
+            </li>
+
+
+            <!-- 55 -->
+            <li>
+                <h2>Pass by Pointer</h2>
+
+                <pre class="language-c"><code>void change(int *number)
+{
+    *number = 100;
+}
+
+int main(void)
+{
+    int value = 10;
+
+    change(&amp;value);
+
+    printf(
+        "%d\n",
+        value
+    );
+
+    return 0;
+}</code></pre>
+            </li>
+
+
+            <!-- 56 -->
+            <li>
+                <h2>Swap Two Numbers</h2>
+
+                <pre class="language-c"><code>void swap(int *a, int *b)
+{
+    int temp = *a;
+
+    *a = *b;
+
+    *b = temp;
+}
+
+int main(void)
+{
+    int x = 10;
+    int y = 20;
+
+    swap(&amp;x, &amp;y);
+
+    printf(
+        "%d %d\n",
+        x,
+        y
+    );
+
+    return 0;
+}</code></pre>
+            </li>
+
+
+            <!-- 57 -->
+            <li>
+                <h2>Structure</h2>
+
+                <pre class="language-c"><code>struct Student
+{
+    char name[50];
+
+    int age;
+
+    float marks;
+};</code></pre>
+            </li>
+
+
+            <!-- 58 -->
+            <li>
+                <h2>Structure Object</h2>
+
+                <pre class="language-c"><code>struct Student
+{
+    char name[50];
+    int age;
+};
+
+int main(void)
+{
+    struct Student student = {
+        "Rohit",
+        21
+    };
+
+    printf(
+        "%s\n",
+        student.name
+    );
+
+    printf(
+        "%d\n",
+        student.age
+    );
+
+    return 0;
+}</code></pre>
+            </li>
+
+
+            <!-- 59 -->
+            <li>
+                <h2>Pointer to Structure</h2>
+
+                <pre class="language-c"><code>struct Student
+{
+    char name[50];
+
+    int age;
+};
+
+struct Student student = {
+    "Rohit",
+    21
+};
+
+struct Student *ptr =
+    &amp;student;
+
+printf(
+    "%s\n",
+    ptr-&gt;name
+);</code></pre>
+            </li>
+
+
+            <!-- 60 -->
+            <li>
+                <h2>typedef</h2>
+
+                <pre class="language-c"><code>typedef unsigned int uint;
+
+uint age = 21;</code></pre>
+            </li>
+
+
+            <!-- 61 -->
+            <li>
+                <h2>typedef with Structure</h2>
+
+                <pre class="language-c"><code>typedef struct
+{
+    char name[50];
+
+    int age;
+
+} Student;
+
+
+Student student = {
+    "Rohit",
+    21
+};</code></pre>
+            </li>
+
+
+            <!-- 62 -->
+            <li>
+                <h2>Union</h2>
+
+                <pre class="language-c"><code>union Data
+{
+    int number;
+
+    float price;
+
+    char letter;
+};
+
+union Data data;
+
+data.number = 100;</code></pre>
+            </li>
+
+
+            <!-- 63 -->
+            <li>
+                <h2>Enum</h2>
+
+                <pre class="language-c"><code>enum Day
+{
+    MONDAY,
+    TUESDAY,
+    WEDNESDAY,
+    THURSDAY,
+    FRIDAY
+};
+
+enum Day today =
+    MONDAY;</code></pre>
+            </li>
+
+
+            <!-- 64 -->
+            <li>
+                <h2>Dynamic Memory — malloc()</h2>
+
+                <pre class="language-c"><code>#include &lt;stdlib.h&gt;
+
+int *ptr =
+    malloc(
+        5 * sizeof(int)
+    );
+
+if (ptr == NULL)
+{
+    return 1;
+}</code></pre>
+            </li>
+
+
+            <!-- 65 -->
+            <li>
+                <h2>calloc()</h2>
+
+                <pre class="language-c"><code>int *ptr =
+    calloc(
+        5,
+        sizeof(int)
+    );
+
+if (ptr == NULL)
+{
+    return 1;
+}</code></pre>
+            </li>
+
+
+            <!-- 66 -->
+            <li>
+                <h2>realloc()</h2>
+
+                <pre class="language-c"><code>int *temp =
+    realloc(
+        ptr,
+        10 * sizeof(int)
+    );
+
+if (temp != NULL)
+{
+    ptr = temp;
+}</code></pre>
+            </li>
+
+
+            <!-- 67 -->
+            <li>
+                <h2>free()</h2>
+
+                <pre class="language-c"><code>free(ptr);
+
+ptr = NULL;</code></pre>
+            </li>
+
+
+            <!-- 68 -->
+            <li>
+                <h2>Complete Dynamic Array Example</h2>
+
+                <pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(void)
+{
+    int size = 5;
+
+    int *numbers =
+        malloc(
+            size * sizeof(int)
+        );
+
+    if (numbers == NULL)
+    {
+        return 1;
+    }
+
+    for (int i = 0; i &lt; size; i++)
+    {
+        numbers[i] =
+            (i + 1) * 10;
+    }
+
+    for (int i = 0; i &lt; size; i++)
+    {
+        printf(
+            "%d\n",
+            numbers[i]
+        );
+    }
+
+    free(numbers);
+
+    numbers = NULL;
+
+    return 0;
+}</code></pre>
+            </li>
+
+
+            <!-- 69 -->
+            <li>
+                <h2>Open File</h2>
+
+                <pre class="language-c"><code>FILE *file =
+    fopen(
+        "data.txt",
+        "r"
+    );
+
+if (file == NULL)
+{
+    printf(
+        "Unable to open file\n"
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 70 -->
+            <li>
+                <h2>File Modes</h2>
+
+                <pre class="language-c"><code>"r"   // Read
+
+"w"   // Write
+
+"a"   // Append
+
+"r+"  // Read + Write
+
+"w+"  // Read + Write, truncate
+
+"a+"  // Read + Append
+
+"rb"  // Read binary
+
+"wb"  // Write binary</code></pre>
+            </li>
+
+
+            <!-- 71 -->
+            <li>
+                <h2>Write to File</h2>
+
+                <pre class="language-c"><code>FILE *file =
+    fopen(
+        "data.txt",
+        "w"
+    );
+
+if (file != NULL)
+{
+    fprintf(
+        file,
+        "Hello C\n"
+    );
+
+    fclose(file);
+}</code></pre>
+            </li>
+
+
+            <!-- 72 -->
+            <li>
+                <h2>Read File with fgets()</h2>
+
+                <pre class="language-c"><code>char line[100];
+
+FILE *file =
+    fopen(
+        "data.txt",
+        "r"
+    );
+
+if (file != NULL)
+{
+    while (
+        fgets(
+            line,
+            sizeof(line),
+            file
+        ) != NULL
+    )
+    {
+        printf(
+            "%s",
+            line
+        );
+    }
+
+    fclose(file);
+}</code></pre>
+            </li>
+
+
+            <!-- 73 -->
+            <li>
+                <h2>fgetc() & fputc()</h2>
+
+                <pre class="language-c"><code>int ch;
+
+FILE *file =
+    fopen(
+        "data.txt",
+        "r"
+    );
+
+if (file != NULL)
+{
+    while (
+        (ch = fgetc(file))
+        != EOF
+    )
+    {
+        putchar(ch);
+    }
+
+    fclose(file);
+}</code></pre>
+            </li>
+
+
+            <!-- 74 -->
+            <li>
+                <h2>Preprocessor</h2>
+
+                <pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+#define PI 3.14159
+
+#define SQUARE(x) ((x) * (x))</code></pre>
+            </li>
+
+
+            <!-- 75 -->
+            <li>
+                <h2>Conditional Compilation</h2>
+
+                <pre class="language-c"><code>#define DEBUG
+
+#ifdef DEBUG
+
+    printf(
+        "Debug mode\n"
+    );
+
+#endif</code></pre>
+            </li>
+
+
+            <!-- 76 -->
+            <li>
+                <h2>Storage Classes</h2>
+
+                <pre class="language-c"><code>auto int a;
+
+register int counter;
+
+static int count;
+
+extern int globalVariable;</code></pre>
+            </li>
+
+
+            <!-- 77 -->
+            <li>
+                <h2>Boolean Type</h2>
+
+                <pre class="language-c"><code>#include &lt;stdbool.h&gt;
+
+bool isStudent = true;
+
+if (isStudent)
+{
+    printf("Student\n");
+}</code></pre>
+            </li>
+
+
+            <!-- 78 -->
+            <li>
+                <h2>Character Functions</h2>
+
+                <pre class="language-c"><code>#include &lt;ctype.h&gt;
+
+char ch = 'a';
+
+printf(
+    "%c\n",
+    toupper(ch)
+);
+
+printf(
+    "%d\n",
+    isalpha(ch)
+);
+
+printf(
+    "%d\n",
+    isdigit(ch)
+);</code></pre>
+            </li>
+
+
+            <!-- 79 -->
+            <li>
+                <h2>Math Functions</h2>
+
+                <pre class="language-c"><code>#include &lt;math.h&gt;
+
+printf(
+    "%.2f\n",
+    sqrt(25.0)
+);
+
+printf(
+    "%.2f\n",
+    pow(2.0, 3.0)
+);
+
+printf(
+    "%.2f\n",
+    ceil(4.2)
+);
+
+printf(
+    "%.2f\n",
+    floor(4.8)
+);</code></pre>
+            </li>
+
+
+            <!-- 80 -->
+            <li>
+                <h2>Random Number</h2>
+
+                <pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+
+int main(void)
+{
+    srand(
+        (unsigned)time(NULL)
+    );
+
+    int number =
+        rand() % 10 + 1;
+
+    printf(
+        "%d\n",
+        number
+    );
+
+    return 0;
+}</code></pre>
+            </li>
+
+
+            <!-- 81 -->
+            <li>
+                <h2>Command Line Arguments</h2>
+
+                <pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+int main(
+    int argc,
+    char *argv[]
+)
+{
+    printf(
+        "Arguments: %d\n",
+        argc
+    );
+
+    for (int i = 0; i &lt; argc; i++)
+    {
+        printf(
+            "%s\n",
+            argv[i]
+        );
+    }
+
+    return 0;
+}</code></pre>
+            </li>
+
+
+            <!-- 82 -->
+            <li>
+                <h2>Common Escape Sequences</h2>
+
+                <pre class="language-c"><code>\n   // New line
+
+\t   // Tab
+
+\\   // Backslash
+
+\"   // Double quote
+
+\'   // Single quote
+
+\0   // Null character</code></pre>
+            </li>
+
+
+            <!-- 83 -->
+            <li>
+                <h2>Simple Calculator</h2>
+
+                <pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    double a;
+    double b;
+
+    char operator;
+
+    printf(
+        "Enter expression: "
+    );
+
+    scanf(
+        "%lf %c %lf",
+        &amp;a,
+        &amp;operator,
+        &amp;b
+    );
+
+    switch (operator)
+    {
+        case '+':
+            printf(
+                "%.2f\n",
+                a + b
+            );
+            break;
+
+        case '-':
+            printf(
+                "%.2f\n",
+                a - b
+            );
+            break;
+
+        case '*':
+            printf(
+                "%.2f\n",
+                a * b
+            );
+            break;
+
+        case '/':
+
+            if (b != 0)
+            {
+                printf(
+                    "%.2f\n",
+                    a / b
+                );
+            }
+            else
+            {
+                printf(
+                    "Cannot divide by zero\n"
+                );
+            }
+
+            break;
+
+        default:
+            printf(
+                "Invalid operator\n"
+            );
+    }
+
+    return 0;
+}</code></pre>
+            </li>
+
+
+            <!-- 84 -->
+            <li>
+                <h2>Find Largest Number in Array</h2>
+
+                <pre class="language-c"><code>int numbers[] = {
+    10,
+    80,
+    30,
+    50,
+    20
+};
+
+int size =
+    sizeof(numbers)
+    / sizeof(numbers[0]);
+
+int largest =
+    numbers[0];
+
+for (int i = 1; i &lt; size; i++)
+{
+    if (numbers[i] &gt; largest)
+    {
+        largest =
+            numbers[i];
+    }
+}
+
+printf(
+    "Largest = %d\n",
+    largest
+);</code></pre>
+            </li>
+
+
+            <!-- 85 -->
+            <li>
+                <h2>C Quick Revision</h2>
+
+                <pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+int add(int a, int b)
+{
+    return a + b;
+}
+
+int main(void)
+{
+    // Variable
+
+    int age = 21;
+
+
+    // Array
+
+    int numbers[] = {
+        10,
+        20,
+        30
+    };
+
+
+    // Condition
+
+    if (age &gt;= 18)
+    {
+        printf("Adult\n");
+    }
+
+
+    // Loop
+
+    for (int i = 0; i &lt; 3; i++)
+    {
+        printf(
+            "%d\n",
+            numbers[i]
+        );
+    }
+
+
+    // Function
+
+    int result =
+        add(10, 20);
+
+
+    // Pointer
+
+    int *ptr =
+        &amp;age;
+
+    printf(
+        "%d\n",
+        *ptr
+    );
+
+
+    return 0;
+}</code></pre>
+            </li>
+
+
+            <!-- 86 -->
+            <li>
+                <h2>C Learning Roadmap</h2>
+
+                <pre class="language-c"><code>1. C Syntax
+
+2. Variables
+
+3. Data Types
+
+4. Input / Output
+
+5. Operators
+
+6. Conditions
+
+7. Loops
+
+8. Arrays
+
+9. Strings
+
+10. Functions
+
+11. Recursion
+
+12. Pointers
+
+13. Pointer Arithmetic
+
+14. Structures
+
+15. Unions
+
+16. Enum
+
+17. typedef
+
+18. Dynamic Memory
+
+19. File Handling
+
+20. Preprocessor
+
+21. Storage Classes
+
+22. Command Line Arguments
+
+23. Data Structures
+
+24. Projects</code></pre>
+            </li>
+
+        </ol>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <p>
+            © 2026 CodeWithRohit |
+            C Programming Cheat Sheet
+        </p>
+
+    </footer>
+
+
+    <!-- Prism -->
+    <script src="../prism/prism.js"></script>
+
+    <!-- Common Cheat Sheet JS -->
+    <script src="../cheatsheet.js"></script>
+
+</body>
+
+</html>

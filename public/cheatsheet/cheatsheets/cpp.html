@@ -1,0 +1,1980 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Complete C++ Programming Cheat Sheet by CodeWithRohit"
+    />
+
+    <title>C++ Cheat Sheet | CodeWithRohit</title>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="../cheatsheet.css" />
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="../prism/prism.css" />
+  </head>
+
+  <body>
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="cheat-navbar">
+      <a href="../index.html" class="brand"> &lt;/&gt; CodeWithRohit </a>
+
+      <div class="cheat-title">C++ Cheat Sheet</div>
+
+      <a href="../index.html" class="home-btn"> ← Home </a>
+    </nav>
+
+    <!-- ================= HERO ================= -->
+
+    <header class="cheat-hero">
+      <h1>C++ Programming Cheat Sheet</h1>
+
+      <p>
+        Complete C++ quick reference from basics to OOP, pointers, STL,
+        containers and algorithms.
+      </p>
+    </header>
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+      <ol>
+        <!-- 1 -->
+        <li>
+          <h2>Hello World</h2>
+
+          <pre class="language-cpp"><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    cout &lt;&lt; "Hello, World!" &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+        </li>
+
+        <!-- 2 -->
+        <li>
+          <h2>Comments</h2>
+
+          <pre class="language-cpp"><code>// Single-line comment
+
+/*
+    Multi-line
+    comment
+*/</code></pre>
+        </li>
+
+        <!-- 3 -->
+        <li>
+          <h2>Common Header Files</h2>
+
+          <pre class="language-cpp"><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;array&gt;
+#include &lt;algorithm&gt;
+#include &lt;cmath&gt;
+#include &lt;map&gt;
+#include &lt;unordered_map&gt;
+#include &lt;set&gt;
+#include &lt;unordered_set&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;deque&gt;</code></pre>
+        </li>
+
+        <!-- 4 -->
+        <li>
+          <h2>Variables</h2>
+
+          <pre class="language-cpp"><code>int age = 21;
+
+float marks = 89.5f;
+
+double price = 199.99;
+
+char grade = 'A';
+
+bool isStudent = true;
+
+string name = "Rohit";</code></pre>
+        </li>
+
+        <!-- 5 -->
+        <li>
+          <h2>Data Types</h2>
+
+          <pre class="language-cpp"><code>int number = 100;
+
+short smallNumber = 10;
+
+long largeNumber = 100000L;
+
+long long veryLarge = 10000000000LL;
+
+float decimal = 10.5f;
+
+double value = 99.999;
+
+char letter = 'A';
+
+bool status = true;</code></pre>
+        </li>
+
+        <!-- 6 -->
+        <li>
+          <h2>Constants</h2>
+
+          <pre class="language-cpp"><code>const double PI = 3.14159;
+
+const int MAX_SIZE = 100;</code></pre>
+        </li>
+
+        <!-- 7 -->
+        <li>
+          <h2>auto Keyword</h2>
+
+          <pre class="language-cpp"><code>auto age = 21;
+
+auto price = 99.99;
+
+auto name = string("Rohit");</code></pre>
+        </li>
+
+        <!-- 8 -->
+        <li>
+          <h2>Output with cout</h2>
+
+          <pre class="language-cpp"><code>string name = "Rohit";
+
+int age = 21;
+
+cout &lt;&lt; "Name: "
+     &lt;&lt; name
+     &lt;&lt; endl;
+
+cout &lt;&lt; "Age: "
+     &lt;&lt; age
+     &lt;&lt; endl;</code></pre>
+        </li>
+
+        <!-- 9 -->
+        <li>
+          <h2>Input with cin</h2>
+
+          <pre class="language-cpp"><code>int age;
+
+cout &lt;&lt; "Enter age: ";
+
+cin &gt;&gt; age;
+
+cout &lt;&lt; age;</code></pre>
+        </li>
+
+        <!-- 10 -->
+        <li>
+          <h2>Multiple Inputs</h2>
+
+          <pre class="language-cpp"><code>int a;
+int b;
+
+cin &gt;&gt; a &gt;&gt; b;
+
+cout &lt;&lt; a
+     &lt;&lt; " "
+     &lt;&lt; b;</code></pre>
+        </li>
+
+        <!-- 11 -->
+        <li>
+          <h2>getline()</h2>
+
+          <pre class="language-cpp"><code>string name;
+
+cout &lt;&lt; "Enter full name: ";
+
+getline(cin, name);
+
+cout &lt;&lt; name;</code></pre>
+        </li>
+
+        <!-- 12 -->
+        <li>
+          <h2>Arithmetic Operators</h2>
+
+          <pre class="language-cpp"><code>int a = 10;
+int b = 3;
+
+cout &lt;&lt; a + b &lt;&lt; endl;
+
+cout &lt;&lt; a - b &lt;&lt; endl;
+
+cout &lt;&lt; a * b &lt;&lt; endl;
+
+cout &lt;&lt; a / b &lt;&lt; endl;
+
+cout &lt;&lt; a % b &lt;&lt; endl;</code></pre>
+        </li>
+
+        <!-- 13 -->
+        <li>
+          <h2>Increment / Decrement</h2>
+
+          <pre class="language-cpp"><code>int number = 10;
+
+number++;
+
+number--;
+
+++number;
+
+--number;</code></pre>
+        </li>
+
+        <!-- 14 -->
+        <li>
+          <h2>Assignment Operators</h2>
+
+          <pre class="language-cpp"><code>int x = 10;
+
+x += 5;
+
+x -= 2;
+
+x *= 3;
+
+x /= 2;
+
+x %= 3;</code></pre>
+        </li>
+
+        <!-- 15 -->
+        <li>
+          <h2>Comparison Operators</h2>
+
+          <pre class="language-cpp"><code>a == b
+
+a != b
+
+a &gt; b
+
+a &lt; b
+
+a &gt;= b
+
+a &lt;= b</code></pre>
+        </li>
+
+        <!-- 16 -->
+        <li>
+          <h2>Logical Operators</h2>
+
+          <pre class="language-cpp"><code>// AND
+
+a &gt; 0 &amp;&amp; b &gt; 0;
+
+
+// OR
+
+a &gt; 0 || b &gt; 0;
+
+
+// NOT
+
+!(a == b);</code></pre>
+        </li>
+
+        <!-- 17 -->
+        <li>
+          <h2>Bitwise Operators</h2>
+
+          <pre class="language-cpp"><code>a &amp; b;
+
+a | b;
+
+a ^ b;
+
+~a;
+
+a &lt;&lt; 1;
+
+a &gt;&gt; 1;</code></pre>
+        </li>
+
+        <!-- 18 -->
+        <li>
+          <h2>if Statement</h2>
+
+          <pre class="language-cpp"><code>int age = 20;
+
+if (age &gt;= 18)
+{
+    cout &lt;&lt; "Adult";
+}</code></pre>
+        </li>
+
+        <!-- 19 -->
+        <li>
+          <h2>if...else</h2>
+
+          <pre class="language-cpp"><code>int age = 16;
+
+if (age &gt;= 18)
+{
+    cout &lt;&lt; "Adult";
+}
+else
+{
+    cout &lt;&lt; "Minor";
+}</code></pre>
+        </li>
+
+        <!-- 20 -->
+        <li>
+          <h2>else if</h2>
+
+          <pre class="language-cpp"><code>int marks = 85;
+
+if (marks &gt;= 90)
+{
+    cout &lt;&lt; "Grade A";
+}
+else if (marks &gt;= 75)
+{
+    cout &lt;&lt; "Grade B";
+}
+else if (marks &gt;= 60)
+{
+    cout &lt;&lt; "Grade C";
+}
+else
+{
+    cout &lt;&lt; "Grade D";
+}</code></pre>
+        </li>
+
+        <!-- 21 -->
+        <li>
+          <h2>Ternary Operator</h2>
+
+          <pre class="language-cpp"><code>int age = 20;
+
+string result =
+    age &gt;= 18
+        ? "Adult"
+        : "Minor";
+
+cout &lt;&lt; result;</code></pre>
+        </li>
+
+        <!-- 22 -->
+        <li>
+          <h2>switch Statement</h2>
+
+          <pre class="language-cpp"><code>int day = 2;
+
+switch (day)
+{
+    case 1:
+        cout &lt;&lt; "Monday";
+        break;
+
+    case 2:
+        cout &lt;&lt; "Tuesday";
+        break;
+
+    default:
+        cout &lt;&lt; "Invalid";
+}</code></pre>
+        </li>
+
+        <!-- 23 -->
+        <li>
+          <h2>for Loop</h2>
+
+          <pre class="language-cpp"><code>for (int i = 1; i &lt;= 5; i++)
+{
+    cout &lt;&lt; i
+         &lt;&lt; endl;
+}</code></pre>
+        </li>
+
+        <!-- 24 -->
+        <li>
+          <h2>while Loop</h2>
+
+          <pre class="language-cpp"><code>int i = 1;
+
+while (i &lt;= 5)
+{
+    cout &lt;&lt; i
+         &lt;&lt; endl;
+
+    i++;
+}</code></pre>
+        </li>
+
+        <!-- 25 -->
+        <li>
+          <h2>do...while Loop</h2>
+
+          <pre class="language-cpp"><code>int i = 1;
+
+do
+{
+    cout &lt;&lt; i
+         &lt;&lt; endl;
+
+    i++;
+}
+while (i &lt;= 5);</code></pre>
+        </li>
+
+        <!-- 26 -->
+        <li>
+          <h2>break & continue</h2>
+
+          <pre class="language-cpp"><code>for (int i = 1; i &lt;= 10; i++)
+{
+    if (i == 5)
+    {
+        continue;
+    }
+
+    if (i == 9)
+    {
+        break;
+    }
+
+    cout &lt;&lt; i
+         &lt;&lt; endl;
+}</code></pre>
+        </li>
+
+        <!-- 27 -->
+        <li>
+          <h2>Array</h2>
+
+          <pre class="language-cpp"><code>int numbers[5] = {
+    10,
+    20,
+    30,
+    40,
+    50
+};
+
+cout &lt;&lt; numbers[0];</code></pre>
+        </li>
+
+        <!-- 28 -->
+        <li>
+          <h2>Loop Through Array</h2>
+
+          <pre class="language-cpp"><code>int numbers[] = {
+    10,
+    20,
+    30,
+    40
+};
+
+int size =
+    sizeof(numbers)
+    / sizeof(numbers[0]);
+
+for (int i = 0; i &lt; size; i++)
+{
+    cout &lt;&lt; numbers[i]
+         &lt;&lt; endl;
+}</code></pre>
+        </li>
+
+        <!-- 29 -->
+        <li>
+          <h2>Range-Based for Loop</h2>
+
+          <pre class="language-cpp"><code>int numbers[] = {
+    10,
+    20,
+    30
+};
+
+for (int number : numbers)
+{
+    cout &lt;&lt; number
+         &lt;&lt; endl;
+}</code></pre>
+        </li>
+
+        <!-- 30 -->
+        <li>
+          <h2>2D Array</h2>
+
+          <pre class="language-cpp"><code>int matrix[2][3] = {
+    {1, 2, 3},
+    {4, 5, 6}
+};
+
+cout &lt;&lt; matrix[1][2];</code></pre>
+        </li>
+
+        <!-- 31 -->
+        <li>
+          <h2>String</h2>
+
+          <pre class="language-cpp"><code>#include &lt;string&gt;
+
+string name = "Rohit";
+
+cout &lt;&lt; name;
+
+cout &lt;&lt; name.length();</code></pre>
+        </li>
+
+        <!-- 32 -->
+        <li>
+          <h2>String Methods</h2>
+
+          <pre class="language-cpp"><code>string text = "Hello World";
+
+cout &lt;&lt; text.length();
+
+cout &lt;&lt; text.size();
+
+cout &lt;&lt; text.substr(0, 5);
+
+cout &lt;&lt; text.find("World");
+
+text.append("!");
+
+text.erase(5, 1);</code></pre>
+        </li>
+
+        <!-- 33 -->
+        <li>
+          <h2>Basic Function</h2>
+
+          <pre class="language-cpp"><code>void greet()
+{
+    cout &lt;&lt; "Hello!";
+}
+
+int main()
+{
+    greet();
+
+    return 0;
+}</code></pre>
+        </li>
+
+        <!-- 34 -->
+        <li>
+          <h2>Function Parameters</h2>
+
+          <pre class="language-cpp"><code>void greet(string name)
+{
+    cout &lt;&lt; "Hello "
+         &lt;&lt; name;
+}
+
+int main()
+{
+    greet("Rohit");
+
+    return 0;
+}</code></pre>
+        </li>
+
+        <!-- 35 -->
+        <li>
+          <h2>Return Value</h2>
+
+          <pre class="language-cpp"><code>int add(int a, int b)
+{
+    return a + b;
+}
+
+int main()
+{
+    int result =
+        add(10, 20);
+
+    cout &lt;&lt; result;
+
+    return 0;
+}</code></pre>
+        </li>
+
+        <!-- 36 -->
+        <li>
+          <h2>Default Arguments</h2>
+
+          <pre class="language-cpp"><code>void greet(
+    string name = "Guest"
+)
+{
+    cout &lt;&lt; "Hello "
+         &lt;&lt; name;
+}
+
+greet();
+
+greet("Rohit");</code></pre>
+        </li>
+
+        <!-- 37 -->
+        <li>
+          <h2>Function Overloading</h2>
+
+          <pre class="language-cpp"><code>int add(int a, int b)
+{
+    return a + b;
+}
+
+double add(
+    double a,
+    double b
+)
+{
+    return a + b;
+}</code></pre>
+        </li>
+
+        <!-- 38 -->
+        <li>
+          <h2>Recursion</h2>
+
+          <pre class="language-cpp"><code>int factorial(int n)
+{
+    if (n &lt;= 1)
+    {
+        return 1;
+    }
+
+    return n
+        * factorial(n - 1);
+}</code></pre>
+        </li>
+
+        <!-- 39 -->
+        <li>
+          <h2>Reference</h2>
+
+          <pre class="language-cpp"><code>int number = 10;
+
+int &amp;ref = number;
+
+ref = 50;
+
+cout &lt;&lt; number;</code></pre>
+        </li>
+
+        <!-- 40 -->
+        <li>
+          <h2>Pass by Reference</h2>
+
+          <pre class="language-cpp"><code>void change(int &amp;number)
+{
+    number = 100;
+}
+
+int main()
+{
+    int value = 10;
+
+    change(value);
+
+    cout &lt;&lt; value;
+
+    return 0;
+}</code></pre>
+        </li>
+
+        <!-- 41 -->
+        <li>
+          <h2>Pointer</h2>
+
+          <pre class="language-cpp"><code>int number = 10;
+
+int *ptr = &amp;number;
+
+cout &lt;&lt; ptr
+     &lt;&lt; endl;
+
+cout &lt;&lt; *ptr;</code></pre>
+        </li>
+
+        <!-- 42 -->
+        <li>
+          <h2>Pointer Dereferencing</h2>
+
+          <pre class="language-cpp"><code>int number = 10;
+
+int *ptr = &amp;number;
+
+*ptr = 100;
+
+cout &lt;&lt; number;</code></pre>
+        </li>
+
+        <!-- 43 -->
+        <li>
+          <h2>nullptr</h2>
+
+          <pre class="language-cpp"><code>int *ptr = nullptr;
+
+if (ptr == nullptr)
+{
+    cout &lt;&lt; "Null pointer";
+}</code></pre>
+        </li>
+
+        <!-- 44 -->
+        <li>
+          <h2>Dynamic Memory</h2>
+
+          <pre class="language-cpp"><code>int *number =
+    new int(10);
+
+cout &lt;&lt; *number;
+
+delete number;
+
+number = nullptr;</code></pre>
+        </li>
+
+        <!-- 45 -->
+        <li>
+          <h2>Dynamic Array</h2>
+
+          <pre class="language-cpp"><code>int size = 5;
+
+int *numbers =
+    new int[size];
+
+for (int i = 0; i &lt; size; i++)
+{
+    numbers[i] = i + 1;
+}
+
+delete[] numbers;
+
+numbers = nullptr;</code></pre>
+        </li>
+
+        <!-- 46 -->
+        <li>
+          <h2>Class & Object</h2>
+
+          <pre class="language-cpp"><code>class Student
+{
+public:
+
+    string name;
+
+    int age;
+
+    void display()
+    {
+        cout &lt;&lt; name
+             &lt;&lt; " "
+             &lt;&lt; age;
+    }
+};
+
+
+int main()
+{
+    Student student;
+
+    student.name = "Rohit";
+
+    student.age = 21;
+
+    student.display();
+
+    return 0;
+}</code></pre>
+        </li>
+
+        <!-- 47 -->
+        <li>
+          <h2>Constructor</h2>
+
+          <pre class="language-cpp"><code>class Student
+{
+public:
+
+    string name;
+
+    int age;
+
+
+    Student(
+        string n,
+        int a
+    )
+    {
+        name = n;
+
+        age = a;
+    }
+};
+
+
+int main()
+{
+    Student student(
+        "Rohit",
+        21
+    );
+
+    cout &lt;&lt; student.name;
+
+    return 0;
+}</code></pre>
+        </li>
+
+        <!-- 48 -->
+        <li>
+          <h2>Constructor Initializer List</h2>
+
+          <pre class="language-cpp"><code>class Student
+{
+private:
+
+    string name;
+
+    int age;
+
+
+public:
+
+    Student(
+        string name,
+        int age
+    )
+        : name(name),
+          age(age)
+    {
+    }
+};</code></pre>
+        </li>
+
+        <!-- 49 -->
+        <li>
+          <h2>Default Constructor</h2>
+
+          <pre class="language-cpp"><code>class Student
+{
+public:
+
+    Student()
+    {
+        cout &lt;&lt;
+            "Object created";
+    }
+};</code></pre>
+        </li>
+
+        <!-- 50 -->
+        <li>
+          <h2>Destructor</h2>
+
+          <pre class="language-cpp"><code>class Student
+{
+public:
+
+    Student()
+    {
+        cout &lt;&lt; "Created"
+             &lt;&lt; endl;
+    }
+
+
+    ~Student()
+    {
+        cout &lt;&lt; "Destroyed"
+             &lt;&lt; endl;
+    }
+};</code></pre>
+        </li>
+
+        <!-- 51 -->
+        <li>
+          <h2>Access Specifiers</h2>
+
+          <pre class="language-cpp"><code>class Example
+{
+public:
+
+    int publicValue;
+
+
+private:
+
+    int privateValue;
+
+
+protected:
+
+    int protectedValue;
+};</code></pre>
+        </li>
+
+        <!-- 52 -->
+        <li>
+          <h2>Encapsulation</h2>
+
+          <pre class="language-cpp"><code>class BankAccount
+{
+private:
+
+    double balance;
+
+
+public:
+
+    BankAccount()
+    {
+        balance = 0;
+    }
+
+
+    void deposit(double amount)
+    {
+        if (amount &gt; 0)
+        {
+            balance += amount;
+        }
+    }
+
+
+    double getBalance()
+    {
+        return balance;
+    }
+};</code></pre>
+        </li>
+
+        <!-- 53 -->
+        <li>
+          <h2>Inheritance</h2>
+
+          <pre class="language-cpp"><code>class Animal
+{
+public:
+
+    void eat()
+    {
+        cout &lt;&lt; "Eating";
+    }
+};
+
+
+class Dog : public Animal
+{
+public:
+
+    void bark()
+    {
+        cout &lt;&lt; "Barking";
+    }
+};
+
+
+int main()
+{
+    Dog dog;
+
+    dog.eat();
+
+    dog.bark();
+
+    return 0;
+}</code></pre>
+        </li>
+
+        <!-- 54 -->
+        <li>
+          <h2>Multilevel Inheritance</h2>
+
+          <pre class="language-cpp"><code>class A
+{
+public:
+
+    void showA()
+    {
+        cout &lt;&lt; "A";
+    }
+};
+
+
+class B : public A
+{
+public:
+
+    void showB()
+    {
+        cout &lt;&lt; "B";
+    }
+};
+
+
+class C : public B
+{
+public:
+
+    void showC()
+    {
+        cout &lt;&lt; "C";
+    }
+};</code></pre>
+        </li>
+
+        <!-- 55 -->
+        <li>
+          <h2>Multiple Inheritance</h2>
+
+          <pre class="language-cpp"><code>class Father
+{
+public:
+
+    void father()
+    {
+        cout &lt;&lt; "Father";
+    }
+};
+
+
+class Mother
+{
+public:
+
+    void mother()
+    {
+        cout &lt;&lt; "Mother";
+    }
+};
+
+
+class Child
+    : public Father,
+      public Mother
+{
+};</code></pre>
+        </li>
+
+        <!-- 56 -->
+        <li>
+          <h2>Method Overriding</h2>
+
+          <pre class="language-cpp"><code>class Animal
+{
+public:
+
+    void sound()
+    {
+        cout &lt;&lt; "Animal";
+    }
+};
+
+
+class Dog : public Animal
+{
+public:
+
+    void sound()
+    {
+        cout &lt;&lt; "Bark";
+    }
+};</code></pre>
+        </li>
+
+        <!-- 57 -->
+        <li>
+          <h2>Runtime Polymorphism</h2>
+
+          <pre class="language-cpp"><code>class Animal
+{
+public:
+
+    virtual void sound()
+    {
+        cout &lt;&lt; "Animal";
+    }
+
+    virtual ~Animal() = default;
+};
+
+
+class Dog : public Animal
+{
+public:
+
+    void sound() override
+    {
+        cout &lt;&lt; "Bark";
+    }
+};
+
+
+int main()
+{
+    Dog dog;
+
+    Animal *animal = &amp;dog;
+
+    animal-&gt;sound();
+
+    return 0;
+}</code></pre>
+        </li>
+
+        <!-- 58 -->
+        <li>
+          <h2>Abstract Class</h2>
+
+          <pre class="language-cpp"><code>class Shape
+{
+public:
+
+    virtual void draw() = 0;
+
+    virtual ~Shape() = default;
+};
+
+
+class Circle : public Shape
+{
+public:
+
+    void draw() override
+    {
+        cout &lt;&lt; "Circle";
+    }
+};</code></pre>
+        </li>
+
+        <!-- 59 -->
+        <li>
+          <h2>Friend Function</h2>
+
+          <pre class="language-cpp"><code>class Box
+{
+private:
+
+    int value = 100;
+
+
+public:
+
+    friend void show(
+        const Box &amp;box
+    );
+};
+
+
+void show(const Box &amp;box)
+{
+    cout &lt;&lt; box.value;
+}</code></pre>
+        </li>
+
+        <!-- 60 -->
+        <li>
+          <h2>Static Member</h2>
+
+          <pre class="language-cpp"><code>class Counter
+{
+public:
+
+    static int count;
+};
+
+
+int Counter::count = 0;
+
+
+int main()
+{
+    Counter::count++;
+
+    cout &lt;&lt; Counter::count;
+
+    return 0;
+}</code></pre>
+        </li>
+
+        <!-- 61 -->
+        <li>
+          <h2>Exception Handling</h2>
+
+          <pre class="language-cpp"><code>try
+{
+    int age = 15;
+
+    if (age &lt; 18)
+    {
+        throw age;
+    }
+}
+catch (int value)
+{
+    cout &lt;&lt;
+        "Age is too low: "
+        &lt;&lt; value;
+}</code></pre>
+        </li>
+
+        <!-- 62 -->
+        <li>
+          <h2>Lambda Function</h2>
+
+          <pre class="language-cpp"><code>auto add =
+    [](int a, int b)
+    {
+        return a + b;
+    };
+
+cout &lt;&lt; add(10, 20);</code></pre>
+        </li>
+
+        <!-- 63 -->
+        <li>
+          <h2>Template Function</h2>
+
+          <pre class="language-cpp"><code>template &lt;typename T&gt;
+
+T add(T a, T b)
+{
+    return a + b;
+}
+
+
+cout &lt;&lt; add(10, 20);
+
+cout &lt;&lt; add(5.5, 2.5);</code></pre>
+        </li>
+
+        <!-- 64 -->
+        <li>
+          <h2>STL Vector</h2>
+
+          <pre class="language-cpp"><code>#include &lt;vector&gt;
+
+vector&lt;int&gt; numbers = {
+    10,
+    20,
+    30
+};
+
+numbers.push_back(40);
+
+numbers.pop_back();
+
+cout &lt;&lt; numbers[0];
+
+cout &lt;&lt; numbers.size();</code></pre>
+        </li>
+
+        <!-- 65 -->
+        <li>
+          <h2>Vector Loop</h2>
+
+          <pre class="language-cpp"><code>vector&lt;int&gt; numbers = {
+    10,
+    20,
+    30
+};
+
+for (int number : numbers)
+{
+    cout &lt;&lt; number
+         &lt;&lt; " ";
+}</code></pre>
+        </li>
+
+        <!-- 66 -->
+        <li>
+          <h2>Vector Methods</h2>
+
+          <pre class="language-cpp"><code>vector&lt;int&gt; v;
+
+v.push_back(10);
+
+v.push_back(20);
+
+v.emplace_back(30);
+
+cout &lt;&lt; v.front();
+
+cout &lt;&lt; v.back();
+
+cout &lt;&lt; v.size();
+
+cout &lt;&lt; v.empty();
+
+v.pop_back();
+
+v.clear();</code></pre>
+        </li>
+
+        <!-- 67 -->
+        <li>
+          <h2>std::array</h2>
+
+          <pre class="language-cpp"><code>#include &lt;array&gt;
+
+array&lt;int, 3&gt; numbers = {
+    10,
+    20,
+    30
+};
+
+cout &lt;&lt; numbers.front();
+
+cout &lt;&lt; numbers.back();
+
+cout &lt;&lt; numbers.size();</code></pre>
+        </li>
+
+        <!-- 68 -->
+        <li>
+          <h2>Pair</h2>
+
+          <pre class="language-cpp"><code>pair&lt;string, int&gt; student = {
+    "Rohit",
+    21
+};
+
+cout &lt;&lt; student.first
+     &lt;&lt; endl;
+
+cout &lt;&lt; student.second;</code></pre>
+        </li>
+
+        <!-- 69 -->
+        <li>
+          <h2>Stack</h2>
+
+          <pre class="language-cpp"><code>#include &lt;stack&gt;
+
+stack&lt;int&gt; numbers;
+
+numbers.push(10);
+
+numbers.push(20);
+
+numbers.push(30);
+
+cout &lt;&lt; numbers.top();
+
+numbers.pop();
+
+cout &lt;&lt; numbers.size();
+
+cout &lt;&lt; numbers.empty();</code></pre>
+        </li>
+
+        <!-- 70 -->
+        <li>
+          <h2>Queue</h2>
+
+          <pre class="language-cpp"><code>#include &lt;queue&gt;
+
+queue&lt;int&gt; numbers;
+
+numbers.push(10);
+
+numbers.push(20);
+
+numbers.push(30);
+
+cout &lt;&lt; numbers.front();
+
+cout &lt;&lt; numbers.back();
+
+numbers.pop();</code></pre>
+        </li>
+
+        <!-- 71 -->
+        <li>
+          <h2>Priority Queue</h2>
+
+          <pre class="language-cpp"><code>#include &lt;queue&gt;
+
+priority_queue&lt;int&gt; pq;
+
+pq.push(10);
+
+pq.push(50);
+
+pq.push(20);
+
+cout &lt;&lt; pq.top();
+
+// Output: 50</code></pre>
+        </li>
+
+        <!-- 72 -->
+        <li>
+          <h2>Min Heap</h2>
+
+          <pre class="language-cpp"><code>priority_queue&lt;
+    int,
+    vector&lt;int&gt;,
+    greater&lt;int&gt;
+&gt; pq;
+
+pq.push(30);
+
+pq.push(10);
+
+pq.push(20);
+
+cout &lt;&lt; pq.top();
+
+// Output: 10</code></pre>
+        </li>
+
+        <!-- 73 -->
+        <li>
+          <h2>Deque</h2>
+
+          <pre class="language-cpp"><code>#include &lt;deque&gt;
+
+deque&lt;int&gt; dq;
+
+dq.push_back(20);
+
+dq.push_front(10);
+
+dq.push_back(30);
+
+cout &lt;&lt; dq.front();
+
+cout &lt;&lt; dq.back();</code></pre>
+        </li>
+
+        <!-- 74 -->
+        <li>
+          <h2>Set</h2>
+
+          <pre class="language-cpp"><code>#include &lt;set&gt;
+
+set&lt;int&gt; numbers = {
+    30,
+    10,
+    20,
+    10
+};
+
+numbers.insert(40);
+
+numbers.erase(20);
+
+for (int number : numbers)
+{
+    cout &lt;&lt; number
+         &lt;&lt; " ";
+}</code></pre>
+        </li>
+
+        <!-- 75 -->
+        <li>
+          <h2>Unordered Set</h2>
+
+          <pre class="language-cpp"><code>#include &lt;unordered_set&gt;
+
+unordered_set&lt;int&gt; numbers;
+
+numbers.insert(10);
+
+numbers.insert(20);
+
+numbers.insert(10);
+
+cout &lt;&lt; numbers.count(10);</code></pre>
+        </li>
+
+        <!-- 76 -->
+        <li>
+          <h2>Map</h2>
+
+          <pre class="language-cpp"><code>#include &lt;map&gt;
+
+map&lt;string, int&gt; marks;
+
+marks["Rohit"] = 90;
+
+marks["Aman"] = 85;
+
+cout &lt;&lt; marks["Rohit"];</code></pre>
+        </li>
+
+        <!-- 77 -->
+        <li>
+          <h2>Loop Through Map</h2>
+
+          <pre class="language-cpp"><code>map&lt;string, int&gt; marks = {
+    {"Rohit", 90},
+    {"Aman", 85}
+};
+
+for (const auto &amp;item : marks)
+{
+    cout &lt;&lt; item.first
+         &lt;&lt; " "
+         &lt;&lt; item.second
+         &lt;&lt; endl;
+}</code></pre>
+        </li>
+
+        <!-- 78 -->
+        <li>
+          <h2>Unordered Map</h2>
+
+          <pre class="language-cpp"><code>#include &lt;unordered_map&gt;
+
+unordered_map&lt;string, int&gt; marks;
+
+marks["Rohit"] = 90;
+
+marks["Aman"] = 85;
+
+cout &lt;&lt; marks["Rohit"];</code></pre>
+        </li>
+
+        <!-- 79 -->
+        <li>
+          <h2>sort()</h2>
+
+          <pre class="language-cpp"><code>vector&lt;int&gt; numbers = {
+    40,
+    10,
+    30,
+    20
+};
+
+sort(
+    numbers.begin(),
+    numbers.end()
+);
+
+for (int number : numbers)
+{
+    cout &lt;&lt; number
+         &lt;&lt; " ";
+}</code></pre>
+        </li>
+
+        <!-- 80 -->
+        <li>
+          <h2>Descending Sort</h2>
+
+          <pre class="language-cpp"><code>sort(
+    numbers.begin(),
+    numbers.end(),
+    greater&lt;int&gt;()
+);</code></pre>
+        </li>
+
+        <!-- 81 -->
+        <li>
+          <h2>reverse()</h2>
+
+          <pre class="language-cpp"><code>reverse(
+    numbers.begin(),
+    numbers.end()
+);</code></pre>
+        </li>
+
+        <!-- 82 -->
+        <li>
+          <h2>find()</h2>
+
+          <pre class="language-cpp"><code>auto it = find(
+    numbers.begin(),
+    numbers.end(),
+    30
+);
+
+if (it != numbers.end())
+{
+    cout &lt;&lt; "Found";
+}</code></pre>
+        </li>
+
+        <!-- 83 -->
+        <li>
+          <h2>Binary Search</h2>
+
+          <pre class="language-cpp"><code>sort(
+    numbers.begin(),
+    numbers.end()
+);
+
+bool found =
+    binary_search(
+        numbers.begin(),
+        numbers.end(),
+        30
+    );
+
+cout &lt;&lt; found;</code></pre>
+        </li>
+
+        <!-- 84 -->
+        <li>
+          <h2>lower_bound()</h2>
+
+          <pre class="language-cpp"><code>auto it =
+    lower_bound(
+        numbers.begin(),
+        numbers.end(),
+        30
+    );
+
+if (it != numbers.end())
+{
+    cout &lt;&lt; *it;
+}</code></pre>
+        </li>
+
+        <!-- 85 -->
+        <li>
+          <h2>upper_bound()</h2>
+
+          <pre class="language-cpp"><code>auto it =
+    upper_bound(
+        numbers.begin(),
+        numbers.end(),
+        30
+    );
+
+if (it != numbers.end())
+{
+    cout &lt;&lt; *it;
+}</code></pre>
+        </li>
+
+        <!-- 86 -->
+        <li>
+          <h2>min() & max()</h2>
+
+          <pre class="language-cpp"><code>cout &lt;&lt; min(10, 20);
+
+cout &lt;&lt; max(10, 20);</code></pre>
+        </li>
+
+        <!-- 87 -->
+        <li>
+          <h2>min_element() & max_element()</h2>
+
+          <pre class="language-cpp"><code>vector&lt;int&gt; numbers = {
+    40,
+    10,
+    90,
+    20
+};
+
+cout &lt;&lt; *min_element(
+    numbers.begin(),
+    numbers.end()
+);
+
+cout &lt;&lt; *max_element(
+    numbers.begin(),
+    numbers.end()
+);</code></pre>
+        </li>
+
+        <!-- 88 -->
+        <li>
+          <h2>count()</h2>
+
+          <pre class="language-cpp"><code>vector&lt;int&gt; numbers = {
+    10,
+    20,
+    10,
+    30
+};
+
+int frequency =
+    count(
+        numbers.begin(),
+        numbers.end(),
+        10
+    );
+
+cout &lt;&lt; frequency;</code></pre>
+        </li>
+
+        <!-- 89 -->
+        <li>
+          <h2>File Writing</h2>
+
+          <pre class="language-cpp"><code>#include &lt;fstream&gt;
+
+ofstream file(
+    "data.txt"
+);
+
+if (file.is_open())
+{
+    file &lt;&lt; "Hello C++";
+
+    file.close();
+}</code></pre>
+        </li>
+
+        <!-- 90 -->
+        <li>
+          <h2>File Reading</h2>
+
+          <pre class="language-cpp"><code>#include &lt;fstream&gt;
+
+ifstream file(
+    "data.txt"
+);
+
+string line;
+
+while (getline(file, line))
+{
+    cout &lt;&lt; line
+         &lt;&lt; endl;
+}
+
+file.close();</code></pre>
+        </li>
+
+        <!-- 91 -->
+        <li>
+          <h2>Smart Pointer</h2>
+
+          <pre class="language-cpp"><code>#include &lt;memory&gt;
+
+unique_ptr&lt;int&gt; number =
+    make_unique&lt;int&gt;(100);
+
+cout &lt;&lt; *number;</code></pre>
+        </li>
+
+        <!-- 92 -->
+        <li>
+          <h2>shared_ptr</h2>
+
+          <pre class="language-cpp"><code>#include &lt;memory&gt;
+
+shared_ptr&lt;int&gt; ptr1 =
+    make_shared&lt;int&gt;(100);
+
+shared_ptr&lt;int&gt; ptr2 =
+    ptr1;
+
+cout &lt;&lt; *ptr1;
+
+cout &lt;&lt; ptr1.use_count();</code></pre>
+        </li>
+
+        <!-- 93 -->
+        <li>
+          <h2>C++ Quick Revision</h2>
+
+          <pre class="language-cpp"><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+
+int add(int a, int b)
+{
+    return a + b;
+}
+
+
+int main()
+{
+    // Variable
+
+    int age = 21;
+
+
+    // Condition
+
+    if (age &gt;= 18)
+    {
+        cout &lt;&lt; "Adult";
+    }
+
+
+    // Vector
+
+    vector&lt;int&gt; numbers = {
+        30,
+        10,
+        20
+    };
+
+
+    // Loop
+
+    for (int number : numbers)
+    {
+        cout &lt;&lt; number
+             &lt;&lt; " ";
+    }
+
+
+    // Sort
+
+    sort(
+        numbers.begin(),
+        numbers.end()
+    );
+
+
+    // Function
+
+    cout &lt;&lt; add(10, 20);
+
+
+    // Pointer
+
+    int *ptr = &amp;age;
+
+    cout &lt;&lt; *ptr;
+
+
+    return 0;
+}</code></pre>
+        </li>
+
+        <!-- 94 -->
+        <li>
+          <h2>C++ STL Quick Reference</h2>
+
+          <pre class="language-cpp"><code>vector&lt;int&gt; v;
+
+stack&lt;int&gt; st;
+
+queue&lt;int&gt; q;
+
+priority_queue&lt;int&gt; pq;
+
+deque&lt;int&gt; dq;
+
+set&lt;int&gt; s;
+
+unordered_set&lt;int&gt; us;
+
+map&lt;int, int&gt; mp;
+
+unordered_map&lt;int, int&gt; ump;
+
+pair&lt;int, int&gt; p;</code></pre>
+        </li>
+
+        <!-- 95 -->
+        <li>
+          <h2>C++ Learning Roadmap</h2>
+
+          <pre class="language-cpp"><code>1. C++ Syntax
+
+2. Variables
+
+3. Data Types
+
+4. Input / Output
+
+5. Operators
+
+6. Conditions
+
+7. Loops
+
+8. Arrays
+
+9. Strings
+
+10. Functions
+
+11. Recursion
+
+12. References
+
+13. Pointers
+
+14. Dynamic Memory
+
+15. Classes & Objects
+
+16. Constructors
+
+17. Destructors
+
+18. Encapsulation
+
+19. Inheritance
+
+20. Polymorphism
+
+21. Abstraction
+
+22. Exception Handling
+
+23. Templates
+
+24. Lambda Functions
+
+25. STL
+
+26. Vector
+
+27. Stack
+
+28. Queue
+
+29. Priority Queue
+
+30. Set
+
+31. Map
+
+32. STL Algorithms
+
+33. Smart Pointers
+
+34. File Handling
+
+35. DSA
+
+36. Competitive Programming
+
+37. Projects</code></pre>
+        </li>
+      </ol>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+      <p>© 2026 CodeWithRohit | C++ Programming Cheat Sheet</p>
+    </footer>
+
+    <!-- Prism JS -->
+    <script src="../prism/prism.js"></script>
+
+    <!-- Common JS -->
+    <script src="../cheatsheet.js"></script>
+  </body>
+</html>

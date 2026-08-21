@@ -1,0 +1,2398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Complete Java Programming Cheat Sheet by CodeWithRohit"
+    >
+
+    <title>Java Cheat Sheet | CodeWithRohit</title>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="../cheatsheet.css">
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="../prism/prism.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="cheat-navbar">
+
+        <a href="../index.html" class="brand">
+            &lt;/&gt; CodeWithRohit
+        </a>
+
+        <div class="cheat-title">
+            Java Cheat Sheet
+        </div>
+
+        <a href="../index.html" class="home-btn">
+            ← Home
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="cheat-hero">
+
+        <h1>Java Programming Cheat Sheet</h1>
+
+        <p>
+            Complete Java quick reference from basics to OOP,
+            collections, exceptions, files, streams and multithreading.
+        </p>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <ol>
+
+            <!-- 1 -->
+            <li>
+                <h2>Hello World</h2>
+
+                <pre class="language-java"><code>public class Main {
+
+    public static void main(String[] args) {
+
+        System.out.println("Hello, World!");
+
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 2 -->
+            <li>
+                <h2>Comments</h2>
+
+                <pre class="language-java"><code>// Single-line comment
+
+/*
+    Multi-line comment
+*/
+
+/**
+ * Documentation comment
+ */</code></pre>
+            </li>
+
+
+            <!-- 3 -->
+            <li>
+                <h2>Variables</h2>
+
+                <pre class="language-java"><code>int age = 21;
+
+double marks = 89.5;
+
+char grade = 'A';
+
+boolean isStudent = true;
+
+String name = "Rohit";</code></pre>
+            </li>
+
+
+            <!-- 4 -->
+            <li>
+                <h2>Primitive Data Types</h2>
+
+                <pre class="language-java"><code>byte a = 100;
+
+short b = 20000;
+
+int c = 100000;
+
+long d = 10000000000L;
+
+float e = 10.5f;
+
+double f = 99.99;
+
+char g = 'A';
+
+boolean h = true;</code></pre>
+            </li>
+
+
+            <!-- 5 -->
+            <li>
+                <h2>Constants</h2>
+
+                <pre class="language-java"><code>final double PI = 3.14159;
+
+final int MAX_SIZE = 100;</code></pre>
+            </li>
+
+
+            <!-- 6 -->
+            <li>
+                <h2>Output</h2>
+
+                <pre class="language-java"><code>System.out.println("Hello");
+
+System.out.print("Java");
+
+System.out.printf(
+    "Age: %d%n",
+    21
+);</code></pre>
+            </li>
+
+
+            <!-- 7 -->
+            <li>
+                <h2>User Input</h2>
+
+                <pre class="language-java"><code>import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner sc =
+            new Scanner(System.in);
+
+        System.out.print(
+            "Enter age: "
+        );
+
+        int age = sc.nextInt();
+
+        System.out.println(age);
+
+        sc.close();
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 8 -->
+            <li>
+                <h2>Scanner Methods</h2>
+
+                <pre class="language-java"><code>Scanner sc =
+    new Scanner(System.in);
+
+int number =
+    sc.nextInt();
+
+double price =
+    sc.nextDouble();
+
+String word =
+    sc.next();
+
+sc.nextLine();
+
+String line =
+    sc.nextLine();
+
+boolean value =
+    sc.nextBoolean();</code></pre>
+            </li>
+
+
+            <!-- 9 -->
+            <li>
+                <h2>Type Casting</h2>
+
+                <pre class="language-java"><code>// Widening
+
+int number = 10;
+
+double value = number;
+
+
+// Narrowing
+
+double price = 99.99;
+
+int result = (int) price;</code></pre>
+            </li>
+
+
+            <!-- 10 -->
+            <li>
+                <h2>Arithmetic Operators</h2>
+
+                <pre class="language-java"><code>int a = 10;
+int b = 3;
+
+System.out.println(a + b);
+
+System.out.println(a - b);
+
+System.out.println(a * b);
+
+System.out.println(a / b);
+
+System.out.println(a % b);</code></pre>
+            </li>
+
+
+            <!-- 11 -->
+            <li>
+                <h2>Increment / Decrement</h2>
+
+                <pre class="language-java"><code>int number = 10;
+
+number++;
+
+number--;
+
+++number;
+
+--number;</code></pre>
+            </li>
+
+
+            <!-- 12 -->
+            <li>
+                <h2>Assignment Operators</h2>
+
+                <pre class="language-java"><code>int x = 10;
+
+x += 5;
+
+x -= 2;
+
+x *= 3;
+
+x /= 2;
+
+x %= 3;</code></pre>
+            </li>
+
+
+            <!-- 13 -->
+            <li>
+                <h2>Comparison Operators</h2>
+
+                <pre class="language-java"><code>a == b
+
+a != b
+
+a &gt; b
+
+a &lt; b
+
+a &gt;= b
+
+a &lt;= b</code></pre>
+            </li>
+
+
+            <!-- 14 -->
+            <li>
+                <h2>Logical Operators</h2>
+
+                <pre class="language-java"><code>// AND
+
+age &gt;= 18 &amp;&amp; age &lt;= 60;
+
+
+// OR
+
+age &lt; 18 || age &gt; 60;
+
+
+// NOT
+
+!(age == 21);</code></pre>
+            </li>
+
+
+            <!-- 15 -->
+            <li>
+                <h2>Bitwise Operators</h2>
+
+                <pre class="language-java"><code>a &amp; b
+
+a | b
+
+a ^ b
+
+~a
+
+a &lt;&lt; 1
+
+a &gt;&gt; 1</code></pre>
+            </li>
+
+
+            <!-- 16 -->
+            <li>
+                <h2>if Statement</h2>
+
+                <pre class="language-java"><code>int age = 20;
+
+if (age &gt;= 18) {
+
+    System.out.println(
+        "Adult"
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 17 -->
+            <li>
+                <h2>if...else</h2>
+
+                <pre class="language-java"><code>int age = 16;
+
+if (age &gt;= 18) {
+
+    System.out.println("Adult");
+
+} else {
+
+    System.out.println("Minor");
+}</code></pre>
+            </li>
+
+
+            <!-- 18 -->
+            <li>
+                <h2>else if</h2>
+
+                <pre class="language-java"><code>int marks = 85;
+
+if (marks &gt;= 90) {
+
+    System.out.println("A");
+
+} else if (marks &gt;= 75) {
+
+    System.out.println("B");
+
+} else if (marks &gt;= 60) {
+
+    System.out.println("C");
+
+} else {
+
+    System.out.println("D");
+}</code></pre>
+            </li>
+
+
+            <!-- 19 -->
+            <li>
+                <h2>Ternary Operator</h2>
+
+                <pre class="language-java"><code>int age = 20;
+
+String result =
+    age &gt;= 18
+        ? "Adult"
+        : "Minor";
+
+System.out.println(result);</code></pre>
+            </li>
+
+
+            <!-- 20 -->
+            <li>
+                <h2>switch Statement</h2>
+
+                <pre class="language-java"><code>int day = 2;
+
+switch (day) {
+
+    case 1:
+        System.out.println(
+            "Monday"
+        );
+        break;
+
+    case 2:
+        System.out.println(
+            "Tuesday"
+        );
+        break;
+
+    default:
+        System.out.println(
+            "Invalid"
+        );
+}</code></pre>
+            </li>
+
+
+            <!-- 21 -->
+            <li>
+                <h2>Modern Switch Expression</h2>
+
+                <pre class="language-java"><code>int day = 2;
+
+String name = switch (day) {
+
+    case 1 -&gt; "Monday";
+
+    case 2 -&gt; "Tuesday";
+
+    case 3 -&gt; "Wednesday";
+
+    default -&gt; "Invalid";
+};
+
+System.out.println(name);</code></pre>
+            </li>
+
+
+            <!-- 22 -->
+            <li>
+                <h2>for Loop</h2>
+
+                <pre class="language-java"><code>for (
+    int i = 1;
+    i &lt;= 5;
+    i++
+) {
+
+    System.out.println(i);
+}</code></pre>
+            </li>
+
+
+            <!-- 23 -->
+            <li>
+                <h2>while Loop</h2>
+
+                <pre class="language-java"><code>int i = 1;
+
+while (i &lt;= 5) {
+
+    System.out.println(i);
+
+    i++;
+}</code></pre>
+            </li>
+
+
+            <!-- 24 -->
+            <li>
+                <h2>do...while Loop</h2>
+
+                <pre class="language-java"><code>int i = 1;
+
+do {
+
+    System.out.println(i);
+
+    i++;
+
+} while (i &lt;= 5);</code></pre>
+            </li>
+
+
+            <!-- 25 -->
+            <li>
+                <h2>break & continue</h2>
+
+                <pre class="language-java"><code>for (
+    int i = 1;
+    i &lt;= 10;
+    i++
+) {
+
+    if (i == 5) {
+        continue;
+    }
+
+    if (i == 9) {
+        break;
+    }
+
+    System.out.println(i);
+}</code></pre>
+            </li>
+
+
+            <!-- 26 -->
+            <li>
+                <h2>Array</h2>
+
+                <pre class="language-java"><code>int[] numbers = {
+    10,
+    20,
+    30,
+    40,
+    50
+};
+
+System.out.println(
+    numbers[0]
+);</code></pre>
+            </li>
+
+
+            <!-- 27 -->
+            <li>
+                <h2>Create Array with Size</h2>
+
+                <pre class="language-java"><code>int[] numbers =
+    new int[5];
+
+numbers[0] = 10;
+
+numbers[1] = 20;</code></pre>
+            </li>
+
+
+            <!-- 28 -->
+            <li>
+                <h2>Array Length</h2>
+
+                <pre class="language-java"><code>int[] numbers = {
+    10,
+    20,
+    30
+};
+
+System.out.println(
+    numbers.length
+);</code></pre>
+            </li>
+
+
+            <!-- 29 -->
+            <li>
+                <h2>Loop Through Array</h2>
+
+                <pre class="language-java"><code>int[] numbers = {
+    10,
+    20,
+    30
+};
+
+for (
+    int i = 0;
+    i &lt; numbers.length;
+    i++
+) {
+
+    System.out.println(
+        numbers[i]
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 30 -->
+            <li>
+                <h2>Enhanced for Loop</h2>
+
+                <pre class="language-java"><code>int[] numbers = {
+    10,
+    20,
+    30
+};
+
+for (int number : numbers) {
+
+    System.out.println(
+        number
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 31 -->
+            <li>
+                <h2>2D Array</h2>
+
+                <pre class="language-java"><code>int[][] matrix = {
+
+    {1, 2, 3},
+
+    {4, 5, 6}
+
+};
+
+System.out.println(
+    matrix[1][2]
+);</code></pre>
+            </li>
+
+
+            <!-- 32 -->
+            <li>
+                <h2>Arrays Utility Class</h2>
+
+                <pre class="language-java"><code>import java.util.Arrays;
+
+int[] numbers = {
+    40,
+    10,
+    30,
+    20
+};
+
+Arrays.sort(numbers);
+
+System.out.println(
+    Arrays.toString(numbers)
+);</code></pre>
+            </li>
+
+
+            <!-- 33 -->
+            <li>
+                <h2>String</h2>
+
+                <pre class="language-java"><code>String name = "Rohit";
+
+System.out.println(name);
+
+System.out.println(
+    name.length()
+);</code></pre>
+            </li>
+
+
+            <!-- 34 -->
+            <li>
+                <h2>String Methods</h2>
+
+                <pre class="language-java"><code>String text =
+    "Hello Java";
+
+text.length();
+
+text.toUpperCase();
+
+text.toLowerCase();
+
+text.charAt(0);
+
+text.substring(0, 5);
+
+text.contains("Java");
+
+text.startsWith("Hello");
+
+text.endsWith("Java");
+
+text.replace(
+    "Java",
+    "World"
+);</code></pre>
+            </li>
+
+
+            <!-- 35 -->
+            <li>
+                <h2>Compare Strings</h2>
+
+                <pre class="language-java"><code>String a = "Java";
+
+String b = "Java";
+
+System.out.println(
+    a.equals(b)
+);
+
+System.out.println(
+    a.equalsIgnoreCase(b)
+);</code></pre>
+            </li>
+
+
+            <!-- 36 -->
+            <li>
+                <h2>StringBuilder</h2>
+
+                <pre class="language-java"><code>StringBuilder text =
+    new StringBuilder(
+        "Hello"
+    );
+
+text.append(" Java");
+
+text.insert(
+    0,
+    "Hi "
+);
+
+text.replace(
+    0,
+    2,
+    "Hello"
+);
+
+text.reverse();
+
+System.out.println(text);</code></pre>
+            </li>
+
+
+            <!-- 37 -->
+            <li>
+                <h2>Basic Method</h2>
+
+                <pre class="language-java"><code>static void greet() {
+
+    System.out.println(
+        "Hello!"
+    );
+}
+
+
+public static void main(
+    String[] args
+) {
+
+    greet();
+}</code></pre>
+            </li>
+
+
+            <!-- 38 -->
+            <li>
+                <h2>Method Parameters</h2>
+
+                <pre class="language-java"><code>static void greet(
+    String name
+) {
+
+    System.out.println(
+        "Hello " + name
+    );
+}
+
+
+greet("Rohit");</code></pre>
+            </li>
+
+
+            <!-- 39 -->
+            <li>
+                <h2>Return Value</h2>
+
+                <pre class="language-java"><code>static int add(
+    int a,
+    int b
+) {
+
+    return a + b;
+}
+
+
+int result =
+    add(10, 20);
+
+System.out.println(result);</code></pre>
+            </li>
+
+
+            <!-- 40 -->
+            <li>
+                <h2>Method Overloading</h2>
+
+                <pre class="language-java"><code>static int add(
+    int a,
+    int b
+) {
+
+    return a + b;
+}
+
+
+static double add(
+    double a,
+    double b
+) {
+
+    return a + b;
+}</code></pre>
+            </li>
+
+
+            <!-- 41 -->
+            <li>
+                <h2>Recursion</h2>
+
+                <pre class="language-java"><code>static int factorial(int n) {
+
+    if (n &lt;= 1) {
+        return 1;
+    }
+
+    return n
+        * factorial(n - 1);
+}</code></pre>
+            </li>
+
+
+            <!-- 42 -->
+            <li>
+                <h2>Class & Object</h2>
+
+                <pre class="language-java"><code>class Student {
+
+    String name;
+
+    int age;
+
+
+    void display() {
+
+        System.out.println(
+            name + " " + age
+        );
+    }
+}
+
+
+public class Main {
+
+    public static void main(
+        String[] args
+    ) {
+
+        Student student =
+            new Student();
+
+        student.name =
+            "Rohit";
+
+        student.age = 21;
+
+        student.display();
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 43 -->
+            <li>
+                <h2>Constructor</h2>
+
+                <pre class="language-java"><code>class Student {
+
+    String name;
+
+    int age;
+
+
+    Student(
+        String name,
+        int age
+    ) {
+
+        this.name = name;
+
+        this.age = age;
+    }
+}
+
+
+Student student =
+    new Student(
+        "Rohit",
+        21
+    );</code></pre>
+            </li>
+
+
+            <!-- 44 -->
+            <li>
+                <h2>Default Constructor</h2>
+
+                <pre class="language-java"><code>class Student {
+
+    Student() {
+
+        System.out.println(
+            "Object created"
+        );
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 45 -->
+            <li>
+                <h2>this Keyword</h2>
+
+                <pre class="language-java"><code>class Student {
+
+    String name;
+
+
+    Student(String name) {
+
+        this.name = name;
+    }
+
+
+    void show() {
+
+        System.out.println(
+            this.name
+        );
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 46 -->
+            <li>
+                <h2>Access Modifiers</h2>
+
+                <pre class="language-java"><code>public int a;
+
+private int b;
+
+protected int c;
+
+int d;
+
+// d has package-private access</code></pre>
+            </li>
+
+
+            <!-- 47 -->
+            <li>
+                <h2>Encapsulation</h2>
+
+                <pre class="language-java"><code>class Student {
+
+    private String name;
+
+
+    public void setName(
+        String name
+    ) {
+
+        this.name = name;
+    }
+
+
+    public String getName() {
+
+        return name;
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 48 -->
+            <li>
+                <h2>Inheritance</h2>
+
+                <pre class="language-java"><code>class Animal {
+
+    void eat() {
+
+        System.out.println(
+            "Eating"
+        );
+    }
+}
+
+
+class Dog extends Animal {
+
+    void bark() {
+
+        System.out.println(
+            "Barking"
+        );
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 49 -->
+            <li>
+                <h2>super Keyword</h2>
+
+                <pre class="language-java"><code>class Person {
+
+    String name;
+
+
+    Person(String name) {
+
+        this.name = name;
+    }
+}
+
+
+class Student extends Person {
+
+    Student(String name) {
+
+        super(name);
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 50 -->
+            <li>
+                <h2>Method Overriding</h2>
+
+                <pre class="language-java"><code>class Animal {
+
+    void sound() {
+
+        System.out.println(
+            "Animal sound"
+        );
+    }
+}
+
+
+class Dog extends Animal {
+
+    @Override
+    void sound() {
+
+        System.out.println(
+            "Bark"
+        );
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 51 -->
+            <li>
+                <h2>Runtime Polymorphism</h2>
+
+                <pre class="language-java"><code>Animal animal =
+    new Dog();
+
+animal.sound();</code></pre>
+            </li>
+
+
+            <!-- 52 -->
+            <li>
+                <h2>Abstract Class</h2>
+
+                <pre class="language-java"><code>abstract class Shape {
+
+    abstract void draw();
+
+
+    void message() {
+
+        System.out.println(
+            "Shape"
+        );
+    }
+}
+
+
+class Circle extends Shape {
+
+    @Override
+    void draw() {
+
+        System.out.println(
+            "Circle"
+        );
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 53 -->
+            <li>
+                <h2>Interface</h2>
+
+                <pre class="language-java"><code>interface Animal {
+
+    void sound();
+}
+
+
+class Dog implements Animal {
+
+    @Override
+    public void sound() {
+
+        System.out.println(
+            "Bark"
+        );
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 54 -->
+            <li>
+                <h2>Multiple Interfaces</h2>
+
+                <pre class="language-java"><code>interface Camera {
+
+    void takePhoto();
+}
+
+
+interface MusicPlayer {
+
+    void playMusic();
+}
+
+
+class Phone
+    implements Camera, MusicPlayer {
+
+    public void takePhoto() {
+
+        System.out.println(
+            "Photo taken"
+        );
+    }
+
+
+    public void playMusic() {
+
+        System.out.println(
+            "Playing music"
+        );
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 55 -->
+            <li>
+                <h2>static Keyword</h2>
+
+                <pre class="language-java"><code>class Counter {
+
+    static int count = 0;
+
+
+    Counter() {
+
+        count++;
+    }
+}
+
+
+new Counter();
+
+new Counter();
+
+System.out.println(
+    Counter.count
+);</code></pre>
+            </li>
+
+
+            <!-- 56 -->
+            <li>
+                <h2>final Keyword</h2>
+
+                <pre class="language-java"><code>final int MAX = 100;
+
+
+final class Example {
+
+}
+
+
+// Final method cannot
+// be overridden
+
+class Parent {
+
+    final void show() {
+
+        System.out.println(
+            "Hello"
+        );
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 57 -->
+            <li>
+                <h2>Enum</h2>
+
+                <pre class="language-java"><code>enum Day {
+
+    MONDAY,
+
+    TUESDAY,
+
+    WEDNESDAY
+}
+
+
+Day today =
+    Day.MONDAY;
+
+System.out.println(today);</code></pre>
+            </li>
+
+
+            <!-- 58 -->
+            <li>
+                <h2>Package</h2>
+
+                <pre class="language-java"><code>package com.codewithrohit;
+
+public class Main {
+
+    public static void main(
+        String[] args
+    ) {
+
+        System.out.println(
+            "Hello"
+        );
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 59 -->
+            <li>
+                <h2>Import</h2>
+
+                <pre class="language-java"><code>import java.util.Scanner;
+
+import java.util.ArrayList;
+
+import java.util.HashMap;</code></pre>
+            </li>
+
+
+            <!-- 60 -->
+            <li>
+                <h2>Exception Handling</h2>
+
+                <pre class="language-java"><code>try {
+
+    int result =
+        10 / 0;
+
+} catch (
+    ArithmeticException e
+) {
+
+    System.out.println(
+        e.getMessage()
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 61 -->
+            <li>
+                <h2>try / catch / finally</h2>
+
+                <pre class="language-java"><code>try {
+
+    System.out.println(
+        10 / 2
+    );
+
+} catch (Exception e) {
+
+    System.out.println(
+        "Error"
+    );
+
+} finally {
+
+    System.out.println(
+        "Always runs"
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 62 -->
+            <li>
+                <h2>Multiple Catch Blocks</h2>
+
+                <pre class="language-java"><code>try {
+
+    int[] numbers = {
+        10,
+        20
+    };
+
+    System.out.println(
+        numbers[5]
+    );
+
+} catch (
+    ArrayIndexOutOfBoundsException e
+) {
+
+    System.out.println(
+        "Invalid index"
+    );
+
+} catch (Exception e) {
+
+    System.out.println(
+        "Something went wrong"
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 63 -->
+            <li>
+                <h2>throw Keyword</h2>
+
+                <pre class="language-java"><code>static void checkAge(
+    int age
+) {
+
+    if (age &lt; 18) {
+
+        throw new
+            IllegalArgumentException(
+                "Age must be 18+"
+            );
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 64 -->
+            <li>
+                <h2>throws Keyword</h2>
+
+                <pre class="language-java"><code>import java.io.IOException;
+
+static void test()
+    throws IOException {
+
+    throw new IOException(
+        "File error"
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 65 -->
+            <li>
+                <h2>ArrayList</h2>
+
+                <pre class="language-java"><code>import java.util.ArrayList;
+
+ArrayList&lt;String&gt; languages =
+    new ArrayList&lt;&gt;();
+
+languages.add("Java");
+
+languages.add("Python");
+
+languages.add("C++");
+
+System.out.println(
+    languages
+);</code></pre>
+            </li>
+
+
+            <!-- 66 -->
+            <li>
+                <h2>ArrayList Methods</h2>
+
+                <pre class="language-java"><code>languages.add(
+    "JavaScript"
+);
+
+languages.get(0);
+
+languages.set(
+    0,
+    "Java"
+);
+
+languages.remove(1);
+
+languages.size();
+
+languages.contains(
+    "Java"
+);
+
+languages.clear();
+
+languages.isEmpty();</code></pre>
+            </li>
+
+
+            <!-- 67 -->
+            <li>
+                <h2>Loop Through ArrayList</h2>
+
+                <pre class="language-java"><code>ArrayList&lt;String&gt; languages =
+    new ArrayList&lt;&gt;();
+
+languages.add("Java");
+
+languages.add("Python");
+
+
+for (
+    String language : languages
+) {
+
+    System.out.println(
+        language
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 68 -->
+            <li>
+                <h2>LinkedList</h2>
+
+                <pre class="language-java"><code>import java.util.LinkedList;
+
+LinkedList&lt;Integer&gt; numbers =
+    new LinkedList&lt;&gt;();
+
+numbers.add(20);
+
+numbers.addFirst(10);
+
+numbers.addLast(30);
+
+System.out.println(
+    numbers
+);</code></pre>
+            </li>
+
+
+            <!-- 69 -->
+            <li>
+                <h2>HashSet</h2>
+
+                <pre class="language-java"><code>import java.util.HashSet;
+
+HashSet&lt;Integer&gt; numbers =
+    new HashSet&lt;&gt;();
+
+numbers.add(10);
+
+numbers.add(20);
+
+numbers.add(10);
+
+System.out.println(
+    numbers
+);</code></pre>
+            </li>
+
+
+            <!-- 70 -->
+            <li>
+                <h2>TreeSet</h2>
+
+                <pre class="language-java"><code>import java.util.TreeSet;
+
+TreeSet&lt;Integer&gt; numbers =
+    new TreeSet&lt;&gt;();
+
+numbers.add(30);
+
+numbers.add(10);
+
+numbers.add(20);
+
+System.out.println(
+    numbers
+);</code></pre>
+            </li>
+
+
+            <!-- 71 -->
+            <li>
+                <h2>HashMap</h2>
+
+                <pre class="language-java"><code>import java.util.HashMap;
+
+HashMap&lt;String, Integer&gt; marks =
+    new HashMap&lt;&gt;();
+
+marks.put(
+    "Rohit",
+    90
+);
+
+marks.put(
+    "Aman",
+    85
+);
+
+System.out.println(
+    marks.get("Rohit")
+);</code></pre>
+            </li>
+
+
+            <!-- 72 -->
+            <li>
+                <h2>HashMap Methods</h2>
+
+                <pre class="language-java"><code>marks.put(
+    "Rohit",
+    95
+);
+
+marks.get("Rohit");
+
+marks.containsKey(
+    "Rohit"
+);
+
+marks.containsValue(
+    95
+);
+
+marks.remove(
+    "Aman"
+);
+
+marks.size();
+
+marks.clear();</code></pre>
+            </li>
+
+
+            <!-- 73 -->
+            <li>
+                <h2>Loop Through HashMap</h2>
+
+                <pre class="language-java"><code>for (
+    Map.Entry&lt;String, Integer&gt;
+    entry : marks.entrySet()
+) {
+
+    System.out.println(
+        entry.getKey()
+        + " "
+        + entry.getValue()
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 74 -->
+            <li>
+                <h2>TreeMap</h2>
+
+                <pre class="language-java"><code>import java.util.TreeMap;
+
+TreeMap&lt;Integer, String&gt; students =
+    new TreeMap&lt;&gt;();
+
+students.put(
+    3,
+    "Rohit"
+);
+
+students.put(
+    1,
+    "Aman"
+);
+
+students.put(
+    2,
+    "Raj"
+);
+
+System.out.println(
+    students
+);</code></pre>
+            </li>
+
+
+            <!-- 75 -->
+            <li>
+                <h2>Stack</h2>
+
+                <pre class="language-java"><code>import java.util.Stack;
+
+Stack&lt;Integer&gt; stack =
+    new Stack&lt;&gt;();
+
+stack.push(10);
+
+stack.push(20);
+
+stack.push(30);
+
+System.out.println(
+    stack.peek()
+);
+
+stack.pop();
+
+System.out.println(
+    stack
+);</code></pre>
+            </li>
+
+
+            <!-- 76 -->
+            <li>
+                <h2>Queue</h2>
+
+                <pre class="language-java"><code>import java.util.Queue;
+import java.util.LinkedList;
+
+Queue&lt;Integer&gt; queue =
+    new LinkedList&lt;&gt;();
+
+queue.offer(10);
+
+queue.offer(20);
+
+queue.offer(30);
+
+System.out.println(
+    queue.peek()
+);
+
+queue.poll();</code></pre>
+            </li>
+
+
+            <!-- 77 -->
+            <li>
+                <h2>PriorityQueue</h2>
+
+                <pre class="language-java"><code>import java.util.PriorityQueue;
+
+PriorityQueue&lt;Integer&gt; pq =
+    new PriorityQueue&lt;&gt;();
+
+pq.offer(30);
+
+pq.offer(10);
+
+pq.offer(20);
+
+System.out.println(
+    pq.peek()
+);
+
+// 10</code></pre>
+            </li>
+
+
+            <!-- 78 -->
+            <li>
+                <h2>Max PriorityQueue</h2>
+
+                <pre class="language-java"><code>PriorityQueue&lt;Integer&gt; pq =
+    new PriorityQueue&lt;&gt;(
+        Collections.reverseOrder()
+    );
+
+pq.offer(10);
+
+pq.offer(50);
+
+pq.offer(20);
+
+System.out.println(
+    pq.peek()
+);
+
+// 50</code></pre>
+            </li>
+
+
+            <!-- 79 -->
+            <li>
+                <h2>Deque</h2>
+
+                <pre class="language-java"><code>import java.util.ArrayDeque;
+import java.util.Deque;
+
+Deque&lt;Integer&gt; deque =
+    new ArrayDeque&lt;&gt;();
+
+deque.addFirst(10);
+
+deque.addLast(20);
+
+deque.addLast(30);
+
+System.out.println(
+    deque.getFirst()
+);
+
+System.out.println(
+    deque.getLast()
+);</code></pre>
+            </li>
+
+
+            <!-- 80 -->
+            <li>
+                <h2>Collections.sort()</h2>
+
+                <pre class="language-java"><code>import java.util.Collections;
+
+ArrayList&lt;Integer&gt; numbers =
+    new ArrayList&lt;&gt;();
+
+numbers.add(40);
+
+numbers.add(10);
+
+numbers.add(30);
+
+numbers.add(20);
+
+Collections.sort(
+    numbers
+);
+
+System.out.println(
+    numbers
+);</code></pre>
+            </li>
+
+
+            <!-- 81 -->
+            <li>
+                <h2>Descending Sort</h2>
+
+                <pre class="language-java"><code>Collections.sort(
+    numbers,
+    Collections.reverseOrder()
+);</code></pre>
+            </li>
+
+
+            <!-- 82 -->
+            <li>
+                <h2>Lambda Expression</h2>
+
+                <pre class="language-java"><code>ArrayList&lt;Integer&gt; numbers =
+    new ArrayList&lt;&gt;();
+
+numbers.add(10);
+
+numbers.add(20);
+
+numbers.add(30);
+
+
+numbers.forEach(
+    number -&gt;
+        System.out.println(
+            number
+        )
+);</code></pre>
+            </li>
+
+
+            <!-- 83 -->
+            <li>
+                <h2>Functional Interface</h2>
+
+                <pre class="language-java"><code>@FunctionalInterface
+
+interface Calculator {
+
+    int calculate(
+        int a,
+        int b
+    );
+}
+
+
+Calculator add =
+    (a, b) -&gt; a + b;
+
+
+System.out.println(
+    add.calculate(
+        10,
+        20
+    )
+);</code></pre>
+            </li>
+
+
+            <!-- 84 -->
+            <li>
+                <h2>Generics</h2>
+
+                <pre class="language-java"><code>class Box&lt;T&gt; {
+
+    private T value;
+
+
+    void set(T value) {
+
+        this.value = value;
+    }
+
+
+    T get() {
+
+        return value;
+    }
+}
+
+
+Box&lt;String&gt; box =
+    new Box&lt;&gt;();
+
+box.set("Java");
+
+System.out.println(
+    box.get()
+);</code></pre>
+            </li>
+
+
+            <!-- 85 -->
+            <li>
+                <h2>Stream API</h2>
+
+                <pre class="language-java"><code>import java.util.List;
+
+List&lt;Integer&gt; numbers =
+    List.of(
+        1,
+        2,
+        3,
+        4,
+        5
+    );
+
+
+numbers.stream()
+    .forEach(
+        System.out::println
+    );</code></pre>
+            </li>
+
+
+            <!-- 86 -->
+            <li>
+                <h2>Stream filter()</h2>
+
+                <pre class="language-java"><code>numbers.stream()
+
+    .filter(
+        number -&gt;
+            number % 2 == 0
+    )
+
+    .forEach(
+        System.out::println
+    );</code></pre>
+            </li>
+
+
+            <!-- 87 -->
+            <li>
+                <h2>Stream map()</h2>
+
+                <pre class="language-java"><code>numbers.stream()
+
+    .map(
+        number -&gt;
+            number * number
+    )
+
+    .forEach(
+        System.out::println
+    );</code></pre>
+            </li>
+
+
+            <!-- 88 -->
+            <li>
+                <h2>Stream reduce()</h2>
+
+                <pre class="language-java"><code>int sum =
+    numbers.stream()
+
+        .reduce(
+            0,
+            Integer::sum
+        );
+
+
+System.out.println(sum);</code></pre>
+            </li>
+
+
+            <!-- 89 -->
+            <li>
+                <h2>File Writing</h2>
+
+                <pre class="language-java"><code>import java.io.FileWriter;
+import java.io.IOException;
+
+public class Main {
+
+    public static void main(
+        String[] args
+    ) {
+
+        try (
+            FileWriter writer =
+                new FileWriter(
+                    "data.txt"
+                )
+        ) {
+
+            writer.write(
+                "Hello Java"
+            );
+
+        } catch (
+            IOException e
+        ) {
+
+            System.out.println(
+                e.getMessage()
+            );
+        }
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 90 -->
+            <li>
+                <h2>File Reading</h2>
+
+                <pre class="language-java"><code>import java.io.File;
+import java.util.Scanner;
+
+File file =
+    new File(
+        "data.txt"
+    );
+
+try (
+    Scanner reader =
+        new Scanner(file)
+) {
+
+    while (
+        reader.hasNextLine()
+    ) {
+
+        System.out.println(
+            reader.nextLine()
+        );
+    }
+
+} catch (Exception e) {
+
+    System.out.println(
+        e.getMessage()
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 91 -->
+            <li>
+                <h2>Create Thread</h2>
+
+                <pre class="language-java"><code>class MyThread
+    extends Thread {
+
+    @Override
+    public void run() {
+
+        System.out.println(
+            "Thread running"
+        );
+    }
+}
+
+
+MyThread thread =
+    new MyThread();
+
+thread.start();</code></pre>
+            </li>
+
+
+            <!-- 92 -->
+            <li>
+                <h2>Runnable Interface</h2>
+
+                <pre class="language-java"><code>class Task
+    implements Runnable {
+
+    @Override
+    public void run() {
+
+        System.out.println(
+            "Task running"
+        );
+    }
+}
+
+
+Thread thread =
+    new Thread(
+        new Task()
+    );
+
+thread.start();</code></pre>
+            </li>
+
+
+            <!-- 93 -->
+            <li>
+                <h2>Thread with Lambda</h2>
+
+                <pre class="language-java"><code>Thread thread =
+    new Thread(
+        () -&gt; {
+
+            System.out.println(
+                "Thread running"
+            );
+        }
+    );
+
+thread.start();</code></pre>
+            </li>
+
+
+            <!-- 94 -->
+            <li>
+                <h2>synchronized</h2>
+
+                <pre class="language-java"><code>class Counter {
+
+    private int count = 0;
+
+
+    public synchronized
+    void increment() {
+
+        count++;
+    }
+
+
+    public int getCount() {
+
+        return count;
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 95 -->
+            <li>
+                <h2>Record</h2>
+
+                <pre class="language-java"><code>record Student(
+    String name,
+    int age
+) {}
+
+
+Student student =
+    new Student(
+        "Rohit",
+        21
+    );
+
+System.out.println(
+    student.name()
+);</code></pre>
+            </li>
+
+
+            <!-- 96 -->
+            <li>
+                <h2>Optional</h2>
+
+                <pre class="language-java"><code>import java.util.Optional;
+
+Optional&lt;String&gt; name =
+    Optional.of(
+        "Rohit"
+    );
+
+System.out.println(
+    name.orElse(
+        "Guest"
+    )
+);</code></pre>
+            </li>
+
+
+            <!-- 97 -->
+            <li>
+                <h2>Java Quick Revision</h2>
+
+                <pre class="language-java"><code>import java.util.*;
+
+public class Main {
+
+    static int add(
+        int a,
+        int b
+    ) {
+
+        return a + b;
+    }
+
+
+    public static void main(
+        String[] args
+    ) {
+
+        // Variable
+
+        int age = 21;
+
+
+        // String
+
+        String name =
+            "Rohit";
+
+
+        // Array
+
+        int[] numbers = {
+            10,
+            20,
+            30
+        };
+
+
+        // Condition
+
+        if (age &gt;= 18) {
+
+            System.out.println(
+                "Adult"
+            );
+        }
+
+
+        // Loop
+
+        for (
+            int number : numbers
+        ) {
+
+            System.out.println(
+                number
+            );
+        }
+
+
+        // Function
+
+        int result =
+            add(10, 20);
+
+
+        // ArrayList
+
+        ArrayList&lt;String&gt;
+            languages =
+                new ArrayList&lt;&gt;();
+
+        languages.add(
+            "Java"
+        );
+
+
+        // HashMap
+
+        HashMap&lt;String, Integer&gt;
+            marks =
+                new HashMap&lt;&gt;();
+
+        marks.put(
+            "Rohit",
+            90
+        );
+
+
+        System.out.println(
+            result
+        );
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 98 -->
+            <li>
+                <h2>Java Collections Quick Reference</h2>
+
+                <pre class="language-java"><code>ArrayList&lt;Integer&gt; list;
+
+LinkedList&lt;Integer&gt; linkedList;
+
+HashSet&lt;Integer&gt; set;
+
+TreeSet&lt;Integer&gt; treeSet;
+
+HashMap&lt;String, Integer&gt; map;
+
+TreeMap&lt;String, Integer&gt; treeMap;
+
+Stack&lt;Integer&gt; stack;
+
+Queue&lt;Integer&gt; queue;
+
+Deque&lt;Integer&gt; deque;
+
+PriorityQueue&lt;Integer&gt; priorityQueue;</code></pre>
+            </li>
+
+
+            <!-- 99 -->
+            <li>
+                <h2>Java Learning Roadmap</h2>
+
+                <pre class="language-java"><code>1. Java Syntax
+
+2. Variables
+
+3. Data Types
+
+4. Operators
+
+5. Input / Output
+
+6. Conditions
+
+7. Loops
+
+8. Arrays
+
+9. Strings
+
+10. Methods
+
+11. Recursion
+
+12. Classes & Objects
+
+13. Constructors
+
+14. Encapsulation
+
+15. Inheritance
+
+16. Polymorphism
+
+17. Abstraction
+
+18. Interfaces
+
+19. Packages
+
+20. Exception Handling
+
+21. Collections Framework
+
+22. ArrayList
+
+23. LinkedList
+
+24. HashSet / TreeSet
+
+25. HashMap / TreeMap
+
+26. Stack
+
+27. Queue
+
+28. PriorityQueue
+
+29. Generics
+
+30. Lambda Expressions
+
+31. Stream API
+
+32. File Handling
+
+33. Multithreading
+
+34. Records
+
+35. Optional
+
+36. JDBC
+
+37. Maven / Gradle
+
+38. JUnit
+
+39. Spring Boot
+
+40. DSA with Java
+
+41. Projects</code></pre>
+            </li>
+
+        </ol>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <p>
+            © 2026 CodeWithRohit |
+            Java Programming Cheat Sheet
+        </p>
+
+    </footer>
+
+
+    <!-- Prism -->
+    <script src="../prism/prism.js"></script>
+
+    <!-- Common JS -->
+    <script src="../cheatsheet.js"></script>
+
+</body>
+
+</html>

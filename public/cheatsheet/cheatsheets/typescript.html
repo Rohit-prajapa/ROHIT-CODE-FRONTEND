@@ -1,0 +1,1988 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Complete TypeScript Cheat Sheet by CodeWithRohit"
+    >
+
+    <title>TypeScript Cheat Sheet | CodeWithRohit</title>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="../cheatsheet.css">
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="../prism/prism.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="cheat-navbar">
+
+        <a href="../index.html" class="brand">
+            &lt;/&gt; CodeWithRohit
+        </a>
+
+        <div class="cheat-title">
+            TypeScript Cheat Sheet
+        </div>
+
+        <a href="../index.html" class="home-btn">
+            ← Home
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="cheat-hero">
+
+        <h1>TypeScript Cheat Sheet</h1>
+
+        <p>
+            Complete TypeScript quick reference covering types,
+            functions, objects, interfaces, classes, generics,
+            modules, DOM and modern TypeScript development.
+        </p>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <ol>
+
+            <!-- 1 -->
+            <li>
+                <h2>What is TypeScript?</h2>
+
+                <pre class="language-text"><code>TypeScript is JavaScript with static typing.
+
+TypeScript
+    ↓
+Compiler
+    ↓
+JavaScript
+    ↓
+Browser / Node.js
+
+Main Benefits:
+
+Type Safety
+Better Autocomplete
+Early Error Detection
+Better Code Maintenance
+Interfaces
+Generics
+Advanced Types</code></pre>
+            </li>
+
+
+            <!-- 2 -->
+            <li>
+                <h2>Install TypeScript</h2>
+
+                <pre class="language-bash"><code>npm install -g typescript</code></pre>
+            </li>
+
+
+            <!-- 3 -->
+            <li>
+                <h2>Check TypeScript Version</h2>
+
+                <pre class="language-bash"><code>tsc --version</code></pre>
+            </li>
+
+
+            <!-- 4 -->
+            <li>
+                <h2>Create TypeScript File</h2>
+
+                <pre class="language-text"><code>app.ts</code></pre>
+
+                <pre class="language-typescript"><code>console.log("Hello TypeScript");</code></pre>
+            </li>
+
+
+            <!-- 5 -->
+            <li>
+                <h2>Compile TypeScript</h2>
+
+                <pre class="language-bash"><code>tsc app.ts</code></pre>
+
+                <pre class="language-text"><code>app.ts
+   ↓
+tsc
+   ↓
+app.js</code></pre>
+            </li>
+
+
+            <!-- 6 -->
+            <li>
+                <h2>Initialize TypeScript Project</h2>
+
+                <pre class="language-bash"><code>tsc --init</code></pre>
+            </li>
+
+
+            <!-- 7 -->
+            <li>
+                <h2>Basic Variable Types</h2>
+
+                <pre class="language-typescript"><code>let username: string = "Rohit";
+
+let age: number = 21;
+
+let isStudent: boolean = true;</code></pre>
+            </li>
+
+
+            <!-- 8 -->
+            <li>
+                <h2>String</h2>
+
+                <pre class="language-typescript"><code>let firstName: string = "Rohit";
+
+let language: string = "TypeScript";
+
+console.log(firstName);</code></pre>
+            </li>
+
+
+            <!-- 9 -->
+            <li>
+                <h2>Number</h2>
+
+                <pre class="language-typescript"><code>let age: number = 21;
+
+let price: number = 499;
+
+let percentage: number = 89.5;</code></pre>
+            </li>
+
+
+            <!-- 10 -->
+            <li>
+                <h2>Boolean</h2>
+
+                <pre class="language-typescript"><code>let isLoggedIn: boolean = true;
+
+let isAdmin: boolean = false;</code></pre>
+            </li>
+
+
+            <!-- 11 -->
+            <li>
+                <h2>Type Inference</h2>
+
+                <pre class="language-typescript"><code>let name = "Rohit";
+
+let age = 21;
+
+let active = true;</code></pre>
+
+                <pre class="language-text"><code>TypeScript automatically detects:
+
+name   → string
+age    → number
+active → boolean</code></pre>
+            </li>
+
+
+            <!-- 12 -->
+            <li>
+                <h2>Any Type</h2>
+
+                <pre class="language-typescript"><code>let value: any;
+
+value = "Hello";
+
+value = 100;
+
+value = true;</code></pre>
+
+                <p>
+                    Use <code>any</code> carefully because it disables
+                    most type checking.
+                </p>
+            </li>
+
+
+            <!-- 13 -->
+            <li>
+                <h2>Unknown Type</h2>
+
+                <pre class="language-typescript"><code>let value: unknown;
+
+value = "Hello";
+value = 100;
+
+if (typeof value === "string") {
+
+    console.log(value.toUpperCase());
+
+}</code></pre>
+            </li>
+
+
+            <!-- 14 -->
+            <li>
+                <h2>Null and Undefined</h2>
+
+                <pre class="language-typescript"><code>let data: null = null;
+
+let result: undefined = undefined;</code></pre>
+            </li>
+
+
+            <!-- 15 -->
+            <li>
+                <h2>Array</h2>
+
+                <pre class="language-typescript"><code>let numbers: number[] = [
+    10,
+    20,
+    30
+];
+
+let languages: string[] = [
+    "HTML",
+    "CSS",
+    "JavaScript"
+];</code></pre>
+            </li>
+
+
+            <!-- 16 -->
+            <li>
+                <h2>Generic Array Syntax</h2>
+
+                <pre class="language-typescript"><code>let numbers: Array&lt;number&gt; = [
+    1,
+    2,
+    3
+];
+
+let names: Array&lt;string&gt; = [
+    "Rohit",
+    "Aman"
+];</code></pre>
+            </li>
+
+
+            <!-- 17 -->
+            <li>
+                <h2>Mixed Array Using Union</h2>
+
+                <pre class="language-typescript"><code>let data: (string | number)[] = [
+
+    "Rohit",
+    21,
+    "TypeScript",
+    100
+
+];</code></pre>
+            </li>
+
+
+            <!-- 18 -->
+            <li>
+                <h2>Tuple</h2>
+
+                <pre class="language-typescript"><code>let user: [string, number];
+
+user = [
+    "Rohit",
+    21
+];</code></pre>
+            </li>
+
+
+            <!-- 19 -->
+            <li>
+                <h2>Readonly Tuple</h2>
+
+                <pre class="language-typescript"><code>const user: readonly [string, number] = [
+
+    "Rohit",
+    21
+
+];</code></pre>
+            </li>
+
+
+            <!-- 20 -->
+            <li>
+                <h2>Object</h2>
+
+                <pre class="language-typescript"><code>let user: {
+
+    name: string;
+    age: number;
+    isStudent: boolean;
+
+} = {
+
+    name: "Rohit",
+    age: 21,
+    isStudent: true
+
+};</code></pre>
+            </li>
+
+
+            <!-- 21 -->
+            <li>
+                <h2>Optional Property</h2>
+
+                <pre class="language-typescript"><code>let user: {
+
+    name: string;
+    age?: number;
+
+};
+
+user = {
+    name: "Rohit"
+};</code></pre>
+            </li>
+
+
+            <!-- 22 -->
+            <li>
+                <h2>Readonly Property</h2>
+
+                <pre class="language-typescript"><code>let user: {
+
+    readonly id: number;
+    name: string;
+
+} = {
+
+    id: 101,
+    name: "Rohit"
+
+};</code></pre>
+            </li>
+
+
+            <!-- 23 -->
+            <li>
+                <h2>Union Type</h2>
+
+                <pre class="language-typescript"><code>let id: number | string;
+
+id = 101;
+
+id = "USER101";</code></pre>
+            </li>
+
+
+            <!-- 24 -->
+            <li>
+                <h2>Literal Types</h2>
+
+                <pre class="language-typescript"><code>let direction:
+
+    "left" |
+    "right" |
+    "up" |
+    "down";
+
+
+direction = "left";</code></pre>
+            </li>
+
+
+            <!-- 25 -->
+            <li>
+                <h2>Type Alias</h2>
+
+                <pre class="language-typescript"><code>type User = {
+
+    name: string;
+    age: number;
+    email: string;
+
+};
+
+
+const user: User = {
+
+    name: "Rohit",
+    age: 21,
+    email: "rohit@example.com"
+
+};</code></pre>
+            </li>
+
+
+            <!-- 26 -->
+            <li>
+                <h2>Union Type Alias</h2>
+
+                <pre class="language-typescript"><code>type ID = string | number;
+
+
+let userId: ID;
+
+userId = 101;
+
+userId = "ABC101";</code></pre>
+            </li>
+
+
+            <!-- 27 -->
+            <li>
+                <h2>Interface</h2>
+
+                <pre class="language-typescript"><code>interface User {
+
+    name: string;
+    age: number;
+    email: string;
+
+}
+
+
+const user: User = {
+
+    name: "Rohit",
+    age: 21,
+    email: "rohit@example.com"
+
+};</code></pre>
+            </li>
+
+
+            <!-- 28 -->
+            <li>
+                <h2>Optional Interface Property</h2>
+
+                <pre class="language-typescript"><code>interface User {
+
+    name: string;
+
+    age?: number;
+
+}</code></pre>
+            </li>
+
+
+            <!-- 29 -->
+            <li>
+                <h2>Readonly Interface Property</h2>
+
+                <pre class="language-typescript"><code>interface User {
+
+    readonly id: number;
+
+    name: string;
+
+}</code></pre>
+            </li>
+
+
+            <!-- 30 -->
+            <li>
+                <h2>Extending Interface</h2>
+
+                <pre class="language-typescript"><code>interface Person {
+
+    name: string;
+    age: number;
+
+}
+
+
+interface Student extends Person {
+
+    course: string;
+
+}
+
+
+const student: Student = {
+
+    name: "Rohit",
+    age: 21,
+    course: "B.Tech"
+
+};</code></pre>
+            </li>
+
+
+            <!-- 31 -->
+            <li>
+                <h2>Basic Function</h2>
+
+                <pre class="language-typescript"><code>function greet(name: string): string {
+
+    return `Hello ${name}`;
+
+}
+
+
+console.log(
+    greet("Rohit")
+);</code></pre>
+            </li>
+
+
+            <!-- 32 -->
+            <li>
+                <h2>Number Function</h2>
+
+                <pre class="language-typescript"><code>function add(
+    a: number,
+    b: number
+): number {
+
+    return a + b;
+
+}
+
+
+console.log(
+    add(10, 20)
+);</code></pre>
+            </li>
+
+
+            <!-- 33 -->
+            <li>
+                <h2>Void Function</h2>
+
+                <pre class="language-typescript"><code>function printMessage(
+    message: string
+): void {
+
+    console.log(message);
+
+}</code></pre>
+            </li>
+
+
+            <!-- 34 -->
+            <li>
+                <h2>Optional Function Parameter</h2>
+
+                <pre class="language-typescript"><code>function greet(
+    name: string,
+    age?: number
+): void {
+
+    console.log(name, age);
+
+}
+
+
+greet("Rohit");
+
+greet("Rohit", 21);</code></pre>
+            </li>
+
+
+            <!-- 35 -->
+            <li>
+                <h2>Default Parameter</h2>
+
+                <pre class="language-typescript"><code>function greet(
+    name: string = "Guest"
+): string {
+
+    return `Hello ${name}`;
+
+}</code></pre>
+            </li>
+
+
+            <!-- 36 -->
+            <li>
+                <h2>Rest Parameters</h2>
+
+                <pre class="language-typescript"><code>function total(
+    ...numbers: number[]
+): number {
+
+    return numbers.reduce(
+        (sum, num) => sum + num,
+        0
+    );
+
+}
+
+
+console.log(
+    total(10, 20, 30)
+);</code></pre>
+            </li>
+
+
+            <!-- 37 -->
+            <li>
+                <h2>Arrow Function</h2>
+
+                <pre class="language-typescript"><code>const add = (
+    a: number,
+    b: number
+): number => {
+
+    return a + b;
+
+};</code></pre>
+            </li>
+
+
+            <!-- 38 -->
+            <li>
+                <h2>Function Type</h2>
+
+                <pre class="language-typescript"><code>let calculate:
+
+    (a: number, b: number) => number;
+
+
+calculate = (a, b) => {
+
+    return a + b;
+
+};</code></pre>
+            </li>
+
+
+            <!-- 39 -->
+            <li>
+                <h2>Never Type</h2>
+
+                <pre class="language-typescript"><code>function throwError(
+    message: string
+): never {
+
+    throw new Error(message);
+
+}</code></pre>
+            </li>
+
+
+            <!-- 40 -->
+            <li>
+                <h2>Enum</h2>
+
+                <pre class="language-typescript"><code>enum Direction {
+
+    Up,
+    Down,
+    Left,
+    Right
+
+}
+
+
+let move: Direction =
+    Direction.Up;</code></pre>
+            </li>
+
+
+            <!-- 41 -->
+            <li>
+                <h2>String Enum</h2>
+
+                <pre class="language-typescript"><code>enum Role {
+
+    Admin = "ADMIN",
+
+    User = "USER",
+
+    Guest = "GUEST"
+
+}
+
+
+const role: Role =
+    Role.Admin;</code></pre>
+            </li>
+
+
+            <!-- 42 -->
+            <li>
+                <h2>Type Assertion</h2>
+
+                <pre class="language-typescript"><code>let value: unknown = "TypeScript";
+
+
+let length: number =
+
+    (value as string).length;
+
+
+console.log(length);</code></pre>
+            </li>
+
+
+            <!-- 43 -->
+            <li>
+                <h2>Type Narrowing</h2>
+
+                <pre class="language-typescript"><code>function printId(
+    id: string | number
+) {
+
+    if (typeof id === "string") {
+
+        console.log(
+            id.toUpperCase()
+        );
+
+    } else {
+
+        console.log(
+            id.toFixed(2)
+        );
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 44 -->
+            <li>
+                <h2>Class</h2>
+
+                <pre class="language-typescript"><code>class Person {
+
+    name: string;
+
+    age: number;
+
+
+    constructor(
+        name: string,
+        age: number
+    ) {
+
+        this.name = name;
+
+        this.age = age;
+
+    }
+
+
+    greet(): void {
+
+        console.log(
+            `Hello ${this.name}`
+        );
+
+    }
+
+}
+
+
+const person =
+    new Person(
+        "Rohit",
+        21
+    );
+
+
+person.greet();</code></pre>
+            </li>
+
+
+            <!-- 45 -->
+            <li>
+                <h2>Public Property</h2>
+
+                <pre class="language-typescript"><code>class User {
+
+    public name: string;
+
+
+    constructor(name: string) {
+
+        this.name = name;
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 46 -->
+            <li>
+                <h2>Private Property</h2>
+
+                <pre class="language-typescript"><code>class BankAccount {
+
+    private balance: number = 0;
+
+
+    deposit(amount: number): void {
+
+        this.balance += amount;
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 47 -->
+            <li>
+                <h2>Protected Property</h2>
+
+                <pre class="language-typescript"><code>class Person {
+
+    protected name: string;
+
+
+    constructor(name: string) {
+
+        this.name = name;
+
+    }
+
+}
+
+
+class Student extends Person {
+
+    showName(): void {
+
+        console.log(this.name);
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 48 -->
+            <li>
+                <h2>Constructor Shorthand</h2>
+
+                <pre class="language-typescript"><code>class User {
+
+    constructor(
+
+        public name: string,
+
+        public age: number
+
+    ) {}
+
+}
+
+
+const user =
+    new User(
+        "Rohit",
+        21
+    );</code></pre>
+            </li>
+
+
+            <!-- 49 -->
+            <li>
+                <h2>Inheritance</h2>
+
+                <pre class="language-typescript"><code>class Animal {
+
+    move(): void {
+
+        console.log(
+            "Animal moving"
+        );
+
+    }
+
+}
+
+
+class Dog extends Animal {
+
+    bark(): void {
+
+        console.log("Woof!");
+
+    }
+
+}
+
+
+const dog = new Dog();
+
+dog.move();
+
+dog.bark();</code></pre>
+            </li>
+
+
+            <!-- 50 -->
+            <li>
+                <h2>Abstract Class</h2>
+
+                <pre class="language-typescript"><code>abstract class Shape {
+
+    abstract area(): number;
+
+}
+
+
+class Circle extends Shape {
+
+    constructor(
+        public radius: number
+    ) {
+
+        super();
+
+    }
+
+
+    area(): number {
+
+        return Math.PI *
+            this.radius *
+            this.radius;
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 51 -->
+            <li>
+                <h2>Interface with Class</h2>
+
+                <pre class="language-typescript"><code>interface Printable {
+
+    print(): void;
+
+}
+
+
+class Document
+    implements Printable {
+
+    print(): void {
+
+        console.log(
+            "Printing document"
+        );
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 52 -->
+            <li>
+                <h2>Generic Function</h2>
+
+                <pre class="language-typescript"><code>function identity&lt;T&gt;(
+    value: T
+): T {
+
+    return value;
+
+}
+
+
+console.log(
+    identity&lt;string&gt;("Rohit")
+);
+
+
+console.log(
+    identity&lt;number&gt;(100)
+);</code></pre>
+            </li>
+
+
+            <!-- 53 -->
+            <li>
+                <h2>Generic Array Function</h2>
+
+                <pre class="language-typescript"><code>function getFirst&lt;T&gt;(
+    items: T[]
+): T | undefined {
+
+    return items[0];
+
+}
+
+
+const number =
+    getFirst([10, 20, 30]);
+
+
+const language =
+    getFirst([
+        "HTML",
+        "CSS"
+    ]);</code></pre>
+            </li>
+
+
+            <!-- 54 -->
+            <li>
+                <h2>Generic Interface</h2>
+
+                <pre class="language-typescript"><code>interface ApiResponse&lt;T&gt; {
+
+    data: T;
+
+    status: number;
+
+    message: string;
+
+}
+
+
+const response:
+    ApiResponse&lt;string&gt; = {
+
+        data: "Success",
+
+        status: 200,
+
+        message: "Data received"
+
+    };</code></pre>
+            </li>
+
+
+            <!-- 55 -->
+            <li>
+                <h2>Generic Constraint</h2>
+
+                <pre class="language-typescript"><code>function showLength&lt;
+    T extends { length: number }
+&gt;(
+    value: T
+): number {
+
+    return value.length;
+
+}
+
+
+showLength("TypeScript");
+
+showLength([1, 2, 3]);</code></pre>
+            </li>
+
+
+            <!-- 56 -->
+            <li>
+                <h2>Intersection Type</h2>
+
+                <pre class="language-typescript"><code>type Person = {
+
+    name: string;
+
+};
+
+
+type Employee = {
+
+    employeeId: number;
+
+};
+
+
+type Staff =
+    Person & Employee;
+
+
+const staff: Staff = {
+
+    name: "Rohit",
+
+    employeeId: 101
+
+};</code></pre>
+            </li>
+
+
+            <!-- 57 -->
+            <li>
+                <h2>keyof Operator</h2>
+
+                <pre class="language-typescript"><code>interface User {
+
+    name: string;
+
+    age: number;
+
+}
+
+
+type UserKey =
+    keyof User;
+
+
+let key: UserKey =
+    "name";</code></pre>
+            </li>
+
+
+            <!-- 58 -->
+            <li>
+                <h2>typeof Operator</h2>
+
+                <pre class="language-typescript"><code>const user = {
+
+    name: "Rohit",
+
+    age: 21
+
+};
+
+
+type User =
+    typeof user;</code></pre>
+            </li>
+
+
+            <!-- 59 -->
+            <li>
+                <h2>Optional Chaining</h2>
+
+                <pre class="language-typescript"><code>interface User {
+
+    name: string;
+
+    address?: {
+
+        city?: string;
+
+    };
+
+}
+
+
+const city =
+    user.address?.city;</code></pre>
+            </li>
+
+
+            <!-- 60 -->
+            <li>
+                <h2>Nullish Coalescing</h2>
+
+                <pre class="language-typescript"><code>const username =
+    inputName ?? "Guest";</code></pre>
+            </li>
+
+
+            <!-- 61 -->
+            <li>
+                <h2>Readonly Utility Type</h2>
+
+                <pre class="language-typescript"><code>interface User {
+
+    name: string;
+
+    age: number;
+
+}
+
+
+const user:
+    Readonly&lt;User&gt; = {
+
+        name: "Rohit",
+
+        age: 21
+
+    };</code></pre>
+            </li>
+
+
+            <!-- 62 -->
+            <li>
+                <h2>Partial Utility Type</h2>
+
+                <pre class="language-typescript"><code>interface User {
+
+    name: string;
+
+    age: number;
+
+    email: string;
+
+}
+
+
+const update:
+    Partial&lt;User&gt; = {
+
+        name: "Rohit"
+
+    };</code></pre>
+            </li>
+
+
+            <!-- 63 -->
+            <li>
+                <h2>Required Utility Type</h2>
+
+                <pre class="language-typescript"><code>interface User {
+
+    name?: string;
+
+    age?: number;
+
+}
+
+
+type CompleteUser =
+    Required&lt;User&gt;;</code></pre>
+            </li>
+
+
+            <!-- 64 -->
+            <li>
+                <h2>Pick Utility Type</h2>
+
+                <pre class="language-typescript"><code>interface User {
+
+    id: number;
+
+    name: string;
+
+    email: string;
+
+    password: string;
+
+}
+
+
+type PublicUser =
+    Pick&lt;
+        User,
+        "id" | "name" | "email"
+    &gt;;</code></pre>
+            </li>
+
+
+            <!-- 65 -->
+            <li>
+                <h2>Omit Utility Type</h2>
+
+                <pre class="language-typescript"><code>interface User {
+
+    id: number;
+
+    name: string;
+
+    password: string;
+
+}
+
+
+type SafeUser =
+    Omit&lt;
+        User,
+        "password"
+    &gt;;</code></pre>
+            </li>
+
+
+            <!-- 66 -->
+            <li>
+                <h2>Record Utility Type</h2>
+
+                <pre class="language-typescript"><code>type Role =
+    "admin" |
+    "user" |
+    "guest";
+
+
+const permissions:
+    Record&lt;Role, boolean&gt; = {
+
+        admin: true,
+
+        user: true,
+
+        guest: false
+
+    };</code></pre>
+            </li>
+
+
+            <!-- 67 -->
+            <li>
+                <h2>Promise</h2>
+
+                <pre class="language-typescript"><code>const getData = ():
+    Promise&lt;string&gt; => {
+
+    return Promise.resolve(
+        "Data loaded"
+    );
+
+};</code></pre>
+            </li>
+
+
+            <!-- 68 -->
+            <li>
+                <h2>Async / Await</h2>
+
+                <pre class="language-typescript"><code>async function getData():
+    Promise&lt;string&gt; {
+
+    return "Data loaded";
+
+}
+
+
+async function main() {
+
+    const data =
+        await getData();
+
+    console.log(data);
+
+}</code></pre>
+            </li>
+
+
+            <!-- 69 -->
+            <li>
+                <h2>Fetch API with TypeScript</h2>
+
+                <pre class="language-typescript"><code>interface User {
+
+    id: number;
+
+    name: string;
+
+    email: string;
+
+}
+
+
+async function getUsers():
+    Promise&lt;User[]&gt; {
+
+    const response =
+        await fetch(
+            "/api/users"
+        );
+
+
+    const users: User[] =
+        await response.json();
+
+
+    return users;
+
+}</code></pre>
+            </li>
+
+
+            <!-- 70 -->
+            <li>
+                <h2>Export</h2>
+
+                <pre class="language-typescript"><code>export interface User {
+
+    name: string;
+
+    age: number;
+
+}
+
+
+export function greet(
+    name: string
+): string {
+
+    return `Hello ${name}`;
+
+}</code></pre>
+            </li>
+
+
+            <!-- 71 -->
+            <li>
+                <h2>Import</h2>
+
+                <pre class="language-typescript"><code>import {
+    User,
+    greet
+} from "./user";</code></pre>
+            </li>
+
+
+            <!-- 72 -->
+            <li>
+                <h2>Default Export</h2>
+
+                <pre class="language-typescript"><code>export default class User {
+
+    constructor(
+        public name: string
+    ) {}
+
+}</code></pre>
+            </li>
+
+
+            <!-- 73 -->
+            <li>
+                <h2>Default Import</h2>
+
+                <pre class="language-typescript"><code>import User from "./User";</code></pre>
+            </li>
+
+
+            <!-- 74 -->
+            <li>
+                <h2>DOM Element</h2>
+
+                <pre class="language-typescript"><code>const heading =
+    document.querySelector(
+        "h1"
+    );
+
+
+if (heading) {
+
+    heading.textContent =
+        "Hello TypeScript";
+
+}</code></pre>
+            </li>
+
+
+            <!-- 75 -->
+            <li>
+                <h2>HTML Input Element</h2>
+
+                <pre class="language-typescript"><code>const input =
+    document.querySelector(
+        "#username"
+    ) as HTMLInputElement;
+
+
+console.log(
+    input.value
+);</code></pre>
+            </li>
+
+
+            <!-- 76 -->
+            <li>
+                <h2>Button Event</h2>
+
+                <pre class="language-typescript"><code>const button =
+    document.querySelector(
+        "#btn"
+    );
+
+
+button?.addEventListener(
+    "click",
+    () => {
+
+        console.log(
+            "Button clicked"
+        );
+
+    }
+);</code></pre>
+            </li>
+
+
+            <!-- 77 -->
+            <li>
+                <h2>Event Type</h2>
+
+                <pre class="language-typescript"><code>function handleClick(
+    event: MouseEvent
+): void {
+
+    console.log(
+        event.clientX,
+        event.clientY
+    );
+
+}</code></pre>
+            </li>
+
+
+            <!-- 78 -->
+            <li>
+                <h2>React Props with TypeScript</h2>
+
+                <pre class="language-typescript"><code>type Props = {
+
+    name: string;
+
+    age: number;
+
+};
+
+
+function Profile({
+    name,
+    age
+}: Props) {
+
+    return (
+
+        &lt;div&gt;
+
+            &lt;h1&gt;
+                {name}
+            &lt;/h1&gt;
+
+            &lt;p&gt;
+                {age}
+            &lt;/p&gt;
+
+        &lt;/div&gt;
+
+    );
+
+}</code></pre>
+            </li>
+
+
+            <!-- 79 -->
+            <li>
+                <h2>React useState TypeScript</h2>
+
+                <pre class="language-typescript"><code>const [
+    count,
+    setCount
+] = useState&lt;number&gt;(0);</code></pre>
+            </li>
+
+
+            <!-- 80 -->
+            <li>
+                <h2>React Object State</h2>
+
+                <pre class="language-typescript"><code>interface User {
+
+    name: string;
+
+    email: string;
+
+}
+
+
+const [
+    user,
+    setUser
+] = useState&lt;User | null&gt;(
+    null
+);</code></pre>
+            </li>
+
+
+            <!-- 81 -->
+            <li>
+                <h2>Common TypeScript Types</h2>
+
+                <pre class="language-text"><code>string
+
+number
+
+boolean
+
+null
+
+undefined
+
+any
+
+unknown
+
+never
+
+void
+
+object
+
+Array
+
+Tuple
+
+Enum
+
+Union
+
+Intersection
+
+Literal Types
+
+Interface
+
+Type Alias
+
+Generics</code></pre>
+            </li>
+
+
+            <!-- 82 -->
+            <li>
+                <h2>Common Utility Types</h2>
+
+                <pre class="language-typescript"><code>Partial&lt;T&gt;
+
+Required&lt;T&gt;
+
+Readonly&lt;T&gt;
+
+Pick&lt;T, K&gt;
+
+Omit&lt;T, K&gt;
+
+Record&lt;K, T&gt;
+
+Exclude&lt;T, U&gt;
+
+Extract&lt;T, U&gt;
+
+NonNullable&lt;T&gt;
+
+ReturnType&lt;T&gt;</code></pre>
+            </li>
+
+
+            <!-- 83 -->
+            <li>
+                <h2>JavaScript vs TypeScript</h2>
+
+                <pre class="language-text"><code>JavaScript
+
+let age = 21;
+
+
+TypeScript
+
+let age: number = 21;
+
+
+----------------------------
+
+JavaScript
+Dynamic Typing
+
+TypeScript
+Static Type Checking
+
+----------------------------
+
+JavaScript
+Runs directly
+
+TypeScript
+Usually compiled/transformed
+to JavaScript</code></pre>
+            </li>
+
+
+            <!-- 84 -->
+            <li>
+                <h2>Common tsconfig.json</h2>
+
+                <pre class="language-json"><code>{
+    "compilerOptions": {
+
+        "target": "ES2020",
+
+        "module": "commonjs",
+
+        "strict": true,
+
+        "esModuleInterop": true,
+
+        "skipLibCheck": true,
+
+        "forceConsistentCasingInFileNames": true
+
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 85 -->
+            <li>
+                <h2>TypeScript Project Structure</h2>
+
+                <pre class="language-text"><code>typescript-project/
+│
+├── src/
+│   ├── index.ts
+│   │
+│   ├── models/
+│   │   └── User.ts
+│   │
+│   ├── services/
+│   │   └── userService.ts
+│   │
+│   ├── utils/
+│   │   └── helpers.ts
+│   │
+│   └── types/
+│       └── index.ts
+│
+├── dist/
+│
+├── package.json
+│
+└── tsconfig.json</code></pre>
+            </li>
+
+
+            <!-- 86 -->
+            <li>
+                <h2>Useful TypeScript Commands</h2>
+
+                <pre class="language-bash"><code># Check version
+tsc --version
+
+# Compile file
+tsc app.ts
+
+# Create tsconfig
+tsc --init
+
+# Compile project
+tsc
+
+# Watch files
+tsc --watch
+
+# Type check without output
+tsc --noEmit</code></pre>
+            </li>
+
+
+            <!-- 87 -->
+            <li>
+                <h2>TypeScript Quick Revision</h2>
+
+                <pre class="language-typescript"><code>// Variables
+
+let name: string = "Rohit";
+
+let age: number = 21;
+
+let active: boolean = true;
+
+
+// Array
+
+let numbers: number[] = [
+    1,
+    2,
+    3
+];
+
+
+// Union
+
+let id: string | number;
+
+
+// Interface
+
+interface User {
+
+    name: string;
+
+    age: number;
+
+}
+
+
+// Function
+
+function add(
+    a: number,
+    b: number
+): number {
+
+    return a + b;
+
+}
+
+
+// Generic
+
+function identity&lt;T&gt;(
+    value: T
+): T {
+
+    return value;
+
+}
+
+
+// Class
+
+class Person {
+
+    constructor(
+        public name: string
+    ) {}
+
+}</code></pre>
+            </li>
+
+
+            <!-- 88 -->
+            <li>
+                <h2>TypeScript Learning Roadmap</h2>
+
+                <pre class="language-text"><code>1. JavaScript Fundamentals
+
+2. TypeScript Introduction
+
+3. Installation
+
+4. Compiler
+
+5. tsconfig.json
+
+6. Type Inference
+
+7. string
+
+8. number
+
+9. boolean
+
+10. any
+
+11. unknown
+
+12. void
+
+13. never
+
+14. Arrays
+
+15. Tuples
+
+16. Objects
+
+17. Union Types
+
+18. Literal Types
+
+19. Type Aliases
+
+20. Interfaces
+
+21. Optional Properties
+
+22. Readonly Properties
+
+23. Functions
+
+24. Optional Parameters
+
+25. Default Parameters
+
+26. Rest Parameters
+
+27. Enums
+
+28. Type Assertions
+
+29. Type Narrowing
+
+30. Classes
+
+31. Access Modifiers
+
+32. Inheritance
+
+33. Abstract Classes
+
+34. Generics
+
+35. Generic Constraints
+
+36. keyof
+
+37. typeof
+
+38. Utility Types
+
+39. Modules
+
+40. Promises
+
+41. Async / Await
+
+42. Fetch API
+
+43. DOM
+
+44. React + TypeScript
+
+45. Node + TypeScript
+
+46. Express + TypeScript
+
+47. API Types
+
+48. Advanced Types
+
+49. TypeScript Projects
+
+50. Production TypeScript</code></pre>
+            </li>
+
+        </ol>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <p>
+            © 2026 CodeWithRohit |
+            TypeScript Cheat Sheet
+        </p>
+
+    </footer>
+
+
+    <!-- Prism JS -->
+    <script src="../prism/prism.js"></script>
+
+    <!-- Common JS -->
+    <script src="../cheatsheet.js"></script>
+
+</body>
+
+</html>

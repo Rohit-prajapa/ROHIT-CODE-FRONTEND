@@ -1,0 +1,2191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Complete MySQL Cheat Sheet by CodeWithRohit"
+    >
+
+    <title>MySQL Cheat Sheet | CodeWithRohit</title>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="../cheatsheet.css">
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="../prism/prism.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="cheat-navbar">
+
+        <a href="../index.html" class="brand">
+            &lt;/&gt; CodeWithRohit
+        </a>
+
+        <div class="cheat-title">
+            MySQL Cheat Sheet
+        </div>
+
+        <a href="../index.html" class="home-btn">
+            ← Home
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="cheat-hero">
+
+        <h1>MySQL Cheat Sheet</h1>
+
+        <p>
+            Complete MySQL quick reference covering databases,
+            tables, CRUD, filtering, joins, subqueries, constraints,
+            indexes, views, transactions and advanced SQL.
+        </p>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <ol>
+
+            <!-- 1 -->
+            <li>
+                <h2>What is MySQL?</h2>
+
+                <pre class="language-text"><code>MySQL is a Relational Database Management System (RDBMS).
+
+It stores data in tables.
+
+Database
+   ↓
+Tables
+   ↓
+Rows
+   ↓
+Columns
+
+Example:
+
+students
+
+id | name  | age | course
+--------------------------
+1  | Rohit | 21  | CSE
+2  | Aman  | 22  | IT</code></pre>
+            </li>
+
+
+            <!-- 2 -->
+            <li>
+                <h2>Login to MySQL</h2>
+
+                <pre class="language-bash"><code>mysql -u root -p</code></pre>
+            </li>
+
+
+            <!-- 3 -->
+            <li>
+                <h2>Show Databases</h2>
+
+                <pre class="language-sql"><code>SHOW DATABASES;</code></pre>
+            </li>
+
+
+            <!-- 4 -->
+            <li>
+                <h2>Create Database</h2>
+
+                <pre class="language-sql"><code>CREATE DATABASE college;</code></pre>
+            </li>
+
+
+            <!-- 5 -->
+            <li>
+                <h2>Use Database</h2>
+
+                <pre class="language-sql"><code>USE college;</code></pre>
+            </li>
+
+
+            <!-- 6 -->
+            <li>
+                <h2>Current Database</h2>
+
+                <pre class="language-sql"><code>SELECT DATABASE();</code></pre>
+            </li>
+
+
+            <!-- 7 -->
+            <li>
+                <h2>Drop Database</h2>
+
+                <pre class="language-sql"><code>DROP DATABASE college;</code></pre>
+            </li>
+
+
+            <!-- 8 -->
+            <li>
+                <h2>Create Database Safely</h2>
+
+                <pre class="language-sql"><code>CREATE DATABASE IF NOT EXISTS college;</code></pre>
+            </li>
+
+
+            <!-- 9 -->
+            <li>
+                <h2>Create Table</h2>
+
+                <pre class="language-sql"><code>CREATE TABLE students (
+
+    id INT PRIMARY KEY,
+
+    name VARCHAR(100),
+
+    age INT,
+
+    course VARCHAR(50)
+
+);</code></pre>
+            </li>
+
+
+            <!-- 10 -->
+            <li>
+                <h2>Show Tables</h2>
+
+                <pre class="language-sql"><code>SHOW TABLES;</code></pre>
+            </li>
+
+
+            <!-- 11 -->
+            <li>
+                <h2>Describe Table</h2>
+
+                <pre class="language-sql"><code>DESCRIBE students;</code></pre>
+
+                <pre class="language-sql"><code>DESC students;</code></pre>
+            </li>
+
+
+            <!-- 12 -->
+            <li>
+                <h2>Drop Table</h2>
+
+                <pre class="language-sql"><code>DROP TABLE students;</code></pre>
+            </li>
+
+
+            <!-- 13 -->
+            <li>
+                <h2>Truncate Table</h2>
+
+                <pre class="language-sql"><code>TRUNCATE TABLE students;</code></pre>
+
+                <p>
+                    Removes all rows but keeps the table structure.
+                </p>
+            </li>
+
+
+            <!-- 14 -->
+            <li>
+                <h2>Common MySQL Data Types</h2>
+
+                <pre class="language-text"><code>Numeric
+
+INT
+BIGINT
+SMALLINT
+DECIMAL
+FLOAT
+DOUBLE
+
+
+String
+
+CHAR
+VARCHAR
+TEXT
+LONGTEXT
+
+
+Date / Time
+
+DATE
+TIME
+DATETIME
+TIMESTAMP
+YEAR
+
+
+Other
+
+BOOLEAN
+JSON
+BLOB</code></pre>
+            </li>
+
+
+            <!-- 15 -->
+            <li>
+                <h2>AUTO_INCREMENT</h2>
+
+                <pre class="language-sql"><code>CREATE TABLE users (
+
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    name VARCHAR(100)
+
+);</code></pre>
+            </li>
+
+
+            <!-- 16 -->
+            <li>
+                <h2>NOT NULL</h2>
+
+                <pre class="language-sql"><code>CREATE TABLE users (
+
+    id INT PRIMARY KEY,
+
+    name VARCHAR(100) NOT NULL
+
+);</code></pre>
+            </li>
+
+
+            <!-- 17 -->
+            <li>
+                <h2>UNIQUE</h2>
+
+                <pre class="language-sql"><code>CREATE TABLE users (
+
+    id INT PRIMARY KEY,
+
+    email VARCHAR(150) UNIQUE
+
+);</code></pre>
+            </li>
+
+
+            <!-- 18 -->
+            <li>
+                <h2>DEFAULT</h2>
+
+                <pre class="language-sql"><code>CREATE TABLE users (
+
+    id INT PRIMARY KEY,
+
+    status VARCHAR(20) DEFAULT 'active'
+
+);</code></pre>
+            </li>
+
+
+            <!-- 19 -->
+            <li>
+                <h2>CHECK Constraint</h2>
+
+                <pre class="language-sql"><code>CREATE TABLE students (
+
+    id INT PRIMARY KEY,
+
+    name VARCHAR(100),
+
+    age INT CHECK (age >= 18)
+
+);</code></pre>
+            </li>
+
+
+            <!-- 20 -->
+            <li>
+                <h2>Primary Key</h2>
+
+                <pre class="language-sql"><code>CREATE TABLE students (
+
+    id INT PRIMARY KEY,
+
+    name VARCHAR(100)
+
+);</code></pre>
+
+                <pre class="language-text"><code>Primary Key:
+
+Must be unique
+Cannot be NULL
+Identifies each row</code></pre>
+            </li>
+
+
+            <!-- 21 -->
+            <li>
+                <h2>Foreign Key</h2>
+
+                <pre class="language-sql"><code>CREATE TABLE orders (
+
+    order_id INT PRIMARY KEY,
+
+    user_id INT,
+
+    FOREIGN KEY (user_id)
+    REFERENCES users(id)
+
+);</code></pre>
+            </li>
+
+
+            <!-- 22 -->
+            <li>
+                <h2>Composite Primary Key</h2>
+
+                <pre class="language-sql"><code>CREATE TABLE enrollments (
+
+    student_id INT,
+
+    course_id INT,
+
+    PRIMARY KEY (
+        student_id,
+        course_id
+    )
+
+);</code></pre>
+            </li>
+
+
+            <!-- 23 -->
+            <li>
+                <h2>Insert Data</h2>
+
+                <pre class="language-sql"><code>INSERT INTO students
+(id, name, age, course)
+
+VALUES
+(1, 'Rohit', 21, 'CSE');</code></pre>
+            </li>
+
+
+            <!-- 24 -->
+            <li>
+                <h2>Insert Multiple Rows</h2>
+
+                <pre class="language-sql"><code>INSERT INTO students
+(id, name, age, course)
+
+VALUES
+
+(1, 'Rohit', 21, 'CSE'),
+
+(2, 'Aman', 22, 'IT'),
+
+(3, 'Neha', 20, 'ECE');</code></pre>
+            </li>
+
+
+            <!-- 25 -->
+            <li>
+                <h2>Select All Data</h2>
+
+                <pre class="language-sql"><code>SELECT * FROM students;</code></pre>
+            </li>
+
+
+            <!-- 26 -->
+            <li>
+                <h2>Select Specific Columns</h2>
+
+                <pre class="language-sql"><code>SELECT name, age
+FROM students;</code></pre>
+            </li>
+
+
+            <!-- 27 -->
+            <li>
+                <h2>Column Alias</h2>
+
+                <pre class="language-sql"><code>SELECT
+    name AS student_name,
+    age AS student_age
+
+FROM students;</code></pre>
+            </li>
+
+
+            <!-- 28 -->
+            <li>
+                <h2>DISTINCT</h2>
+
+                <pre class="language-sql"><code>SELECT DISTINCT course
+FROM students;</code></pre>
+            </li>
+
+
+            <!-- 29 -->
+            <li>
+                <h2>WHERE</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM students
+WHERE age > 20;</code></pre>
+            </li>
+
+
+            <!-- 30 -->
+            <li>
+                <h2>Comparison Operators</h2>
+
+                <pre class="language-text"><code>=     Equal
+
+!=    Not Equal
+
+&lt;&gt;    Not Equal
+
+&gt;     Greater Than
+
+&lt;     Less Than
+
+&gt;=    Greater Than or Equal
+
+&lt;=    Less Than or Equal</code></pre>
+            </li>
+
+
+            <!-- 31 -->
+            <li>
+                <h2>AND</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM students
+
+WHERE age >= 20
+AND course = 'CSE';</code></pre>
+            </li>
+
+
+            <!-- 32 -->
+            <li>
+                <h2>OR</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM students
+
+WHERE course = 'CSE'
+OR course = 'IT';</code></pre>
+            </li>
+
+
+            <!-- 33 -->
+            <li>
+                <h2>NOT</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM students
+
+WHERE NOT course = 'CSE';</code></pre>
+            </li>
+
+
+            <!-- 34 -->
+            <li>
+                <h2>IN</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM students
+
+WHERE course IN (
+    'CSE',
+    'IT',
+    'ECE'
+);</code></pre>
+            </li>
+
+
+            <!-- 35 -->
+            <li>
+                <h2>NOT IN</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM students
+
+WHERE course NOT IN (
+    'CSE',
+    'IT'
+);</code></pre>
+            </li>
+
+
+            <!-- 36 -->
+            <li>
+                <h2>BETWEEN</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM students
+
+WHERE age BETWEEN 18 AND 22;</code></pre>
+            </li>
+
+
+            <!-- 37 -->
+            <li>
+                <h2>LIKE</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM students
+
+WHERE name LIKE 'R%';</code></pre>
+
+                <pre class="language-text"><code>% = zero or more characters
+_ = exactly one character</code></pre>
+            </li>
+
+
+            <!-- 38 -->
+            <li>
+                <h2>LIKE Examples</h2>
+
+                <pre class="language-sql"><code>-- Starts with R
+
+SELECT *
+FROM students
+WHERE name LIKE 'R%';
+
+
+-- Ends with t
+
+SELECT *
+FROM students
+WHERE name LIKE '%t';
+
+
+-- Contains "oh"
+
+SELECT *
+FROM students
+WHERE name LIKE '%oh%';
+
+
+-- Second character is o
+
+SELECT *
+FROM students
+WHERE name LIKE '_o%';</code></pre>
+            </li>
+
+
+            <!-- 39 -->
+            <li>
+                <h2>NULL</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM students
+
+WHERE course IS NULL;</code></pre>
+            </li>
+
+
+            <!-- 40 -->
+            <li>
+                <h2>IS NOT NULL</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM students
+
+WHERE course IS NOT NULL;</code></pre>
+            </li>
+
+
+            <!-- 41 -->
+            <li>
+                <h2>ORDER BY</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM students
+
+ORDER BY age ASC;</code></pre>
+            </li>
+
+
+            <!-- 42 -->
+            <li>
+                <h2>Descending Order</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM students
+
+ORDER BY age DESC;</code></pre>
+            </li>
+
+
+            <!-- 43 -->
+            <li>
+                <h2>Sort Multiple Columns</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM students
+
+ORDER BY
+    course ASC,
+    age DESC;</code></pre>
+            </li>
+
+
+            <!-- 44 -->
+            <li>
+                <h2>LIMIT</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM students
+
+LIMIT 5;</code></pre>
+            </li>
+
+
+            <!-- 45 -->
+            <li>
+                <h2>LIMIT with OFFSET</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM students
+
+LIMIT 5 OFFSET 10;</code></pre>
+            </li>
+
+
+            <!-- 46 -->
+            <li>
+                <h2>Update Data</h2>
+
+                <pre class="language-sql"><code>UPDATE students
+
+SET age = 22
+
+WHERE id = 1;</code></pre>
+            </li>
+
+
+            <!-- 47 -->
+            <li>
+                <h2>Update Multiple Columns</h2>
+
+                <pre class="language-sql"><code>UPDATE students
+
+SET
+    age = 22,
+    course = 'AI'
+
+WHERE id = 1;</code></pre>
+            </li>
+
+
+            <!-- 48 -->
+            <li>
+                <h2>Delete Row</h2>
+
+                <pre class="language-sql"><code>DELETE FROM students
+
+WHERE id = 1;</code></pre>
+            </li>
+
+
+            <!-- 49 -->
+            <li>
+                <h2>DELETE vs TRUNCATE vs DROP</h2>
+
+                <pre class="language-text"><code>DELETE
+
+Deletes selected rows
+Can use WHERE
+
+
+TRUNCATE
+
+Deletes all rows
+Keeps table structure
+
+
+DROP
+
+Deletes complete table
+Data + structure removed</code></pre>
+            </li>
+
+
+            <!-- 50 -->
+            <li>
+                <h2>ALTER TABLE - Add Column</h2>
+
+                <pre class="language-sql"><code>ALTER TABLE students
+
+ADD email VARCHAR(150);</code></pre>
+            </li>
+
+
+            <!-- 51 -->
+            <li>
+                <h2>Drop Column</h2>
+
+                <pre class="language-sql"><code>ALTER TABLE students
+
+DROP COLUMN email;</code></pre>
+            </li>
+
+
+            <!-- 52 -->
+            <li>
+                <h2>Modify Column</h2>
+
+                <pre class="language-sql"><code>ALTER TABLE students
+
+MODIFY name VARCHAR(200);</code></pre>
+            </li>
+
+
+            <!-- 53 -->
+            <li>
+                <h2>Rename Column</h2>
+
+                <pre class="language-sql"><code>ALTER TABLE students
+
+RENAME COLUMN name
+TO student_name;</code></pre>
+            </li>
+
+
+            <!-- 54 -->
+            <li>
+                <h2>Rename Table</h2>
+
+                <pre class="language-sql"><code>RENAME TABLE students
+TO college_students;</code></pre>
+            </li>
+
+
+            <!-- 55 -->
+            <li>
+                <h2>COUNT()</h2>
+
+                <pre class="language-sql"><code>SELECT COUNT(*)
+FROM students;</code></pre>
+            </li>
+
+
+            <!-- 56 -->
+            <li>
+                <h2>SUM()</h2>
+
+                <pre class="language-sql"><code>SELECT SUM(salary)
+FROM employees;</code></pre>
+            </li>
+
+
+            <!-- 57 -->
+            <li>
+                <h2>AVG()</h2>
+
+                <pre class="language-sql"><code>SELECT AVG(age)
+FROM students;</code></pre>
+            </li>
+
+
+            <!-- 58 -->
+            <li>
+                <h2>MIN() and MAX()</h2>
+
+                <pre class="language-sql"><code>SELECT MIN(age)
+FROM students;
+
+
+SELECT MAX(age)
+FROM students;</code></pre>
+            </li>
+
+
+            <!-- 59 -->
+            <li>
+                <h2>GROUP BY</h2>
+
+                <pre class="language-sql"><code>SELECT
+    course,
+    COUNT(*) AS total_students
+
+FROM students
+
+GROUP BY course;</code></pre>
+            </li>
+
+
+            <!-- 60 -->
+            <li>
+                <h2>HAVING</h2>
+
+                <pre class="language-sql"><code>SELECT
+    course,
+    COUNT(*) AS total
+
+FROM students
+
+GROUP BY course
+
+HAVING COUNT(*) > 5;</code></pre>
+            </li>
+
+
+            <!-- 61 -->
+            <li>
+                <h2>WHERE vs HAVING</h2>
+
+                <pre class="language-text"><code>WHERE
+
+Filters rows before grouping.
+
+
+HAVING
+
+Filters grouped results after GROUP BY.</code></pre>
+            </li>
+
+
+            <!-- 62 -->
+            <li>
+                <h2>SQL Query Execution Order</h2>
+
+                <pre class="language-text"><code>Written:
+
+SELECT
+FROM
+WHERE
+GROUP BY
+HAVING
+ORDER BY
+LIMIT
+
+
+Logical Processing:
+
+FROM
+   ↓
+WHERE
+   ↓
+GROUP BY
+   ↓
+HAVING
+   ↓
+SELECT
+   ↓
+ORDER BY
+   ↓
+LIMIT</code></pre>
+            </li>
+
+
+            <!-- 63 -->
+            <li>
+                <h2>INNER JOIN</h2>
+
+                <pre class="language-sql"><code>SELECT
+    students.name,
+    courses.course_name
+
+FROM students
+
+INNER JOIN courses
+
+ON students.course_id =
+   courses.id;</code></pre>
+            </li>
+
+
+            <!-- 64 -->
+            <li>
+                <h2>LEFT JOIN</h2>
+
+                <pre class="language-sql"><code>SELECT
+    students.name,
+    courses.course_name
+
+FROM students
+
+LEFT JOIN courses
+
+ON students.course_id =
+   courses.id;</code></pre>
+            </li>
+
+
+            <!-- 65 -->
+            <li>
+                <h2>RIGHT JOIN</h2>
+
+                <pre class="language-sql"><code>SELECT
+    students.name,
+    courses.course_name
+
+FROM students
+
+RIGHT JOIN courses
+
+ON students.course_id =
+   courses.id;</code></pre>
+            </li>
+
+
+            <!-- 66 -->
+            <li>
+                <h2>JOIN Summary</h2>
+
+                <pre class="language-text"><code>INNER JOIN
+
+Only matching rows
+
+
+LEFT JOIN
+
+All rows from left table
++ matching rows from right
+
+
+RIGHT JOIN
+
+All rows from right table
++ matching rows from left</code></pre>
+            </li>
+
+
+            <!-- 67 -->
+            <li>
+                <h2>Self Join</h2>
+
+                <pre class="language-sql"><code>SELECT
+    e.name AS employee,
+    m.name AS manager
+
+FROM employees e
+
+LEFT JOIN employees m
+
+ON e.manager_id = m.id;</code></pre>
+            </li>
+
+
+            <!-- 68 -->
+            <li>
+                <h2>Cross Join</h2>
+
+                <pre class="language-sql"><code>SELECT *
+
+FROM students
+
+CROSS JOIN courses;</code></pre>
+            </li>
+
+
+            <!-- 69 -->
+            <li>
+                <h2>Subquery</h2>
+
+                <pre class="language-sql"><code>SELECT *
+
+FROM employees
+
+WHERE salary > (
+
+    SELECT AVG(salary)
+    FROM employees
+
+);</code></pre>
+            </li>
+
+
+            <!-- 70 -->
+            <li>
+                <h2>Subquery with IN</h2>
+
+                <pre class="language-sql"><code>SELECT *
+
+FROM students
+
+WHERE course_id IN (
+
+    SELECT id
+    FROM courses
+    WHERE department = 'Engineering'
+
+);</code></pre>
+            </li>
+
+
+            <!-- 71 -->
+            <li>
+                <h2>EXISTS</h2>
+
+                <pre class="language-sql"><code>SELECT *
+
+FROM students s
+
+WHERE EXISTS (
+
+    SELECT 1
+
+    FROM courses c
+
+    WHERE c.id = s.course_id
+
+);</code></pre>
+            </li>
+
+
+            <!-- 72 -->
+            <li>
+                <h2>CASE Statement</h2>
+
+                <pre class="language-sql"><code>SELECT
+    name,
+    marks,
+
+    CASE
+
+        WHEN marks >= 90
+            THEN 'A'
+
+        WHEN marks >= 75
+            THEN 'B'
+
+        WHEN marks >= 60
+            THEN 'C'
+
+        ELSE 'D'
+
+    END AS grade
+
+FROM students;</code></pre>
+            </li>
+
+
+            <!-- 73 -->
+            <li>
+                <h2>String Functions</h2>
+
+                <pre class="language-sql"><code>SELECT UPPER(name)
+FROM students;
+
+
+SELECT LOWER(name)
+FROM students;
+
+
+SELECT LENGTH(name)
+FROM students;
+
+
+SELECT TRIM(name)
+FROM students;</code></pre>
+            </li>
+
+
+            <!-- 74 -->
+            <li>
+                <h2>CONCAT()</h2>
+
+                <pre class="language-sql"><code>SELECT CONCAT(
+    first_name,
+    ' ',
+    last_name
+) AS full_name
+
+FROM users;</code></pre>
+            </li>
+
+
+            <!-- 75 -->
+            <li>
+                <h2>SUBSTRING()</h2>
+
+                <pre class="language-sql"><code>SELECT SUBSTRING(
+    name,
+    1,
+    3
+)
+
+FROM students;</code></pre>
+            </li>
+
+
+            <!-- 76 -->
+            <li>
+                <h2>Date and Time</h2>
+
+                <pre class="language-sql"><code>SELECT NOW();
+
+SELECT CURDATE();
+
+SELECT CURTIME();
+
+SELECT CURRENT_TIMESTAMP;</code></pre>
+            </li>
+
+
+            <!-- 77 -->
+            <li>
+                <h2>Date Functions</h2>
+
+                <pre class="language-sql"><code>SELECT YEAR(NOW());
+
+SELECT MONTH(NOW());
+
+SELECT DAY(NOW());
+
+SELECT DATE(NOW());</code></pre>
+            </li>
+
+
+            <!-- 78 -->
+            <li>
+                <h2>COALESCE()</h2>
+
+                <pre class="language-sql"><code>SELECT
+    name,
+    COALESCE(phone, 'Not Available')
+
+FROM students;</code></pre>
+            </li>
+
+
+            <!-- 79 -->
+            <li>
+                <h2>IFNULL()</h2>
+
+                <pre class="language-sql"><code>SELECT
+    name,
+    IFNULL(email, 'No Email')
+
+FROM students;</code></pre>
+            </li>
+
+
+            <!-- 80 -->
+            <li>
+                <h2>Create Index</h2>
+
+                <pre class="language-sql"><code>CREATE INDEX idx_email
+
+ON users(email);</code></pre>
+            </li>
+
+
+            <!-- 81 -->
+            <li>
+                <h2>Drop Index</h2>
+
+                <pre class="language-sql"><code>DROP INDEX idx_email
+
+ON users;</code></pre>
+            </li>
+
+
+            <!-- 82 -->
+            <li>
+                <h2>Index Concept</h2>
+
+                <pre class="language-text"><code>Index improves read/search performance.
+
+Useful for columns frequently used in:
+
+WHERE
+JOIN
+ORDER BY
+GROUP BY
+
+But indexes also:
+
+Use extra storage
+Can slow INSERT
+Can slow UPDATE
+Can slow DELETE</code></pre>
+            </li>
+
+
+            <!-- 83 -->
+            <li>
+                <h2>Create View</h2>
+
+                <pre class="language-sql"><code>CREATE VIEW student_details AS
+
+SELECT
+    id,
+    name,
+    course
+
+FROM students;</code></pre>
+            </li>
+
+
+            <!-- 84 -->
+            <li>
+                <h2>Use View</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM student_details;</code></pre>
+            </li>
+
+
+            <!-- 85 -->
+            <li>
+                <h2>Drop View</h2>
+
+                <pre class="language-sql"><code>DROP VIEW student_details;</code></pre>
+            </li>
+
+
+            <!-- 86 -->
+            <li>
+                <h2>Transaction</h2>
+
+                <pre class="language-sql"><code>START TRANSACTION;
+
+UPDATE accounts
+SET balance = balance - 1000
+WHERE id = 1;
+
+UPDATE accounts
+SET balance = balance + 1000
+WHERE id = 2;
+
+COMMIT;</code></pre>
+            </li>
+
+
+            <!-- 87 -->
+            <li>
+                <h2>ROLLBACK</h2>
+
+                <pre class="language-sql"><code>START TRANSACTION;
+
+DELETE FROM students
+WHERE id = 10;
+
+ROLLBACK;</code></pre>
+            </li>
+
+
+            <!-- 88 -->
+            <li>
+                <h2>SAVEPOINT</h2>
+
+                <pre class="language-sql"><code>START TRANSACTION;
+
+UPDATE accounts
+SET balance = balance - 500
+WHERE id = 1;
+
+SAVEPOINT payment_step;
+
+UPDATE accounts
+SET balance = balance + 500
+WHERE id = 2;
+
+ROLLBACK TO payment_step;
+
+COMMIT;</code></pre>
+            </li>
+
+
+            <!-- 89 -->
+            <li>
+                <h2>ACID Properties</h2>
+
+                <pre class="language-text"><code>A = Atomicity
+
+Transaction completes fully
+or not at all.
+
+
+C = Consistency
+
+Database remains valid.
+
+
+I = Isolation
+
+Transactions do not incorrectly
+interfere with each other.
+
+
+D = Durability
+
+Committed data remains stored.</code></pre>
+            </li>
+
+
+            <!-- 90 -->
+            <li>
+                <h2>Stored Procedure</h2>
+
+                <pre class="language-sql"><code>DELIMITER //
+
+CREATE PROCEDURE GetStudents()
+
+BEGIN
+
+    SELECT *
+    FROM students;
+
+END //
+
+DELIMITER ;</code></pre>
+            </li>
+
+
+            <!-- 91 -->
+            <li>
+                <h2>Call Stored Procedure</h2>
+
+                <pre class="language-sql"><code>CALL GetStudents();</code></pre>
+            </li>
+
+
+            <!-- 92 -->
+            <li>
+                <h2>Stored Procedure with Parameter</h2>
+
+                <pre class="language-sql"><code>DELIMITER //
+
+CREATE PROCEDURE GetStudent(
+    IN studentId INT
+)
+
+BEGIN
+
+    SELECT *
+    FROM students
+    WHERE id = studentId;
+
+END //
+
+DELIMITER ;</code></pre>
+
+                <pre class="language-sql"><code>CALL GetStudent(1);</code></pre>
+            </li>
+
+
+            <!-- 93 -->
+            <li>
+                <h2>Trigger</h2>
+
+                <pre class="language-sql"><code>DELIMITER //
+
+CREATE TRIGGER before_student_insert
+
+BEFORE INSERT
+ON students
+
+FOR EACH ROW
+
+BEGIN
+
+    SET NEW.name =
+        TRIM(NEW.name);
+
+END //
+
+DELIMITER ;</code></pre>
+            </li>
+
+
+            <!-- 94 -->
+            <li>
+                <h2>Show Triggers</h2>
+
+                <pre class="language-sql"><code>SHOW TRIGGERS;</code></pre>
+            </li>
+
+
+            <!-- 95 -->
+            <li>
+                <h2>Drop Trigger</h2>
+
+                <pre class="language-sql"><code>DROP TRIGGER before_student_insert;</code></pre>
+            </li>
+
+
+            <!-- 96 -->
+            <li>
+                <h2>DDL Commands</h2>
+
+                <pre class="language-text"><code>DDL = Data Definition Language
+
+CREATE
+
+ALTER
+
+DROP
+
+TRUNCATE
+
+RENAME</code></pre>
+            </li>
+
+
+            <!-- 97 -->
+            <li>
+                <h2>DML Commands</h2>
+
+                <pre class="language-text"><code>DML = Data Manipulation Language
+
+INSERT
+
+UPDATE
+
+DELETE</code></pre>
+            </li>
+
+
+            <!-- 98 -->
+            <li>
+                <h2>DQL Command</h2>
+
+                <pre class="language-text"><code>DQL = Data Query Language
+
+SELECT</code></pre>
+            </li>
+
+
+            <!-- 99 -->
+            <li>
+                <h2>TCL Commands</h2>
+
+                <pre class="language-text"><code>TCL = Transaction Control Language
+
+COMMIT
+
+ROLLBACK
+
+SAVEPOINT</code></pre>
+            </li>
+
+
+            <!-- 100 -->
+            <li>
+                <h2>DCL Commands</h2>
+
+                <pre class="language-text"><code>DCL = Data Control Language
+
+GRANT
+
+REVOKE</code></pre>
+            </li>
+
+
+            <!-- 101 -->
+            <li>
+                <h2>GRANT</h2>
+
+                <pre class="language-sql"><code>GRANT SELECT, INSERT
+
+ON college.*
+
+TO 'student'@'localhost';</code></pre>
+            </li>
+
+
+            <!-- 102 -->
+            <li>
+                <h2>REVOKE</h2>
+
+                <pre class="language-sql"><code>REVOKE INSERT
+
+ON college.*
+
+FROM 'student'@'localhost';</code></pre>
+            </li>
+
+
+            <!-- 103 -->
+            <li>
+                <h2>SQL Command Categories</h2>
+
+                <pre class="language-text"><code>DDL
+
+CREATE
+ALTER
+DROP
+TRUNCATE
+RENAME
+
+
+DML
+
+INSERT
+UPDATE
+DELETE
+
+
+DQL
+
+SELECT
+
+
+TCL
+
+COMMIT
+ROLLBACK
+SAVEPOINT
+
+
+DCL
+
+GRANT
+REVOKE</code></pre>
+            </li>
+
+
+            <!-- 104 -->
+            <li>
+                <h2>Primary Key vs Foreign Key</h2>
+
+                <pre class="language-text"><code>PRIMARY KEY
+
+Uniquely identifies a row.
+
+Example:
+
+students.id
+
+
+FOREIGN KEY
+
+Creates relationship with
+another table.
+
+Example:
+
+orders.user_id
+        ↓
+users.id</code></pre>
+            </li>
+
+
+            <!-- 105 -->
+            <li>
+                <h2>One-to-One Relationship</h2>
+
+                <pre class="language-text"><code>User
+  |
+  | 1 : 1
+  |
+Profile
+
+
+Example:
+
+users
+id
+
+profiles
+user_id UNIQUE</code></pre>
+            </li>
+
+
+            <!-- 106 -->
+            <li>
+                <h2>One-to-Many Relationship</h2>
+
+                <pre class="language-text"><code>User
+ |
+ | 1 : Many
+ |
+Orders
+
+
+One user can have
+multiple orders.</code></pre>
+            </li>
+
+
+            <!-- 107 -->
+            <li>
+                <h2>Many-to-Many Relationship</h2>
+
+                <pre class="language-text"><code>Students
+
+    ↓
+
+Enrollments
+
+    ↓
+
+Courses
+
+
+One student:
+Many courses
+
+One course:
+Many students</code></pre>
+            </li>
+
+
+            <!-- 108 -->
+            <li>
+                <h2>Many-to-Many Table</h2>
+
+                <pre class="language-sql"><code>CREATE TABLE enrollments (
+
+    student_id INT,
+
+    course_id INT,
+
+    PRIMARY KEY (
+        student_id,
+        course_id
+    ),
+
+    FOREIGN KEY (student_id)
+        REFERENCES students(id),
+
+    FOREIGN KEY (course_id)
+        REFERENCES courses(id)
+
+);</code></pre>
+            </li>
+
+
+            <!-- 109 -->
+            <li>
+                <h2>Normalization</h2>
+
+                <pre class="language-text"><code>Normalization reduces:
+
+Data duplication
+Data inconsistency
+Update anomalies
+
+
+Common Normal Forms:
+
+1NF
+2NF
+3NF
+BCNF</code></pre>
+            </li>
+
+
+            <!-- 110 -->
+            <li>
+                <h2>1NF</h2>
+
+                <pre class="language-text"><code>First Normal Form
+
+Each column contains
+atomic values.
+
+Wrong:
+
+id | phones
+1  | 9876, 8765
+
+
+Better:
+
+id | phone
+1  | 9876
+1  | 8765</code></pre>
+            </li>
+
+
+            <!-- 111 -->
+            <li>
+                <h2>2NF</h2>
+
+                <pre class="language-text"><code>Second Normal Form
+
+Must be in 1NF.
+
+No partial dependency on
+part of a composite key.</code></pre>
+            </li>
+
+
+            <!-- 112 -->
+            <li>
+                <h2>3NF</h2>
+
+                <pre class="language-text"><code>Third Normal Form
+
+Must be in 2NF.
+
+No transitive dependency.
+
+Non-key columns should depend
+on the key, the whole key,
+and nothing but the key.</code></pre>
+            </li>
+
+
+            <!-- 113 -->
+            <li>
+                <h2>Find Duplicate Values</h2>
+
+                <pre class="language-sql"><code>SELECT
+    email,
+    COUNT(*) AS total
+
+FROM users
+
+GROUP BY email
+
+HAVING COUNT(*) > 1;</code></pre>
+            </li>
+
+
+            <!-- 114 -->
+            <li>
+                <h2>Second Highest Salary</h2>
+
+                <pre class="language-sql"><code>SELECT MAX(salary)
+
+FROM employees
+
+WHERE salary < (
+
+    SELECT MAX(salary)
+    FROM employees
+
+);</code></pre>
+            </li>
+
+
+            <!-- 115 -->
+            <li>
+                <h2>Nth Highest Salary</h2>
+
+                <pre class="language-sql"><code>SELECT DISTINCT salary
+
+FROM employees
+
+ORDER BY salary DESC
+
+LIMIT 1 OFFSET 2;</code></pre>
+
+                <p>
+                    This example returns the third distinct highest salary.
+                </p>
+            </li>
+
+
+            <!-- 116 -->
+            <li>
+                <h2>Employees Above Average Salary</h2>
+
+                <pre class="language-sql"><code>SELECT *
+
+FROM employees
+
+WHERE salary > (
+
+    SELECT AVG(salary)
+    FROM employees
+
+);</code></pre>
+            </li>
+
+
+            <!-- 117 -->
+            <li>
+                <h2>Count Employees by Department</h2>
+
+                <pre class="language-sql"><code>SELECT
+    department,
+    COUNT(*) AS employees
+
+FROM employees
+
+GROUP BY department;</code></pre>
+            </li>
+
+
+            <!-- 118 -->
+            <li>
+                <h2>Highest Salary by Department</h2>
+
+                <pre class="language-sql"><code>SELECT
+    department,
+    MAX(salary) AS highest_salary
+
+FROM employees
+
+GROUP BY department;</code></pre>
+            </li>
+
+
+            <!-- 119 -->
+            <li>
+                <h2>SQL CRUD</h2>
+
+                <pre class="language-text"><code>CREATE
+
+INSERT INTO students ...
+
+
+READ
+
+SELECT * FROM students;
+
+
+UPDATE
+
+UPDATE students
+SET ...
+
+
+DELETE
+
+DELETE FROM students
+WHERE ...;</code></pre>
+            </li>
+
+
+            <!-- 120 -->
+            <li>
+                <h2>Complete CRUD Example</h2>
+
+                <pre class="language-sql"><code>-- CREATE
+
+INSERT INTO students
+(name, age, course)
+
+VALUES
+('Rohit', 21, 'CSE');
+
+
+-- READ
+
+SELECT *
+FROM students;
+
+
+-- UPDATE
+
+UPDATE students
+
+SET course = 'AI'
+
+WHERE id = 1;
+
+
+-- DELETE
+
+DELETE FROM students
+
+WHERE id = 1;</code></pre>
+            </li>
+
+
+            <!-- 121 -->
+            <li>
+                <h2>Common MySQL Commands</h2>
+
+                <pre class="language-sql"><code>SHOW DATABASES;
+
+CREATE DATABASE college;
+
+USE college;
+
+SHOW TABLES;
+
+DESCRIBE students;
+
+SELECT * FROM students;
+
+INSERT INTO students ...;
+
+UPDATE students ...;
+
+DELETE FROM students ...;
+
+ALTER TABLE students ...;
+
+TRUNCATE TABLE students;
+
+DROP TABLE students;</code></pre>
+            </li>
+
+
+            <!-- 122 -->
+            <li>
+                <h2>Important SQL Clauses</h2>
+
+                <pre class="language-text"><code>SELECT
+
+FROM
+
+WHERE
+
+DISTINCT
+
+GROUP BY
+
+HAVING
+
+ORDER BY
+
+LIMIT
+
+JOIN
+
+ON
+
+AS</code></pre>
+            </li>
+
+
+            <!-- 123 -->
+            <li>
+                <h2>Important Aggregate Functions</h2>
+
+                <pre class="language-sql"><code>COUNT()
+
+SUM()
+
+AVG()
+
+MIN()
+
+MAX()</code></pre>
+            </li>
+
+
+            <!-- 124 -->
+            <li>
+                <h2>Important Interview Queries</h2>
+
+                <pre class="language-text"><code>Find duplicates
+
+Second highest salary
+
+Nth highest salary
+
+Employees above average salary
+
+Highest salary by department
+
+Count employees by department
+
+JOIN two tables
+
+JOIN three tables
+
+Subqueries
+
+GROUP BY + HAVING
+
+Find NULL values
+
+Remove duplicates
+
+Top N records</code></pre>
+            </li>
+
+
+            <!-- 125 -->
+            <li>
+                <h2>MySQL Quick Revision</h2>
+
+                <pre class="language-sql"><code>CREATE DATABASE college;
+
+USE college;
+
+
+CREATE TABLE students (
+
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    name VARCHAR(100) NOT NULL,
+
+    age INT,
+
+    course VARCHAR(50)
+
+);
+
+
+INSERT INTO students
+(name, age, course)
+
+VALUES
+('Rohit', 21, 'CSE');
+
+
+SELECT *
+FROM students;
+
+
+SELECT *
+FROM students
+WHERE age >= 20;
+
+
+UPDATE students
+SET course = 'AI'
+WHERE id = 1;
+
+
+DELETE FROM students
+WHERE id = 1;</code></pre>
+            </li>
+
+
+            <!-- 126 -->
+            <li>
+                <h2>MySQL Learning Roadmap</h2>
+
+                <pre class="language-text"><code>1. Database Basics
+
+2. DBMS and RDBMS
+
+3. MySQL Installation
+
+4. Databases
+
+5. Tables
+
+6. Rows and Columns
+
+7. Data Types
+
+8. CREATE
+
+9. INSERT
+
+10. SELECT
+
+11. UPDATE
+
+12. DELETE
+
+13. WHERE
+
+14. Operators
+
+15. DISTINCT
+
+16. LIKE
+
+17. IN
+
+18. BETWEEN
+
+19. NULL
+
+20. ORDER BY
+
+21. LIMIT
+
+22. Aggregate Functions
+
+23. GROUP BY
+
+24. HAVING
+
+25. Constraints
+
+26. Primary Key
+
+27. Foreign Key
+
+28. Relationships
+
+29. INNER JOIN
+
+30. LEFT JOIN
+
+31. RIGHT JOIN
+
+32. SELF JOIN
+
+33. CROSS JOIN
+
+34. Subqueries
+
+35. CASE
+
+36. String Functions
+
+37. Date Functions
+
+38. ALTER TABLE
+
+39. Indexes
+
+40. Views
+
+41. Transactions
+
+42. ACID
+
+43. Stored Procedures
+
+44. Triggers
+
+45. DDL
+
+46. DML
+
+47. DQL
+
+48. TCL
+
+49. DCL
+
+50. Normalization
+
+51. 1NF
+
+52. 2NF
+
+53. 3NF
+
+54. Advanced Queries
+
+55. Interview SQL Problems</code></pre>
+            </li>
+
+        </ol>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <p>
+            © 2026 CodeWithRohit |
+            MySQL Cheat Sheet
+        </p>
+
+    </footer>
+
+
+    <!-- Prism JS -->
+    <script src="../prism/prism.js"></script>
+
+    <!-- Common JS -->
+    <script src="../cheatsheet.js"></script>
+
+</body>
+
+</html>

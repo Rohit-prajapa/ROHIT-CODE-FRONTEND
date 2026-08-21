@@ -10,7 +10,6 @@ import QuickOpen from "./components/QuickOpen";
 import SaveChangesModal from "./components/SaveChangesModal";
 import StatusBar from "./components/StatusBar";
 import SettingsPanel from "./components/SettingsPanel";
-import ActivityBar from "./components/ActivityBar";
 
 const SOCKET_URL = "https://rohit-code-backend.onrender.com";
 const AI_API_URL = "https://rohit-code-backend.onrender.com/api/ai/generate";
@@ -1565,16 +1564,7 @@ int main() {
       ====================================================== */}
 
       <div className="main-layout">
-        {/* ===================================================
-            ACTIVITY BAR
-        ==================================================== */}
-
-        <ActivityBar
-          activePanel={activeActivityPanel}
-          onPanelChange={handleActivityPanelChange}
-          onSettings={() => setSettingsOpen((previous) => !previous)}
-        />
-
+  
         {/* ===================================================
             SIDEBAR
         ==================================================== */}

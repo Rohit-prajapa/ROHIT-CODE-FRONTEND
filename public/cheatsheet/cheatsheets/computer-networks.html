@@ -1,0 +1,3059 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Complete Computer Networks Cheat Sheet by CodeWithRohit"
+    >
+
+    <title>Computer Networks Cheat Sheet | CodeWithRohit</title>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="../cheatsheet.css">
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="../prism/prism.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="cheat-navbar">
+
+        <a href="../index.html" class="brand">
+            &lt;/&gt; CodeWithRohit
+        </a>
+
+        <div class="cheat-title">
+            Computer Networks Cheat Sheet
+        </div>
+
+        <a href="../index.html" class="home-btn">
+            ← Home
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="cheat-hero">
+
+        <h1>Computer Networks Cheat Sheet</h1>
+
+        <p>
+            Complete Computer Networks quick reference covering
+            OSI, TCP/IP, IPv4, IPv6, subnetting, DNS, DHCP,
+            TCP, UDP, routing, switching, HTTP and network security.
+        </p>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <ol>
+
+            <!-- 1 -->
+            <li>
+                <h2>What is a Computer Network?</h2>
+
+                <pre class="language-text"><code>A computer network is a collection
+of connected devices that communicate
+and share resources.
+
+Examples:
+
+Computer ↔ Computer
+
+Computer ↔ Server
+
+Mobile ↔ Router
+
+Router ↔ Internet</code></pre>
+            </li>
+
+
+            <!-- 2 -->
+            <li>
+                <h2>Basic Network Components</h2>
+
+                <pre class="language-text"><code>Client
+
+Server
+
+Router
+
+Switch
+
+Hub
+
+Modem
+
+Access Point
+
+Firewall
+
+NIC
+
+Transmission Media</code></pre>
+            </li>
+
+
+            <!-- 3 -->
+            <li>
+                <h2>Types of Networks</h2>
+
+                <pre class="language-text"><code>PAN
+Personal Area Network
+
+
+LAN
+Local Area Network
+
+
+WLAN
+Wireless Local Area Network
+
+
+MAN
+Metropolitan Area Network
+
+
+WAN
+Wide Area Network</code></pre>
+            </li>
+
+
+            <!-- 4 -->
+            <li>
+                <h2>PAN</h2>
+
+                <pre class="language-text"><code>PAN = Personal Area Network
+
+Very small range.
+
+Examples:
+
+Phone ↔ Earbuds
+
+Phone ↔ Smartwatch
+
+Bluetooth Devices</code></pre>
+            </li>
+
+
+            <!-- 5 -->
+            <li>
+                <h2>LAN</h2>
+
+                <pre class="language-text"><code>LAN = Local Area Network
+
+Covers a small geographical area.
+
+Examples:
+
+Home
+
+College Lab
+
+Office
+
+School</code></pre>
+            </li>
+
+
+            <!-- 6 -->
+            <li>
+                <h2>WAN</h2>
+
+                <pre class="language-text"><code>WAN = Wide Area Network
+
+Covers large geographical areas.
+
+Example:
+
+The Internet</code></pre>
+            </li>
+
+
+            <!-- 7 -->
+            <li>
+                <h2>Network Topologies</h2>
+
+                <pre class="language-text"><code>Bus
+
+Star
+
+Ring
+
+Mesh
+
+Tree
+
+Hybrid</code></pre>
+            </li>
+
+
+            <!-- 8 -->
+            <li>
+                <h2>Star Topology</h2>
+
+                <pre class="language-text"><code>        PC
+
+         |
+
+PC --- Switch --- PC
+
+         |
+
+        PC
+
+
+All devices connect to
+a central device.</code></pre>
+            </li>
+
+
+            <!-- 9 -->
+            <li>
+                <h2>Bus Topology</h2>
+
+                <pre class="language-text"><code>PC ---- PC ---- PC ---- PC
+
+        Main Cable</code></pre>
+            </li>
+
+
+            <!-- 10 -->
+            <li>
+                <h2>Ring Topology</h2>
+
+                <pre class="language-text"><code>PC ----- PC
+
+|         |
+
+|         |
+
+PC ----- PC</code></pre>
+            </li>
+
+
+            <!-- 11 -->
+            <li>
+                <h2>Mesh Topology</h2>
+
+                <pre class="language-text"><code>Devices have multiple
+connections with other devices.
+
+Advantages:
+
+High reliability
+Redundancy
+
+Disadvantages:
+
+Expensive
+Complex</code></pre>
+            </li>
+
+
+            <!-- 12 -->
+            <li>
+                <h2>OSI Model</h2>
+
+                <pre class="language-text"><code>7. Application
+
+6. Presentation
+
+5. Session
+
+4. Transport
+
+3. Network
+
+2. Data Link
+
+1. Physical</code></pre>
+            </li>
+
+
+            <!-- 13 -->
+            <li>
+                <h2>OSI Mnemonic</h2>
+
+                <pre class="language-text"><code>Top → Bottom
+
+All
+People
+Seem
+To
+Need
+Data
+Processing
+
+
+Application
+Presentation
+Session
+Transport
+Network
+Data Link
+Physical</code></pre>
+            </li>
+
+
+            <!-- 14 -->
+            <li>
+                <h2>Layer 7 — Application</h2>
+
+                <pre class="language-text"><code>Closest layer to user applications.
+
+Common Protocols:
+
+HTTP
+
+HTTPS
+
+DNS
+
+FTP
+
+SMTP
+
+IMAP
+
+POP3
+
+SSH</code></pre>
+            </li>
+
+
+            <!-- 15 -->
+            <li>
+                <h2>Layer 6 — Presentation</h2>
+
+                <pre class="language-text"><code>Responsibilities:
+
+Data Translation
+
+Encryption / Decryption
+
+Compression
+
+Encoding / Decoding</code></pre>
+            </li>
+
+
+            <!-- 16 -->
+            <li>
+                <h2>Layer 5 — Session</h2>
+
+                <pre class="language-text"><code>Responsibilities:
+
+Establish Session
+
+Maintain Session
+
+Terminate Session
+
+Dialog Control</code></pre>
+            </li>
+
+
+            <!-- 17 -->
+            <li>
+                <h2>Layer 4 — Transport</h2>
+
+                <pre class="language-text"><code>Protocols:
+
+TCP
+
+UDP
+
+
+Responsibilities:
+
+End-to-End Communication
+
+Segmentation
+
+Reliability
+
+Flow Control
+
+Port Numbers</code></pre>
+            </li>
+
+
+            <!-- 18 -->
+            <li>
+                <h2>Layer 3 — Network</h2>
+
+                <pre class="language-text"><code>Responsibilities:
+
+Logical Addressing
+
+Routing
+
+Path Selection
+
+
+Important:
+
+IP Address
+
+Router
+
+IPv4
+
+IPv6
+
+ICMP</code></pre>
+            </li>
+
+
+            <!-- 19 -->
+            <li>
+                <h2>Layer 2 — Data Link</h2>
+
+                <pre class="language-text"><code>Responsibilities:
+
+Framing
+
+MAC Addressing
+
+Error Detection
+
+Local Delivery
+
+
+Devices:
+
+Switch
+Bridge</code></pre>
+            </li>
+
+
+            <!-- 20 -->
+            <li>
+                <h2>Layer 1 — Physical</h2>
+
+                <pre class="language-text"><code>Handles raw bits.
+
+Includes:
+
+Cables
+
+Signals
+
+Connectors
+
+Radio Waves
+
+Electrical Signals
+
+Fiber Optics</code></pre>
+            </li>
+
+
+            <!-- 21 -->
+            <li>
+                <h2>PDU at Each OSI Layer</h2>
+
+                <pre class="language-text"><code>Application
+Presentation
+Session
+
+→ Data
+
+
+Transport
+
+→ Segment / Datagram
+
+
+Network
+
+→ Packet
+
+
+Data Link
+
+→ Frame
+
+
+Physical
+
+→ Bits</code></pre>
+            </li>
+
+
+            <!-- 22 -->
+            <li>
+                <h2>TCP/IP Model</h2>
+
+                <pre class="language-text"><code>4. Application
+
+3. Transport
+
+2. Internet
+
+1. Network Access</code></pre>
+            </li>
+
+
+            <!-- 23 -->
+            <li>
+                <h2>OSI vs TCP/IP</h2>
+
+                <pre class="language-text"><code>OSI             TCP/IP
+
+Application ┐
+Presentation├→ Application
+Session     ┘
+
+Transport   → Transport
+
+Network     → Internet
+
+Data Link ┐
+Physical  ┘→ Network Access</code></pre>
+            </li>
+
+
+            <!-- 24 -->
+            <li>
+                <h2>Hub</h2>
+
+                <pre class="language-text"><code>Hub works at:
+
+OSI Layer 1
+
+
+Hub sends incoming data
+to all connected ports.
+
+It does not learn
+MAC addresses.</code></pre>
+            </li>
+
+
+            <!-- 25 -->
+            <li>
+                <h2>Switch</h2>
+
+                <pre class="language-text"><code>Traditional Ethernet Switch:
+
+OSI Layer 2
+
+Uses:
+
+MAC Address Table
+
+
+Forwards frames toward
+the appropriate destination port.</code></pre>
+            </li>
+
+
+            <!-- 26 -->
+            <li>
+                <h2>Router</h2>
+
+                <pre class="language-text"><code>Router:
+
+OSI Layer 3
+
+Uses IP addresses.
+
+Connects different networks.
+
+Uses routing tables to
+choose paths.</code></pre>
+            </li>
+
+
+            <!-- 27 -->
+            <li>
+                <h2>Hub vs Switch vs Router</h2>
+
+                <pre class="language-text"><code>Hub
+
+Layer 1
+Broadcasts incoming bits
+No MAC learning
+
+
+Switch
+
+Layer 2
+Uses MAC addresses
+Connects devices in a LAN
+
+
+Router
+
+Layer 3
+Uses IP addresses
+Connects different networks</code></pre>
+            </li>
+
+
+            <!-- 28 -->
+            <li>
+                <h2>MAC Address</h2>
+
+                <pre class="language-text"><code>MAC = Media Access Control
+
+Common Ethernet MAC length:
+
+48 bits
+
+Example:
+
+00:1A:2B:3C:4D:5E</code></pre>
+            </li>
+
+
+            <!-- 29 -->
+            <li>
+                <h2>IP Address</h2>
+
+                <pre class="language-text"><code>IP Address identifies an
+interface on an IP network.
+
+Main Versions:
+
+IPv4
+
+IPv6</code></pre>
+            </li>
+
+
+            <!-- 30 -->
+            <li>
+                <h2>IPv4</h2>
+
+                <pre class="language-text"><code>IPv4 Address:
+
+32 bits
+
+4 octets
+
+Example:
+
+192.168.1.10
+
+
+Each octet:
+
+0 - 255</code></pre>
+            </li>
+
+
+            <!-- 31 -->
+            <li>
+                <h2>IPv4 Example</h2>
+
+                <pre class="language-text"><code>192.168.1.10
+
+Binary:
+
+11000000
+10101000
+00000001
+00001010</code></pre>
+            </li>
+
+
+            <!-- 32 -->
+            <li>
+                <h2>Historical IPv4 Classes</h2>
+
+                <pre class="language-text"><code>Class A
+
+1 - 126
+
+
+Class B
+
+128 - 191
+
+
+Class C
+
+192 - 223
+
+
+Class D
+
+224 - 239
+Multicast
+
+
+Class E
+
+240 - 255
+Reserved / Experimental
+
+
+Note:
+
+Modern networks primarily use
+CIDR rather than classful addressing.</code></pre>
+            </li>
+
+
+            <!-- 33 -->
+            <li>
+                <h2>Private IPv4 Ranges</h2>
+
+                <pre class="language-text"><code>10.0.0.0/8
+
+
+172.16.0.0/12
+
+172.16.0.0
+to
+172.31.255.255
+
+
+192.168.0.0/16</code></pre>
+            </li>
+
+
+            <!-- 34 -->
+            <li>
+                <h2>Public vs Private IP</h2>
+
+                <pre class="language-text"><code>Private IP
+
+Used inside private networks.
+
+Not globally routed
+on the public Internet.
+
+
+Public IP
+
+Globally routable
+Internet address.</code></pre>
+            </li>
+
+
+            <!-- 35 -->
+            <li>
+                <h2>Loopback Address</h2>
+
+                <pre class="language-text"><code>IPv4 Loopback Range:
+
+127.0.0.0/8
+
+
+Common address:
+
+127.0.0.1
+
+
+Hostname:
+
+localhost</code></pre>
+            </li>
+
+
+            <!-- 36 -->
+            <li>
+                <h2>IPv6</h2>
+
+                <pre class="language-text"><code>IPv6:
+
+128-bit address
+
+Example:
+
+2001:db8:85a3::8a2e:370:7334
+
+
+Benefits:
+
+Huge address space
+
+Simplified header
+
+Better support for
+modern networking</code></pre>
+            </li>
+
+
+            <!-- 37 -->
+            <li>
+                <h2>IPv4 vs IPv6</h2>
+
+                <pre class="language-text"><code>IPv4
+
+32 bits
+
+Example:
+
+192.168.1.1
+
+
+IPv6
+
+128 bits
+
+Example:
+
+2001:db8::1</code></pre>
+            </li>
+
+
+            <!-- 38 -->
+            <li>
+                <h2>Subnet Mask</h2>
+
+                <pre class="language-text"><code>Subnet mask identifies the
+network and host portions
+of an IPv4 address.
+
+Example:
+
+IP:
+
+192.168.1.10
+
+
+Mask:
+
+255.255.255.0
+
+
+CIDR:
+
+/24</code></pre>
+            </li>
+
+
+            <!-- 39 -->
+            <li>
+                <h2>Common CIDR Prefixes</h2>
+
+                <pre class="language-text"><code>/8
+
+255.0.0.0
+
+
+/16
+
+255.255.0.0
+
+
+/24
+
+255.255.255.0
+
+
+/25
+
+255.255.255.128
+
+
+/26
+
+255.255.255.192
+
+
+/27
+
+255.255.255.224
+
+
+/28
+
+255.255.255.240
+
+
+/29
+
+255.255.255.248
+
+
+/30
+
+255.255.255.252</code></pre>
+            </li>
+
+
+            <!-- 40 -->
+            <li>
+                <h2>Subnetting Formula</h2>
+
+                <pre class="language-text"><code>IPv4 total addresses
+in a subnet:
+
+2^(32 - prefix)
+
+
+Example:
+
+/24
+
+2^(32 - 24)
+
+= 2^8
+
+= 256 addresses
+
+
+Traditional usable host count:
+
+2^hostBits - 2
+
+
+For /24:
+
+256 - 2
+
+= 254 traditional host addresses
+
+
+Exceptions exist for special
+prefixes such as /31 and /32.</code></pre>
+            </li>
+
+
+            <!-- 41 -->
+            <li>
+                <h2>/24 Network Example</h2>
+
+                <pre class="language-text"><code>192.168.1.0/24
+
+
+Network Address:
+
+192.168.1.0
+
+
+Traditional Host Range:
+
+192.168.1.1
+
+to
+
+192.168.1.254
+
+
+Broadcast:
+
+192.168.1.255</code></pre>
+            </li>
+
+
+            <!-- 42 -->
+            <li>
+                <h2>Default Gateway</h2>
+
+                <pre class="language-text"><code>A default gateway is the router
+a host sends traffic to when
+the destination is outside
+its local network.
+
+Example:
+
+PC:
+
+192.168.1.10
+
+
+Gateway:
+
+192.168.1.1</code></pre>
+            </li>
+
+
+            <!-- 43 -->
+            <li>
+                <h2>ARP</h2>
+
+                <pre class="language-text"><code>ARP = Address Resolution Protocol
+
+Used in IPv4 local networks
+to map:
+
+IPv4 Address
+     ↓
+MAC Address
+
+
+Example:
+
+Who has 192.168.1.1?
+
+Tell 192.168.1.10</code></pre>
+            </li>
+
+
+            <!-- 44 -->
+            <li>
+                <h2>View ARP / Neighbor Table</h2>
+
+                <pre class="language-bash"><code>arp -a</code></pre>
+
+                <pre class="language-bash"><code>ip neigh</code></pre>
+            </li>
+
+
+            <!-- 45 -->
+            <li>
+                <h2>DHCP</h2>
+
+                <pre class="language-text"><code>DHCP =
+Dynamic Host Configuration Protocol
+
+Automatically provides
+network configuration such as:
+
+IP Address
+
+Subnet Mask / Prefix
+
+Default Gateway
+
+DNS Servers</code></pre>
+            </li>
+
+
+            <!-- 46 -->
+            <li>
+                <h2>DHCP DORA Process</h2>
+
+                <pre class="language-text"><code>D
+
+Discover
+
+     ↓
+
+O
+
+Offer
+
+     ↓
+
+R
+
+Request
+
+     ↓
+
+A
+
+Acknowledgement</code></pre>
+            </li>
+
+
+            <!-- 47 -->
+            <li>
+                <h2>DNS</h2>
+
+                <pre class="language-text"><code>DNS =
+Domain Name System
+
+Translates domain names
+to IP addresses.
+
+Example:
+
+example.com
+
+     ↓ DNS
+
+IP Address</code></pre>
+            </li>
+
+
+            <!-- 48 -->
+            <li>
+                <h2>DNS Record Types</h2>
+
+                <pre class="language-text"><code>A
+
+IPv4 Address
+
+
+AAAA
+
+IPv6 Address
+
+
+CNAME
+
+Canonical Name / Alias
+
+
+MX
+
+Mail Exchange
+
+
+NS
+
+Name Server
+
+
+TXT
+
+Text Data
+
+
+PTR
+
+Reverse DNS
+
+
+SOA
+
+Start of Authority</code></pre>
+            </li>
+
+
+            <!-- 49 -->
+            <li>
+                <h2>DNS Lookup Commands</h2>
+
+                <pre class="language-bash"><code>nslookup example.com</code></pre>
+
+                <pre class="language-bash"><code>dig example.com</code></pre>
+            </li>
+
+
+            <!-- 50 -->
+            <li>
+                <h2>TCP</h2>
+
+                <pre class="language-text"><code>TCP =
+Transmission Control Protocol
+
+Characteristics:
+
+Connection-oriented
+
+Reliable delivery
+
+Ordered data
+
+Acknowledgements
+
+Retransmission
+
+Flow control
+
+Congestion control</code></pre>
+            </li>
+
+
+            <!-- 51 -->
+            <li>
+                <h2>UDP</h2>
+
+                <pre class="language-text"><code>UDP =
+User Datagram Protocol
+
+Characteristics:
+
+Connectionless
+
+No delivery guarantee
+
+No built-in retransmission
+
+Low overhead
+
+Useful for latency-sensitive
+applications</code></pre>
+            </li>
+
+
+            <!-- 52 -->
+            <li>
+                <h2>TCP vs UDP</h2>
+
+                <pre class="language-text"><code>TCP
+
+Connection-oriented
+Reliable
+Ordered
+Higher overhead
+
+
+UDP
+
+Connectionless
+Best-effort delivery
+No ordering guarantee
+Lower overhead</code></pre>
+            </li>
+
+
+            <!-- 53 -->
+            <li>
+                <h2>Common TCP Uses</h2>
+
+                <pre class="language-text"><code>HTTP/1.1 and HTTP/2
+
+HTTPS using HTTP/1.1 or HTTP/2
+
+SSH
+
+FTP control/data in classic FTP
+
+SMTP
+
+IMAP</code></pre>
+            </li>
+
+
+            <!-- 54 -->
+            <li>
+                <h2>Common UDP Uses</h2>
+
+                <pre class="language-text"><code>DNS commonly uses UDP
+for normal queries
+
+DHCP
+
+VoIP
+
+Live Streaming
+
+Online Gaming
+
+QUIC / HTTP/3 runs over UDP</code></pre>
+            </li>
+
+
+            <!-- 55 -->
+            <li>
+                <h2>TCP Three-Way Handshake</h2>
+
+                <pre class="language-text"><code>Client              Server
+
+SYN
+-------------------->
+
+       SYN + ACK
+&lt;--------------------
+
+ACK
+-------------------->
+
+
+Connection Established</code></pre>
+            </li>
+
+
+            <!-- 56 -->
+            <li>
+                <h2>TCP Connection Termination</h2>
+
+                <pre class="language-text"><code>A typical graceful close
+can use:
+
+FIN
+   ↓
+ACK
+   ↓
+FIN
+   ↓
+ACK
+
+
+Each direction is closed
+independently.</code></pre>
+            </li>
+
+
+            <!-- 57 -->
+            <li>
+                <h2>Port Numbers</h2>
+
+                <pre class="language-text"><code>Port numbers identify
+applications/services.
+
+Range:
+
+0 - 65535
+
+
+Well-Known:
+
+0 - 1023
+
+
+Registered:
+
+1024 - 49151
+
+
+Dynamic / Private:
+
+49152 - 65535</code></pre>
+            </li>
+
+
+            <!-- 58 -->
+            <li>
+                <h2>Important Port Numbers</h2>
+
+                <pre class="language-text"><code>FTP Data        20
+
+FTP Control     21
+
+SSH             22
+
+Telnet          23
+
+SMTP            25
+
+DNS             53
+
+DHCP Server     67
+
+DHCP Client     68
+
+HTTP            80
+
+POP3            110
+
+NTP             123
+
+IMAP            143
+
+SNMP            161
+
+HTTPS           443</code></pre>
+            </li>
+
+
+            <!-- 59 -->
+            <li>
+                <h2>HTTP</h2>
+
+                <pre class="language-text"><code>HTTP =
+Hypertext Transfer Protocol
+
+Application-layer protocol
+used for web communication.
+
+Common methods:
+
+GET
+
+POST
+
+PUT
+
+PATCH
+
+DELETE
+
+HEAD
+
+OPTIONS</code></pre>
+            </li>
+
+
+            <!-- 60 -->
+            <li>
+                <h2>HTTPS</h2>
+
+                <pre class="language-text"><code>HTTPS = HTTP secured
+with TLS.
+
+Provides:
+
+Encryption
+
+Integrity
+
+Server Authentication
+
+Optional Client Authentication</code></pre>
+            </li>
+
+
+            <!-- 61 -->
+            <li>
+                <h2>HTTP vs HTTPS</h2>
+
+                <pre class="language-text"><code>HTTP
+
+Default Port:
+80
+
+Not encrypted by itself
+
+
+HTTPS
+
+Default Port:
+443
+
+HTTP protected using TLS</code></pre>
+            </li>
+
+
+            <!-- 62 -->
+            <li>
+                <h2>HTTP Request</h2>
+
+                <pre class="language-http"><code>GET /users HTTP/1.1
+Host: example.com
+Accept: application/json</code></pre>
+            </li>
+
+
+            <!-- 63 -->
+            <li>
+                <h2>HTTP Response</h2>
+
+                <pre class="language-http"><code>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "name": "Rohit"
+}</code></pre>
+            </li>
+
+
+            <!-- 64 -->
+            <li>
+                <h2>HTTP Status Code Categories</h2>
+
+                <pre class="language-text"><code>1xx
+
+Informational
+
+
+2xx
+
+Success
+
+
+3xx
+
+Redirection
+
+
+4xx
+
+Client Error
+
+
+5xx
+
+Server Error</code></pre>
+            </li>
+
+
+            <!-- 65 -->
+            <li>
+                <h2>Important HTTP Status Codes</h2>
+
+                <pre class="language-text"><code>200 OK
+
+201 Created
+
+204 No Content
+
+301 Moved Permanently
+
+302 Found
+
+304 Not Modified
+
+400 Bad Request
+
+401 Unauthorized
+
+403 Forbidden
+
+404 Not Found
+
+409 Conflict
+
+429 Too Many Requests
+
+500 Internal Server Error
+
+502 Bad Gateway
+
+503 Service Unavailable</code></pre>
+            </li>
+
+
+            <!-- 66 -->
+            <li>
+                <h2>ICMP</h2>
+
+                <pre class="language-text"><code>ICMP =
+Internet Control Message Protocol
+
+Used for:
+
+Error reporting
+
+Diagnostics
+
+Network control information
+
+
+Tools using ICMP include:
+
+ping
+
+and parts of traceroute,
+depending on implementation.</code></pre>
+            </li>
+
+
+            <!-- 67 -->
+            <li>
+                <h2>Ping</h2>
+
+                <pre class="language-bash"><code>ping example.com</code></pre>
+
+                <pre class="language-text"><code>Commonly tests reachability
+and round-trip time using
+ICMP Echo messages.</code></pre>
+            </li>
+
+
+            <!-- 68 -->
+            <li>
+                <h2>Traceroute</h2>
+
+                <pre class="language-bash"><code>traceroute example.com</code></pre>
+
+                <pre class="language-text"><code>Windows:</code></pre>
+
+                <pre class="language-bash"><code>tracert example.com</code></pre>
+            </li>
+
+
+            <!-- 69 -->
+            <li>
+                <h2>Routing</h2>
+
+                <pre class="language-text"><code>Routing determines the path
+packets take between networks.
+
+Router checks:
+
+Destination IP
+
+Routing Table
+
+Best matching route
+
+Next Hop / Interface</code></pre>
+            </li>
+
+
+            <!-- 70 -->
+            <li>
+                <h2>Routing Table</h2>
+
+                <pre class="language-bash"><code>ip route</code></pre>
+
+                <pre class="language-text"><code>Example:
+
+default via 192.168.1.1
+
+192.168.1.0/24 dev eth0</code></pre>
+            </li>
+
+
+            <!-- 71 -->
+            <li>
+                <h2>Static Routing</h2>
+
+                <pre class="language-text"><code>Static routes are manually
+configured by an administrator.
+
+Advantages:
+
+Simple for small networks
+
+Predictable
+
+
+Disadvantages:
+
+Manual maintenance
+
+Does not automatically adapt
+to topology changes</code></pre>
+            </li>
+
+
+            <!-- 72 -->
+            <li>
+                <h2>Dynamic Routing</h2>
+
+                <pre class="language-text"><code>Routers exchange routing
+information automatically.
+
+Examples:
+
+RIP
+
+OSPF
+
+IS-IS
+
+EIGRP
+
+BGP</code></pre>
+            </li>
+
+
+            <!-- 73 -->
+            <li>
+                <h2>RIP</h2>
+
+                <pre class="language-text"><code>RIP =
+Routing Information Protocol
+
+Type:
+
+Distance Vector
+
+Metric:
+
+Hop Count
+
+Maximum usable hop count:
+
+15</code></pre>
+            </li>
+
+
+            <!-- 74 -->
+            <li>
+                <h2>OSPF</h2>
+
+                <pre class="language-text"><code>OSPF =
+Open Shortest Path First
+
+Type:
+
+Link-State IGP
+
+Uses SPF calculations
+to determine routes.
+
+Commonly used inside
+an autonomous system.</code></pre>
+            </li>
+
+
+            <!-- 75 -->
+            <li>
+                <h2>BGP</h2>
+
+                <pre class="language-text"><code>BGP =
+Border Gateway Protocol
+
+Used for routing between
+autonomous systems.
+
+It is fundamental to
+Internet inter-domain routing.
+
+BGP is a path-vector protocol.</code></pre>
+            </li>
+
+
+            <!-- 76 -->
+            <li>
+                <h2>NAT</h2>
+
+                <pre class="language-text"><code>NAT =
+Network Address Translation
+
+Translates IP addressing
+information between networks.
+
+Common home example:
+
+Private Network
+
+192.168.1.x
+
+      ↓
+
+Router / NAT
+
+      ↓
+
+Public Internet</code></pre>
+            </li>
+
+
+            <!-- 77 -->
+            <li>
+                <h2>PAT</h2>
+
+                <pre class="language-text"><code>PAT =
+Port Address Translation
+
+Allows many internal connections
+to share a public IP address
+by translating port numbers.
+
+Often called:
+
+NAT Overload</code></pre>
+            </li>
+
+
+            <!-- 78 -->
+            <li>
+                <h2>VLAN</h2>
+
+                <pre class="language-text"><code>VLAN =
+Virtual Local Area Network
+
+Logically separates
+Layer-2 broadcast domains.
+
+Example:
+
+VLAN 10
+
+Students
+
+
+VLAN 20
+
+Teachers
+
+
+VLAN 30
+
+Administration</code></pre>
+            </li>
+
+
+            <!-- 79 -->
+            <li>
+                <h2>Access vs Trunk Port</h2>
+
+                <pre class="language-text"><code>Access Port
+
+Usually carries traffic
+for one VLAN to an end device.
+
+
+Trunk Port
+
+Carries traffic for
+multiple VLANs between
+network devices.
+
+IEEE 802.1Q tagging
+is commonly used.</code></pre>
+            </li>
+
+
+            <!-- 80 -->
+            <li>
+                <h2>Collision Domain</h2>
+
+                <pre class="language-text"><code>Modern switched Ethernet:
+
+Each switch port forms
+a separate collision domain.
+
+A hub shares one
+collision domain across
+its connected devices.</code></pre>
+            </li>
+
+
+            <!-- 81 -->
+            <li>
+                <h2>Broadcast Domain</h2>
+
+                <pre class="language-text"><code>A Layer-2 broadcast domain
+contains devices that receive
+broadcast frames in that domain.
+
+Routers separate
+broadcast domains.
+
+VLANs also create separate
+Layer-2 broadcast domains.</code></pre>
+            </li>
+
+
+            <!-- 82 -->
+            <li>
+                <h2>Unicast, Broadcast, Multicast</h2>
+
+                <pre class="language-text"><code>Unicast
+
+One → One
+
+
+Broadcast
+
+One → All devices
+in the broadcast domain
+(IPv4 concept)
+
+
+Multicast
+
+One → Selected Group</code></pre>
+            </li>
+
+
+            <!-- 83 -->
+            <li>
+                <h2>Bandwidth</h2>
+
+                <pre class="language-text"><code>Bandwidth describes the
+capacity of a communication link.
+
+Common units:
+
+bps
+
+Kbps
+
+Mbps
+
+Gbps</code></pre>
+            </li>
+
+
+            <!-- 84 -->
+            <li>
+                <h2>Latency</h2>
+
+                <pre class="language-text"><code>Latency is the delay
+experienced by data.
+
+Lower latency generally means
+faster responsiveness.</code></pre>
+            </li>
+
+
+            <!-- 85 -->
+            <li>
+                <h2>Throughput</h2>
+
+                <pre class="language-text"><code>Throughput is the actual rate
+of successful data transfer.
+
+Throughput can be lower
+than link bandwidth.</code></pre>
+            </li>
+
+
+            <!-- 86 -->
+            <li>
+                <h2>Packet Loss</h2>
+
+                <pre class="language-text"><code>Packet Loss:
+
+Packets sent
+     ↓
+Some packets fail
+to reach destination.
+
+Possible causes:
+
+Congestion
+
+Faulty links
+
+Wireless interference
+
+Hardware problems</code></pre>
+            </li>
+
+
+            <!-- 87 -->
+            <li>
+                <h2>Transmission Media</h2>
+
+                <pre class="language-text"><code>Wired:
+
+Twisted Pair
+
+Coaxial Cable
+
+Fiber Optic
+
+
+Wireless:
+
+Wi-Fi
+
+Bluetooth
+
+Cellular
+
+Satellite</code></pre>
+            </li>
+
+
+            <!-- 88 -->
+            <li>
+                <h2>Twisted Pair Cable</h2>
+
+                <pre class="language-text"><code>Common Ethernet cabling:
+
+UTP
+
+STP
+
+
+Examples:
+
+Cat5e
+
+Cat6
+
+Cat6a</code></pre>
+            </li>
+
+
+            <!-- 89 -->
+            <li>
+                <h2>Fiber Optic</h2>
+
+                <pre class="language-text"><code>Uses light to transmit data.
+
+Advantages:
+
+High bandwidth
+
+Long distance
+
+Resistant to electromagnetic
+interference
+
+
+Types:
+
+Single Mode
+
+Multi Mode</code></pre>
+            </li>
+
+
+            <!-- 90 -->
+            <li>
+                <h2>Wi-Fi</h2>
+
+                <pre class="language-text"><code>Wi-Fi is based on the
+IEEE 802.11 family.
+
+Common generations include:
+
+Wi-Fi 4
+802.11n
+
+Wi-Fi 5
+802.11ac
+
+Wi-Fi 6
+802.11ax
+
+Wi-Fi 6E
+802.11ax with 6 GHz support
+
+Wi-Fi 7
+802.11be</code></pre>
+            </li>
+
+
+            <!-- 91 -->
+            <li>
+                <h2>Firewall</h2>
+
+                <pre class="language-text"><code>A firewall controls
+network traffic according
+to security rules.
+
+It may filter based on:
+
+Source IP
+
+Destination IP
+
+Protocol
+
+Port
+
+Connection state
+
+Application information</code></pre>
+            </li>
+
+
+            <!-- 92 -->
+            <li>
+                <h2>Proxy Server</h2>
+
+                <pre class="language-text"><code>A proxy acts as an
+intermediary between systems.
+
+Client
+
+  ↓
+
+Proxy
+
+  ↓
+
+Destination Server
+
+
+Uses can include:
+
+Filtering
+
+Caching
+
+Access control
+
+Privacy
+
+Traffic management</code></pre>
+            </li>
+
+
+            <!-- 93 -->
+            <li>
+                <h2>VPN</h2>
+
+                <pre class="language-text"><code>VPN =
+Virtual Private Network
+
+Creates a protected logical
+connection over another network.
+
+Common uses:
+
+Remote access
+
+Site-to-site networking
+
+Protecting traffic on
+untrusted networks</code></pre>
+            </li>
+
+
+            <!-- 94 -->
+            <li>
+                <h2>SSH</h2>
+
+                <pre class="language-text"><code>SSH =
+Secure Shell
+
+Used for secure remote access.
+
+Default Port:
+
+22</code></pre>
+
+                <pre class="language-bash"><code>ssh user@server</code></pre>
+            </li>
+
+
+            <!-- 95 -->
+            <li>
+                <h2>FTP</h2>
+
+                <pre class="language-text"><code>FTP =
+File Transfer Protocol
+
+Classic FTP commonly uses:
+
+Port 21
+Control
+
+Port 20
+Active-mode data connection
+
+
+FTP does not encrypt
+credentials/data by itself.</code></pre>
+            </li>
+
+
+            <!-- 96 -->
+            <li>
+                <h2>SMTP</h2>
+
+                <pre class="language-text"><code>SMTP =
+Simple Mail Transfer Protocol
+
+Used for sending / relaying email.
+
+Common ports include:
+
+25
+Server-to-server relay
+
+587
+Message submission
+
+465
+Implicit TLS submission</code></pre>
+            </li>
+
+
+            <!-- 97 -->
+            <li>
+                <h2>POP3 vs IMAP</h2>
+
+                <pre class="language-text"><code>POP3
+
+Commonly downloads mail
+to a client.
+
+Default cleartext port:
+110
+
+
+IMAP
+
+Designed to manage and
+synchronize mail stored
+on a server.
+
+Default cleartext port:
+143</code></pre>
+            </li>
+
+
+            <!-- 98 -->
+            <li>
+                <h2>Network Commands — Windows</h2>
+
+                <pre class="language-bash"><code>ipconfig
+
+ipconfig /all
+
+ping example.com
+
+tracert example.com
+
+nslookup example.com
+
+arp -a
+
+route print
+
+netstat -ano</code></pre>
+            </li>
+
+
+            <!-- 99 -->
+            <li>
+                <h2>Network Commands — Linux</h2>
+
+                <pre class="language-bash"><code>ip addr
+
+ip route
+
+ip neigh
+
+ping example.com
+
+traceroute example.com
+
+dig example.com
+
+ss -tuln
+
+curl https://example.com</code></pre>
+            </li>
+
+
+            <!-- 100 -->
+            <li>
+                <h2>What Happens When You Enter a URL?</h2>
+
+                <pre class="language-text"><code>You enter:
+
+https://example.com
+
+        ↓
+
+Browser parses URL
+
+        ↓
+
+DNS resolution
+
+        ↓
+
+Determine route / next hop
+
+        ↓
+
+Local link resolution as needed
+
+        ↓
+
+Establish transport connection
+
+TCP for HTTP/1.1 or HTTP/2
+
+or QUIC over UDP for HTTP/3
+
+        ↓
+
+TLS handshake for HTTPS
+
+        ↓
+
+HTTP request
+
+        ↓
+
+Server processes request
+
+        ↓
+
+HTTP response
+
+        ↓
+
+Browser processes resources
+
+        ↓
+
+Page rendered</code></pre>
+            </li>
+
+
+            <!-- 101 -->
+            <li>
+                <h2>Encapsulation</h2>
+
+                <pre class="language-text"><code>Application Data
+
+      ↓
+
+Transport
+Segment / Datagram
+
+      ↓
+
+Network
+Packet
+
+      ↓
+
+Data Link
+Frame
+
+      ↓
+
+Physical
+Bits</code></pre>
+            </li>
+
+
+            <!-- 102 -->
+            <li>
+                <h2>Decapsulation</h2>
+
+                <pre class="language-text"><code>Bits
+
+ ↓
+
+Frame
+
+ ↓
+
+Packet
+
+ ↓
+
+Segment / Datagram
+
+ ↓
+
+Application Data</code></pre>
+            </li>
+
+
+            <!-- 103 -->
+            <li>
+                <h2>MAC vs IP Address</h2>
+
+                <pre class="language-text"><code>MAC Address
+
+Layer 2 identifier
+
+Used for local
+link delivery.
+
+
+IP Address
+
+Layer 3 logical address
+
+Used for routing
+between IP networks.</code></pre>
+            </li>
+
+
+            <!-- 104 -->
+            <li>
+                <h2>Switch vs Router</h2>
+
+                <pre class="language-text"><code>Switch
+
+Primarily Layer 2
+
+Uses MAC addresses
+
+Forwards Ethernet frames
+
+
+Router
+
+Layer 3
+
+Uses IP addresses
+
+Forwards packets
+between networks</code></pre>
+            </li>
+
+
+            <!-- 105 -->
+            <li>
+                <h2>DNS vs DHCP</h2>
+
+                <pre class="language-text"><code>DNS
+
+Name
+   ↓
+IP Address
+
+
+DHCP
+
+Device
+   ↓
+Automatically receives
+network configuration</code></pre>
+            </li>
+
+
+            <!-- 106 -->
+            <li>
+                <h2>TCP Flow Control</h2>
+
+                <pre class="language-text"><code>Flow control prevents
+a sender from overwhelming
+a receiver.
+
+TCP uses a receiver-advertised
+window as part of
+its flow-control mechanism.</code></pre>
+            </li>
+
+
+            <!-- 107 -->
+            <li>
+                <h2>Congestion Control</h2>
+
+                <pre class="language-text"><code>Congestion control attempts
+to avoid overwhelming
+the network.
+
+TCP implementations use
+congestion-control algorithms.
+
+Common concepts include:
+
+Congestion Window
+
+Slow Start
+
+Congestion Avoidance</code></pre>
+            </li>
+
+
+            <!-- 108 -->
+            <li>
+                <h2>Error Detection</h2>
+
+                <pre class="language-text"><code>Common techniques:
+
+Parity
+
+Checksum
+
+CRC
+
+
+Ethernet frames use
+a Frame Check Sequence
+based on CRC.</code></pre>
+            </li>
+
+
+            <!-- 109 -->
+            <li>
+                <h2>CSMA/CD</h2>
+
+                <pre class="language-text"><code>CSMA/CD =
+
+Carrier Sense
+Multiple Access
+with Collision Detection
+
+Historically used with
+shared, half-duplex Ethernet.
+
+Modern switched full-duplex
+Ethernet does not use
+collision detection in normal operation.</code></pre>
+            </li>
+
+
+            <!-- 110 -->
+            <li>
+                <h2>CSMA/CA</h2>
+
+                <pre class="language-text"><code>CSMA/CA =
+
+Carrier Sense
+Multiple Access
+with Collision Avoidance
+
+Used by Wi-Fi networks
+to reduce the probability
+of collisions.</code></pre>
+            </li>
+
+
+            <!-- 111 -->
+            <li>
+                <h2>Common Network Security Threats</h2>
+
+                <pre class="language-text"><code>Phishing
+
+Malware
+
+Man-in-the-Middle Attacks
+
+Denial of Service
+
+Distributed Denial of Service
+
+Spoofing
+
+DNS Poisoning
+
+Session Hijacking
+
+Password Attacks</code></pre>
+            </li>
+
+
+            <!-- 112 -->
+            <li>
+                <h2>DoS vs DDoS</h2>
+
+                <pre class="language-text"><code>DoS
+
+Attack traffic originates
+from a limited source
+to exhaust resources.
+
+
+DDoS
+
+Attack traffic comes from
+many distributed systems.</code></pre>
+            </li>
+
+
+            <!-- 113 -->
+            <li>
+                <h2>Network Troubleshooting Steps</h2>
+
+                <pre class="language-text"><code>1. Check physical / Wi-Fi link
+
+2. Check IP configuration
+
+3. Check subnet / prefix
+
+4. Check default gateway
+
+5. Test loopback
+
+6. Test local gateway
+
+7. Test remote IP
+
+8. Test DNS resolution
+
+9. Check routing
+
+10. Check firewall
+
+11. Check ports/services
+
+12. Inspect logs</code></pre>
+            </li>
+
+
+            <!-- 114 -->
+            <li>
+                <h2>Basic Troubleshooting Commands</h2>
+
+                <pre class="language-bash"><code># Linux
+
+ip addr
+
+ip route
+
+ping 127.0.0.1
+
+ping 192.168.1.1
+
+ping example.com
+
+dig example.com
+
+ss -tuln
+
+
+# Windows
+
+ipconfig /all
+
+ping 127.0.0.1
+
+ping 192.168.1.1
+
+ping example.com
+
+nslookup example.com
+
+netstat -ano</code></pre>
+            </li>
+
+
+            <!-- 115 -->
+            <li>
+                <h2>Important Networking Protocols</h2>
+
+                <pre class="language-text"><code>HTTP
+
+HTTPS
+
+DNS
+
+DHCP
+
+TCP
+
+UDP
+
+IP
+
+ICMP
+
+ARP
+
+SSH
+
+FTP
+
+SMTP
+
+POP3
+
+IMAP
+
+SNMP
+
+NTP
+
+OSPF
+
+BGP</code></pre>
+            </li>
+
+
+            <!-- 116 -->
+            <li>
+                <h2>Important Interview Questions</h2>
+
+                <pre class="language-text"><code>What is OSI Model?
+
+OSI vs TCP/IP?
+
+TCP vs UDP?
+
+Hub vs Switch vs Router?
+
+What is IP Address?
+
+IPv4 vs IPv6?
+
+What is MAC Address?
+
+MAC vs IP?
+
+What is ARP?
+
+What is DHCP?
+
+Explain DORA.
+
+What is DNS?
+
+What is Subnetting?
+
+What is Default Gateway?
+
+What is NAT?
+
+What is VLAN?
+
+What is TCP Handshake?
+
+HTTP vs HTTPS?
+
+What is a Port?
+
+What is Routing?
+
+Static vs Dynamic Routing?
+
+What is OSPF?
+
+What is BGP?
+
+What happens after entering a URL?
+
+What is a Firewall?
+
+What is VPN?</code></pre>
+            </li>
+
+
+            <!-- 117 -->
+            <li>
+                <h2>OSI Quick Revision</h2>
+
+                <pre class="language-text"><code>7 Application
+
+User-facing network services
+
+
+6 Presentation
+
+Translation
+Encryption
+Compression
+
+
+5 Session
+
+Session management
+
+
+4 Transport
+
+TCP / UDP
+Ports
+
+
+3 Network
+
+IP
+Routing
+Router
+
+
+2 Data Link
+
+Frames
+MAC
+Switch
+
+
+1 Physical
+
+Bits
+Signals
+Cables</code></pre>
+            </li>
+
+
+            <!-- 118 -->
+            <li>
+                <h2>Protocol Quick Revision</h2>
+
+                <pre class="language-text"><code>HTTP
+Web communication
+
+
+HTTPS
+HTTP over TLS
+
+
+DNS
+Name resolution
+
+
+DHCP
+Automatic network configuration
+
+
+ARP
+IPv4-to-MAC resolution
+on local networks
+
+
+TCP
+Reliable byte stream
+
+
+UDP
+Connectionless datagrams
+
+
+IP
+Addressing and routing
+
+
+ICMP
+Errors and diagnostics
+
+
+SSH
+Secure remote shell
+
+
+SMTP
+Email sending / relay
+
+
+IMAP
+Email synchronization</code></pre>
+            </li>
+
+
+            <!-- 119 -->
+            <li>
+                <h2>Port Quick Revision</h2>
+
+                <pre class="language-text"><code>20 / 21
+
+FTP
+
+
+22
+
+SSH
+
+
+23
+
+Telnet
+
+
+25
+
+SMTP
+
+
+53
+
+DNS
+
+
+67 / 68
+
+DHCP
+
+
+80
+
+HTTP
+
+
+110
+
+POP3
+
+
+123
+
+NTP
+
+
+143
+
+IMAP
+
+
+443
+
+HTTPS</code></pre>
+            </li>
+
+
+            <!-- 120 -->
+            <li>
+                <h2>Computer Networks Learning Roadmap</h2>
+
+                <pre class="language-text"><code>1. Network Basics
+
+2. LAN / WAN / PAN
+
+3. Network Topologies
+
+4. OSI Model
+
+5. TCP/IP Model
+
+6. Hub
+
+7. Switch
+
+8. Router
+
+9. MAC Address
+
+10. IP Address
+
+11. IPv4
+
+12. IPv6
+
+13. Private / Public IP
+
+14. Subnet Mask
+
+15. CIDR
+
+16. Subnetting
+
+17. Default Gateway
+
+18. ARP
+
+19. DHCP
+
+20. DNS
+
+21. TCP
+
+22. UDP
+
+23. Ports
+
+24. TCP Handshake
+
+25. HTTP
+
+26. HTTPS
+
+27. ICMP
+
+28. Routing
+
+29. Static Routing
+
+30. Dynamic Routing
+
+31. RIP
+
+32. OSPF
+
+33. BGP
+
+34. NAT / PAT
+
+35. VLAN
+
+36. Switching
+
+37. Ethernet
+
+38. Wi-Fi
+
+39. Transmission Media
+
+40. Firewall
+
+41. Proxy
+
+42. VPN
+
+43. SSH
+
+44. Email Protocols
+
+45. Network Security
+
+46. Troubleshooting
+
+47. Linux Network Commands
+
+48. Windows Network Commands
+
+49. Interview Questions
+
+50. Practical Networking</code></pre>
+            </li>
+
+
+            <!-- 121 -->
+            <li>
+                <h2>Final Interview Revision</h2>
+
+                <pre class="language-text"><code>OSI
+→ 7 Layers
+
+
+TCP/IP
+→ 4 Layers
+
+
+Switch
+→ MAC Address
+
+
+Router
+→ IP Address
+
+
+ARP
+→ IPv4 to MAC
+
+
+DHCP
+→ Automatic IP configuration
+
+
+DNS
+→ Domain to IP
+
+
+TCP
+→ Reliable
+
+
+UDP
+→ Low-overhead datagrams
+
+
+IPv4
+→ 32 bit
+
+
+IPv6
+→ 128 bit
+
+
+HTTP
+→ Web protocol
+
+
+HTTPS
+→ HTTP + TLS
+
+
+NAT
+→ Address translation
+
+
+VLAN
+→ Logical Layer-2 separation
+
+
+BFS?
+→ DSA, not networking :)
+
+
+Most Important Interview Topics:
+
+OSI
+
+TCP/IP
+
+TCP vs UDP
+
+IP Addressing
+
+Subnetting
+
+DNS
+
+DHCP
+
+ARP
+
+HTTP/HTTPS
+
+Routing
+
+NAT
+
+TCP Handshake</code></pre>
+            </li>
+
+        </ol>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <p>
+            © 2026 CodeWithRohit |
+            Computer Networks Cheat Sheet
+        </p>
+
+    </footer>
+
+
+    <!-- Prism JS -->
+    <script src="../prism/prism.js"></script>
+
+    <!-- Common JS -->
+    <script src="../cheatsheet.js"></script>
+
+</body>
+
+</html>

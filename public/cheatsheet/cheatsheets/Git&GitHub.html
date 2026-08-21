@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Complete Git and GitHub Cheat Sheet by CodeWithRohit"
+    >
+
+    <title>Git & GitHub Cheat Sheet | CodeWithRohit</title>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="../cheatsheet.css">
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="../prism/prism.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="cheat-navbar">
+
+        <a href="../index.html" class="brand">
+            &lt;/&gt; CodeWithRohit
+        </a>
+
+        <div class="cheat-title">
+            Git & GitHub Cheat Sheet
+        </div>
+
+        <a href="../index.html" class="home-btn">
+            ← Home
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="cheat-hero">
+
+        <h1>Git & GitHub Cheat Sheet</h1>
+
+        <p>
+            Complete Git and GitHub quick reference covering repositories,
+            commits, branches, merging, remotes, push, pull, reset,
+            revert, stash and GitHub workflow.
+        </p>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <ol>
+
+            <!-- 1 -->
+            <li>
+                <h2>Check Git Version</h2>
+
+                <pre class="language-bash"><code>git --version</code></pre>
+            </li>
+
+
+            <!-- 2 -->
+            <li>
+                <h2>Configure Username</h2>
+
+                <pre class="language-bash"><code>git config --global user.name "Rohit Prajapati"</code></pre>
+            </li>
+
+
+            <!-- 3 -->
+            <li>
+                <h2>Configure Email</h2>
+
+                <pre class="language-bash"><code>git config --global user.email "your-email@example.com"</code></pre>
+            </li>
+
+
+            <!-- 4 -->
+            <li>
+                <h2>Check Git Configuration</h2>
+
+                <pre class="language-bash"><code>git config --list</code></pre>
+            </li>
+
+
+            <!-- 5 -->
+            <li>
+                <h2>Initialize Git Repository</h2>
+
+                <pre class="language-bash"><code>git init</code></pre>
+            </li>
+
+
+            <!-- 6 -->
+            <li>
+                <h2>Check Repository Status</h2>
+
+                <pre class="language-bash"><code>git status</code></pre>
+            </li>
+
+
+            <!-- 7 -->
+            <li>
+                <h2>Add One File</h2>
+
+                <pre class="language-bash"><code>git add index.html</code></pre>
+            </li>
+
+
+            <!-- 8 -->
+            <li>
+                <h2>Add Multiple Files</h2>
+
+                <pre class="language-bash"><code>git add index.html style.css script.js</code></pre>
+            </li>
+
+
+            <!-- 9 -->
+            <li>
+                <h2>Add All Files</h2>
+
+                <pre class="language-bash"><code>git add .</code></pre>
+            </li>
+
+
+            <!-- 10 -->
+            <li>
+                <h2>Create Commit</h2>
+
+                <pre class="language-bash"><code>git commit -m "Initial commit"</code></pre>
+            </li>
+
+
+            <!-- 11 -->
+            <li>
+                <h2>Git Basic Workflow</h2>
+
+                <pre class="language-bash"><code>git status
+
+git add .
+
+git commit -m "Add new feature"</code></pre>
+            </li>
+
+
+            <!-- 12 -->
+            <li>
+                <h2>View Commit History</h2>
+
+                <pre class="language-bash"><code>git log</code></pre>
+            </li>
+
+
+            <!-- 13 -->
+            <li>
+                <h2>Short Commit History</h2>
+
+                <pre class="language-bash"><code>git log --oneline</code></pre>
+            </li>
+
+
+            <!-- 14 -->
+            <li>
+                <h2>Graph Commit History</h2>
+
+                <pre class="language-bash"><code>git log --oneline --graph --all</code></pre>
+            </li>
+
+
+            <!-- 15 -->
+            <li>
+                <h2>Show Changes</h2>
+
+                <pre class="language-bash"><code>git diff</code></pre>
+            </li>
+
+
+            <!-- 16 -->
+            <li>
+                <h2>Show Staged Changes</h2>
+
+                <pre class="language-bash"><code>git diff --staged</code></pre>
+            </li>
+
+
+            <!-- 17 -->
+            <li>
+                <h2>Show Commit Details</h2>
+
+                <pre class="language-bash"><code>git show</code></pre>
+            </li>
+
+
+            <!-- 18 -->
+            <li>
+                <h2>Show Specific Commit</h2>
+
+                <pre class="language-bash"><code>git show COMMIT_ID</code></pre>
+            </li>
+
+
+            <!-- 19 -->
+            <li>
+                <h2>List Branches</h2>
+
+                <pre class="language-bash"><code>git branch</code></pre>
+            </li>
+
+
+            <!-- 20 -->
+            <li>
+                <h2>Create New Branch</h2>
+
+                <pre class="language-bash"><code>git branch feature-login</code></pre>
+            </li>
+
+
+            <!-- 21 -->
+            <li>
+                <h2>Switch Branch</h2>
+
+                <pre class="language-bash"><code>git switch feature-login</code></pre>
+            </li>
+
+
+            <!-- 22 -->
+            <li>
+                <h2>Create and Switch Branch</h2>
+
+                <pre class="language-bash"><code>git switch -c feature-login</code></pre>
+            </li>
+
+
+            <!-- 23 -->
+            <li>
+                <h2>Older Checkout Syntax</h2>
+
+                <pre class="language-bash"><code>git checkout feature-login
+
+git checkout -b feature-login</code></pre>
+            </li>
+
+
+            <!-- 24 -->
+            <li>
+                <h2>Rename Branch</h2>
+
+                <pre class="language-bash"><code>git branch -m new-branch-name</code></pre>
+            </li>
+
+
+            <!-- 25 -->
+            <li>
+                <h2>Delete Local Branch</h2>
+
+                <pre class="language-bash"><code>git branch -d feature-login</code></pre>
+            </li>
+
+
+            <!-- 26 -->
+            <li>
+                <h2>Force Delete Local Branch</h2>
+
+                <pre class="language-bash"><code>git branch -D feature-login</code></pre>
+            </li>
+
+
+            <!-- 27 -->
+            <li>
+                <h2>Merge Branch</h2>
+
+                <pre class="language-bash"><code>git switch main
+
+git merge feature-login</code></pre>
+            </li>
+
+
+            <!-- 28 -->
+            <li>
+                <h2>Abort Merge</h2>
+
+                <pre class="language-bash"><code>git merge --abort</code></pre>
+            </li>
+
+
+            <!-- 29 -->
+            <li>
+                <h2>Merge Conflict Example</h2>
+
+                <pre class="language-text"><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+
+Current branch code
+
+=======
+
+Incoming branch code
+
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature-login</code></pre>
+            </li>
+
+
+            <!-- 30 -->
+            <li>
+                <h2>After Resolving Merge Conflict</h2>
+
+                <pre class="language-bash"><code>git add .
+
+git commit -m "Resolve merge conflict"</code></pre>
+            </li>
+
+
+            <!-- 31 -->
+            <li>
+                <h2>Clone Repository</h2>
+
+                <pre class="language-bash"><code>git clone REPOSITORY_URL</code></pre>
+            </li>
+
+
+            <!-- 32 -->
+            <li>
+                <h2>Clone into Custom Folder</h2>
+
+                <pre class="language-bash"><code>git clone REPOSITORY_URL my-project</code></pre>
+            </li>
+
+
+            <!-- 33 -->
+            <li>
+                <h2>Check Remote Repository</h2>
+
+                <pre class="language-bash"><code>git remote -v</code></pre>
+            </li>
+
+
+            <!-- 34 -->
+            <li>
+                <h2>Add GitHub Remote</h2>
+
+                <pre class="language-bash"><code>git remote add origin REPOSITORY_URL</code></pre>
+            </li>
+
+
+            <!-- 35 -->
+            <li>
+                <h2>Rename Branch to main</h2>
+
+                <pre class="language-bash"><code>git branch -M main</code></pre>
+            </li>
+
+
+            <!-- 36 -->
+            <li>
+                <h2>First Push to GitHub</h2>
+
+                <pre class="language-bash"><code>git push -u origin main</code></pre>
+            </li>
+
+
+            <!-- 37 -->
+            <li>
+                <h2>Push Changes</h2>
+
+                <pre class="language-bash"><code>git push</code></pre>
+            </li>
+
+
+            <!-- 38 -->
+            <li>
+                <h2>Push Specific Branch</h2>
+
+                <pre class="language-bash"><code>git push origin feature-login</code></pre>
+            </li>
+
+
+            <!-- 39 -->
+            <li>
+                <h2>Pull Changes</h2>
+
+                <pre class="language-bash"><code>git pull</code></pre>
+            </li>
+
+
+            <!-- 40 -->
+            <li>
+                <h2>Pull from Main Branch</h2>
+
+                <pre class="language-bash"><code>git pull origin main</code></pre>
+            </li>
+
+
+            <!-- 41 -->
+            <li>
+                <h2>Fetch Changes</h2>
+
+                <pre class="language-bash"><code>git fetch</code></pre>
+            </li>
+
+
+            <!-- 42 -->
+            <li>
+                <h2>Fetch vs Pull</h2>
+
+                <pre class="language-text"><code>git fetch
+
+Downloads remote changes
+without automatically
+merging them.
+
+
+git pull
+
+Downloads remote changes
+and integrates them into
+the current branch.</code></pre>
+            </li>
+
+
+            <!-- 43 -->
+            <li>
+                <h2>Change Remote URL</h2>
+
+                <pre class="language-bash"><code>git remote set-url origin REPOSITORY_URL</code></pre>
+            </li>
+
+
+            <!-- 44 -->
+            <li>
+                <h2>Remove Remote</h2>
+
+                <pre class="language-bash"><code>git remote remove origin</code></pre>
+            </li>
+
+
+            <!-- 45 -->
+            <li>
+                <h2>Delete Remote Branch</h2>
+
+                <pre class="language-bash"><code>git push origin --delete feature-login</code></pre>
+            </li>
+
+
+            <!-- 46 -->
+            <li>
+                <h2>Create .gitignore</h2>
+
+                <pre class="language-text"><code>node_modules/
+
+.env
+
+dist/
+
+build/
+
+*.log
+
+.vscode/
+
+.DS_Store</code></pre>
+            </li>
+
+
+            <!-- 47 -->
+            <li>
+                <h2>Remove Tracked File from Git</h2>
+
+                <pre class="language-bash"><code>git rm --cached .env</code></pre>
+            </li>
+
+
+            <!-- 48 -->
+            <li>
+                <h2>Remove Tracked Folder</h2>
+
+                <pre class="language-bash"><code>git rm -r --cached node_modules</code></pre>
+            </li>
+
+
+            <!-- 49 -->
+            <li>
+                <h2>Unstage File</h2>
+
+                <pre class="language-bash"><code>git restore --staged index.html</code></pre>
+            </li>
+
+
+            <!-- 50 -->
+            <li>
+                <h2>Discard File Changes</h2>
+
+                <pre class="language-bash"><code>git restore index.html</code></pre>
+            </li>
+
+
+            <!-- 51 -->
+            <li>
+                <h2>Amend Last Commit</h2>
+
+                <pre class="language-bash"><code>git commit --amend -m "New commit message"</code></pre>
+            </li>
+
+
+            <!-- 52 -->
+            <li>
+                <h2>Reset Soft</h2>
+
+                <pre class="language-bash"><code>git reset --soft HEAD~1</code></pre>
+
+                <p>
+                    Removes the last commit but keeps changes staged.
+                </p>
+            </li>
+
+
+            <!-- 53 -->
+            <li>
+                <h2>Reset Mixed</h2>
+
+                <pre class="language-bash"><code>git reset HEAD~1</code></pre>
+
+                <p>
+                    Removes the last commit and keeps changes unstaged.
+                </p>
+            </li>
+
+
+            <!-- 54 -->
+            <li>
+                <h2>Reset Hard</h2>
+
+                <pre class="language-bash"><code>git reset --hard HEAD~1</code></pre>
+
+                <p>
+                    Warning: This discards local changes.
+                </p>
+            </li>
+
+
+            <!-- 55 -->
+            <li>
+                <h2>Revert Commit</h2>
+
+                <pre class="language-bash"><code>git revert COMMIT_ID</code></pre>
+            </li>
+
+
+            <!-- 56 -->
+            <li>
+                <h2>Reset vs Revert</h2>
+
+                <pre class="language-text"><code>RESET
+
+Moves branch history.
+
+Commonly used for local
+history cleanup.
+
+
+REVERT
+
+Creates a new commit that
+undoes an older commit.
+
+Usually safer for shared
+repository history.</code></pre>
+            </li>
+
+
+            <!-- 57 -->
+            <li>
+                <h2>Git Stash</h2>
+
+                <pre class="language-bash"><code>git stash</code></pre>
+            </li>
+
+
+            <!-- 58 -->
+            <li>
+                <h2>Stash with Message</h2>
+
+                <pre class="language-bash"><code>git stash push -m "Login work"</code></pre>
+            </li>
+
+
+            <!-- 59 -->
+            <li>
+                <h2>List Stashes</h2>
+
+                <pre class="language-bash"><code>git stash list</code></pre>
+            </li>
+
+
+            <!-- 60 -->
+            <li>
+                <h2>Apply Latest Stash</h2>
+
+                <pre class="language-bash"><code>git stash apply</code></pre>
+            </li>
+
+
+            <!-- 61 -->
+            <li>
+                <h2>Pop Latest Stash</h2>
+
+                <pre class="language-bash"><code>git stash pop</code></pre>
+            </li>
+
+
+            <!-- 62 -->
+            <li>
+                <h2>Delete Stash</h2>
+
+                <pre class="language-bash"><code>git stash drop stash@{0}</code></pre>
+            </li>
+
+
+            <!-- 63 -->
+            <li>
+                <h2>Delete All Stashes</h2>
+
+                <pre class="language-bash"><code>git stash clear</code></pre>
+            </li>
+
+
+            <!-- 64 -->
+            <li>
+                <h2>Git Tags</h2>
+
+                <pre class="language-bash"><code>git tag v1.0.0</code></pre>
+            </li>
+
+
+            <!-- 65 -->
+            <li>
+                <h2>List Tags</h2>
+
+                <pre class="language-bash"><code>git tag</code></pre>
+            </li>
+
+
+            <!-- 66 -->
+            <li>
+                <h2>Annotated Tag</h2>
+
+                <pre class="language-bash"><code>git tag -a v1.0.0 -m "Version 1.0.0"</code></pre>
+            </li>
+
+
+            <!-- 67 -->
+            <li>
+                <h2>Push Tag</h2>
+
+                <pre class="language-bash"><code>git push origin v1.0.0</code></pre>
+            </li>
+
+
+            <!-- 68 -->
+            <li>
+                <h2>Push All Tags</h2>
+
+                <pre class="language-bash"><code>git push origin --tags</code></pre>
+            </li>
+
+
+            <!-- 69 -->
+            <li>
+                <h2>Delete Local Tag</h2>
+
+                <pre class="language-bash"><code>git tag -d v1.0.0</code></pre>
+            </li>
+
+
+            <!-- 70 -->
+            <li>
+                <h2>Git Rebase</h2>
+
+                <pre class="language-bash"><code>git switch feature-login
+
+git rebase main</code></pre>
+            </li>
+
+
+            <!-- 71 -->
+            <li>
+                <h2>Continue Rebase</h2>
+
+                <pre class="language-bash"><code>git add .
+
+git rebase --continue</code></pre>
+            </li>
+
+
+            <!-- 72 -->
+            <li>
+                <h2>Abort Rebase</h2>
+
+                <pre class="language-bash"><code>git rebase --abort</code></pre>
+            </li>
+
+
+            <!-- 73 -->
+            <li>
+                <h2>Cherry Pick</h2>
+
+                <pre class="language-bash"><code>git cherry-pick COMMIT_ID</code></pre>
+            </li>
+
+
+            <!-- 74 -->
+            <li>
+                <h2>Git HEAD</h2>
+
+                <pre class="language-text"><code>HEAD
+
+Points to the currently
+checked-out commit.
+
+HEAD~1
+
+Previous commit.
+
+HEAD~2
+
+Two commits before HEAD.</code></pre>
+            </li>
+
+
+            <!-- 75 -->
+            <li>
+                <h2>View Remote Branches</h2>
+
+                <pre class="language-bash"><code>git branch -r</code></pre>
+            </li>
+
+
+            <!-- 76 -->
+            <li>
+                <h2>View All Branches</h2>
+
+                <pre class="language-bash"><code>git branch -a</code></pre>
+            </li>
+
+
+            <!-- 77 -->
+            <li>
+                <h2>Clean Untracked Files</h2>
+
+                <pre class="language-bash"><code>git clean -n
+
+git clean -f</code></pre>
+
+                <p>
+                    Run <strong>git clean -n</strong> first to preview files.
+                </p>
+            </li>
+
+
+            <!-- 78 -->
+            <li>
+                <h2>GitHub New Project Workflow</h2>
+
+                <pre class="language-bash"><code>git init
+
+git add .
+
+git commit -m "Initial commit"
+
+git branch -M main
+
+git remote add origin REPOSITORY_URL
+
+git push -u origin main</code></pre>
+            </li>
+
+
+            <!-- 79 -->
+            <li>
+                <h2>Daily GitHub Workflow</h2>
+
+                <pre class="language-bash"><code>git status
+
+git pull
+
+git add .
+
+git commit -m "Update project"
+
+git push</code></pre>
+            </li>
+
+
+            <!-- 80 -->
+            <li>
+                <h2>Feature Branch Workflow</h2>
+
+                <pre class="language-bash"><code>git switch main
+
+git pull
+
+git switch -c feature-login
+
+
+# Work on project
+
+
+git add .
+
+git commit -m "Add login feature"
+
+git push -u origin feature-login</code></pre>
+            </li>
+
+
+            <!-- 81 -->
+            <li>
+                <h2>Good Commit Messages</h2>
+
+                <pre class="language-text"><code>Add login page
+
+Fix navbar responsiveness
+
+Update README documentation
+
+Add authentication middleware
+
+Fix MongoDB connection
+
+Create user dashboard
+
+Remove unused CSS
+
+Refactor API routes</code></pre>
+            </li>
+
+
+            <!-- 82 -->
+            <li>
+                <h2>GitHub Repository Structure</h2>
+
+                <pre class="language-text"><code>my-project/
+│
+├── src/
+│
+├── public/
+│
+├── assets/
+│
+├── .gitignore
+│
+├── LICENSE
+│
+├── README.md
+│
+├── package.json
+│
+└── index.html</code></pre>
+            </li>
+
+
+            <!-- 83 -->
+            <li>
+                <h2>README Basic Structure</h2>
+
+                <pre class="language-markdown"><code># Project Name
+
+Short project description.
+
+## Features
+
+- Feature 1
+- Feature 2
+- Feature 3
+
+## Tech Stack
+
+- HTML
+- CSS
+- JavaScript
+
+## Installation
+
+Clone repository and install dependencies.
+
+## Usage
+
+Explain how to run the project.
+
+## Author
+
+CodeWithRohit</code></pre>
+            </li>
+
+
+            <!-- 84 -->
+            <li>
+                <h2>GitHub Collaboration Workflow</h2>
+
+                <pre class="language-text"><code>1. Fork Repository
+
+2. Clone Fork
+
+3. Create Branch
+
+4. Make Changes
+
+5. Add Changes
+
+6. Commit Changes
+
+7. Push Branch
+
+8. Open Pull Request
+
+9. Code Review
+
+10. Merge Pull Request</code></pre>
+            </li>
+
+
+            <!-- 85 -->
+            <li>
+                <h2>Pull Request Workflow</h2>
+
+                <pre class="language-bash"><code>git switch -c feature-navbar
+
+git add .
+
+git commit -m "Add responsive navbar"
+
+git push -u origin feature-navbar</code></pre>
+
+                <p>
+                    Then open GitHub and create a Pull Request.
+                </p>
+            </li>
+
+
+            <!-- 86 -->
+            <li>
+                <h2>Git Areas</h2>
+
+                <pre class="language-text"><code>Working Directory
+        ↓
+     git add
+        ↓
+Staging Area
+        ↓
+   git commit
+        ↓
+Local Repository
+        ↓
+    git push
+        ↓
+Remote Repository</code></pre>
+            </li>
+
+
+            <!-- 87 -->
+            <li>
+                <h2>Git vs GitHub</h2>
+
+                <pre class="language-text"><code>Git
+--------------------
+
+Version control system.
+
+Runs locally.
+
+Tracks code changes.
+
+Creates commits.
+
+Handles branches.
+
+
+GitHub
+--------------------
+
+Cloud platform for
+hosting Git repositories.
+
+Stores remote repositories.
+
+Supports collaboration.
+
+Pull Requests.
+
+Issues.
+
+Actions.
+
+Project management.</code></pre>
+            </li>
+
+
+            <!-- 88 -->
+            <li>
+                <h2>Common Git Error — Remote Already Exists</h2>
+
+                <pre class="language-text"><code>error:
+remote origin already exists</code></pre>
+
+                <pre class="language-bash"><code>git remote -v
+
+git remote set-url origin REPOSITORY_URL</code></pre>
+            </li>
+
+
+            <!-- 89 -->
+            <li>
+                <h2>Common Git Error — Rejected Push</h2>
+
+                <pre class="language-text"><code>! [rejected]
+main -> main
+(non-fast-forward)</code></pre>
+
+                <pre class="language-bash"><code>git pull --rebase origin main
+
+git push origin main</code></pre>
+            </li>
+
+
+            <!-- 90 -->
+            <li>
+                <h2>Common Git Error — Unrelated Histories</h2>
+
+                <pre class="language-bash"><code>git pull origin main --allow-unrelated-histories</code></pre>
+            </li>
+
+
+            <!-- 91 -->
+            <li>
+                <h2>Common Git Error — Nothing to Commit</h2>
+
+                <pre class="language-text"><code>nothing to commit,
+working tree clean</code></pre>
+
+                <p>
+                    This means Git currently has no new tracked changes to commit.
+                </p>
+            </li>
+
+
+            <!-- 92 -->
+            <li>
+                <h2>Check Current Branch</h2>
+
+                <pre class="language-bash"><code>git branch --show-current</code></pre>
+            </li>
+
+
+            <!-- 93 -->
+            <li>
+                <h2>Check Repository Root</h2>
+
+                <pre class="language-bash"><code>git rev-parse --show-toplevel</code></pre>
+            </li>
+
+
+            <!-- 94 -->
+            <li>
+                <h2>Git Command Quick Revision</h2>
+
+                <pre class="language-bash"><code>git init
+
+git status
+
+git add .
+
+git commit -m "message"
+
+git log --oneline
+
+git branch
+
+git switch branch-name
+
+git switch -c new-branch
+
+git merge branch-name
+
+git clone REPOSITORY_URL
+
+git remote -v
+
+git remote add origin REPOSITORY_URL
+
+git push -u origin main
+
+git push
+
+git pull
+
+git fetch
+
+git stash
+
+git stash pop
+
+git restore file
+
+git revert COMMIT_ID</code></pre>
+            </li>
+
+
+            <!-- 95 -->
+            <li>
+                <h2>Git & GitHub Learning Roadmap</h2>
+
+                <pre class="language-text"><code>1. Version Control
+
+2. Git Installation
+
+3. Git Configuration
+
+4. Repository
+
+5. git init
+
+6. Working Directory
+
+7. Staging Area
+
+8. git add
+
+9. git commit
+
+10. git status
+
+11. git log
+
+12. git diff
+
+13. Branches
+
+14. git switch
+
+15. git checkout
+
+16. Merge
+
+17. Merge Conflicts
+
+18. GitHub Repository
+
+19. Clone
+
+20. Remote
+
+21. Push
+
+22. Pull
+
+23. Fetch
+
+24. .gitignore
+
+25. Restore
+
+26. Reset
+
+27. Revert
+
+28. Stash
+
+29. Tags
+
+30. Rebase
+
+31. Cherry Pick
+
+32. Fork
+
+33. Pull Request
+
+34. Issues
+
+35. Code Review
+
+36. GitHub Collaboration
+
+37. README
+
+38. Open Source
+
+39. GitHub Actions
+
+40. GitHub Pages</code></pre>
+            </li>
+
+        </ol>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <p>
+            © 2026 CodeWithRohit |
+            Git & GitHub Cheat Sheet
+        </p>
+
+    </footer>
+
+
+    <!-- Prism JS -->
+    <script src="../prism/prism.js"></script>
+
+    <!-- Common JS -->
+    <script src="../cheatsheet.js"></script>
+
+</body>
+
+</html>

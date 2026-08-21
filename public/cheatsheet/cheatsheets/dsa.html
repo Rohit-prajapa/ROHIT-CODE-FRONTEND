@@ -1,0 +1,3182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Complete DSA Cheat Sheet by CodeWithRohit"
+    >
+
+    <title>DSA Cheat Sheet | CodeWithRohit</title>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="../cheatsheet.css">
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="../prism/prism.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="cheat-navbar">
+
+        <a href="../index.html" class="brand">
+            &lt;/&gt; CodeWithRohit
+        </a>
+
+        <div class="cheat-title">
+            DSA Cheat Sheet
+        </div>
+
+        <a href="../index.html" class="home-btn">
+            ← Home
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="cheat-hero">
+
+        <h1>Data Structures & Algorithms Cheat Sheet</h1>
+
+        <p>
+            Complete DSA quick reference covering complexity,
+            arrays, strings, linked lists, stacks, queues, hashing,
+            recursion, sorting, trees, graphs, greedy,
+            backtracking and dynamic programming.
+        </p>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <ol>
+
+            <!-- 1 -->
+            <li>
+                <h2>What is DSA?</h2>
+
+                <pre class="language-text"><code>DSA = Data Structures + Algorithms
+
+Data Structure:
+Organizes and stores data.
+
+Algorithm:
+Step-by-step procedure to solve a problem.
+
+Examples:
+
+Array
+Linked List
+Stack
+Queue
+Hash Table
+Tree
+Heap
+Graph
+
+Algorithms:
+
+Searching
+Sorting
+Recursion
+Greedy
+Backtracking
+Dynamic Programming</code></pre>
+            </li>
+
+
+            <!-- 2 -->
+            <li>
+                <h2>Time Complexity</h2>
+
+                <pre class="language-text"><code>O(1)       Constant
+
+O(log n)   Logarithmic
+
+O(n)       Linear
+
+O(n log n) Linearithmic
+
+O(n²)      Quadratic
+
+O(n³)      Cubic
+
+O(2^n)     Exponential
+
+O(n!)      Factorial</code></pre>
+            </li>
+
+
+            <!-- 3 -->
+            <li>
+                <h2>Complexity Order</h2>
+
+                <pre class="language-text"><code>Best
+ ↓
+
+O(1)
+
+O(log n)
+
+O(n)
+
+O(n log n)
+
+O(n²)
+
+O(n³)
+
+O(2^n)
+
+O(n!)
+
+ ↓
+Worst</code></pre>
+            </li>
+
+
+            <!-- 4 -->
+            <li>
+                <h2>Common Complexity Examples</h2>
+
+                <pre class="language-cpp"><code>// O(1)
+
+cout &lt;&lt; arr[0];
+
+
+// O(n)
+
+for(int i = 0; i &lt; n; i++) {
+    cout &lt;&lt; arr[i];
+}
+
+
+// O(n²)
+
+for(int i = 0; i &lt; n; i++) {
+
+    for(int j = 0; j &lt; n; j++) {
+
+        cout &lt;&lt; i &lt;&lt; j;
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 5 -->
+            <li>
+                <h2>Space Complexity</h2>
+
+                <pre class="language-text"><code>Space Complexity measures
+extra memory used by an algorithm.
+
+Examples:
+
+Few variables
+O(1)
+
+Array of size n
+O(n)
+
+2D Matrix n × n
+O(n²)</code></pre>
+            </li>
+
+
+            <!-- 6 -->
+            <li>
+                <h2>Array</h2>
+
+                <pre class="language-cpp"><code>int arr[] = {
+    10,
+    20,
+    30,
+    40,
+    50
+};</code></pre>
+
+                <pre class="language-text"><code>Access       O(1)
+Search       O(n)
+Insert End   O(1) amortized for dynamic arrays
+Insert Mid   O(n)
+Delete       O(n)</code></pre>
+            </li>
+
+
+            <!-- 7 -->
+            <li>
+                <h2>Traverse Array</h2>
+
+                <pre class="language-cpp"><code>for(int i = 0; i &lt; n; i++) {
+
+    cout &lt;&lt; arr[i] &lt;&lt; " ";
+
+}</code></pre>
+            </li>
+
+
+            <!-- 8 -->
+            <li>
+                <h2>Find Maximum</h2>
+
+                <pre class="language-cpp"><code>int maximum = arr[0];
+
+for(int i = 1; i &lt; n; i++) {
+
+    maximum = max(
+        maximum,
+        arr[i]
+    );
+
+}
+
+cout &lt;&lt; maximum;</code></pre>
+            </li>
+
+
+            <!-- 9 -->
+            <li>
+                <h2>Find Minimum</h2>
+
+                <pre class="language-cpp"><code>int minimum = arr[0];
+
+for(int i = 1; i &lt; n; i++) {
+
+    minimum = min(
+        minimum,
+        arr[i]
+    );
+
+}</code></pre>
+            </li>
+
+
+            <!-- 10 -->
+            <li>
+                <h2>Reverse Array</h2>
+
+                <pre class="language-cpp"><code>int left = 0;
+int right = n - 1;
+
+while(left &lt; right) {
+
+    swap(
+        arr[left],
+        arr[right]
+    );
+
+    left++;
+    right--;
+
+}</code></pre>
+            </li>
+
+
+            <!-- 11 -->
+            <li>
+                <h2>Two Pointer Technique</h2>
+
+                <pre class="language-cpp"><code>int left = 0;
+int right = n - 1;
+
+while(left &lt; right) {
+
+    // process arr[left]
+    // and arr[right]
+
+    left++;
+    right--;
+
+}</code></pre>
+
+                <pre class="language-text"><code>Useful for:
+
+Sorted arrays
+Pair sum
+Palindrome
+Reverse array
+Remove duplicates
+Container problems</code></pre>
+            </li>
+
+
+            <!-- 12 -->
+            <li>
+                <h2>Prefix Sum</h2>
+
+                <pre class="language-cpp"><code>vector&lt;int&gt; prefix(n);
+
+prefix[0] = arr[0];
+
+for(int i = 1; i &lt; n; i++) {
+
+    prefix[i] =
+        prefix[i - 1] + arr[i];
+
+}</code></pre>
+            </li>
+
+
+            <!-- 13 -->
+            <li>
+                <h2>Range Sum Using Prefix Sum</h2>
+
+                <pre class="language-cpp"><code>int sum;
+
+if(left == 0) {
+
+    sum = prefix[right];
+
+} else {
+
+    sum =
+        prefix[right]
+        - prefix[left - 1];
+
+}</code></pre>
+            </li>
+
+
+            <!-- 14 -->
+            <li>
+                <h2>Maximum Subarray — Kadane's Algorithm</h2>
+
+                <pre class="language-cpp"><code>int current = arr[0];
+int answer = arr[0];
+
+for(int i = 1; i &lt; n; i++) {
+
+    current = max(
+        arr[i],
+        current + arr[i]
+    );
+
+    answer = max(
+        answer,
+        current
+    );
+
+}
+
+cout &lt;&lt; answer;</code></pre>
+
+                <pre class="language-text"><code>Time:  O(n)
+Space: O(1)</code></pre>
+            </li>
+
+
+            <!-- 15 -->
+            <li>
+                <h2>Sliding Window</h2>
+
+                <pre class="language-cpp"><code>int windowSum = 0;
+
+for(int i = 0; i &lt; k; i++) {
+
+    windowSum += arr[i];
+
+}
+
+int maximum = windowSum;
+
+for(int i = k; i &lt; n; i++) {
+
+    windowSum += arr[i];
+
+    windowSum -= arr[i - k];
+
+    maximum = max(
+        maximum,
+        windowSum
+    );
+
+}</code></pre>
+
+                <pre class="language-text"><code>Useful for:
+
+Subarrays
+Substrings
+Maximum sum window
+Longest substring
+Minimum window problems</code></pre>
+            </li>
+
+
+            <!-- 16 -->
+            <li>
+                <h2>String</h2>
+
+                <pre class="language-cpp"><code>string name = "Rohit";
+
+cout &lt;&lt; name;
+
+cout &lt;&lt; name.length();</code></pre>
+            </li>
+
+
+            <!-- 17 -->
+            <li>
+                <h2>Traverse String</h2>
+
+                <pre class="language-cpp"><code>for(char ch : str) {
+
+    cout &lt;&lt; ch;
+
+}</code></pre>
+            </li>
+
+
+            <!-- 18 -->
+            <li>
+                <h2>Reverse String</h2>
+
+                <pre class="language-cpp"><code>reverse(
+    str.begin(),
+    str.end()
+);</code></pre>
+            </li>
+
+
+            <!-- 19 -->
+            <li>
+                <h2>Palindrome String</h2>
+
+                <pre class="language-cpp"><code>bool palindrome(string str) {
+
+    int left = 0;
+    int right = str.size() - 1;
+
+    while(left &lt; right) {
+
+        if(str[left] != str[right]) {
+
+            return false;
+
+        }
+
+        left++;
+        right--;
+    }
+
+    return true;
+}</code></pre>
+            </li>
+
+
+            <!-- 20 -->
+            <li>
+                <h2>Character Frequency</h2>
+
+                <pre class="language-cpp"><code>unordered_map&lt;char, int&gt; freq;
+
+for(char ch : str) {
+
+    freq[ch]++;
+
+}</code></pre>
+            </li>
+
+
+            <!-- 21 -->
+            <li>
+                <h2>Check Anagram</h2>
+
+                <pre class="language-cpp"><code>bool isAnagram(
+    string a,
+    string b
+) {
+
+    if(a.size() != b.size()) {
+        return false;
+    }
+
+    sort(a.begin(), a.end());
+    sort(b.begin(), b.end());
+
+    return a == b;
+}</code></pre>
+            </li>
+
+
+            <!-- 22 -->
+            <li>
+                <h2>Linked List Node</h2>
+
+                <pre class="language-cpp"><code>struct Node {
+
+    int data;
+
+    Node* next;
+
+
+    Node(int value) {
+
+        data = value;
+
+        next = nullptr;
+
+    }
+
+};</code></pre>
+            </li>
+
+
+            <!-- 23 -->
+            <li>
+                <h2>Linked List Structure</h2>
+
+                <pre class="language-text"><code>HEAD
+ ↓
+
+10 → 20 → 30 → 40 → NULL</code></pre>
+            </li>
+
+
+            <!-- 24 -->
+            <li>
+                <h2>Traverse Linked List</h2>
+
+                <pre class="language-cpp"><code>Node* current = head;
+
+while(current != nullptr) {
+
+    cout &lt;&lt;
+        current-&gt;data
+        &lt;&lt; " ";
+
+    current =
+        current-&gt;next;
+
+}</code></pre>
+            </li>
+
+
+            <!-- 25 -->
+            <li>
+                <h2>Insert at Beginning</h2>
+
+                <pre class="language-cpp"><code>Node* newNode =
+    new Node(value);
+
+newNode-&gt;next = head;
+
+head = newNode;</code></pre>
+            </li>
+
+
+            <!-- 26 -->
+            <li>
+                <h2>Insert at End</h2>
+
+                <pre class="language-cpp"><code>Node* newNode =
+    new Node(value);
+
+if(head == nullptr) {
+
+    head = newNode;
+
+} else {
+
+    Node* temp = head;
+
+    while(temp-&gt;next != nullptr) {
+
+        temp = temp-&gt;next;
+
+    }
+
+    temp-&gt;next = newNode;
+}</code></pre>
+            </li>
+
+
+            <!-- 27 -->
+            <li>
+                <h2>Reverse Linked List</h2>
+
+                <pre class="language-cpp"><code>Node* previous = nullptr;
+
+Node* current = head;
+
+
+while(current != nullptr) {
+
+    Node* next =
+        current-&gt;next;
+
+    current-&gt;next =
+        previous;
+
+    previous = current;
+
+    current = next;
+
+}
+
+
+head = previous;</code></pre>
+            </li>
+
+
+            <!-- 28 -->
+            <li>
+                <h2>Find Middle of Linked List</h2>
+
+                <pre class="language-cpp"><code>Node* slow = head;
+
+Node* fast = head;
+
+
+while(
+    fast != nullptr
+    &&
+    fast-&gt;next != nullptr
+) {
+
+    slow = slow-&gt;next;
+
+    fast =
+        fast-&gt;next-&gt;next;
+
+}
+
+
+cout &lt;&lt; slow-&gt;data;</code></pre>
+            </li>
+
+
+            <!-- 29 -->
+            <li>
+                <h2>Detect Cycle — Floyd's Algorithm</h2>
+
+                <pre class="language-cpp"><code>bool hasCycle(Node* head) {
+
+    Node* slow = head;
+    Node* fast = head;
+
+    while(
+        fast != nullptr
+        &&
+        fast-&gt;next != nullptr
+    ) {
+
+        slow = slow-&gt;next;
+
+        fast =
+            fast-&gt;next-&gt;next;
+
+
+        if(slow == fast) {
+
+            return true;
+
+        }
+    }
+
+    return false;
+}</code></pre>
+            </li>
+
+
+            <!-- 30 -->
+            <li>
+                <h2>Stack</h2>
+
+                <pre class="language-cpp"><code>#include &lt;stack&gt;
+
+stack&lt;int&gt; st;
+
+st.push(10);
+st.push(20);
+st.push(30);
+
+cout &lt;&lt; st.top();
+
+st.pop();
+
+cout &lt;&lt; st.size();
+
+cout &lt;&lt; st.empty();</code></pre>
+
+                <pre class="language-text"><code>Stack = LIFO
+
+Last In
+First Out</code></pre>
+            </li>
+
+
+            <!-- 31 -->
+            <li>
+                <h2>Stack Operations</h2>
+
+                <pre class="language-text"><code>push()     O(1)
+
+pop()      O(1)
+
+top()      O(1)
+
+empty()    O(1)
+
+size()     O(1)</code></pre>
+            </li>
+
+
+            <!-- 32 -->
+            <li>
+                <h2>Balanced Parentheses</h2>
+
+                <pre class="language-cpp"><code>bool valid(string s) {
+
+    stack&lt;char&gt; st;
+
+    for(char ch : s) {
+
+        if(
+            ch == '(' ||
+            ch == '{' ||
+            ch == '['
+        ) {
+
+            st.push(ch);
+
+        } else {
+
+            if(st.empty()) {
+                return false;
+            }
+
+            char top =
+                st.top();
+
+            st.pop();
+
+
+            if(
+                (ch == ')' && top != '(') ||
+                (ch == '}' && top != '{') ||
+                (ch == ']' && top != '[')
+            ) {
+
+                return false;
+            }
+        }
+    }
+
+    return st.empty();
+}</code></pre>
+            </li>
+
+
+            <!-- 33 -->
+            <li>
+                <h2>Queue</h2>
+
+                <pre class="language-cpp"><code>#include &lt;queue&gt;
+
+queue&lt;int&gt; q;
+
+q.push(10);
+q.push(20);
+q.push(30);
+
+cout &lt;&lt; q.front();
+
+q.pop();
+
+cout &lt;&lt; q.size();</code></pre>
+
+                <pre class="language-text"><code>Queue = FIFO
+
+First In
+First Out</code></pre>
+            </li>
+
+
+            <!-- 34 -->
+            <li>
+                <h2>Queue Operations</h2>
+
+                <pre class="language-text"><code>push()     O(1)
+
+pop()      O(1)
+
+front()    O(1)
+
+back()     O(1)
+
+empty()    O(1)</code></pre>
+            </li>
+
+
+            <!-- 35 -->
+            <li>
+                <h2>Deque</h2>
+
+                <pre class="language-cpp"><code>#include &lt;deque&gt;
+
+deque&lt;int&gt; dq;
+
+dq.push_back(10);
+
+dq.push_front(20);
+
+dq.pop_back();
+
+dq.pop_front();</code></pre>
+            </li>
+
+
+            <!-- 36 -->
+            <li>
+                <h2>Priority Queue / Max Heap</h2>
+
+                <pre class="language-cpp"><code>priority_queue&lt;int&gt; pq;
+
+pq.push(30);
+pq.push(10);
+pq.push(50);
+
+cout &lt;&lt; pq.top();
+
+// 50</code></pre>
+            </li>
+
+
+            <!-- 37 -->
+            <li>
+                <h2>Min Heap</h2>
+
+                <pre class="language-cpp"><code>priority_queue&lt;
+
+    int,
+
+    vector&lt;int&gt;,
+
+    greater&lt;int&gt;
+
+&gt; pq;
+
+
+pq.push(30);
+pq.push(10);
+pq.push(50);
+
+cout &lt;&lt; pq.top();
+
+// 10</code></pre>
+            </li>
+
+
+            <!-- 38 -->
+            <li>
+                <h2>Hashing — unordered_map</h2>
+
+                <pre class="language-cpp"><code>unordered_map&lt;string, int&gt; marks;
+
+marks["Rohit"] = 90;
+
+marks["Aman"] = 85;
+
+cout &lt;&lt; marks["Rohit"];</code></pre>
+            </li>
+
+
+            <!-- 39 -->
+            <li>
+                <h2>Frequency Map</h2>
+
+                <pre class="language-cpp"><code>unordered_map&lt;int, int&gt; freq;
+
+for(int value : arr) {
+
+    freq[value]++;
+
+}</code></pre>
+            </li>
+
+
+            <!-- 40 -->
+            <li>
+                <h2>unordered_set</h2>
+
+                <pre class="language-cpp"><code>unordered_set&lt;int&gt; values;
+
+values.insert(10);
+
+values.insert(20);
+
+values.insert(10);
+
+
+if(values.count(20)) {
+
+    cout &lt;&lt; "Found";
+
+}</code></pre>
+            </li>
+
+
+            <!-- 41 -->
+            <li>
+                <h2>Recursion</h2>
+
+                <pre class="language-cpp"><code>void printNumbers(int n) {
+
+    if(n == 0) {
+        return;
+    }
+
+    cout &lt;&lt; n &lt;&lt; " ";
+
+    printNumbers(n - 1);
+
+}</code></pre>
+            </li>
+
+
+            <!-- 42 -->
+            <li>
+                <h2>Recursion Structure</h2>
+
+                <pre class="language-text"><code>function(problem) {
+
+    if(baseCase) {
+
+        return answer;
+
+    }
+
+    solve smaller problem;
+
+    recursive call;
+
+}</code></pre>
+            </li>
+
+
+            <!-- 43 -->
+            <li>
+                <h2>Factorial Using Recursion</h2>
+
+                <pre class="language-cpp"><code>long long factorial(int n) {
+
+    if(n &lt;= 1) {
+
+        return 1;
+
+    }
+
+    return n *
+        factorial(n - 1);
+
+}</code></pre>
+            </li>
+
+
+            <!-- 44 -->
+            <li>
+                <h2>Fibonacci — Basic Recursion</h2>
+
+                <pre class="language-cpp"><code>int fibonacci(int n) {
+
+    if(n &lt;= 1) {
+
+        return n;
+
+    }
+
+    return
+        fibonacci(n - 1)
+        +
+        fibonacci(n - 2);
+
+}</code></pre>
+
+                <pre class="language-text"><code>Time Complexity:
+O(2^n)
+
+This basic recursive version
+is inefficient for large n.</code></pre>
+            </li>
+
+
+            <!-- 45 -->
+            <li>
+                <h2>Linear Search</h2>
+
+                <pre class="language-cpp"><code>int linearSearch(
+    vector&lt;int&gt;& arr,
+    int target
+) {
+
+    for(int i = 0;
+        i &lt; arr.size();
+        i++) {
+
+        if(arr[i] == target) {
+
+            return i;
+
+        }
+    }
+
+    return -1;
+}</code></pre>
+
+                <pre class="language-text"><code>Time: O(n)</code></pre>
+            </li>
+
+
+            <!-- 46 -->
+            <li>
+                <h2>Binary Search</h2>
+
+                <pre class="language-cpp"><code>int binarySearch(
+    vector&lt;int&gt;& arr,
+    int target
+) {
+
+    int left = 0;
+
+    int right =
+        arr.size() - 1;
+
+
+    while(left &lt;= right) {
+
+        int mid =
+            left +
+            (right - left) / 2;
+
+
+        if(arr[mid] == target) {
+
+            return mid;
+
+        }
+
+
+        if(arr[mid] &lt; target) {
+
+            left = mid + 1;
+
+        } else {
+
+            right = mid - 1;
+
+        }
+    }
+
+    return -1;
+}</code></pre>
+
+                <pre class="language-text"><code>Requirement:
+Sorted Array
+
+Time:
+O(log n)</code></pre>
+            </li>
+
+
+            <!-- 47 -->
+            <li>
+                <h2>Bubble Sort</h2>
+
+                <pre class="language-cpp"><code>for(int i = 0; i &lt; n - 1; i++) {
+
+    bool swapped = false;
+
+    for(int j = 0;
+        j &lt; n - i - 1;
+        j++) {
+
+        if(arr[j] &gt; arr[j + 1]) {
+
+            swap(
+                arr[j],
+                arr[j + 1]
+            );
+
+            swapped = true;
+        }
+    }
+
+    if(!swapped) {
+        break;
+    }
+}</code></pre>
+
+                <pre class="language-text"><code>Worst: O(n²)
+Best:  O(n) with optimization</code></pre>
+            </li>
+
+
+            <!-- 48 -->
+            <li>
+                <h2>Selection Sort</h2>
+
+                <pre class="language-cpp"><code>for(int i = 0; i &lt; n - 1; i++) {
+
+    int minIndex = i;
+
+    for(int j = i + 1;
+        j &lt; n;
+        j++) {
+
+        if(arr[j] &lt; arr[minIndex]) {
+
+            minIndex = j;
+
+        }
+    }
+
+    swap(
+        arr[i],
+        arr[minIndex]
+    );
+}</code></pre>
+
+                <pre class="language-text"><code>Time: O(n²)</code></pre>
+            </li>
+
+
+            <!-- 49 -->
+            <li>
+                <h2>Insertion Sort</h2>
+
+                <pre class="language-cpp"><code>for(int i = 1; i &lt; n; i++) {
+
+    int key = arr[i];
+
+    int j = i - 1;
+
+
+    while(
+        j &gt;= 0
+        &&
+        arr[j] &gt; key
+    ) {
+
+        arr[j + 1] = arr[j];
+
+        j--;
+
+    }
+
+
+    arr[j + 1] = key;
+}</code></pre>
+
+                <pre class="language-text"><code>Worst: O(n²)
+Best:  O(n)</code></pre>
+            </li>
+
+
+            <!-- 50 -->
+            <li>
+                <h2>Merge Sort</h2>
+
+                <pre class="language-cpp"><code>void mergeSort(
+    vector&lt;int&gt;& arr,
+    int left,
+    int right
+) {
+
+    if(left &gt;= right) {
+        return;
+    }
+
+    int mid =
+        left +
+        (right - left) / 2;
+
+
+    mergeSort(
+        arr,
+        left,
+        mid
+    );
+
+
+    mergeSort(
+        arr,
+        mid + 1,
+        right
+    );
+
+
+    merge(
+        arr,
+        left,
+        mid,
+        right
+    );
+}</code></pre>
+
+                <pre class="language-text"><code>Time:
+O(n log n)
+
+Space:
+O(n)</code></pre>
+            </li>
+
+
+            <!-- 51 -->
+            <li>
+                <h2>Quick Sort</h2>
+
+                <pre class="language-cpp"><code>int partitionArray(
+    vector&lt;int&gt;& arr,
+    int low,
+    int high
+) {
+
+    int pivot = arr[high];
+
+    int i = low - 1;
+
+
+    for(int j = low;
+        j &lt; high;
+        j++) {
+
+        if(arr[j] &lt;= pivot) {
+
+            i++;
+
+            swap(
+                arr[i],
+                arr[j]
+            );
+        }
+    }
+
+
+    swap(
+        arr[i + 1],
+        arr[high]
+    );
+
+
+    return i + 1;
+}
+
+
+void quickSort(
+    vector&lt;int&gt;& arr,
+    int low,
+    int high
+) {
+
+    if(low &lt; high) {
+
+        int pivot =
+            partitionArray(
+                arr,
+                low,
+                high
+            );
+
+
+        quickSort(
+            arr,
+            low,
+            pivot - 1
+        );
+
+
+        quickSort(
+            arr,
+            pivot + 1,
+            high
+        );
+    }
+}</code></pre>
+
+                <pre class="language-text"><code>Average:
+O(n log n)
+
+Worst:
+O(n²)</code></pre>
+            </li>
+
+
+            <!-- 52 -->
+            <li>
+                <h2>Sorting Complexity</h2>
+
+                <pre class="language-text"><code>Bubble Sort
+
+Best     O(n)
+Average  O(n²)
+Worst    O(n²)
+
+
+Selection Sort
+
+Best     O(n²)
+Average  O(n²)
+Worst    O(n²)
+
+
+Insertion Sort
+
+Best     O(n)
+Average  O(n²)
+Worst    O(n²)
+
+
+Merge Sort
+
+Best     O(n log n)
+Average  O(n log n)
+Worst    O(n log n)
+
+
+Quick Sort
+
+Best     O(n log n)
+Average  O(n log n)
+Worst    O(n²)</code></pre>
+            </li>
+
+
+            <!-- 53 -->
+            <li>
+                <h2>Binary Tree Node</h2>
+
+                <pre class="language-cpp"><code>struct TreeNode {
+
+    int data;
+
+    TreeNode* left;
+
+    TreeNode* right;
+
+
+    TreeNode(int value) {
+
+        data = value;
+
+        left = nullptr;
+
+        right = nullptr;
+
+    }
+
+};</code></pre>
+            </li>
+
+
+            <!-- 54 -->
+            <li>
+                <h2>Binary Tree Structure</h2>
+
+                <pre class="language-text"><code>        1
+
+       / \
+
+      2   3
+
+     / \ / \
+
+    4  5 6  7</code></pre>
+            </li>
+
+
+            <!-- 55 -->
+            <li>
+                <h2>Preorder Traversal</h2>
+
+                <pre class="language-cpp"><code>void preorder(TreeNode* root) {
+
+    if(root == nullptr) {
+        return;
+    }
+
+    cout &lt;&lt;
+        root-&gt;data
+        &lt;&lt; " ";
+
+    preorder(root-&gt;left);
+
+    preorder(root-&gt;right);
+}</code></pre>
+
+                <pre class="language-text"><code>Root → Left → Right</code></pre>
+            </li>
+
+
+            <!-- 56 -->
+            <li>
+                <h2>Inorder Traversal</h2>
+
+                <pre class="language-cpp"><code>void inorder(TreeNode* root) {
+
+    if(root == nullptr) {
+        return;
+    }
+
+    inorder(root-&gt;left);
+
+    cout &lt;&lt;
+        root-&gt;data
+        &lt;&lt; " ";
+
+    inorder(root-&gt;right);
+}</code></pre>
+
+                <pre class="language-text"><code>Left → Root → Right</code></pre>
+            </li>
+
+
+            <!-- 57 -->
+            <li>
+                <h2>Postorder Traversal</h2>
+
+                <pre class="language-cpp"><code>void postorder(TreeNode* root) {
+
+    if(root == nullptr) {
+        return;
+    }
+
+    postorder(root-&gt;left);
+
+    postorder(root-&gt;right);
+
+    cout &lt;&lt;
+        root-&gt;data
+        &lt;&lt; " ";
+}</code></pre>
+
+                <pre class="language-text"><code>Left → Right → Root</code></pre>
+            </li>
+
+
+            <!-- 58 -->
+            <li>
+                <h2>Level Order Traversal</h2>
+
+                <pre class="language-cpp"><code>void levelOrder(TreeNode* root) {
+
+    if(root == nullptr) {
+        return;
+    }
+
+    queue&lt;TreeNode*&gt; q;
+
+    q.push(root);
+
+
+    while(!q.empty()) {
+
+        TreeNode* current =
+            q.front();
+
+        q.pop();
+
+
+        cout &lt;&lt;
+            current-&gt;data
+            &lt;&lt; " ";
+
+
+        if(current-&gt;left) {
+
+            q.push(
+                current-&gt;left
+            );
+
+        }
+
+
+        if(current-&gt;right) {
+
+            q.push(
+                current-&gt;right
+            );
+
+        }
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 59 -->
+            <li>
+                <h2>Height of Binary Tree</h2>
+
+                <pre class="language-cpp"><code>int height(TreeNode* root) {
+
+    if(root == nullptr) {
+
+        return 0;
+
+    }
+
+
+    return 1 + max(
+
+        height(root-&gt;left),
+
+        height(root-&gt;right)
+
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 60 -->
+            <li>
+                <h2>Binary Search Tree</h2>
+
+                <pre class="language-text"><code>BST Property:
+
+Left subtree values
+&lt;
+Root
+
+Right subtree values
+&gt;
+Root
+
+
+Example:
+
+        50
+
+       /  \
+
+     30    70
+
+    / \    / \
+
+   20 40  60 80</code></pre>
+            </li>
+
+
+            <!-- 61 -->
+            <li>
+                <h2>Search in BST</h2>
+
+                <pre class="language-cpp"><code>TreeNode* searchBST(
+    TreeNode* root,
+    int target
+) {
+
+    if(
+        root == nullptr
+        ||
+        root-&gt;data == target
+    ) {
+
+        return root;
+
+    }
+
+
+    if(target &lt; root-&gt;data) {
+
+        return searchBST(
+            root-&gt;left,
+            target
+        );
+
+    }
+
+
+    return searchBST(
+        root-&gt;right,
+        target
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 62 -->
+            <li>
+                <h2>Insert in BST</h2>
+
+                <pre class="language-cpp"><code>TreeNode* insertBST(
+    TreeNode* root,
+    int value
+) {
+
+    if(root == nullptr) {
+
+        return new TreeNode(value);
+
+    }
+
+
+    if(value &lt; root-&gt;data) {
+
+        root-&gt;left =
+            insertBST(
+                root-&gt;left,
+                value
+            );
+
+    } else if(value &gt; root-&gt;data) {
+
+        root-&gt;right =
+            insertBST(
+                root-&gt;right,
+                value
+            );
+
+    }
+
+
+    return root;
+}</code></pre>
+            </li>
+
+
+            <!-- 63 -->
+            <li>
+                <h2>Heap Complexity</h2>
+
+                <pre class="language-text"><code>Insert
+
+O(log n)
+
+
+Delete Top
+
+O(log n)
+
+
+Get Top
+
+O(1)
+
+
+Build Heap
+
+O(n)</code></pre>
+            </li>
+
+
+            <!-- 64 -->
+            <li>
+                <h2>Graph Representation — Adjacency List</h2>
+
+                <pre class="language-cpp"><code>int n = 5;
+
+vector&lt;vector&lt;int&gt;&gt;
+    graph(n);
+
+
+graph[0].push_back(1);
+
+graph[1].push_back(0);
+
+
+graph[0].push_back(2);
+
+graph[2].push_back(0);</code></pre>
+            </li>
+
+
+            <!-- 65 -->
+            <li>
+                <h2>Graph Structure</h2>
+
+                <pre class="language-text"><code>0 ----- 1
+
+|       |
+
+|       |
+
+2 ----- 3
+
+ \     /
+
+   \ /
+
+    4</code></pre>
+            </li>
+
+
+            <!-- 66 -->
+            <li>
+                <h2>BFS — Breadth First Search</h2>
+
+                <pre class="language-cpp"><code>void bfs(
+    int start,
+    vector&lt;vector&lt;int&gt;&gt;& graph
+) {
+
+    vector&lt;bool&gt;
+        visited(
+            graph.size(),
+            false
+        );
+
+
+    queue&lt;int&gt; q;
+
+
+    q.push(start);
+
+    visited[start] = true;
+
+
+    while(!q.empty()) {
+
+        int node = q.front();
+
+        q.pop();
+
+
+        cout &lt;&lt; node &lt;&lt; " ";
+
+
+        for(int neighbour :
+            graph[node]) {
+
+            if(!visited[neighbour]) {
+
+                visited[neighbour] =
+                    true;
+
+                q.push(neighbour);
+            }
+        }
+    }
+}</code></pre>
+
+                <pre class="language-text"><code>BFS uses Queue.
+
+Time:
+O(V + E)</code></pre>
+            </li>
+
+
+            <!-- 67 -->
+            <li>
+                <h2>DFS — Depth First Search</h2>
+
+                <pre class="language-cpp"><code>void dfs(
+    int node,
+    vector&lt;vector&lt;int&gt;&gt;& graph,
+    vector&lt;bool&gt;& visited
+) {
+
+    visited[node] = true;
+
+    cout &lt;&lt; node &lt;&lt; " ";
+
+
+    for(int neighbour :
+        graph[node]) {
+
+        if(!visited[neighbour]) {
+
+            dfs(
+                neighbour,
+                graph,
+                visited
+            );
+        }
+    }
+}</code></pre>
+
+                <pre class="language-text"><code>DFS uses:
+
+Recursion
+or
+Stack
+
+Time:
+O(V + E)</code></pre>
+            </li>
+
+
+            <!-- 68 -->
+            <li>
+                <h2>BFS vs DFS</h2>
+
+                <pre class="language-text"><code>BFS
+
+Uses Queue
+
+Level-by-level traversal
+
+Useful for shortest path
+in unweighted graphs
+
+
+DFS
+
+Uses Stack / Recursion
+
+Goes deep first
+
+Useful for:
+
+Cycle detection
+Connected components
+Topological ideas
+Backtracking</code></pre>
+            </li>
+
+
+            <!-- 69 -->
+            <li>
+                <h2>Dijkstra's Algorithm</h2>
+
+                <pre class="language-cpp"><code>vector&lt;int&gt; dijkstra(
+    int source,
+    vector&lt;vector&lt;
+        pair&lt;int, int&gt;
+    &gt;&gt;& graph
+) {
+
+    int n = graph.size();
+
+    vector&lt;int&gt; distance(
+        n,
+        INT_MAX
+    );
+
+
+    priority_queue&lt;
+
+        pair&lt;int, int&gt;,
+
+        vector&lt;
+            pair&lt;int, int&gt;
+        &gt;,
+
+        greater&lt;
+            pair&lt;int, int&gt;
+        &gt;
+
+    &gt; pq;
+
+
+    distance[source] = 0;
+
+    pq.push({
+        0,
+        source
+    });
+
+
+    while(!pq.empty()) {
+
+        auto [
+            currentDistance,
+            node
+        ] = pq.top();
+
+        pq.pop();
+
+
+        if(
+            currentDistance
+            &gt;
+            distance[node]
+        ) {
+
+            continue;
+        }
+
+
+        for(auto [
+            neighbour,
+            weight
+        ] : graph[node]) {
+
+            int newDistance =
+                currentDistance
+                + weight;
+
+
+            if(
+                newDistance
+                &lt;
+                distance[neighbour]
+            ) {
+
+                distance[neighbour] =
+                    newDistance;
+
+
+                pq.push({
+
+                    newDistance,
+
+                    neighbour
+
+                });
+            }
+        }
+    }
+
+
+    return distance;
+}</code></pre>
+
+                <pre class="language-text"><code>Used for:
+
+Shortest paths with
+non-negative edge weights.</code></pre>
+            </li>
+
+
+            <!-- 70 -->
+            <li>
+                <h2>Topological Sort Concept</h2>
+
+                <pre class="language-text"><code>Topological Sort works on:
+
+Directed Acyclic Graph
+(DAG)
+
+Example:
+
+Learn HTML
+    ↓
+Learn CSS
+    ↓
+Learn JavaScript
+    ↓
+Learn React
+
+Common methods:
+
+DFS
+
+Kahn's Algorithm (BFS)</code></pre>
+            </li>
+
+
+            <!-- 71 -->
+            <li>
+                <h2>Greedy Algorithm</h2>
+
+                <pre class="language-text"><code>Greedy chooses the best
+local option at each step.
+
+Common Problems:
+
+Activity Selection
+
+Fractional Knapsack
+
+Huffman Coding
+
+Job Sequencing
+
+Kruskal's Algorithm
+
+Prim's Algorithm</code></pre>
+            </li>
+
+
+            <!-- 72 -->
+            <li>
+                <h2>Activity Selection</h2>
+
+                <pre class="language-cpp"><code>sort(
+    activities.begin(),
+    activities.end(),
+    [](auto& a, auto& b) {
+
+        return a.second
+            &lt;
+            b.second;
+
+    }
+);
+
+
+int count = 0;
+
+int lastEnd = INT_MIN;
+
+
+for(auto activity :
+    activities) {
+
+    if(
+        activity.first
+        &gt;= lastEnd
+    ) {
+
+        count++;
+
+        lastEnd =
+            activity.second;
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 73 -->
+            <li>
+                <h2>Backtracking</h2>
+
+                <pre class="language-text"><code>Backtracking Pattern:
+
+Choose
+
+Explore
+
+Undo Choice
+
+
+Used in:
+
+N-Queens
+
+Sudoku
+
+Permutations
+
+Combinations
+
+Subset Problems
+
+Maze Problems</code></pre>
+            </li>
+
+
+            <!-- 74 -->
+            <li>
+                <h2>Generate All Subsets</h2>
+
+                <pre class="language-cpp"><code>void subsets(
+    int index,
+    vector&lt;int&gt;& arr,
+    vector&lt;int&gt;& current
+) {
+
+    if(index == arr.size()) {
+
+        for(int value : current) {
+
+            cout &lt;&lt; value &lt;&lt; " ";
+
+        }
+
+        cout &lt;&lt; endl;
+
+        return;
+    }
+
+
+    // Include
+
+    current.push_back(
+        arr[index]
+    );
+
+    subsets(
+        index + 1,
+        arr,
+        current
+    );
+
+
+    // Backtrack
+
+    current.pop_back();
+
+
+    // Exclude
+
+    subsets(
+        index + 1,
+        arr,
+        current
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 75 -->
+            <li>
+                <h2>Dynamic Programming</h2>
+
+                <pre class="language-text"><code>DP is useful when a problem has:
+
+1. Overlapping Subproblems
+
+2. Optimal Substructure
+
+
+Main Approaches:
+
+Memoization
+Top-Down
+
+Tabulation
+Bottom-Up</code></pre>
+            </li>
+
+
+            <!-- 76 -->
+            <li>
+                <h2>Fibonacci — Memoization</h2>
+
+                <pre class="language-cpp"><code>int fib(
+    int n,
+    vector&lt;int&gt;& dp
+) {
+
+    if(n &lt;= 1) {
+
+        return n;
+
+    }
+
+
+    if(dp[n] != -1) {
+
+        return dp[n];
+
+    }
+
+
+    return dp[n] =
+
+        fib(n - 1, dp)
+
+        +
+
+        fib(n - 2, dp);
+
+}</code></pre>
+
+                <pre class="language-text"><code>Time:
+O(n)
+
+Space:
+O(n)</code></pre>
+            </li>
+
+
+            <!-- 77 -->
+            <li>
+                <h2>Fibonacci — Tabulation</h2>
+
+                <pre class="language-cpp"><code>vector&lt;int&gt; dp(n + 1);
+
+dp[0] = 0;
+
+if(n &gt;= 1) {
+
+    dp[1] = 1;
+
+}
+
+
+for(int i = 2; i &lt;= n; i++) {
+
+    dp[i] =
+        dp[i - 1]
+        +
+        dp[i - 2];
+
+}</code></pre>
+            </li>
+
+
+            <!-- 78 -->
+            <li>
+                <h2>0/1 Knapsack Concept</h2>
+
+                <pre class="language-text"><code>For every item:
+
+Choice 1:
+Take item
+
+Choice 2:
+Do not take item
+
+
+State usually depends on:
+
+index
+remaining capacity
+
+
+Common DP state:
+
+dp[index][capacity]</code></pre>
+            </li>
+
+
+            <!-- 79 -->
+            <li>
+                <h2>Longest Common Subsequence</h2>
+
+                <pre class="language-cpp"><code>int lcs(
+    string a,
+    string b
+) {
+
+    int n = a.size();
+    int m = b.size();
+
+
+    vector&lt;vector&lt;int&gt;&gt; dp(
+
+        n + 1,
+
+        vector&lt;int&gt;(
+            m + 1,
+            0
+        )
+
+    );
+
+
+    for(int i = 1; i &lt;= n; i++) {
+
+        for(int j = 1; j &lt;= m; j++) {
+
+            if(
+                a[i - 1]
+                ==
+                b[j - 1]
+            ) {
+
+                dp[i][j] =
+                    1 +
+                    dp[i - 1][j - 1];
+
+            } else {
+
+                dp[i][j] =
+                    max(
+                        dp[i - 1][j],
+                        dp[i][j - 1]
+                    );
+
+            }
+        }
+    }
+
+
+    return dp[n][m];
+}</code></pre>
+            </li>
+
+
+            <!-- 80 -->
+            <li>
+                <h2>Important Coding Patterns</h2>
+
+                <pre class="language-text"><code>1. Two Pointers
+
+2. Sliding Window
+
+3. Fast & Slow Pointers
+
+4. Prefix Sum
+
+5. Hashing
+
+6. Binary Search
+
+7. Binary Search on Answer
+
+8. Stack
+
+9. Monotonic Stack
+
+10. Queue
+
+11. Heap / Priority Queue
+
+12. BFS
+
+13. DFS
+
+14. Tree Traversal
+
+15. Backtracking
+
+16. Greedy
+
+17. Dynamic Programming
+
+18. Divide and Conquer
+
+19. Union Find
+
+20. Topological Sort</code></pre>
+            </li>
+
+
+            <!-- 81 -->
+            <li>
+                <h2>Fast & Slow Pointer Pattern</h2>
+
+                <pre class="language-cpp"><code>Node* slow = head;
+
+Node* fast = head;
+
+
+while(
+    fast != nullptr
+    &&
+    fast-&gt;next != nullptr
+) {
+
+    slow = slow-&gt;next;
+
+    fast =
+        fast-&gt;next-&gt;next;
+
+}</code></pre>
+
+                <pre class="language-text"><code>Useful for:
+
+Linked list middle
+
+Cycle detection
+
+Cycle start
+
+Happy number</code></pre>
+            </li>
+
+
+            <!-- 82 -->
+            <li>
+                <h2>Monotonic Stack Pattern</h2>
+
+                <pre class="language-cpp"><code>stack&lt;int&gt; st;
+
+for(int i = 0; i &lt; n; i++) {
+
+    while(
+        !st.empty()
+        &&
+        arr[st.top()] &lt; arr[i]
+    ) {
+
+        int index = st.top();
+
+        st.pop();
+
+        // arr[i] is next
+        // greater element
+    }
+
+    st.push(i);
+}</code></pre>
+
+                <pre class="language-text"><code>Useful for:
+
+Next Greater Element
+
+Next Smaller Element
+
+Stock Span
+
+Largest Rectangle
+
+Daily Temperatures</code></pre>
+            </li>
+
+
+            <!-- 83 -->
+            <li>
+                <h2>Binary Search on Answer</h2>
+
+                <pre class="language-cpp"><code>int low = minimumAnswer;
+
+int high = maximumAnswer;
+
+
+while(low &lt;= high) {
+
+    int mid =
+        low +
+        (high - low) / 2;
+
+
+    if(isPossible(mid)) {
+
+        answer = mid;
+
+        high = mid - 1;
+
+    } else {
+
+        low = mid + 1;
+
+    }
+}</code></pre>
+
+                <pre class="language-text"><code>Useful when:
+
+Answer has a searchable range
+
+A feasibility condition
+is monotonic.</code></pre>
+            </li>
+
+
+            <!-- 84 -->
+            <li>
+                <h2>Disjoint Set / Union Find</h2>
+
+                <pre class="language-cpp"><code>vector&lt;int&gt; parent(n);
+
+vector&lt;int&gt; rankValue(
+    n,
+    0
+);
+
+
+for(int i = 0; i &lt; n; i++) {
+
+    parent[i] = i;
+
+}
+
+
+int findParent(int node) {
+
+    if(parent[node] == node) {
+
+        return node;
+
+    }
+
+
+    return parent[node] =
+        findParent(
+            parent[node]
+        );
+}</code></pre>
+            </li>
+
+
+            <!-- 85 -->
+            <li>
+                <h2>Union by Rank</h2>
+
+                <pre class="language-cpp"><code>void unionSet(
+    int a,
+    int b
+) {
+
+    int parentA =
+        findParent(a);
+
+    int parentB =
+        findParent(b);
+
+
+    if(parentA == parentB) {
+        return;
+    }
+
+
+    if(
+        rankValue[parentA]
+        &lt;
+        rankValue[parentB]
+    ) {
+
+        parent[parentA] =
+            parentB;
+
+    } else if(
+        rankValue[parentA]
+        &gt;
+        rankValue[parentB]
+    ) {
+
+        parent[parentB] =
+            parentA;
+
+    } else {
+
+        parent[parentB] =
+            parentA;
+
+        rankValue[parentA]++;
+
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 86 -->
+            <li>
+                <h2>Data Structure Complexity</h2>
+
+                <pre class="language-text"><code>Array
+
+Access   O(1)
+Search   O(n)
+
+
+Linked List
+
+Access   O(n)
+Search   O(n)
+Insert at known node O(1)
+
+
+Stack
+
+Push     O(1)
+Pop      O(1)
+
+
+Queue
+
+Push     O(1)
+Pop      O(1)
+
+
+Hash Table
+
+Average Search  O(1)
+Average Insert  O(1)
+Worst Case      O(n)
+
+
+BST
+
+Average Search  O(log n)
+Worst Search    O(n)
+
+
+Heap
+
+Insert   O(log n)
+Delete   O(log n)
+Top      O(1)</code></pre>
+            </li>
+
+
+            <!-- 87 -->
+            <li>
+                <h2>Important Array Problems</h2>
+
+                <pre class="language-text"><code>Two Sum
+
+Best Time to Buy and Sell Stock
+
+Maximum Subarray
+
+Move Zeroes
+
+Remove Duplicates
+
+Rotate Array
+
+Majority Element
+
+Missing Number
+
+Product Except Self
+
+Container With Most Water
+
+Trapping Rain Water
+
+3Sum
+
+Merge Intervals
+
+Maximum Product Subarray</code></pre>
+            </li>
+
+
+            <!-- 88 -->
+            <li>
+                <h2>Important String Problems</h2>
+
+                <pre class="language-text"><code>Valid Palindrome
+
+Valid Anagram
+
+Longest Common Prefix
+
+Reverse Words
+
+Longest Substring Without Repeating
+
+Longest Palindromic Substring
+
+Group Anagrams
+
+Minimum Window Substring
+
+String Compression</code></pre>
+            </li>
+
+
+            <!-- 89 -->
+            <li>
+                <h2>Important Linked List Problems</h2>
+
+                <pre class="language-text"><code>Reverse Linked List
+
+Middle of Linked List
+
+Linked List Cycle
+
+Cycle Starting Point
+
+Merge Two Sorted Lists
+
+Remove Nth Node
+
+Palindrome Linked List
+
+Intersection of Two Lists
+
+Add Two Numbers
+
+Copy List with Random Pointer</code></pre>
+            </li>
+
+
+            <!-- 90 -->
+            <li>
+                <h2>Important Stack & Queue Problems</h2>
+
+                <pre class="language-text"><code>Valid Parentheses
+
+Min Stack
+
+Next Greater Element
+
+Daily Temperatures
+
+Stock Span
+
+Largest Rectangle
+
+Implement Queue Using Stacks
+
+Implement Stack Using Queues
+
+Sliding Window Maximum</code></pre>
+            </li>
+
+
+            <!-- 91 -->
+            <li>
+                <h2>Important Tree Problems</h2>
+
+                <pre class="language-text"><code>Tree Traversals
+
+Maximum Depth
+
+Same Tree
+
+Invert Binary Tree
+
+Diameter of Binary Tree
+
+Balanced Binary Tree
+
+Level Order Traversal
+
+Lowest Common Ancestor
+
+Validate BST
+
+Kth Smallest in BST
+
+Path Sum
+
+Right Side View</code></pre>
+            </li>
+
+
+            <!-- 92 -->
+            <li>
+                <h2>Important Graph Problems</h2>
+
+                <pre class="language-text"><code>BFS
+
+DFS
+
+Number of Islands
+
+Flood Fill
+
+Detect Cycle
+
+Course Schedule
+
+Topological Sort
+
+Shortest Path
+
+Dijkstra
+
+Bellman-Ford
+
+Floyd-Warshall
+
+Kruskal
+
+Prim
+
+Connected Components
+
+Union Find</code></pre>
+            </li>
+
+
+            <!-- 93 -->
+            <li>
+                <h2>Important DP Problems</h2>
+
+                <pre class="language-text"><code>Fibonacci
+
+Climbing Stairs
+
+House Robber
+
+Coin Change
+
+0/1 Knapsack
+
+Subset Sum
+
+Longest Common Subsequence
+
+Longest Increasing Subsequence
+
+Edit Distance
+
+Unique Paths
+
+Minimum Path Sum
+
+Partition Equal Subset Sum</code></pre>
+            </li>
+
+
+            <!-- 94 -->
+            <li>
+                <h2>Which Data Structure to Use?</h2>
+
+                <pre class="language-text"><code>Fast index access
+
+→ Array / Vector
+
+
+LIFO
+
+→ Stack
+
+
+FIFO
+
+→ Queue
+
+
+Fast lookup
+
+→ Hash Map
+
+
+Unique values
+
+→ Set
+
+
+Priority-based processing
+
+→ Heap
+
+
+Hierarchical data
+
+→ Tree
+
+
+Network / connections
+
+→ Graph
+
+
+Prefix searching
+
+→ Trie</code></pre>
+            </li>
+
+
+            <!-- 95 -->
+            <li>
+                <h2>DSA Problem Solving Steps</h2>
+
+                <pre class="language-text"><code>1. Understand the problem
+
+2. Identify input/output
+
+3. Check constraints
+
+4. Think about brute force
+
+5. Calculate complexity
+
+6. Identify pattern
+
+7. Choose data structure
+
+8. Optimize solution
+
+9. Handle edge cases
+
+10. Write code
+
+11. Dry run
+
+12. Test complexity</code></pre>
+            </li>
+
+
+            <!-- 96 -->
+            <li>
+                <h2>Common Edge Cases</h2>
+
+                <pre class="language-text"><code>Empty input
+
+Single element
+
+Two elements
+
+All same values
+
+Already sorted
+
+Reverse sorted
+
+Negative numbers
+
+Duplicates
+
+Very large input
+
+Integer overflow
+
+NULL / nullptr
+
+Disconnected graph
+
+Tree with one node</code></pre>
+            </li>
+
+
+            <!-- 97 -->
+            <li>
+                <h2>DSA Quick Revision</h2>
+
+                <pre class="language-text"><code>Array
+→ Fast indexed access
+
+
+Linked List
+→ Nodes connected using pointers
+
+
+Stack
+→ LIFO
+
+
+Queue
+→ FIFO
+
+
+Hash Map
+→ Key-value lookup
+
+
+Tree
+→ Hierarchical structure
+
+
+BST
+→ Ordered binary tree
+
+
+Heap
+→ Priority structure
+
+
+Graph
+→ Vertices + Edges
+
+
+BFS
+→ Queue
+
+
+DFS
+→ Stack / Recursion
+
+
+Binary Search
+→ Sorted search space
+
+
+Greedy
+→ Best local choice
+
+
+Backtracking
+→ Choose + Explore + Undo
+
+
+DP
+→ Store repeated subproblem results</code></pre>
+            </li>
+
+
+            <!-- 98 -->
+            <li>
+                <h2>DSA Learning Roadmap</h2>
+
+                <pre class="language-text"><code>1. Time Complexity
+
+2. Space Complexity
+
+3. Arrays
+
+4. Strings
+
+5. Two Pointers
+
+6. Sliding Window
+
+7. Prefix Sum
+
+8. Hashing
+
+9. Sorting
+
+10. Binary Search
+
+11. Recursion
+
+12. Backtracking
+
+13. Linked List
+
+14. Fast & Slow Pointers
+
+15. Stack
+
+16. Queue
+
+17. Deque
+
+18. Monotonic Stack
+
+19. Trees
+
+20. Tree Traversals
+
+21. Binary Search Tree
+
+22. Heap
+
+23. Priority Queue
+
+24. Graph Basics
+
+25. BFS
+
+26. DFS
+
+27. Cycle Detection
+
+28. Topological Sort
+
+29. Shortest Path
+
+30. Dijkstra
+
+31. Minimum Spanning Tree
+
+32. Union Find
+
+33. Greedy
+
+34. Dynamic Programming
+
+35. 1D DP
+
+36. 2D DP
+
+37. Knapsack
+
+38. LCS
+
+39. LIS
+
+40. Trie
+
+41. Bit Manipulation
+
+42. Advanced Graphs
+
+43. Advanced DP
+
+44. Coding Patterns
+
+45. Interview Problems</code></pre>
+            </li>
+
+
+            <!-- 99 -->
+            <li>
+                <h2>Interview Complexity Revision</h2>
+
+                <pre class="language-text"><code>Binary Search
+O(log n)
+
+Linear Search
+O(n)
+
+Merge Sort
+O(n log n)
+
+Quick Sort Average
+O(n log n)
+
+Bubble Sort
+O(n²)
+
+BFS
+O(V + E)
+
+DFS
+O(V + E)
+
+Hash Map Search Average
+O(1)
+
+Heap Insert
+O(log n)
+
+Heap Top
+O(1)
+
+BST Search Average
+O(log n)
+
+Linked List Search
+O(n)
+
+Array Access
+O(1)</code></pre>
+            </li>
+
+
+            <!-- 100 -->
+            <li>
+                <h2>Final DSA Interview Strategy</h2>
+
+                <pre class="language-text"><code>Start With:
+
+Arrays
+Strings
+Hashing
+
+        ↓
+
+Two Pointers
+Sliding Window
+Prefix Sum
+
+        ↓
+
+Linked List
+Stack
+Queue
+
+        ↓
+
+Binary Search
+Recursion
+Backtracking
+
+        ↓
+
+Trees
+BST
+Heap
+
+        ↓
+
+Graphs
+BFS
+DFS
+
+        ↓
+
+Greedy
+
+        ↓
+
+Dynamic Programming
+
+
+For every problem:
+
+Understand
+→ Brute Force
+→ Optimize
+→ Code
+→ Dry Run
+→ Complexity</code></pre>
+            </li>
+
+        </ol>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <p>
+            © 2026 CodeWithRohit |
+            DSA Cheat Sheet
+        </p>
+
+    </footer>
+
+
+    <!-- Prism JS -->
+    <script src="../prism/prism.js"></script>
+
+    <!-- Common JS -->
+    <script src="../cheatsheet.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1886 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Complete Python Cheat Sheet by CodeWithRohit"
+    >
+
+    <title>Python Cheat Sheet | CodeWithRohit</title>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="../cheatsheet.css">
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="../prism/prism.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="cheat-navbar">
+
+        <a href="../index.html" class="brand">
+            &lt;/&gt; CodeWithRohit
+        </a>
+
+        <div class="cheat-title">
+            Python Cheat Sheet
+        </div>
+
+        <a href="../index.html" class="home-btn">
+            ← Home
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="cheat-hero">
+
+        <h1>Python Cheat Sheet</h1>
+
+        <p>
+            Python quick reference from basics to functions,
+            collections, OOP, files, exceptions and advanced concepts.
+        </p>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <ol>
+
+            <!-- 1 -->
+            <li>
+                <h2>Hello World</h2>
+
+                <pre class="language-python"><code>print("Hello, World!")</code></pre>
+            </li>
+
+
+            <!-- 2 -->
+            <li>
+                <h2>Comments</h2>
+
+                <pre class="language-python"><code># Single-line comment
+
+# Python does not have a special
+# multi-line comment syntax.</code></pre>
+            </li>
+
+
+            <!-- 3 -->
+            <li>
+                <h2>Variables</h2>
+
+                <pre class="language-python"><code>name = "Rohit"
+
+age = 21
+
+marks = 89.5
+
+is_student = True</code></pre>
+            </li>
+
+
+            <!-- 4 -->
+            <li>
+                <h2>Data Types</h2>
+
+                <pre class="language-python"><code>name = "Rohit"          # str
+
+age = 21                # int
+
+price = 99.99           # float
+
+is_student = True       # bool
+
+numbers = [1, 2, 3]     # list
+
+point = (10, 20)        # tuple
+
+unique = {1, 2, 3}      # set
+
+user = {"name": "Rohit"} # dict
+
+value = None            # NoneType</code></pre>
+            </li>
+
+
+            <!-- 5 -->
+            <li>
+                <h2>Check Data Type</h2>
+
+                <pre class="language-python"><code>name = "Rohit"
+
+print(type(name))
+
+print(type(10))
+
+print(type(10.5))
+
+print(type(True))</code></pre>
+            </li>
+
+
+            <!-- 6 -->
+            <li>
+                <h2>Type Conversion</h2>
+
+                <pre class="language-python"><code>age = int("21")
+
+price = float("99.5")
+
+number = str(100)
+
+value = bool(1)</code></pre>
+            </li>
+
+
+            <!-- 7 -->
+            <li>
+                <h2>User Input</h2>
+
+                <pre class="language-python"><code>name = input("Enter your name: ")
+
+print("Hello", name)</code></pre>
+            </li>
+
+
+            <!-- 8 -->
+            <li>
+                <h2>Number Input</h2>
+
+                <pre class="language-python"><code>age = int(
+    input("Enter your age: ")
+)
+
+print(age)</code></pre>
+            </li>
+
+
+            <!-- 9 -->
+            <li>
+                <h2>Arithmetic Operators</h2>
+
+                <pre class="language-python"><code>a = 10
+b = 3
+
+print(a + b)    # Addition
+
+print(a - b)    # Subtraction
+
+print(a * b)    # Multiplication
+
+print(a / b)    # Division
+
+print(a // b)   # Floor division
+
+print(a % b)    # Modulus
+
+print(a ** b)   # Power</code></pre>
+            </li>
+
+
+            <!-- 10 -->
+            <li>
+                <h2>Assignment Operators</h2>
+
+                <pre class="language-python"><code>x = 10
+
+x += 5
+
+x -= 2
+
+x *= 3
+
+x /= 2
+
+x //= 2
+
+x %= 3
+
+x **= 2</code></pre>
+            </li>
+
+
+            <!-- 11 -->
+            <li>
+                <h2>Comparison Operators</h2>
+
+                <pre class="language-python"><code>a = 10
+b = 20
+
+print(a == b)
+
+print(a != b)
+
+print(a > b)
+
+print(a < b)
+
+print(a >= b)
+
+print(a <= b)</code></pre>
+            </li>
+
+
+            <!-- 12 -->
+            <li>
+                <h2>Logical Operators</h2>
+
+                <pre class="language-python"><code>age = 21
+
+print(
+    age >= 18 and age <= 60
+)
+
+print(
+    age < 18 or age > 60
+)
+
+print(
+    not age == 21
+)</code></pre>
+            </li>
+
+
+            <!-- 13 -->
+            <li>
+                <h2>if Statement</h2>
+
+                <pre class="language-python"><code>age = 20
+
+if age >= 18:
+    print("Adult")</code></pre>
+            </li>
+
+
+            <!-- 14 -->
+            <li>
+                <h2>if...else</h2>
+
+                <pre class="language-python"><code>age = 16
+
+if age >= 18:
+    print("Adult")
+
+else:
+    print("Minor")</code></pre>
+            </li>
+
+
+            <!-- 15 -->
+            <li>
+                <h2>if...elif...else</h2>
+
+                <pre class="language-python"><code>marks = 85
+
+if marks >= 90:
+    print("Grade A")
+
+elif marks >= 75:
+    print("Grade B")
+
+elif marks >= 60:
+    print("Grade C")
+
+else:
+    print("Grade D")</code></pre>
+            </li>
+
+
+            <!-- 16 -->
+            <li>
+                <h2>Short if / Ternary</h2>
+
+                <pre class="language-python"><code>age = 20
+
+result = (
+    "Adult"
+    if age >= 18
+    else "Minor"
+)
+
+print(result)</code></pre>
+            </li>
+
+
+            <!-- 17 -->
+            <li>
+                <h2>for Loop</h2>
+
+                <pre class="language-python"><code>for i in range(5):
+    print(i)</code></pre>
+            </li>
+
+
+            <!-- 18 -->
+            <li>
+                <h2>range()</h2>
+
+                <pre class="language-python"><code># 0 to 4
+
+for i in range(5):
+    print(i)
+
+
+# 1 to 5
+
+for i in range(1, 6):
+    print(i)
+
+
+# Step of 2
+
+for i in range(0, 10, 2):
+    print(i)</code></pre>
+            </li>
+
+
+            <!-- 19 -->
+            <li>
+                <h2>while Loop</h2>
+
+                <pre class="language-python"><code>i = 1
+
+while i <= 5:
+
+    print(i)
+
+    i += 1</code></pre>
+            </li>
+
+
+            <!-- 20 -->
+            <li>
+                <h2>break</h2>
+
+                <pre class="language-python"><code>for i in range(10):
+
+    if i == 5:
+        break
+
+    print(i)</code></pre>
+            </li>
+
+
+            <!-- 21 -->
+            <li>
+                <h2>continue</h2>
+
+                <pre class="language-python"><code>for i in range(5):
+
+    if i == 2:
+        continue
+
+    print(i)</code></pre>
+            </li>
+
+
+            <!-- 22 -->
+            <li>
+                <h2>pass</h2>
+
+                <pre class="language-python"><code>if True:
+    pass</code></pre>
+            </li>
+
+
+            <!-- 23 -->
+            <li>
+                <h2>Strings</h2>
+
+                <pre class="language-python"><code>name = "Rohit"
+
+message = 'Hello World'
+
+paragraph = """This is
+a multiline
+string."""</code></pre>
+            </li>
+
+
+            <!-- 24 -->
+            <li>
+                <h2>String Indexing</h2>
+
+                <pre class="language-python"><code>text = "Python"
+
+print(text[0])
+
+print(text[1])
+
+print(text[-1])</code></pre>
+            </li>
+
+
+            <!-- 25 -->
+            <li>
+                <h2>String Slicing</h2>
+
+                <pre class="language-python"><code>text = "Python"
+
+print(text[0:3])
+
+print(text[:4])
+
+print(text[2:])
+
+print(text[::-1])</code></pre>
+            </li>
+
+
+            <!-- 26 -->
+            <li>
+                <h2>String Methods</h2>
+
+                <pre class="language-python"><code>text = " Hello Python "
+
+print(text.upper())
+
+print(text.lower())
+
+print(text.strip())
+
+print(text.replace(
+    "Python",
+    "World"
+))
+
+print(text.split())
+
+print(text.startswith("Hello"))
+
+print(text.endswith("Python"))</code></pre>
+            </li>
+
+
+            <!-- 27 -->
+            <li>
+                <h2>f-Strings</h2>
+
+                <pre class="language-python"><code>name = "Rohit"
+
+age = 21
+
+print(
+    f"My name is {name} and I am {age} years old."
+)</code></pre>
+            </li>
+
+
+            <!-- 28 -->
+            <li>
+                <h2>Lists</h2>
+
+                <pre class="language-python"><code>languages = [
+    "Python",
+    "Java",
+    "C++"
+]
+
+print(languages)
+
+print(languages[0])</code></pre>
+            </li>
+
+
+            <!-- 29 -->
+            <li>
+                <h2>Modify List</h2>
+
+                <pre class="language-python"><code>languages = [
+    "Python",
+    "Java"
+]
+
+languages[1] = "JavaScript"
+
+print(languages)</code></pre>
+            </li>
+
+
+            <!-- 30 -->
+            <li>
+                <h2>append()</h2>
+
+                <pre class="language-python"><code>languages = ["Python"]
+
+languages.append("Java")
+
+languages.append("C++")
+
+print(languages)</code></pre>
+            </li>
+
+
+            <!-- 31 -->
+            <li>
+                <h2>insert()</h2>
+
+                <pre class="language-python"><code>languages = [
+    "Python",
+    "Java"
+]
+
+languages.insert(
+    1,
+    "C++"
+)
+
+print(languages)</code></pre>
+            </li>
+
+
+            <!-- 32 -->
+            <li>
+                <h2>remove() & pop()</h2>
+
+                <pre class="language-python"><code>languages = [
+    "Python",
+    "Java",
+    "C++"
+]
+
+languages.remove("Java")
+
+last = languages.pop()
+
+print(languages)
+
+print(last)</code></pre>
+            </li>
+
+
+            <!-- 33 -->
+            <li>
+                <h2>List Methods</h2>
+
+                <pre class="language-python"><code>numbers = [
+    30,
+    10,
+    20
+]
+
+numbers.sort()
+
+numbers.reverse()
+
+print(numbers.count(10))
+
+print(numbers.index(20))
+
+numbers.clear()</code></pre>
+            </li>
+
+
+            <!-- 34 -->
+            <li>
+                <h2>Loop Through List</h2>
+
+                <pre class="language-python"><code>languages = [
+    "Python",
+    "Java",
+    "C++"
+]
+
+for language in languages:
+    print(language)</code></pre>
+            </li>
+
+
+            <!-- 35 -->
+            <li>
+                <h2>List Comprehension</h2>
+
+                <pre class="language-python"><code>numbers = [
+    1,
+    2,
+    3,
+    4,
+    5
+]
+
+squares = [
+    number ** 2
+    for number in numbers
+]
+
+print(squares)</code></pre>
+            </li>
+
+
+            <!-- 36 -->
+            <li>
+                <h2>List Comprehension with Condition</h2>
+
+                <pre class="language-python"><code>numbers = range(1, 11)
+
+even_numbers = [
+    number
+    for number in numbers
+    if number % 2 == 0
+]
+
+print(even_numbers)</code></pre>
+            </li>
+
+
+            <!-- 37 -->
+            <li>
+                <h2>Tuple</h2>
+
+                <pre class="language-python"><code>point = (
+    10,
+    20
+)
+
+print(point[0])
+
+# Tuples are immutable</code></pre>
+            </li>
+
+
+            <!-- 38 -->
+            <li>
+                <h2>Tuple Unpacking</h2>
+
+                <pre class="language-python"><code>student = (
+    "Rohit",
+    21,
+    "B.Tech"
+)
+
+name, age, course = student
+
+print(name)
+
+print(age)
+
+print(course)</code></pre>
+            </li>
+
+
+            <!-- 39 -->
+            <li>
+                <h2>Set</h2>
+
+                <pre class="language-python"><code>numbers = {
+    1,
+    2,
+    3,
+    3
+}
+
+print(numbers)</code></pre>
+            </li>
+
+
+            <!-- 40 -->
+            <li>
+                <h2>Set Methods</h2>
+
+                <pre class="language-python"><code>numbers = {
+    1,
+    2,
+    3
+}
+
+numbers.add(4)
+
+numbers.remove(2)
+
+numbers.discard(10)
+
+print(numbers)</code></pre>
+            </li>
+
+
+            <!-- 41 -->
+            <li>
+                <h2>Set Operations</h2>
+
+                <pre class="language-python"><code>a = {1, 2, 3}
+
+b = {3, 4, 5}
+
+print(a | b)   # Union
+
+print(a & b)   # Intersection
+
+print(a - b)   # Difference
+
+print(a ^ b)   # Symmetric difference</code></pre>
+            </li>
+
+
+            <!-- 42 -->
+            <li>
+                <h2>Dictionary</h2>
+
+                <pre class="language-python"><code>student = {
+
+    "name": "Rohit",
+
+    "age": 21,
+
+    "course": "B.Tech"
+
+}
+
+print(student["name"])</code></pre>
+            </li>
+
+
+            <!-- 43 -->
+            <li>
+                <h2>Dictionary get()</h2>
+
+                <pre class="language-python"><code>student = {
+    "name": "Rohit"
+}
+
+print(
+    student.get("name")
+)
+
+print(
+    student.get(
+        "city",
+        "Not Found"
+    )
+)</code></pre>
+            </li>
+
+
+            <!-- 44 -->
+            <li>
+                <h2>Add / Update Dictionary</h2>
+
+                <pre class="language-python"><code>student = {
+    "name": "Rohit"
+}
+
+student["age"] = 21
+
+student["name"] = "Rohit Prajapati"
+
+print(student)</code></pre>
+            </li>
+
+
+            <!-- 45 -->
+            <li>
+                <h2>Dictionary Methods</h2>
+
+                <pre class="language-python"><code>student = {
+    "name": "Rohit",
+    "age": 21
+}
+
+print(student.keys())
+
+print(student.values())
+
+print(student.items())
+
+student.pop("age")</code></pre>
+            </li>
+
+
+            <!-- 46 -->
+            <li>
+                <h2>Loop Through Dictionary</h2>
+
+                <pre class="language-python"><code>student = {
+    "name": "Rohit",
+    "age": 21
+}
+
+for key, value in student.items():
+
+    print(
+        key,
+        value
+    )</code></pre>
+            </li>
+
+
+            <!-- 47 -->
+            <li>
+                <h2>Basic Function</h2>
+
+                <pre class="language-python"><code>def greet():
+
+    print("Hello!")
+
+greet()</code></pre>
+            </li>
+
+
+            <!-- 48 -->
+            <li>
+                <h2>Function Parameters</h2>
+
+                <pre class="language-python"><code>def greet(name):
+
+    print(
+        f"Hello {name}"
+    )
+
+greet("Rohit")</code></pre>
+            </li>
+
+
+            <!-- 49 -->
+            <li>
+                <h2>Return Value</h2>
+
+                <pre class="language-python"><code>def add(a, b):
+
+    return a + b
+
+result = add(10, 20)
+
+print(result)</code></pre>
+            </li>
+
+
+            <!-- 50 -->
+            <li>
+                <h2>Default Arguments</h2>
+
+                <pre class="language-python"><code>def greet(name="Guest"):
+
+    print(
+        f"Hello {name}"
+    )
+
+greet()
+
+greet("Rohit")</code></pre>
+            </li>
+
+
+            <!-- 51 -->
+            <li>
+                <h2>Keyword Arguments</h2>
+
+                <pre class="language-python"><code>def student(name, age):
+
+    print(name)
+
+    print(age)
+
+
+student(
+    age=21,
+    name="Rohit"
+)</code></pre>
+            </li>
+
+
+            <!-- 52 -->
+            <li>
+                <h2>*args</h2>
+
+                <pre class="language-python"><code>def add(*numbers):
+
+    return sum(numbers)
+
+
+print(
+    add(
+        10,
+        20,
+        30
+    )
+)</code></pre>
+            </li>
+
+
+            <!-- 53 -->
+            <li>
+                <h2>**kwargs</h2>
+
+                <pre class="language-python"><code>def show_user(**user):
+
+    for key, value in user.items():
+
+        print(
+            key,
+            value
+        )
+
+
+show_user(
+    name="Rohit",
+    age=21,
+    course="B.Tech"
+)</code></pre>
+            </li>
+
+
+            <!-- 54 -->
+            <li>
+                <h2>Lambda Function</h2>
+
+                <pre class="language-python"><code>add = lambda a, b: a + b
+
+print(
+    add(10, 20)
+)</code></pre>
+            </li>
+
+
+            <!-- 55 -->
+            <li>
+                <h2>map()</h2>
+
+                <pre class="language-python"><code>numbers = [
+    1,
+    2,
+    3,
+    4
+]
+
+squares = list(
+    map(
+        lambda x: x ** 2,
+        numbers
+    )
+)
+
+print(squares)</code></pre>
+            </li>
+
+
+            <!-- 56 -->
+            <li>
+                <h2>filter()</h2>
+
+                <pre class="language-python"><code>numbers = [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+]
+
+even = list(
+    filter(
+        lambda x: x % 2 == 0,
+        numbers
+    )
+)
+
+print(even)</code></pre>
+            </li>
+
+
+            <!-- 57 -->
+            <li>
+                <h2>sorted()</h2>
+
+                <pre class="language-python"><code>numbers = [
+    30,
+    10,
+    20
+]
+
+result = sorted(numbers)
+
+print(result)
+
+
+result = sorted(
+    numbers,
+    reverse=True
+)
+
+print(result)</code></pre>
+            </li>
+
+
+            <!-- 58 -->
+            <li>
+                <h2>enumerate()</h2>
+
+                <pre class="language-python"><code>languages = [
+    "Python",
+    "Java",
+    "C++"
+]
+
+for index, language in enumerate(
+    languages,
+    start=1
+):
+
+    print(
+        index,
+        language
+    )</code></pre>
+            </li>
+
+
+            <!-- 59 -->
+            <li>
+                <h2>zip()</h2>
+
+                <pre class="language-python"><code>names = [
+    "Rohit",
+    "Aman"
+]
+
+marks = [
+    90,
+    85
+]
+
+for name, mark in zip(
+    names,
+    marks
+):
+
+    print(
+        name,
+        mark
+    )</code></pre>
+            </li>
+
+
+            <!-- 60 -->
+            <li>
+                <h2>Useful Built-in Functions</h2>
+
+                <pre class="language-python"><code>numbers = [
+    10,
+    20,
+    30
+]
+
+print(len(numbers))
+
+print(max(numbers))
+
+print(min(numbers))
+
+print(sum(numbers))
+
+print(sorted(numbers))
+
+print(abs(-10))
+
+print(round(10.567, 2))</code></pre>
+            </li>
+
+
+            <!-- 61 -->
+            <li>
+                <h2>Import Module</h2>
+
+                <pre class="language-python"><code>import math
+
+print(
+    math.sqrt(25)
+)
+
+print(
+    math.pi
+)</code></pre>
+            </li>
+
+
+            <!-- 62 -->
+            <li>
+                <h2>Import Specific Function</h2>
+
+                <pre class="language-python"><code>from math import sqrt
+
+print(
+    sqrt(25)
+)</code></pre>
+            </li>
+
+
+            <!-- 63 -->
+            <li>
+                <h2>Module Alias</h2>
+
+                <pre class="language-python"><code>import math as m
+
+print(
+    m.sqrt(25)
+)</code></pre>
+            </li>
+
+
+            <!-- 64 -->
+            <li>
+                <h2>Random Module</h2>
+
+                <pre class="language-python"><code>import random
+
+print(
+    random.randint(
+        1,
+        10
+    )
+)
+
+languages = [
+    "Python",
+    "Java",
+    "C++"
+]
+
+print(
+    random.choice(
+        languages
+    )
+)</code></pre>
+            </li>
+
+
+            <!-- 65 -->
+            <li>
+                <h2>Datetime</h2>
+
+                <pre class="language-python"><code>from datetime import datetime
+
+now = datetime.now()
+
+print(now)
+
+print(now.year)
+
+print(now.month)
+
+print(now.day)</code></pre>
+            </li>
+
+
+            <!-- 66 -->
+            <li>
+                <h2>Try / Except</h2>
+
+                <pre class="language-python"><code>try:
+
+    number = int(
+        input(
+            "Enter number: "
+        )
+    )
+
+    print(number)
+
+except ValueError:
+
+    print(
+        "Invalid number"
+    )</code></pre>
+            </li>
+
+
+            <!-- 67 -->
+            <li>
+                <h2>Multiple Exceptions</h2>
+
+                <pre class="language-python"><code>try:
+
+    number = int("abc")
+
+    result = 10 / number
+
+except ValueError:
+
+    print(
+        "Invalid value"
+    )
+
+except ZeroDivisionError:
+
+    print(
+        "Cannot divide by zero"
+    )</code></pre>
+            </li>
+
+
+            <!-- 68 -->
+            <li>
+                <h2>try / except / else / finally</h2>
+
+                <pre class="language-python"><code>try:
+
+    number = int("10")
+
+except ValueError:
+
+    print("Error")
+
+else:
+
+    print(
+        "Success:",
+        number
+    )
+
+finally:
+
+    print(
+        "Always executes"
+    )</code></pre>
+            </li>
+
+
+            <!-- 69 -->
+            <li>
+                <h2>Raise Exception</h2>
+
+                <pre class="language-python"><code>age = 15
+
+if age < 18:
+
+    raise ValueError(
+        "Age must be 18+"
+    )</code></pre>
+            </li>
+
+
+            <!-- 70 -->
+            <li>
+                <h2>Read File</h2>
+
+                <pre class="language-python"><code>with open(
+    "data.txt",
+    "r",
+    encoding="utf-8"
+) as file:
+
+    content = file.read()
+
+    print(content)</code></pre>
+            </li>
+
+
+            <!-- 71 -->
+            <li>
+                <h2>Write File</h2>
+
+                <pre class="language-python"><code>with open(
+    "data.txt",
+    "w",
+    encoding="utf-8"
+) as file:
+
+    file.write(
+        "Hello Python"
+    )</code></pre>
+            </li>
+
+
+            <!-- 72 -->
+            <li>
+                <h2>Append File</h2>
+
+                <pre class="language-python"><code>with open(
+    "data.txt",
+    "a",
+    encoding="utf-8"
+) as file:
+
+    file.write(
+        "\nNew line"
+    )</code></pre>
+            </li>
+
+
+            <!-- 73 -->
+            <li>
+                <h2>Basic Class</h2>
+
+                <pre class="language-python"><code>class Student:
+
+    def greet(self):
+
+        print(
+            "Hello Student"
+        )
+
+
+student = Student()
+
+student.greet()</code></pre>
+            </li>
+
+
+            <!-- 74 -->
+            <li>
+                <h2>Constructor</h2>
+
+                <pre class="language-python"><code>class Student:
+
+    def __init__(
+        self,
+        name,
+        age
+    ):
+
+        self.name = name
+
+        self.age = age
+
+
+student = Student(
+    "Rohit",
+    21
+)
+
+print(
+    student.name
+)</code></pre>
+            </li>
+
+
+            <!-- 75 -->
+            <li>
+                <h2>Class Method</h2>
+
+                <pre class="language-python"><code>class Student:
+
+    def __init__(
+        self,
+        name
+    ):
+
+        self.name = name
+
+
+    def greet(self):
+
+        print(
+            f"Hello {self.name}"
+        )
+
+
+student = Student(
+    "Rohit"
+)
+
+student.greet()</code></pre>
+            </li>
+
+
+            <!-- 76 -->
+            <li>
+                <h2>Inheritance</h2>
+
+                <pre class="language-python"><code>class Animal:
+
+    def speak(self):
+
+        print(
+            "Animal speaks"
+        )
+
+
+class Dog(Animal):
+
+    def bark(self):
+
+        print(
+            "Dog barks"
+        )
+
+
+dog = Dog()
+
+dog.speak()
+
+dog.bark()</code></pre>
+            </li>
+
+
+            <!-- 77 -->
+            <li>
+                <h2>super()</h2>
+
+                <pre class="language-python"><code>class Person:
+
+    def __init__(
+        self,
+        name
+    ):
+
+        self.name = name
+
+
+class Student(Person):
+
+    def __init__(
+        self,
+        name,
+        course
+    ):
+
+        super().__init__(
+            name
+        )
+
+        self.course = course</code></pre>
+            </li>
+
+
+            <!-- 78 -->
+            <li>
+                <h2>Encapsulation</h2>
+
+                <pre class="language-python"><code>class Account:
+
+    def __init__(self):
+
+        self._balance = 1000
+
+        self.__pin = 1234</code></pre>
+            </li>
+
+
+            <!-- 79 -->
+            <li>
+                <h2>Polymorphism</h2>
+
+                <pre class="language-python"><code>class Dog:
+
+    def sound(self):
+        print("Bark")
+
+
+class Cat:
+
+    def sound(self):
+        print("Meow")
+
+
+animals = [
+    Dog(),
+    Cat()
+]
+
+for animal in animals:
+
+    animal.sound()</code></pre>
+            </li>
+
+
+            <!-- 80 -->
+            <li>
+                <h2>Dictionary Comprehension</h2>
+
+                <pre class="language-python"><code>squares = {
+
+    number: number ** 2
+
+    for number in range(
+        1,
+        6
+    )
+
+}
+
+print(squares)</code></pre>
+            </li>
+
+
+            <!-- 81 -->
+            <li>
+                <h2>Set Comprehension</h2>
+
+                <pre class="language-python"><code>numbers = {
+
+    number ** 2
+
+    for number in range(
+        1,
+        6
+    )
+
+}
+
+print(numbers)</code></pre>
+            </li>
+
+
+            <!-- 82 -->
+            <li>
+                <h2>Generator Expression</h2>
+
+                <pre class="language-python"><code>numbers = (
+    number ** 2
+    for number in range(5)
+)
+
+for number in numbers:
+
+    print(number)</code></pre>
+            </li>
+
+
+            <!-- 83 -->
+            <li>
+                <h2>Generator Function</h2>
+
+                <pre class="language-python"><code>def numbers():
+
+    yield 1
+
+    yield 2
+
+    yield 3
+
+
+for number in numbers():
+
+    print(number)</code></pre>
+            </li>
+
+
+            <!-- 84 -->
+            <li>
+                <h2>Decorator</h2>
+
+                <pre class="language-python"><code>def decorator(function):
+
+    def wrapper():
+
+        print(
+            "Before function"
+        )
+
+        function()
+
+        print(
+            "After function"
+        )
+
+    return wrapper
+
+
+@decorator
+def greet():
+
+    print("Hello")
+
+
+greet()</code></pre>
+            </li>
+
+
+            <!-- 85 -->
+            <li>
+                <h2>main Check</h2>
+
+                <pre class="language-python"><code>def main():
+
+    print(
+        "Program started"
+    )
+
+
+if __name__ == "__main__":
+
+    main()</code></pre>
+            </li>
+
+
+            <!-- 86 -->
+            <li>
+                <h2>JSON</h2>
+
+                <pre class="language-python"><code>import json
+
+student = {
+    "name": "Rohit",
+    "age": 21
+}
+
+json_data = json.dumps(
+    student
+)
+
+print(json_data)
+
+
+python_data = json.loads(
+    json_data
+)
+
+print(python_data)</code></pre>
+            </li>
+
+
+            <!-- 87 -->
+            <li>
+                <h2>Working with JSON File</h2>
+
+                <pre class="language-python"><code>import json
+
+student = {
+    "name": "Rohit",
+    "age": 21
+}
+
+
+with open(
+    "student.json",
+    "w",
+    encoding="utf-8"
+) as file:
+
+    json.dump(
+        student,
+        file,
+        indent=4
+    )</code></pre>
+            </li>
+
+
+            <!-- 88 -->
+            <li>
+                <h2>Virtual Environment</h2>
+
+                <pre class="language-bash"><code># Create virtual environment
+
+python -m venv venv
+
+
+# Windows
+
+venv\Scripts\activate
+
+
+# macOS / Linux
+
+source venv/bin/activate
+
+
+# Deactivate
+
+deactivate</code></pre>
+            </li>
+
+
+            <!-- 89 -->
+            <li>
+                <h2>pip Commands</h2>
+
+                <pre class="language-bash"><code># Install package
+
+pip install requests
+
+
+# List packages
+
+pip list
+
+
+# Package information
+
+pip show requests
+
+
+# Uninstall
+
+pip uninstall requests
+
+
+# Save dependencies
+
+pip freeze > requirements.txt
+
+
+# Install dependencies
+
+pip install -r requirements.txt</code></pre>
+            </li>
+
+
+            <!-- 90 -->
+            <li>
+                <h2>Python Quick Revision</h2>
+
+                <pre class="language-python"><code># Variable
+
+name = "Rohit"
+
+
+# List
+
+numbers = [
+    1,
+    2,
+    3
+]
+
+
+# Dictionary
+
+user = {
+    "name": "Rohit"
+}
+
+
+# Condition
+
+if name == "Rohit":
+
+    print("Hello")
+
+
+# Loop
+
+for number in numbers:
+
+    print(number)
+
+
+# Function
+
+def add(a, b):
+
+    return a + b
+
+
+# List comprehension
+
+squares = [
+    x ** 2
+    for x in numbers
+]
+
+
+# Class
+
+class Student:
+
+    def __init__(
+        self,
+        name
+    ):
+
+        self.name = name
+
+
+# Exception
+
+try:
+
+    result = 10 / 0
+
+except ZeroDivisionError:
+
+    print(
+        "Cannot divide by zero"
+    )</code></pre>
+            </li>
+
+
+            <!-- 91 -->
+            <li>
+                <h2>Python Learning Roadmap</h2>
+
+                <pre class="language-python"><code>1. Python Syntax
+
+2. Variables
+
+3. Data Types
+
+4. Operators
+
+5. Conditions
+
+6. Loops
+
+7. Strings
+
+8. Lists
+
+9. Tuples
+
+10. Sets
+
+11. Dictionaries
+
+12. Functions
+
+13. Lambda
+
+14. Comprehensions
+
+15. Modules
+
+16. Exception Handling
+
+17. File Handling
+
+18. OOP
+
+19. Generators
+
+20. Decorators
+
+21. JSON
+
+22. pip & Virtual Environment
+
+23. Projects
+
+24. NumPy
+
+25. Pandas
+
+26. Matplotlib
+
+27. Flask / Django / FastAPI
+
+28. Data Science / Machine Learning</code></pre>
+            </li>
+
+        </ol>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <p>
+            © 2026 CodeWithRohit |
+            Python Cheat Sheet
+        </p>
+
+    </footer>
+
+
+    <!-- Prism -->
+    <script src="../prism/prism.js"></script>
+
+    <!-- Common Cheat Sheet JavaScript -->
+    <script src="../cheatsheet.js"></script>
+
+</body>
+
+</html>

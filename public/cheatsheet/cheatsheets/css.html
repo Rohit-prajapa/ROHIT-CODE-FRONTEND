@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Complete CSS Cheat Sheet by CodeWithRohit"
+    >
+
+    <title>CSS Cheat Sheet | CodeWithRohit</title>
+
+    <!-- Common Cheat Sheet CSS -->
+    <link rel="stylesheet" href="../cheatsheet.css">
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="../prism/prism.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="cheat-navbar">
+
+        <a href="../index.html" class="brand">
+            &lt;/&gt; CodeWithRohit
+        </a>
+
+        <div class="cheat-title">
+            CSS Cheat Sheet
+        </div>
+
+        <a href="../index.html" class="home-btn">
+            ← Home
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="cheat-hero">
+
+        <h1>CSS Cheat Sheet</h1>
+
+        <p>
+            Complete CSS quick reference from basics and selectors
+            to Flexbox, Grid, animations and responsive design.
+        </p>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <ol>
+
+            <!-- 1 -->
+
+            <li>
+                <h2>CSS Syntax</h2>
+
+                <pre class="language-css"><code>selector {
+    property: value;
+}</code></pre>
+            </li>
+
+
+            <!-- 2 -->
+
+            <li>
+                <h2>Connect External CSS</h2>
+
+                <pre class="language-html"><code>&lt;link
+    rel="stylesheet"
+    href="style.css"
+&gt;</code></pre>
+            </li>
+
+
+            <!-- 3 -->
+
+            <li>
+                <h2>Internal CSS</h2>
+
+                <pre class="language-html"><code>&lt;style&gt;
+
+    body {
+        background: black;
+        color: white;
+    }
+
+&lt;/style&gt;</code></pre>
+            </li>
+
+
+            <!-- 4 -->
+
+            <li>
+                <h2>Inline CSS</h2>
+
+                <pre class="language-html"><code>&lt;p style="color: red;"&gt;
+    Hello World
+&lt;/p&gt;</code></pre>
+            </li>
+
+
+            <!-- 5 -->
+
+            <li>
+                <h2>CSS Comment</h2>
+
+                <pre class="language-css"><code>/* This is a CSS comment */</code></pre>
+            </li>
+
+
+            <!-- 6 -->
+
+            <li>
+                <h2>Universal Selector</h2>
+
+                <pre class="language-css"><code>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}</code></pre>
+            </li>
+
+
+            <!-- 7 -->
+
+            <li>
+                <h2>Element Selector</h2>
+
+                <pre class="language-css"><code>p {
+    color: blue;
+}</code></pre>
+            </li>
+
+
+            <!-- 8 -->
+
+            <li>
+                <h2>Class Selector</h2>
+
+                <pre class="language-css"><code>.card {
+    background: white;
+}</code></pre>
+            </li>
+
+
+            <!-- 9 -->
+
+            <li>
+                <h2>ID Selector</h2>
+
+                <pre class="language-css"><code>#header {
+    background: black;
+}</code></pre>
+            </li>
+
+
+            <!-- 10 -->
+
+            <li>
+                <h2>Grouping Selectors</h2>
+
+                <pre class="language-css"><code>h1,
+h2,
+h3 {
+    color: white;
+}</code></pre>
+            </li>
+
+
+            <!-- 11 -->
+
+            <li>
+                <h2>Descendant Selector</h2>
+
+                <pre class="language-css"><code>.container p {
+    color: gray;
+}</code></pre>
+            </li>
+
+
+            <!-- 12 -->
+
+            <li>
+                <h2>Child Selector</h2>
+
+                <pre class="language-css"><code>.container > p {
+    color: blue;
+}</code></pre>
+            </li>
+
+
+            <!-- 13 -->
+
+            <li>
+                <h2>Adjacent Sibling Selector</h2>
+
+                <pre class="language-css"><code>h2 + p {
+    color: green;
+}</code></pre>
+            </li>
+
+
+            <!-- 14 -->
+
+            <li>
+                <h2>General Sibling Selector</h2>
+
+                <pre class="language-css"><code>h2 ~ p {
+    color: orange;
+}</code></pre>
+            </li>
+
+
+            <!-- 15 -->
+
+            <li>
+                <h2>Attribute Selector</h2>
+
+                <pre class="language-css"><code>input[type="text"] {
+    border: 1px solid gray;
+}
+
+a[target="_blank"] {
+    color: blue;
+}</code></pre>
+            </li>
+
+
+            <!-- 16 -->
+
+            <li>
+                <h2>Colors</h2>
+
+                <pre class="language-css"><code>.example {
+    color: red;
+
+    background-color: #0d1117;
+
+    border-color: rgb(255, 0, 0);
+
+    outline-color: rgba(0, 0, 0, 0.5);
+
+    box-shadow:
+        0 0 10px hsl(200, 100%, 50%);
+}</code></pre>
+            </li>
+
+
+            <!-- 17 -->
+
+            <li>
+                <h2>Width & Height</h2>
+
+                <pre class="language-css"><code>.box {
+    width: 300px;
+    height: 200px;
+
+    min-width: 200px;
+    max-width: 500px;
+
+    min-height: 100px;
+    max-height: 400px;
+}</code></pre>
+            </li>
+
+
+            <!-- 18 -->
+
+            <li>
+                <h2>CSS Units</h2>
+
+                <pre class="language-css"><code>/* Absolute */
+width: 200px;
+
+/* Relative */
+width: 50%;
+
+font-size: 2rem;
+
+font-size: 1.2em;
+
+width: 80vw;
+
+height: 100vh;
+
+width: 20ch;</code></pre>
+            </li>
+
+
+            <!-- 19 -->
+
+            <li>
+                <h2>Margin</h2>
+
+                <pre class="language-css"><code>.box {
+    margin: 20px;
+
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}</code></pre>
+            </li>
+
+
+            <!-- 20 -->
+
+            <li>
+                <h2>Margin Shorthand</h2>
+
+                <pre class="language-css"><code>/* All sides */
+margin: 20px;
+
+/* Vertical | Horizontal */
+margin: 10px 20px;
+
+/* Top | Horizontal | Bottom */
+margin: 10px 20px 30px;
+
+/* Top | Right | Bottom | Left */
+margin: 10px 20px 30px 40px;
+
+/* Center block element */
+margin: 0 auto;</code></pre>
+            </li>
+
+
+            <!-- 21 -->
+
+            <li>
+                <h2>Padding</h2>
+
+                <pre class="language-css"><code>.box {
+    padding: 20px;
+
+    padding: 10px 20px;
+
+    padding:
+        10px
+        20px
+        30px
+        40px;
+}</code></pre>
+            </li>
+
+
+            <!-- 22 -->
+
+            <li>
+                <h2>Border</h2>
+
+                <pre class="language-css"><code>.box {
+    border: 2px solid blue;
+
+    border-width: 2px;
+    border-style: solid;
+    border-color: blue;
+}</code></pre>
+            </li>
+
+
+            <!-- 23 -->
+
+            <li>
+                <h2>Border Radius</h2>
+
+                <pre class="language-css"><code>.box {
+    border-radius: 10px;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+
+    border-radius: 50%;
+}</code></pre>
+            </li>
+
+
+            <!-- 24 -->
+
+            <li>
+                <h2>Box Model</h2>
+
+                <pre class="language-css"><code>.box {
+    width: 300px;
+
+    padding: 20px;
+
+    border: 5px solid black;
+
+    margin: 20px;
+}</code></pre>
+            </li>
+
+
+            <!-- 25 -->
+
+            <li>
+                <h2>box-sizing</h2>
+
+                <pre class="language-css"><code>* {
+    box-sizing: border-box;
+}</code></pre>
+            </li>
+
+
+            <!-- 26 -->
+
+            <li>
+                <h2>Background</h2>
+
+                <pre class="language-css"><code>.hero {
+    background-color: #0d1117;
+
+    background-image:
+        url("background.jpg");
+
+    background-repeat: no-repeat;
+
+    background-position: center;
+
+    background-size: cover;
+
+    background-attachment: fixed;
+}</code></pre>
+            </li>
+
+
+            <!-- 27 -->
+
+            <li>
+                <h2>Background Shorthand</h2>
+
+                <pre class="language-css"><code>.hero {
+    background:
+        url("image.jpg")
+        center
+        / cover
+        no-repeat;
+}</code></pre>
+            </li>
+
+
+            <!-- 28 -->
+
+            <li>
+                <h2>Linear Gradient</h2>
+
+                <pre class="language-css"><code>.box {
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #9333ea
+        );
+}</code></pre>
+            </li>
+
+
+            <!-- 29 -->
+
+            <li>
+                <h2>Text Styling</h2>
+
+                <pre class="language-css"><code>p {
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: 500;
+
+    font-style: italic;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    line-height: 1.6;
+}</code></pre>
+            </li>
+
+
+            <!-- 30 -->
+
+            <li>
+                <h2>Font Family</h2>
+
+                <pre class="language-css"><code>body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}</code></pre>
+            </li>
+
+
+            <!-- 31 -->
+
+            <li>
+                <h2>Text Shadow</h2>
+
+                <pre class="language-css"><code>h1 {
+    text-shadow:
+        2px 2px 5px
+        rgba(0, 0, 0, 0.5);
+}</code></pre>
+            </li>
+
+
+            <!-- 32 -->
+
+            <li>
+                <h2>Box Shadow</h2>
+
+                <pre class="language-css"><code>.card {
+    box-shadow:
+        0 10px 30px
+        rgba(0, 0, 0, 0.3);
+}</code></pre>
+            </li>
+
+
+            <!-- 33 -->
+
+            <li>
+                <h2>Display</h2>
+
+                <pre class="language-css"><code>display: block;
+
+display: inline;
+
+display: inline-block;
+
+display: flex;
+
+display: grid;
+
+display: none;</code></pre>
+            </li>
+
+
+            <!-- 34 -->
+
+            <li>
+                <h2>Visibility</h2>
+
+                <pre class="language-css"><code>.hidden {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}</code></pre>
+            </li>
+
+
+            <!-- 35 -->
+
+            <li>
+                <h2>Overflow</h2>
+
+                <pre class="language-css"><code>.box {
+    overflow: auto;
+
+    /* Other values */
+    /* hidden */
+    /* scroll */
+    /* visible */
+}</code></pre>
+            </li>
+
+
+            <!-- 36 -->
+
+            <li>
+                <h2>Position</h2>
+
+                <pre class="language-css"><code>position: static;
+
+position: relative;
+
+position: absolute;
+
+position: fixed;
+
+position: sticky;</code></pre>
+            </li>
+
+
+            <!-- 37 -->
+
+            <li>
+                <h2>Absolute Position Example</h2>
+
+                <pre class="language-css"><code>.parent {
+    position: relative;
+}
+
+.child {
+    position: absolute;
+
+    top: 10px;
+    right: 10px;
+}</code></pre>
+            </li>
+
+
+            <!-- 38 -->
+
+            <li>
+                <h2>Fixed Position</h2>
+
+                <pre class="language-css"><code>.button {
+    position: fixed;
+
+    right: 20px;
+    bottom: 20px;
+}</code></pre>
+            </li>
+
+
+            <!-- 39 -->
+
+            <li>
+                <h2>Sticky Position</h2>
+
+                <pre class="language-css"><code>nav {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+}</code></pre>
+            </li>
+
+
+            <!-- 40 -->
+
+            <li>
+                <h2>z-index</h2>
+
+                <pre class="language-css"><code>.navbar {
+    position: relative;
+
+    z-index: 1000;
+}</code></pre>
+            </li>
+
+
+            <!-- 41 -->
+
+            <li>
+                <h2>Flexbox Container</h2>
+
+                <pre class="language-css"><code>.container {
+    display: flex;
+}</code></pre>
+            </li>
+
+
+            <!-- 42 -->
+
+            <li>
+                <h2>Flex Direction</h2>
+
+                <pre class="language-css"><code>.container {
+    display: flex;
+
+    flex-direction: row;
+
+    /* row-reverse */
+    /* column */
+    /* column-reverse */
+}</code></pre>
+            </li>
+
+
+            <!-- 43 -->
+
+            <li>
+                <h2>justify-content</h2>
+
+                <pre class="language-css"><code>.container {
+    display: flex;
+
+    justify-content: center;
+
+    /* flex-start */
+    /* flex-end */
+    /* space-between */
+    /* space-around */
+    /* space-evenly */
+}</code></pre>
+            </li>
+
+
+            <!-- 44 -->
+
+            <li>
+                <h2>align-items</h2>
+
+                <pre class="language-css"><code>.container {
+    display: flex;
+
+    align-items: center;
+
+    /* stretch */
+    /* flex-start */
+    /* flex-end */
+    /* baseline */
+}</code></pre>
+            </li>
+
+
+            <!-- 45 -->
+
+            <li>
+                <h2>Perfect Center with Flexbox</h2>
+
+                <pre class="language-css"><code>.container {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+}</code></pre>
+            </li>
+
+
+            <!-- 46 -->
+
+            <li>
+                <h2>Flex Wrap</h2>
+
+                <pre class="language-css"><code>.container {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 20px;
+}</code></pre>
+            </li>
+
+
+            <!-- 47 -->
+
+            <li>
+                <h2>Flex Item</h2>
+
+                <pre class="language-css"><code>.item {
+    flex-grow: 1;
+
+    flex-shrink: 1;
+
+    flex-basis: 200px;
+}
+
+/* Shorthand */
+
+.item {
+    flex: 1 1 200px;
+}</code></pre>
+            </li>
+
+
+            <!-- 48 -->
+
+            <li>
+                <h2>Grid Container</h2>
+
+                <pre class="language-css"><code>.container {
+    display: grid;
+}</code></pre>
+            </li>
+
+
+            <!-- 49 -->
+
+            <li>
+                <h2>Grid Columns</h2>
+
+                <pre class="language-css"><code>.container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}</code></pre>
+            </li>
+
+
+            <!-- 50 -->
+
+            <li>
+                <h2>Responsive Grid</h2>
+
+                <pre class="language-css"><code>.container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(250px, 1fr)
+        );
+
+    gap: 20px;
+}</code></pre>
+            </li>
+
+
+            <!-- 51 -->
+
+            <li>
+                <h2>Grid Rows</h2>
+
+                <pre class="language-css"><code>.container {
+    display: grid;
+
+    grid-template-rows:
+        100px
+        200px
+        auto;
+}</code></pre>
+            </li>
+
+
+            <!-- 52 -->
+
+            <li>
+                <h2>Grid Item Placement</h2>
+
+                <pre class="language-css"><code>.item {
+    grid-column:
+        1 / 3;
+
+    grid-row:
+        1 / 2;
+}</code></pre>
+            </li>
+
+
+            <!-- 53 -->
+
+            <li>
+                <h2>Gap</h2>
+
+                <pre class="language-css"><code>.container {
+    gap: 20px;
+
+    row-gap: 20px;
+
+    column-gap: 30px;
+}</code></pre>
+            </li>
+
+
+            <!-- 54 -->
+
+            <li>
+                <h2>Pseudo Classes</h2>
+
+                <pre class="language-css"><code>a:hover {
+    color: red;
+}
+
+input:focus {
+    border-color: blue;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+li:first-child {
+    color: red;
+}
+
+li:last-child {
+    color: blue;
+}
+
+li:nth-child(2) {
+    color: green;
+}</code></pre>
+            </li>
+
+
+            <!-- 55 -->
+
+            <li>
+                <h2>Pseudo Elements</h2>
+
+                <pre class="language-css"><code>p::first-letter {
+    font-size: 2rem;
+}
+
+p::first-line {
+    color: blue;
+}
+
+.element::before {
+    content: "→ ";
+}
+
+.element::after {
+    content: " ✓";
+}
+
+::selection {
+    background: blue;
+    color: white;
+}</code></pre>
+            </li>
+
+
+            <!-- 56 -->
+
+            <li>
+                <h2>Transition</h2>
+
+                <pre class="language-css"><code>.button {
+    background: blue;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.button:hover {
+    background: purple;
+
+    transform:
+        translateY(-3px);
+}</code></pre>
+            </li>
+
+
+            <!-- 57 -->
+
+            <li>
+                <h2>Transform</h2>
+
+                <pre class="language-css"><code>.box {
+    transform:
+        translateX(20px);
+
+    transform:
+        translateY(20px);
+
+    transform:
+        scale(1.2);
+
+    transform:
+        rotate(45deg);
+
+    transform:
+        skew(10deg);
+}</code></pre>
+            </li>
+
+
+            <!-- 58 -->
+
+            <li>
+                <h2>CSS Animation</h2>
+
+                <pre class="language-css"><code>@keyframes move {
+
+    from {
+        transform:
+            translateX(0);
+    }
+
+    to {
+        transform:
+            translateX(200px);
+    }
+
+}
+
+.box {
+    animation:
+        move
+        2s
+        ease
+        infinite;
+}</code></pre>
+            </li>
+
+
+            <!-- 59 -->
+
+            <li>
+                <h2>Animation Properties</h2>
+
+                <pre class="language-css"><code>.box {
+    animation-name: move;
+
+    animation-duration: 2s;
+
+    animation-timing-function: ease;
+
+    animation-delay: 0s;
+
+    animation-iteration-count: infinite;
+
+    animation-direction: alternate;
+
+    animation-fill-mode: forwards;
+}</code></pre>
+            </li>
+
+
+            <!-- 60 -->
+
+            <li>
+                <h2>Opacity</h2>
+
+                <pre class="language-css"><code>.box {
+    opacity: 0.5;
+}</code></pre>
+            </li>
+
+
+            <!-- 61 -->
+
+            <li>
+                <h2>Cursor</h2>
+
+                <pre class="language-css"><code>button {
+    cursor: pointer;
+}
+
+.disabled {
+    cursor: not-allowed;
+}</code></pre>
+            </li>
+
+
+            <!-- 62 -->
+
+            <li>
+                <h2>Object Fit</h2>
+
+                <pre class="language-css"><code>img {
+    width: 300px;
+    height: 200px;
+
+    object-fit: cover;
+}
+
+/*
+cover
+contain
+fill
+none
+scale-down
+*/</code></pre>
+            </li>
+
+
+            <!-- 63 -->
+
+            <li>
+                <h2>Aspect Ratio</h2>
+
+                <pre class="language-css"><code>.video {
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+}</code></pre>
+            </li>
+
+
+            <!-- 64 -->
+
+            <li>
+                <h2>Media Query</h2>
+
+                <pre class="language-css"><code>@media screen and (max-width: 768px) {
+
+    .container {
+        width: 95%;
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 65 -->
+
+            <li>
+                <h2>Mobile Responsive Example</h2>
+
+                <pre class="language-css"><code>.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+}
+
+@media (max-width: 900px) {
+
+    .cards {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .cards {
+        grid-template-columns:
+            1fr;
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 66 -->
+
+            <li>
+                <h2>CSS Variables</h2>
+
+                <pre class="language-css"><code>:root {
+    --primary-color: #58a6ff;
+    --background: #0d1117;
+    --text-color: #ffffff;
+}
+
+body {
+    background:
+        var(--background);
+
+    color:
+        var(--text-color);
+}
+
+button {
+    background:
+        var(--primary-color);
+}</code></pre>
+            </li>
+
+
+            <!-- 67 -->
+
+            <li>
+                <h2>calc()</h2>
+
+                <pre class="language-css"><code>.content {
+    width:
+        calc(100% - 250px);
+
+    height:
+        calc(100vh - 70px);
+}</code></pre>
+            </li>
+
+
+            <!-- 68 -->
+
+            <li>
+                <h2>min(), max() & clamp()</h2>
+
+                <pre class="language-css"><code>.container {
+    width:
+        min(1200px, 90%);
+}
+
+.box {
+    width:
+        max(300px, 50%);
+}
+
+h1 {
+    font-size:
+        clamp(
+            2rem,
+            5vw,
+            4rem
+        );
+}</code></pre>
+            </li>
+
+
+            <!-- 69 -->
+
+            <li>
+                <h2>Filter</h2>
+
+                <pre class="language-css"><code>img {
+    filter:
+        grayscale(100%);
+
+    /* blur(5px) */
+    /* brightness(120%) */
+    /* contrast(150%) */
+}</code></pre>
+            </li>
+
+
+            <!-- 70 -->
+
+            <li>
+                <h2>Backdrop Filter</h2>
+
+                <pre class="language-css"><code>.navbar {
+    background:
+        rgba(0, 0, 0, 0.5);
+
+    backdrop-filter:
+        blur(10px);
+}</code></pre>
+            </li>
+
+
+            <!-- 71 -->
+
+            <li>
+                <h2>List Styling</h2>
+
+                <pre class="language-css"><code>ul {
+    list-style: none;
+}
+
+ol {
+    list-style-type:
+        decimal;
+}</code></pre>
+            </li>
+
+
+            <!-- 72 -->
+
+            <li>
+                <h2>Table Styling</h2>
+
+                <pre class="language-css"><code>table {
+    width: 100%;
+
+    border-collapse:
+        collapse;
+}
+
+th,
+td {
+    padding: 12px;
+
+    border:
+        1px solid #ddd;
+}
+
+th {
+    text-align: left;
+}</code></pre>
+            </li>
+
+
+            <!-- 73 -->
+
+            <li>
+                <h2>Form Input Styling</h2>
+
+                <pre class="language-css"><code>input {
+    width: 100%;
+
+    padding: 12px;
+
+    border:
+        1px solid #ccc;
+
+    border-radius:
+        6px;
+
+    outline: none;
+}
+
+input:focus {
+    border-color:
+        #58a6ff;
+}</code></pre>
+            </li>
+
+
+            <!-- 74 -->
+
+            <li>
+                <h2>Button Styling</h2>
+
+                <pre class="language-css"><code>button {
+    padding:
+        10px
+        20px;
+
+    border: none;
+
+    border-radius:
+        6px;
+
+    background:
+        #238636;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition:
+        0.3s;
+}
+
+button:hover {
+    background:
+        #2ea043;
+}</code></pre>
+            </li>
+
+
+            <!-- 75 -->
+
+            <li>
+                <h2>Remove Default Link Style</h2>
+
+                <pre class="language-css"><code>a {
+    color: inherit;
+
+    text-decoration: none;
+}</code></pre>
+            </li>
+
+
+            <!-- 76 -->
+
+            <li>
+                <h2>Center a Container</h2>
+
+                <pre class="language-css"><code>.container {
+    width:
+        min(1200px, 90%);
+
+    margin:
+        0 auto;
+}</code></pre>
+            </li>
+
+
+            <!-- 77 -->
+
+            <li>
+                <h2>Text Overflow Ellipsis</h2>
+
+                <pre class="language-css"><code>.title {
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow:
+        ellipsis;
+}</code></pre>
+            </li>
+
+
+            <!-- 78 -->
+
+            <li>
+                <h2>Multi-Line Text Clamp</h2>
+
+                <pre class="language-css"><code>.description {
+    display:
+        -webkit-box;
+
+    -webkit-line-clamp:
+        3;
+
+    -webkit-box-orient:
+        vertical;
+
+    overflow:
+        hidden;
+}</code></pre>
+            </li>
+
+
+            <!-- 79 -->
+
+            <li>
+                <h2>CSS Specificity</h2>
+
+                <pre class="language-css"><code>/* Lower specificity */
+p {
+    color: blue;
+}
+
+/* Higher */
+.text {
+    color: green;
+}
+
+/* Higher */
+#title {
+    color: red;
+}
+
+/*
+General idea:
+
+Inline styles
+    ↓
+ID
+    ↓
+Class / attribute / pseudo-class
+    ↓
+Element / pseudo-element
+*/</code></pre>
+            </li>
+
+
+            <!-- 80 -->
+
+            <li>
+                <h2>!important</h2>
+
+                <pre class="language-css"><code>.title {
+    color:
+        red !important;
+}
+
+/*
+Avoid unnecessary
+!important usage.
+*/</code></pre>
+            </li>
+
+
+            <!-- 81 -->
+
+            <li>
+                <h2>inherit, initial & unset</h2>
+
+                <pre class="language-css"><code>.child {
+    color: inherit;
+
+    margin: initial;
+
+    padding: unset;
+}</code></pre>
+            </li>
+
+
+            <!-- 82 -->
+
+            <li>
+                <h2>Custom Scrollbar</h2>
+
+                <pre class="language-css"><code>::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0d1117;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #30363d;
+
+    border-radius:
+        10px;
+}</code></pre>
+            </li>
+
+
+            <!-- 83 -->
+
+            <li>
+                <h2>Dark Mode with Media Query</h2>
+
+                <pre class="language-css"><code>@media (
+    prefers-color-scheme: dark
+) {
+
+    body {
+        background:
+            #0d1117;
+
+        color:
+            white;
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 84 -->
+
+            <li>
+                <h2>Reduced Motion</h2>
+
+                <pre class="language-css"><code>@media (
+    prefers-reduced-motion: reduce
+) {
+
+    * {
+        animation-duration:
+            0.01ms !important;
+
+        transition-duration:
+            0.01ms !important;
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 85 -->
+
+            <li>
+                <h2>CSS Quick Revision</h2>
+
+                <pre class="language-css"><code>/* Selector */
+
+.class {
+    property: value;
+}
+
+
+/* Box Model */
+
+.box {
+    width: 300px;
+
+    padding: 20px;
+
+    border:
+        1px solid #ccc;
+
+    margin: 20px;
+
+    box-sizing:
+        border-box;
+}
+
+
+/* Flexbox */
+
+.flex {
+    display: flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    gap: 20px;
+}
+
+
+/* Grid */
+
+.grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+/* Position */
+
+.element {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+}
+
+
+/* Transition */
+
+.button {
+    transition:
+        0.3s;
+}
+
+
+/* Responsive */
+
+@media (
+    max-width: 768px
+) {
+
+    .container {
+        width: 95%;
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 86 -->
+
+            <li>
+                <h2>CSS Roadmap</h2>
+
+                <pre class="language-css"><code>1. CSS Syntax
+
+2. Selectors
+
+3. Colors
+
+4. Units
+
+5. Box Model
+
+6. Typography
+
+7. Backgrounds
+
+8. Display
+
+9. Position
+
+10. Flexbox
+
+11. Grid
+
+12. Pseudo Classes
+
+13. Pseudo Elements
+
+14. Transitions
+
+15. Transform
+
+16. Animations
+
+17. Responsive Design
+
+18. Media Queries
+
+19. CSS Variables
+
+20. Modern CSS Functions</code></pre>
+            </li>
+
+        </ol>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <p>
+            © 2026 CodeWithRohit |
+            CSS Cheat Sheet
+        </p>
+
+    </footer>
+
+
+    <!-- ================= PRISM ================= -->
+
+    <script src="../prism/prism.js"></script>
+
+    <!-- Common Cheat Sheet JS -->
+
+    <script src="../cheatsheet.js"></script>
+
+</body>
+
+</html>

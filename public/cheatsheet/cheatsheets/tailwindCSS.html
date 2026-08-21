@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Complete Tailwind CSS Cheat Sheet by CodeWithRohit"
+    >
+
+    <title>Tailwind CSS Cheat Sheet | CodeWithRohit</title>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="../cheatsheet.css">
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="../prism/prism.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="cheat-navbar">
+
+        <a href="../index.html" class="brand">
+            &lt;/&gt; CodeWithRohit
+        </a>
+
+        <div class="cheat-title">
+            Tailwind CSS Cheat Sheet
+        </div>
+
+        <a href="../index.html" class="home-btn">
+            ← Home
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="cheat-hero">
+
+        <h1>Tailwind CSS Cheat Sheet</h1>
+
+        <p>
+            Complete Tailwind CSS quick reference covering
+            layout, spacing, typography, colors, flexbox,
+            grid, responsive design, hover effects and components.
+        </p>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <ol>
+
+            <!-- 1 -->
+            <li>
+                <h2>Install Tailwind CSS</h2>
+
+                <pre class="language-bash"><code>npm install tailwindcss @tailwindcss/cli</code></pre>
+            </li>
+
+
+            <!-- 2 -->
+            <li>
+                <h2>Import Tailwind CSS</h2>
+
+                <pre class="language-css"><code>@import "tailwindcss";</code></pre>
+            </li>
+
+
+            <!-- 3 -->
+            <li>
+                <h2>Tailwind CLI</h2>
+
+                <pre class="language-bash"><code>npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch</code></pre>
+            </li>
+
+
+            <!-- 4 -->
+            <li>
+                <h2>Include Generated CSS</h2>
+
+                <pre class="language-html"><code>&lt;link
+    rel="stylesheet"
+    href="./src/output.css"
+&gt;</code></pre>
+            </li>
+
+
+            <!-- 5 -->
+            <li>
+                <h2>Basic Tailwind Example</h2>
+
+                <pre class="language-html"><code>&lt;h1
+    class="text-4xl font-bold text-blue-600"
+&gt;
+    Hello Tailwind
+&lt;/h1&gt;</code></pre>
+            </li>
+
+
+            <!-- 6 -->
+            <li>
+                <h2>Text Size</h2>
+
+                <pre class="language-text"><code>text-xs
+
+text-sm
+
+text-base
+
+text-lg
+
+text-xl
+
+text-2xl
+
+text-3xl
+
+text-4xl
+
+text-5xl
+
+text-6xl
+
+text-7xl
+
+text-8xl
+
+text-9xl</code></pre>
+            </li>
+
+
+            <!-- 7 -->
+            <li>
+                <h2>Font Weight</h2>
+
+                <pre class="language-text"><code>font-thin
+
+font-extralight
+
+font-light
+
+font-normal
+
+font-medium
+
+font-semibold
+
+font-bold
+
+font-extrabold
+
+font-black</code></pre>
+            </li>
+
+
+            <!-- 8 -->
+            <li>
+                <h2>Text Alignment</h2>
+
+                <pre class="language-html"><code>&lt;p class="text-left"&gt;
+    Left
+&lt;/p&gt;
+
+&lt;p class="text-center"&gt;
+    Center
+&lt;/p&gt;
+
+&lt;p class="text-right"&gt;
+    Right
+&lt;/p&gt;
+
+&lt;p class="text-justify"&gt;
+    Justify
+&lt;/p&gt;</code></pre>
+            </li>
+
+
+            <!-- 9 -->
+            <li>
+                <h2>Text Colors</h2>
+
+                <pre class="language-html"><code>&lt;p class="text-red-500"&gt;
+    Red
+&lt;/p&gt;
+
+&lt;p class="text-blue-600"&gt;
+    Blue
+&lt;/p&gt;
+
+&lt;p class="text-green-500"&gt;
+    Green
+&lt;/p&gt;
+
+&lt;p class="text-yellow-500"&gt;
+    Yellow
+&lt;/p&gt;
+
+&lt;p class="text-gray-600"&gt;
+    Gray
+&lt;/p&gt;</code></pre>
+            </li>
+
+
+            <!-- 10 -->
+            <li>
+                <h2>Background Colors</h2>
+
+                <pre class="language-html"><code>&lt;div class="bg-blue-500"&gt;
+    Blue
+&lt;/div&gt;
+
+&lt;div class="bg-red-500"&gt;
+    Red
+&lt;/div&gt;
+
+&lt;div class="bg-green-500"&gt;
+    Green
+&lt;/div&gt;
+
+&lt;div class="bg-gray-900"&gt;
+    Dark
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 11 -->
+            <li>
+                <h2>Common Color Shades</h2>
+
+                <pre class="language-text"><code>50
+
+100
+
+200
+
+300
+
+400
+
+500
+
+600
+
+700
+
+800
+
+900
+
+950</code></pre>
+            </li>
+
+
+            <!-- 12 -->
+            <li>
+                <h2>Margin</h2>
+
+                <pre class="language-text"><code>m-0
+m-1
+m-2
+m-4
+m-6
+m-8
+
+mt-4
+mr-4
+mb-4
+ml-4
+
+mx-4
+my-4
+
+m-auto
+mx-auto</code></pre>
+            </li>
+
+
+            <!-- 13 -->
+            <li>
+                <h2>Padding</h2>
+
+                <pre class="language-text"><code>p-0
+p-1
+p-2
+p-4
+p-6
+p-8
+
+pt-4
+pr-4
+pb-4
+pl-4
+
+px-4
+py-4</code></pre>
+            </li>
+
+
+            <!-- 14 -->
+            <li>
+                <h2>Width</h2>
+
+                <pre class="language-text"><code>w-10
+
+w-20
+
+w-40
+
+w-1/2
+
+w-1/3
+
+w-2/3
+
+w-full
+
+w-screen
+
+w-auto
+
+w-fit</code></pre>
+            </li>
+
+
+            <!-- 15 -->
+            <li>
+                <h2>Height</h2>
+
+                <pre class="language-text"><code>h-10
+
+h-20
+
+h-40
+
+h-full
+
+h-screen
+
+h-auto
+
+h-fit
+
+min-h-screen</code></pre>
+            </li>
+
+
+            <!-- 16 -->
+            <li>
+                <h2>Maximum Width</h2>
+
+                <pre class="language-html"><code>&lt;div class="max-w-md"&gt;
+    Medium Width
+&lt;/div&gt;
+
+&lt;div class="max-w-xl"&gt;
+    XL Width
+&lt;/div&gt;
+
+&lt;div class="max-w-7xl mx-auto"&gt;
+    Page Container
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 17 -->
+            <li>
+                <h2>Display</h2>
+
+                <pre class="language-text"><code>block
+
+inline
+
+inline-block
+
+hidden
+
+flex
+
+inline-flex
+
+grid
+
+inline-grid</code></pre>
+            </li>
+
+
+            <!-- 18 -->
+            <li>
+                <h2>Flexbox</h2>
+
+                <pre class="language-html"><code>&lt;div class="flex"&gt;
+
+    &lt;div&gt;One&lt;/div&gt;
+
+    &lt;div&gt;Two&lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 19 -->
+            <li>
+                <h2>Flex Direction</h2>
+
+                <pre class="language-text"><code>flex-row
+
+flex-row-reverse
+
+flex-col
+
+flex-col-reverse</code></pre>
+            </li>
+
+
+            <!-- 20 -->
+            <li>
+                <h2>Justify Content</h2>
+
+                <pre class="language-text"><code>justify-start
+
+justify-center
+
+justify-end
+
+justify-between
+
+justify-around
+
+justify-evenly</code></pre>
+            </li>
+
+
+            <!-- 21 -->
+            <li>
+                <h2>Align Items</h2>
+
+                <pre class="language-text"><code>items-start
+
+items-center
+
+items-end
+
+items-stretch
+
+items-baseline</code></pre>
+            </li>
+
+
+            <!-- 22 -->
+            <li>
+                <h2>Perfect Center</h2>
+
+                <pre class="language-html"><code>&lt;div
+    class="flex items-center justify-center min-h-screen"
+&gt;
+
+    Center Content
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 23 -->
+            <li>
+                <h2>Flex Wrap</h2>
+
+                <pre class="language-text"><code>flex-wrap
+
+flex-nowrap
+
+flex-wrap-reverse</code></pre>
+            </li>
+
+
+            <!-- 24 -->
+            <li>
+                <h2>Gap</h2>
+
+                <pre class="language-html"><code>&lt;div class="flex gap-4"&gt;
+
+    &lt;div&gt;HTML&lt;/div&gt;
+
+    &lt;div&gt;CSS&lt;/div&gt;
+
+    &lt;div&gt;JavaScript&lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 25 -->
+            <li>
+                <h2>Grid</h2>
+
+                <pre class="language-html"><code>&lt;div class="grid grid-cols-3 gap-4"&gt;
+
+    &lt;div&gt;1&lt;/div&gt;
+
+    &lt;div&gt;2&lt;/div&gt;
+
+    &lt;div&gt;3&lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 26 -->
+            <li>
+                <h2>Grid Columns</h2>
+
+                <pre class="language-text"><code>grid-cols-1
+
+grid-cols-2
+
+grid-cols-3
+
+grid-cols-4
+
+grid-cols-5
+
+grid-cols-6
+
+grid-cols-12</code></pre>
+            </li>
+
+
+            <!-- 27 -->
+            <li>
+                <h2>Column Span</h2>
+
+                <pre class="language-html"><code>&lt;div class="grid grid-cols-12"&gt;
+
+    &lt;div class="col-span-4"&gt;
+        Sidebar
+    &lt;/div&gt;
+
+    &lt;div class="col-span-8"&gt;
+        Content
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 28 -->
+            <li>
+                <h2>Responsive Grid</h2>
+
+                <pre class="language-html"><code>&lt;div
+    class="
+        grid
+        grid-cols-1
+        md:grid-cols-2
+        lg:grid-cols-3
+        gap-6
+    "
+&gt;
+
+    &lt;div&gt;Card 1&lt;/div&gt;
+    &lt;div&gt;Card 2&lt;/div&gt;
+    &lt;div&gt;Card 3&lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 29 -->
+            <li>
+                <h2>Responsive Breakpoints</h2>
+
+                <pre class="language-text"><code>sm:   640px
+
+md:   768px
+
+lg:   1024px
+
+xl:   1280px
+
+2xl:  1536px</code></pre>
+            </li>
+
+
+            <!-- 30 -->
+            <li>
+                <h2>Responsive Example</h2>
+
+                <pre class="language-html"><code>&lt;h1
+    class="
+        text-2xl
+        md:text-4xl
+        lg:text-6xl
+    "
+&gt;
+    Responsive Heading
+&lt;/h1&gt;</code></pre>
+            </li>
+
+
+            <!-- 31 -->
+            <li>
+                <h2>Border</h2>
+
+                <pre class="language-text"><code>border
+
+border-0
+
+border-2
+
+border-4
+
+border-t
+
+border-r
+
+border-b
+
+border-l</code></pre>
+            </li>
+
+
+            <!-- 32 -->
+            <li>
+                <h2>Border Color</h2>
+
+                <pre class="language-html"><code>&lt;div
+    class="border border-blue-500"
+&gt;
+    Blue Border
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 33 -->
+            <li>
+                <h2>Border Radius</h2>
+
+                <pre class="language-text"><code>rounded-none
+
+rounded-sm
+
+rounded
+
+rounded-md
+
+rounded-lg
+
+rounded-xl
+
+rounded-2xl
+
+rounded-3xl
+
+rounded-full</code></pre>
+            </li>
+
+
+            <!-- 34 -->
+            <li>
+                <h2>Shadow</h2>
+
+                <pre class="language-text"><code>shadow-sm
+
+shadow
+
+shadow-md
+
+shadow-lg
+
+shadow-xl
+
+shadow-2xl
+
+shadow-none</code></pre>
+            </li>
+
+
+            <!-- 35 -->
+            <li>
+                <h2>Opacity</h2>
+
+                <pre class="language-html"><code>&lt;div class="opacity-25"&gt;
+    25%
+&lt;/div&gt;
+
+&lt;div class="opacity-50"&gt;
+    50%
+&lt;/div&gt;
+
+&lt;div class="opacity-75"&gt;
+    75%
+&lt;/div&gt;
+
+&lt;div class="opacity-100"&gt;
+    100%
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 36 -->
+            <li>
+                <h2>Position</h2>
+
+                <pre class="language-text"><code>static
+
+relative
+
+absolute
+
+fixed
+
+sticky</code></pre>
+            </li>
+
+
+            <!-- 37 -->
+            <li>
+                <h2>Position Example</h2>
+
+                <pre class="language-html"><code>&lt;div class="relative"&gt;
+
+    &lt;span
+        class="absolute top-0 right-0"
+    &gt;
+        New
+    &lt;/span&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 38 -->
+            <li>
+                <h2>Z-Index</h2>
+
+                <pre class="language-text"><code>z-0
+
+z-10
+
+z-20
+
+z-30
+
+z-40
+
+z-50</code></pre>
+            </li>
+
+
+            <!-- 39 -->
+            <li>
+                <h2>Overflow</h2>
+
+                <pre class="language-text"><code>overflow-auto
+
+overflow-hidden
+
+overflow-scroll
+
+overflow-x-auto
+
+overflow-y-auto</code></pre>
+            </li>
+
+
+            <!-- 40 -->
+            <li>
+                <h2>Cursor</h2>
+
+                <pre class="language-text"><code>cursor-auto
+
+cursor-default
+
+cursor-pointer
+
+cursor-wait
+
+cursor-text
+
+cursor-not-allowed</code></pre>
+            </li>
+
+
+            <!-- 41 -->
+            <li>
+                <h2>Hover</h2>
+
+                <pre class="language-html"><code>&lt;button
+    class="
+        bg-blue-500
+        hover:bg-blue-700
+        text-white
+    "
+&gt;
+    Hover Me
+&lt;/button&gt;</code></pre>
+            </li>
+
+
+            <!-- 42 -->
+            <li>
+                <h2>Focus</h2>
+
+                <pre class="language-html"><code>&lt;input
+    class="
+        border
+        focus:outline-none
+        focus:ring-2
+        focus:ring-blue-500
+    "
+&gt;</code></pre>
+            </li>
+
+
+            <!-- 43 -->
+            <li>
+                <h2>Active State</h2>
+
+                <pre class="language-html"><code>&lt;button
+    class="
+        bg-blue-500
+        active:bg-blue-900
+    "
+&gt;
+    Click Me
+&lt;/button&gt;</code></pre>
+            </li>
+
+
+            <!-- 44 -->
+            <li>
+                <h2>Transition</h2>
+
+                <pre class="language-html"><code>&lt;button
+    class="
+        bg-blue-500
+        hover:bg-blue-700
+        transition
+        duration-300
+    "
+&gt;
+    Smooth Button
+&lt;/button&gt;</code></pre>
+            </li>
+
+
+            <!-- 45 -->
+            <li>
+                <h2>Transition Duration</h2>
+
+                <pre class="language-text"><code>duration-75
+
+duration-100
+
+duration-150
+
+duration-200
+
+duration-300
+
+duration-500
+
+duration-700
+
+duration-1000</code></pre>
+            </li>
+
+
+            <!-- 46 -->
+            <li>
+                <h2>Transform Scale</h2>
+
+                <pre class="language-html"><code>&lt;div
+    class="
+        hover:scale-105
+        transition
+        duration-300
+    "
+&gt;
+    Hover Card
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 47 -->
+            <li>
+                <h2>Rotate</h2>
+
+                <pre class="language-html"><code>&lt;div class="rotate-45"&gt;
+    Rotated
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 48 -->
+            <li>
+                <h2>Translate</h2>
+
+                <pre class="language-html"><code>&lt;div class="translate-x-4"&gt;
+    Move Right
+&lt;/div&gt;
+
+&lt;div class="-translate-y-2"&gt;
+    Move Up
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 49 -->
+            <li>
+                <h2>Gradient</h2>
+
+                <pre class="language-html"><code>&lt;div
+    class="
+        bg-gradient-to-r
+        from-blue-500
+        to-purple-600
+    "
+&gt;
+    Gradient
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 50 -->
+            <li>
+                <h2>Dark Mode</h2>
+
+                <pre class="language-html"><code>&lt;div
+    class="
+        bg-white
+        text-black
+        dark:bg-gray-900
+        dark:text-white
+    "
+&gt;
+    Dark Mode Content
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 51 -->
+            <li>
+                <h2>Button</h2>
+
+                <pre class="language-html"><code>&lt;button
+    class="
+        px-6
+        py-3
+        bg-blue-600
+        text-white
+        font-semibold
+        rounded-lg
+        hover:bg-blue-700
+        transition
+    "
+&gt;
+    Get Started
+&lt;/button&gt;</code></pre>
+            </li>
+
+
+            <!-- 52 -->
+            <li>
+                <h2>Outline Button</h2>
+
+                <pre class="language-html"><code>&lt;button
+    class="
+        px-6
+        py-3
+        border-2
+        border-blue-600
+        text-blue-600
+        rounded-lg
+        hover:bg-blue-600
+        hover:text-white
+    "
+&gt;
+    Learn More
+&lt;/button&gt;</code></pre>
+            </li>
+
+
+            <!-- 53 -->
+            <li>
+                <h2>Input Field</h2>
+
+                <pre class="language-html"><code>&lt;input
+    type="text"
+    placeholder="Enter name"
+    class="
+        w-full
+        px-4
+        py-3
+        border
+        rounded-lg
+        focus:outline-none
+        focus:ring-2
+        focus:ring-blue-500
+    "
+&gt;</code></pre>
+            </li>
+
+
+            <!-- 54 -->
+            <li>
+                <h2>Textarea</h2>
+
+                <pre class="language-html"><code>&lt;textarea
+    class="
+        w-full
+        p-4
+        border
+        rounded-lg
+        focus:ring-2
+        focus:ring-blue-500
+    "
+    rows="5"
+&gt;&lt;/textarea&gt;</code></pre>
+            </li>
+
+
+            <!-- 55 -->
+            <li>
+                <h2>Card</h2>
+
+                <pre class="language-html"><code>&lt;div
+    class="
+        max-w-sm
+        p-6
+        bg-white
+        rounded-xl
+        shadow-lg
+    "
+&gt;
+
+    &lt;h2
+        class="text-2xl font-bold mb-3"
+    &gt;
+        HTML
+    &lt;/h2&gt;
+
+    &lt;p class="text-gray-600"&gt;
+        Complete HTML Cheat Sheet
+    &lt;/p&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 56 -->
+            <li>
+                <h2>Hover Card</h2>
+
+                <pre class="language-html"><code>&lt;div
+    class="
+        p-6
+        bg-white
+        rounded-xl
+        shadow-md
+        hover:shadow-xl
+        hover:-translate-y-1
+        transition
+        duration-300
+    "
+&gt;
+
+    Hover Me
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 57 -->
+            <li>
+                <h2>Navbar</h2>
+
+                <pre class="language-html"><code>&lt;nav
+    class="
+        bg-gray-900
+        text-white
+        px-6
+        py-4
+    "
+&gt;
+
+    &lt;div
+        class="
+            max-w-7xl
+            mx-auto
+            flex
+            justify-between
+            items-center
+        "
+    &gt;
+
+        &lt;h1
+            class="text-xl font-bold"
+        &gt;
+            CodeWithRohit
+        &lt;/h1&gt;
+
+
+        &lt;div class="flex gap-6"&gt;
+
+            &lt;a
+                href="#"
+                class="hover:text-blue-400"
+            &gt;
+                Home
+            &lt;/a&gt;
+
+            &lt;a
+                href="#"
+                class="hover:text-blue-400"
+            &gt;
+                Cheatsheets
+            &lt;/a&gt;
+
+            &lt;a
+                href="#"
+                class="hover:text-blue-400"
+            &gt;
+                About
+            &lt;/a&gt;
+
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+&lt;/nav&gt;</code></pre>
+            </li>
+
+
+            <!-- 58 -->
+            <li>
+                <h2>Responsive Navbar Links</h2>
+
+                <pre class="language-html"><code>&lt;div
+    class="
+        hidden
+        md:flex
+        gap-6
+    "
+&gt;
+
+    &lt;a href="#"&gt;Home&lt;/a&gt;
+
+    &lt;a href="#"&gt;About&lt;/a&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 59 -->
+            <li>
+                <h2>Hero Section</h2>
+
+                <pre class="language-html"><code>&lt;section
+    class="
+        min-h-screen
+        flex
+        items-center
+        justify-center
+        bg-gray-900
+        text-white
+        text-center
+        px-6
+    "
+&gt;
+
+    &lt;div&gt;
+
+        &lt;h1
+            class="
+                text-4xl
+                md:text-6xl
+                font-bold
+                mb-6
+            "
+        &gt;
+            CodeWithRohit
+        &lt;/h1&gt;
+
+        &lt;p
+            class="
+                text-lg
+                text-gray-300
+                mb-8
+            "
+        &gt;
+            Complete Coding Cheat Sheets
+        &lt;/p&gt;
+
+        &lt;button
+            class="
+                bg-blue-600
+                px-6
+                py-3
+                rounded-lg
+                hover:bg-blue-700
+            "
+        &gt;
+            Start Learning
+        &lt;/button&gt;
+
+    &lt;/div&gt;
+
+&lt;/section&gt;</code></pre>
+            </li>
+
+
+            <!-- 60 -->
+            <li>
+                <h2>Responsive Cards</h2>
+
+                <pre class="language-html"><code>&lt;div
+    class="
+        grid
+        grid-cols-1
+        sm:grid-cols-2
+        lg:grid-cols-3
+        xl:grid-cols-4
+        gap-6
+    "
+&gt;
+
+    &lt;div class="p-6 shadow rounded-xl"&gt;
+        HTML
+    &lt;/div&gt;
+
+    &lt;div class="p-6 shadow rounded-xl"&gt;
+        CSS
+    &lt;/div&gt;
+
+    &lt;div class="p-6 shadow rounded-xl"&gt;
+        JavaScript
+    &lt;/div&gt;
+
+    &lt;div class="p-6 shadow rounded-xl"&gt;
+        React
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 61 -->
+            <li>
+                <h2>Profile Image</h2>
+
+                <pre class="language-html"><code>&lt;img
+    src="profile.jpg"
+    alt="Profile"
+    class="
+        w-32
+        h-32
+        rounded-full
+        object-cover
+        border-4
+        border-blue-500
+    "
+&gt;</code></pre>
+            </li>
+
+
+            <!-- 62 -->
+            <li>
+                <h2>Object Fit</h2>
+
+                <pre class="language-text"><code>object-contain
+
+object-cover
+
+object-fill
+
+object-none
+
+object-scale-down</code></pre>
+            </li>
+
+
+            <!-- 63 -->
+            <li>
+                <h2>List Style</h2>
+
+                <pre class="language-html"><code>&lt;ul
+    class="list-disc list-inside"
+&gt;
+
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS&lt;/li&gt;
+    &lt;li&gt;JavaScript&lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+            </li>
+
+
+            <!-- 64 -->
+            <li>
+                <h2>Screen Reader Utility</h2>
+
+                <pre class="language-html"><code>&lt;span class="sr-only"&gt;
+    Open Menu
+&lt;/span&gt;</code></pre>
+            </li>
+
+
+            <!-- 65 -->
+            <li>
+                <h2>Arbitrary Values</h2>
+
+                <pre class="language-html"><code>&lt;div
+    class="
+        w-[350px]
+        h-[200px]
+        bg-[#1e293b]
+    "
+&gt;
+    Custom Values
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 66 -->
+            <li>
+                <h2>Custom Font Size</h2>
+
+                <pre class="language-html"><code>&lt;h1
+    class="text-[42px]"
+&gt;
+    Custom Heading
+&lt;/h1&gt;</code></pre>
+            </li>
+
+
+            <!-- 67 -->
+            <li>
+                <h2>Sticky Header</h2>
+
+                <pre class="language-html"><code>&lt;header
+    class="
+        sticky
+        top-0
+        z-50
+        bg-white
+        shadow
+    "
+&gt;
+
+    Navbar
+
+&lt;/header&gt;</code></pre>
+            </li>
+
+
+            <!-- 68 -->
+            <li>
+                <h2>Fixed Button</h2>
+
+                <pre class="language-html"><code>&lt;button
+    class="
+        fixed
+        bottom-6
+        right-6
+        w-14
+        h-14
+        bg-blue-600
+        text-white
+        rounded-full
+        shadow-lg
+    "
+&gt;
+    +
+&lt;/button&gt;</code></pre>
+            </li>
+
+
+            <!-- 69 -->
+            <li>
+                <h2>Truncate Text</h2>
+
+                <pre class="language-html"><code>&lt;p class="truncate"&gt;
+
+    This is a very long text
+    that will be truncated.
+
+&lt;/p&gt;</code></pre>
+            </li>
+
+
+            <!-- 70 -->
+            <li>
+                <h2>Line Clamp</h2>
+
+                <pre class="language-html"><code>&lt;p class="line-clamp-3"&gt;
+
+    Long paragraph content...
+
+&lt;/p&gt;</code></pre>
+            </li>
+
+
+            <!-- 71 -->
+            <li>
+                <h2>Common Tailwind Classes</h2>
+
+                <pre class="language-text"><code>LAYOUT
+----------------
+container
+block
+hidden
+flex
+grid
+
+
+SPACING
+----------------
+m-4
+mx-auto
+mt-4
+mb-4
+
+p-4
+px-6
+py-3
+
+
+SIZE
+----------------
+w-full
+w-1/2
+h-screen
+min-h-screen
+max-w-7xl
+
+
+TEXT
+----------------
+text-center
+text-xl
+text-4xl
+font-bold
+text-white
+text-gray-500
+
+
+BACKGROUND
+----------------
+bg-white
+bg-gray-900
+bg-blue-600
+
+
+FLEX
+----------------
+flex
+flex-col
+items-center
+justify-center
+justify-between
+gap-4
+
+
+GRID
+----------------
+grid
+grid-cols-1
+md:grid-cols-2
+lg:grid-cols-3
+
+
+BORDER
+----------------
+border
+rounded-lg
+rounded-full
+
+
+EFFECTS
+----------------
+shadow
+shadow-lg
+opacity-50
+
+
+STATE
+----------------
+hover:bg-blue-700
+focus:ring-2
+active:scale-95
+
+
+RESPONSIVE
+----------------
+sm:
+md:
+lg:
+xl:
+2xl:</code></pre>
+            </li>
+
+
+            <!-- 72 -->
+            <li>
+                <h2>Tailwind Responsive Pattern</h2>
+
+                <pre class="language-html"><code>&lt;div
+    class="
+        w-full
+        p-4
+
+        sm:p-6
+
+        md:w-1/2
+
+        lg:w-1/3
+
+        xl:w-1/4
+    "
+&gt;
+
+    Responsive Element
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 73 -->
+            <li>
+                <h2>Complete Card Example</h2>
+
+                <pre class="language-html"><code>&lt;div
+    class="
+        max-w-sm
+        mx-auto
+        bg-white
+        rounded-2xl
+        overflow-hidden
+        shadow-lg
+        hover:shadow-2xl
+        transition
+        duration-300
+    "
+&gt;
+
+    &lt;img
+        src="coding.jpg"
+        alt="Coding"
+        class="
+            w-full
+            h-48
+            object-cover
+        "
+    &gt;
+
+
+    &lt;div class="p-6"&gt;
+
+        &lt;h2
+            class="
+                text-2xl
+                font-bold
+                mb-2
+            "
+        &gt;
+            JavaScript
+        &lt;/h2&gt;
+
+
+        &lt;p
+            class="
+                text-gray-600
+                mb-4
+            "
+        &gt;
+            Complete JavaScript
+            Cheat Sheet.
+        &lt;/p&gt;
+
+
+        &lt;a
+            href="#"
+            class="
+                inline-block
+                bg-blue-600
+                text-white
+                px-5
+                py-2
+                rounded-lg
+                hover:bg-blue-700
+            "
+        &gt;
+            Learn Now
+        &lt;/a&gt;
+
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 74 -->
+            <li>
+                <h2>Login Form Example</h2>
+
+                <pre class="language-html"><code>&lt;div
+    class="
+        min-h-screen
+        flex
+        items-center
+        justify-center
+        bg-gray-100
+        px-4
+    "
+&gt;
+
+    &lt;form
+        class="
+            w-full
+            max-w-md
+            bg-white
+            p-8
+            rounded-2xl
+            shadow-lg
+        "
+    &gt;
+
+        &lt;h2
+            class="
+                text-3xl
+                font-bold
+                text-center
+                mb-6
+            "
+        &gt;
+            Login
+        &lt;/h2&gt;
+
+
+        &lt;input
+            type="email"
+            placeholder="Email"
+            class="
+                w-full
+                border
+                p-3
+                rounded-lg
+                mb-4
+                focus:outline-none
+                focus:ring-2
+                focus:ring-blue-500
+            "
+        &gt;
+
+
+        &lt;input
+            type="password"
+            placeholder="Password"
+            class="
+                w-full
+                border
+                p-3
+                rounded-lg
+                mb-6
+                focus:outline-none
+                focus:ring-2
+                focus:ring-blue-500
+            "
+        &gt;
+
+
+        &lt;button
+            type="submit"
+            class="
+                w-full
+                bg-blue-600
+                text-white
+                py-3
+                rounded-lg
+                font-semibold
+                hover:bg-blue-700
+                transition
+            "
+        &gt;
+            Login
+        &lt;/button&gt;
+
+    &lt;/form&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 75 -->
+            <li>
+                <h2>Tailwind Quick Revision</h2>
+
+                <pre class="language-text"><code>Text
+    text-2xl
+    font-bold
+    text-center
+
+Color
+    text-blue-500
+    bg-gray-900
+
+Spacing
+    p-4
+    px-6
+    py-3
+    m-4
+    mx-auto
+
+Size
+    w-full
+    h-screen
+    max-w-7xl
+
+Flexbox
+    flex
+    items-center
+    justify-between
+    gap-4
+
+Grid
+    grid
+    grid-cols-3
+
+Responsive
+    sm:
+    md:
+    lg:
+    xl:
+    2xl:
+
+Border
+    border
+    rounded-xl
+
+Effects
+    shadow-lg
+    opacity-50
+
+States
+    hover:
+    focus:
+    active:
+
+Dark Mode
+    dark:</code></pre>
+            </li>
+
+
+            <!-- 76 -->
+            <li>
+                <h2>Tailwind CSS Learning Roadmap</h2>
+
+                <pre class="language-text"><code>1. Tailwind Introduction
+
+2. Installation
+
+3. Utility Classes
+
+4. Colors
+
+5. Typography
+
+6. Font Size
+
+7. Font Weight
+
+8. Margin
+
+9. Padding
+
+10. Width
+
+11. Height
+
+12. Display
+
+13. Flexbox
+
+14. Grid
+
+15. Gap
+
+16. Borders
+
+17. Border Radius
+
+18. Shadows
+
+19. Position
+
+20. Z-Index
+
+21. Overflow
+
+22. Responsive Design
+
+23. Breakpoints
+
+24. Hover
+
+25. Focus
+
+26. Active
+
+27. Transitions
+
+28. Transform
+
+29. Scale
+
+30. Rotate
+
+31. Gradients
+
+32. Dark Mode
+
+33. Arbitrary Values
+
+34. Buttons
+
+35. Forms
+
+36. Cards
+
+37. Navbar
+
+38. Hero Sections
+
+39. Responsive Layouts
+
+40. Tailwind Projects</code></pre>
+            </li>
+
+        </ol>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <p>
+            © 2026 CodeWithRohit |
+            Tailwind CSS Cheat Sheet
+        </p>
+
+    </footer>
+
+
+    <!-- Prism JS -->
+    <script src="../prism/prism.js"></script>
+
+    <!-- Common JS -->
+    <script src="../cheatsheet.js"></script>
+
+</body>
+
+</html>

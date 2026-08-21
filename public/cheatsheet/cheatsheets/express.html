@@ -1,0 +1,1615 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Complete Express.js Cheat Sheet by CodeWithRohit"
+    />
+
+    <title>Express.js Cheat Sheet | CodeWithRohit</title>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="../cheatsheet.css" />
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="../prism/prism.css" />
+  </head>
+
+  <body>
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="cheat-navbar">
+      <a href="../index.html" class="brand"> &lt;/&gt; CodeWithRohit </a>
+
+      <div class="cheat-title">Express.js Cheat Sheet</div>
+
+      <a href="../index.html" class="home-btn"> ← Home </a>
+    </nav>
+
+    <!-- ================= HERO ================= -->
+
+    <header class="cheat-hero">
+      <h1>Express.js Cheat Sheet</h1>
+
+      <p>
+        Complete Express.js reference covering setup, servers, routing,
+        middleware, REST APIs, Router, error handling, MongoDB integration and
+        backend development.
+      </p>
+    </header>
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+      <ol>
+        <!-- 1 -->
+        <li>
+          <h2>What is Express.js?</h2>
+
+          <pre
+            class="language-text"
+          ><code>Express.js is a Node.js web framework.
+
+Used for:
+
+REST APIs
+Backend applications
+Routing
+Middleware
+Authentication
+Database applications</code></pre>
+        </li>
+
+        <!-- 2 -->
+        <li>
+          <h2>Create Project</h2>
+
+          <pre class="language-bash"><code>mkdir express-app
+
+cd express-app
+
+npm init -y</code></pre>
+        </li>
+
+        <!-- 3 -->
+        <li>
+          <h2>Install Express</h2>
+
+          <pre class="language-bash"><code>npm install express</code></pre>
+        </li>
+
+        <!-- 4 -->
+        <li>
+          <h2>Basic Express Server</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>const express = require("express");
+
+const app = express();
+
+const PORT = 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});</code></pre>
+        </li>
+
+        <!-- 5 -->
+        <li>
+          <h2>Hello World Route</h2>
+
+          <pre class="language-javascript"><code>app.get("/", (req, res) => {
+
+    res.send("Hello World!");
+
+});</code></pre>
+        </li>
+
+        <!-- 6 -->
+        <li>
+          <h2>Complete Basic Server</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>const express = require("express");
+
+const app = express();
+
+const PORT = 3000;
+
+
+app.get("/", (req, res) => {
+
+    res.send("Welcome to CodeWithRohit");
+
+});
+
+
+app.listen(PORT, () => {
+
+    console.log(`Server running on port ${PORT}`);
+
+});</code></pre>
+        </li>
+
+        <!-- 7 -->
+        <li>
+          <h2>GET Request</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>app.get("/users", (req, res) => {
+
+    res.send("Get all users");
+
+});</code></pre>
+        </li>
+
+        <!-- 8 -->
+        <li>
+          <h2>POST Request</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>app.post("/users", (req, res) => {
+
+    res.send("Create new user");
+
+});</code></pre>
+        </li>
+
+        <!-- 9 -->
+        <li>
+          <h2>PUT Request</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>app.put("/users/:id", (req, res) => {
+
+    res.send("Update complete user");
+
+});</code></pre>
+        </li>
+
+        <!-- 10 -->
+        <li>
+          <h2>PATCH Request</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>app.patch("/users/:id", (req, res) => {
+
+    res.send("Update user");
+
+});</code></pre>
+        </li>
+
+        <!-- 11 -->
+        <li>
+          <h2>DELETE Request</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>app.delete("/users/:id", (req, res) => {
+
+    res.send("Delete user");
+
+});</code></pre>
+        </li>
+
+        <!-- 12 -->
+        <li>
+          <h2>HTTP Methods</h2>
+
+          <pre class="language-text"><code>GET
+Read data
+
+POST
+Create data
+
+PUT
+Replace/update complete resource
+
+PATCH
+Partially update resource
+
+DELETE
+Delete resource</code></pre>
+        </li>
+
+        <!-- 13 -->
+        <li>
+          <h2>Send Text Response</h2>
+
+          <pre class="language-javascript"><code>app.get("/", (req, res) => {
+
+    res.send("Hello Express");
+
+});</code></pre>
+        </li>
+
+        <!-- 14 -->
+        <li>
+          <h2>Send JSON</h2>
+
+          <pre class="language-javascript"><code>app.get("/api", (req, res) => {
+
+    res.json({
+        name: "Rohit",
+        language: "JavaScript"
+    });
+
+});</code></pre>
+        </li>
+
+        <!-- 15 -->
+        <li>
+          <h2>Send Status Code</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>app.get("/success", (req, res) => {
+
+    res.status(200).send("Success");
+
+});</code></pre>
+        </li>
+
+        <!-- 16 -->
+        <li>
+          <h2>Common HTTP Status Codes</h2>
+
+          <pre class="language-text"><code>200  OK
+
+201  Created
+
+204  No Content
+
+400  Bad Request
+
+401  Unauthorized
+
+403  Forbidden
+
+404  Not Found
+
+409  Conflict
+
+500  Internal Server Error</code></pre>
+        </li>
+
+        <!-- 17 -->
+        <li>
+          <h2>JSON Middleware</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>app.use(express.json());</code></pre>
+
+          <p>Allows Express to read JSON request bodies.</p>
+        </li>
+
+        <!-- 18 -->
+        <li>
+          <h2>URL Encoded Middleware</h2>
+
+          <pre class="language-javascript"><code>app.use(
+    express.urlencoded({
+        extended: true
+    })
+);</code></pre>
+        </li>
+
+        <!-- 19 -->
+        <li>
+          <h2>Request Body</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>app.post("/users", (req, res) => {
+
+    console.log(req.body);
+
+    res.json(req.body);
+
+});</code></pre>
+        </li>
+
+        <!-- 20 -->
+        <li>
+          <h2>Route Parameters</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>app.get("/users/:id", (req, res) => {
+
+    const id = req.params.id;
+
+    res.send(`User ID: ${id}`);
+
+});</code></pre>
+        </li>
+
+        <!-- 21 -->
+        <li>
+          <h2>Multiple Route Parameters</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>app.get("/users/:userId/posts/:postId", (req, res) => {
+
+    const { userId, postId } = req.params;
+
+    res.json({
+        userId,
+        postId
+    });
+
+});</code></pre>
+        </li>
+
+        <!-- 22 -->
+        <li>
+          <h2>Query Parameters</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>app.get("/search", (req, res) => {
+
+    const keyword = req.query.keyword;
+
+    res.send(`Searching: ${keyword}`);
+
+});</code></pre>
+        </li>
+
+        <!-- 23 -->
+        <li>
+          <h2>Query URL Example</h2>
+
+          <pre class="language-text"><code>/search?keyword=javascript
+
+req.query.keyword
+
+Result:
+
+javascript</code></pre>
+        </li>
+
+        <!-- 24 -->
+        <li>
+          <h2>Request Object</h2>
+
+          <pre class="language-javascript"><code>req.body
+
+req.params
+
+req.query
+
+req.headers
+
+req.method
+
+req.url
+
+req.path</code></pre>
+        </li>
+
+        <!-- 25 -->
+        <li>
+          <h2>Response Object</h2>
+
+          <pre class="language-javascript"><code>res.send()
+
+res.json()
+
+res.status()
+
+res.redirect()
+
+res.sendFile()
+
+res.end()</code></pre>
+        </li>
+
+        <!-- 26 -->
+        <li>
+          <h2>Redirect</h2>
+
+          <pre class="language-javascript"><code>app.get("/old", (req, res) => {
+
+    res.redirect("/new");
+
+});</code></pre>
+        </li>
+
+        <!-- 27 -->
+        <li>
+          <h2>Middleware</h2>
+
+          <pre class="language-javascript"><code>app.use((req, res, next) => {
+
+    console.log("Middleware executed");
+
+    next();
+
+});</code></pre>
+        </li>
+
+        <!-- 28 -->
+        <li>
+          <h2>Middleware Flow</h2>
+
+          <pre class="language-text"><code>Request
+
+   ↓
+
+Middleware
+
+   ↓
+
+next()
+
+   ↓
+
+Route Handler
+
+   ↓
+
+Response</code></pre>
+        </li>
+
+        <!-- 29 -->
+        <li>
+          <h2>Logger Middleware</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>const logger = (req, res, next) => {
+
+    console.log(
+        req.method,
+        req.url
+    );
+
+    next();
+
+};
+
+
+app.use(logger);</code></pre>
+        </li>
+
+        <!-- 30 -->
+        <li>
+          <h2>Route Middleware</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>const auth = (req, res, next) => {
+
+    console.log("Checking authentication");
+
+    next();
+
+};
+
+
+app.get("/dashboard", auth, (req, res) => {
+
+    res.send("Dashboard");
+
+});</code></pre>
+        </li>
+
+        <!-- 31 -->
+        <li>
+          <h2>Static Files</h2>
+
+          <pre class="language-javascript"><code>app.use(
+    express.static("public")
+);</code></pre>
+        </li>
+
+        <!-- 32 -->
+        <li>
+          <h2>Static Folder Structure</h2>
+
+          <pre class="language-text"><code>project/
+│
+├── public/
+│   ├── index.html
+│   ├── style.css
+│   ├── script.js
+│   └── images/
+│
+├── server.js
+│
+└── package.json</code></pre>
+        </li>
+
+        <!-- 33 -->
+        <li>
+          <h2>Express Router</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>const express = require("express");
+
+const router = express.Router();
+
+
+router.get("/", (req, res) => {
+
+    res.send("All Users");
+
+});
+
+
+module.exports = router;</code></pre>
+        </li>
+
+        <!-- 34 -->
+        <li>
+          <h2>Use Router</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>const userRoutes = require("./routes/users");
+
+
+app.use("/api/users", userRoutes);</code></pre>
+        </li>
+
+        <!-- 35 -->
+        <li>
+          <h2>Router Example</h2>
+
+          <pre class="language-javascript"><code>router.get("/", getUsers);
+
+router.get("/:id", getUser);
+
+router.post("/", createUser);
+
+router.put("/:id", updateUser);
+
+router.delete("/:id", deleteUser);</code></pre>
+        </li>
+
+        <!-- 36 -->
+        <li>
+          <h2>Controller</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>const getUsers = (req, res) => {
+
+    res.json({
+        message: "All users"
+    });
+
+};
+
+
+module.exports = {
+    getUsers
+};</code></pre>
+        </li>
+
+        <!-- 37 -->
+        <li>
+          <h2>Controller + Router Structure</h2>
+
+          <pre class="language-text"><code>project/
+│
+├── controllers/
+│   └── userController.js
+│
+├── routes/
+│   └── userRoutes.js
+│
+├── models/
+│   └── User.js
+│
+├── middleware/
+│
+├── config/
+│
+├── server.js
+│
+└── package.json</code></pre>
+        </li>
+
+        <!-- 38 -->
+        <li>
+          <h2>Simple REST API Data</h2>
+
+          <pre class="language-javascript"><code>let users = [
+
+    {
+        id: 1,
+        name: "Rohit"
+    },
+
+    {
+        id: 2,
+        name: "Aman"
+    }
+
+];</code></pre>
+        </li>
+
+        <!-- 39 -->
+        <li>
+          <h2>GET All Users</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>app.get("/api/users", (req, res) => {
+
+    res.json(users);
+
+});</code></pre>
+        </li>
+
+        <!-- 40 -->
+        <li>
+          <h2>GET User By ID</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>app.get("/api/users/:id", (req, res) => {
+
+    const id = Number(req.params.id);
+
+    const user = users.find(
+        user => user.id === id
+    );
+
+
+    if (!user) {
+
+        return res.status(404).json({
+            message: "User not found"
+        });
+
+    }
+
+
+    res.json(user);
+
+});</code></pre>
+        </li>
+
+        <!-- 41 -->
+        <li>
+          <h2>Create User</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>app.post("/api/users", (req, res) => {
+
+    const newUser = {
+
+        id: users.length + 1,
+
+        name: req.body.name
+
+    };
+
+
+    users.push(newUser);
+
+
+    res.status(201).json(newUser);
+
+});</code></pre>
+        </li>
+
+        <!-- 42 -->
+        <li>
+          <h2>Update User</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>app.put("/api/users/:id", (req, res) => {
+
+    const id = Number(req.params.id);
+
+    const user = users.find(
+        user => user.id === id
+    );
+
+
+    if (!user) {
+
+        return res.status(404).json({
+            message: "User not found"
+        });
+
+    }
+
+
+    user.name = req.body.name;
+
+
+    res.json(user);
+
+});</code></pre>
+        </li>
+
+        <!-- 43 -->
+        <li>
+          <h2>Delete User</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>app.delete("/api/users/:id", (req, res) => {
+
+    const id = Number(req.params.id);
+
+    users = users.filter(
+        user => user.id !== id
+    );
+
+
+    res.json({
+        message: "User deleted"
+    });
+
+});</code></pre>
+        </li>
+
+        <!-- 44 -->
+        <li>
+          <h2>404 Middleware</h2>
+
+          <pre class="language-javascript"><code>app.use((req, res) => {
+
+    res.status(404).json({
+        message: "Route not found"
+    });
+
+});</code></pre>
+        </li>
+
+        <!-- 45 -->
+        <li>
+          <h2>Error Handling Middleware</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>app.use((err, req, res, next) => {
+
+    console.error(err.stack);
+
+
+    res.status(500).json({
+
+        message:
+            "Internal Server Error"
+
+    });
+
+});</code></pre>
+        </li>
+
+        <!-- 46 -->
+        <li>
+          <h2>Try / Catch</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>app.get("/users", async (req, res) => {
+
+    try {
+
+        const users = await getUsers();
+
+        res.json(users);
+
+    } catch (error) {
+
+        res.status(500).json({
+            message: error.message
+        });
+
+    }
+
+});</code></pre>
+        </li>
+
+        <!-- 47 -->
+        <li>
+          <h2>Environment Variables</h2>
+
+          <pre class="language-bash"><code>npm install dotenv</code></pre>
+        </li>
+
+        <!-- 48 -->
+        <li>
+          <h2>.env File</h2>
+
+          <pre class="language-text"><code>PORT=5000
+
+MONGO_URI=your_mongodb_connection
+
+JWT_SECRET=your_secret_key</code></pre>
+        </li>
+
+        <!-- 49 -->
+        <li>
+          <h2>Load Environment Variables</h2>
+
+          <pre class="language-javascript"><code>require("dotenv").config();
+
+
+const PORT =
+    process.env.PORT || 3000;</code></pre>
+        </li>
+
+        <!-- 50 -->
+        <li>
+          <h2>Install CORS</h2>
+
+          <pre class="language-bash"><code>npm install cors</code></pre>
+        </li>
+
+        <!-- 51 -->
+        <li>
+          <h2>Enable CORS</h2>
+
+          <pre class="language-javascript"><code>const cors = require("cors");
+
+app.use(cors());</code></pre>
+        </li>
+
+        <!-- 52 -->
+        <li>
+          <h2>CORS Configuration</h2>
+
+          <pre class="language-javascript"><code>app.use(
+    cors({
+
+        origin: "http://localhost:5173",
+
+        methods: [
+            "GET",
+            "POST",
+            "PUT",
+            "DELETE"
+        ]
+
+    })
+);</code></pre>
+        </li>
+
+        <!-- 53 -->
+        <li>
+          <h2>Install Mongoose</h2>
+
+          <pre class="language-bash"><code>npm install mongoose</code></pre>
+        </li>
+
+        <!-- 54 -->
+        <li>
+          <h2>Connect MongoDB</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>const mongoose = require("mongoose");
+
+
+mongoose
+    .connect(process.env.MONGO_URI)
+    .then(() => {
+
+        console.log("MongoDB Connected");
+
+    })
+    .catch((error) => {
+
+        console.error(error);
+
+    });</code></pre>
+        </li>
+
+        <!-- 55 -->
+        <li>
+          <h2>Mongoose User Model</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>const mongoose = require("mongoose");
+
+
+const userSchema =
+    new mongoose.Schema({
+
+        name: {
+            type: String,
+            required: true
+        },
+
+        email: {
+            type: String,
+            required: true,
+            unique: true
+        },
+
+        password: {
+            type: String,
+            required: true
+        }
+
+    }, {
+        timestamps: true
+    });
+
+
+module.exports =
+    mongoose.model(
+        "User",
+        userSchema
+    );</code></pre>
+        </li>
+
+        <!-- 56 -->
+        <li>
+          <h2>Create MongoDB User</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>const User = require("./models/User");
+
+
+app.post("/users", async (req, res) => {
+
+    try {
+
+        const user =
+            await User.create(req.body);
+
+
+        res.status(201).json(user);
+
+    } catch (error) {
+
+        res.status(400).json({
+            message: error.message
+        });
+
+    }
+
+});</code></pre>
+        </li>
+
+        <!-- 57 -->
+        <li>
+          <h2>Get MongoDB Users</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>app.get("/users", async (req, res) => {
+
+    const users =
+        await User.find();
+
+
+    res.json(users);
+
+});</code></pre>
+        </li>
+
+        <!-- 58 -->
+        <li>
+          <h2>Find User By ID</h2>
+
+          <pre class="language-javascript"><code>const user =
+    await User.findById(req.params.id);</code></pre>
+        </li>
+
+        <!-- 59 -->
+        <li>
+          <h2>Update MongoDB User</h2>
+
+          <pre class="language-javascript"><code>const user =
+    await User.findByIdAndUpdate(
+
+        req.params.id,
+
+        req.body,
+
+        {
+            new: true,
+            runValidators: true
+        }
+
+    );</code></pre>
+        </li>
+
+        <!-- 60 -->
+        <li>
+          <h2>Delete MongoDB User</h2>
+
+          <pre class="language-javascript"><code>await User.findByIdAndDelete(
+    req.params.id
+);</code></pre>
+        </li>
+
+        <!-- 61 -->
+        <li>
+          <h2>Install bcrypt</h2>
+
+          <pre class="language-bash"><code>npm install bcrypt</code></pre>
+        </li>
+
+        <!-- 62 -->
+        <li>
+          <h2>Hash Password</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>const bcrypt = require("bcrypt");
+
+
+const hashedPassword =
+    await bcrypt.hash(
+        password,
+        10
+    );</code></pre>
+        </li>
+
+        <!-- 63 -->
+        <li>
+          <h2>Compare Password</h2>
+
+          <pre class="language-javascript"><code>const isMatch =
+    await bcrypt.compare(
+        password,
+        user.password
+    );</code></pre>
+        </li>
+
+        <!-- 64 -->
+        <li>
+          <h2>Install JWT</h2>
+
+          <pre class="language-bash"><code>npm install jsonwebtoken</code></pre>
+        </li>
+
+        <!-- 65 -->
+        <li>
+          <h2>Create JWT</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>const jwt = require("jsonwebtoken");
+
+
+const token = jwt.sign(
+
+    {
+        id: user._id
+    },
+
+    process.env.JWT_SECRET,
+
+    {
+        expiresIn: "1d"
+    }
+
+);</code></pre>
+        </li>
+
+        <!-- 66 -->
+        <li>
+          <h2>Verify JWT</h2>
+
+          <pre class="language-javascript"><code>const decoded = jwt.verify(
+
+    token,
+
+    process.env.JWT_SECRET
+
+);</code></pre>
+        </li>
+
+        <!-- 67 -->
+        <li>
+          <h2>Authentication Middleware</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>const auth = (req, res, next) => {
+
+    try {
+
+        const authHeader =
+            req.headers.authorization;
+
+
+        if (!authHeader) {
+
+            return res.status(401).json({
+                message: "No token"
+            });
+
+        }
+
+
+        const token =
+            authHeader.split(" ")[1];
+
+
+        const decoded =
+            jwt.verify(
+                token,
+                process.env.JWT_SECRET
+            );
+
+
+        req.user = decoded;
+
+        next();
+
+    } catch (error) {
+
+        res.status(401).json({
+            message: "Invalid token"
+        });
+
+    }
+
+};</code></pre>
+        </li>
+
+        <!-- 68 -->
+        <li>
+          <h2>Protected Route</h2>
+
+          <pre class="language-javascript"><code>app.get(
+    "/dashboard",
+    auth,
+    (req, res) => {
+
+        res.json({
+            message:
+                "Protected Dashboard"
+        });
+
+    }
+);</code></pre>
+        </li>
+
+        <!-- 69 -->
+        <li>
+          <h2>Install Nodemon</h2>
+
+          <pre
+            class="language-bash"
+          ><code>npm install --save-dev nodemon</code></pre>
+        </li>
+
+        <!-- 70 -->
+        <li>
+          <h2>package.json Scripts</h2>
+
+          <pre class="language-json"><code>{
+    "scripts": {
+        "start": "node server.js",
+        "dev": "nodemon server.js"
+    }
+}</code></pre>
+        </li>
+
+        <!-- 71 -->
+        <li>
+          <h2>Start Development Server</h2>
+
+          <pre class="language-bash"><code>npm run dev</code></pre>
+        </li>
+
+        <!-- 72 -->
+        <li>
+          <h2>REST API URL Structure</h2>
+
+          <pre class="language-text"><code>GET
+/api/users
+
+GET
+/api/users/:id
+
+POST
+/api/users
+
+PUT
+/api/users/:id
+
+PATCH
+/api/users/:id
+
+DELETE
+/api/users/:id</code></pre>
+        </li>
+
+        <!-- 73 -->
+        <li>
+          <h2>Recommended Backend Structure</h2>
+
+          <pre class="language-text"><code>backend/
+│
+├── config/
+│   └── db.js
+│
+├── controllers/
+│   └── userController.js
+│
+├── middleware/
+│   ├── authMiddleware.js
+│   └── errorMiddleware.js
+│
+├── models/
+│   └── User.js
+│
+├── routes/
+│   └── userRoutes.js
+│
+├── utils/
+│
+├── .env
+├── .gitignore
+├── server.js
+└── package.json</code></pre>
+        </li>
+
+        <!-- 74 -->
+        <li>
+          <h2>Server with MongoDB</h2>
+
+          <pre class="language-javascript"><code>require("dotenv").config();
+
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+
+
+const app = express();
+
+
+app.use(cors());
+
+app.use(express.json());
+
+app.use(
+    express.urlencoded({
+        extended: true
+    })
+);
+
+
+app.get("/", (req, res) => {
+
+    res.json({
+        message: "API is running"
+    });
+
+});
+
+
+mongoose
+    .connect(process.env.MONGO_URI)
+    .then(() => {
+
+        console.log("MongoDB Connected");
+
+        app.listen(
+            process.env.PORT || 5000,
+            () => {
+
+                console.log(
+                    "Server started"
+                );
+
+            }
+        );
+
+    })
+    .catch((error) => {
+
+        console.error(
+            "Database error:",
+            error
+        );
+
+    });</code></pre>
+        </li>
+
+        <!-- 75 -->
+        <li>
+          <h2>Express Request Flow</h2>
+
+          <pre class="language-text"><code>Frontend / Client
+
+        ↓
+
+HTTP Request
+
+        ↓
+
+Express Server
+
+        ↓
+
+Middleware
+
+        ↓
+
+Router
+
+        ↓
+
+Controller
+
+        ↓
+
+Model
+
+        ↓
+
+Database
+
+        ↓
+
+Controller
+
+        ↓
+
+JSON Response
+
+        ↓
+
+Frontend / Client</code></pre>
+        </li>
+
+        <!-- 76 -->
+        <li>
+          <h2>Common Express Packages</h2>
+
+          <pre class="language-text"><code>express
+Web framework
+
+mongoose
+MongoDB ODM
+
+dotenv
+Environment variables
+
+cors
+Cross-origin requests
+
+bcrypt
+Password hashing
+
+jsonwebtoken
+JWT authentication
+
+cookie-parser
+Read cookies
+
+express-session
+Sessions
+
+multer
+File uploads
+
+nodemon
+Development server</code></pre>
+        </li>
+
+        <!-- 77 -->
+        <li>
+          <h2>Install Common Packages</h2>
+
+          <pre
+            class="language-bash"
+          ><code>npm install express mongoose dotenv cors bcrypt jsonwebtoken cookie-parser</code></pre>
+        </li>
+
+        <!-- 78 -->
+        <li>
+          <h2>Common Express Commands</h2>
+
+          <pre class="language-text"><code>express()
+
+app.use()
+
+app.get()
+
+app.post()
+
+app.put()
+
+app.patch()
+
+app.delete()
+
+app.listen()
+
+express.json()
+
+express.urlencoded()
+
+express.static()
+
+express.Router()
+
+req.body
+
+req.params
+
+req.query
+
+req.headers
+
+res.send()
+
+res.json()
+
+res.status()
+
+res.redirect()</code></pre>
+        </li>
+
+        <!-- 79 -->
+        <li>
+          <h2>Express Quick Revision</h2>
+
+          <pre
+            class="language-javascript"
+          ><code>const express = require("express");
+
+const app = express();
+
+
+app.use(express.json());
+
+
+app.get("/", (req, res) => {
+
+    res.send("Home");
+
+});
+
+
+app.get("/users/:id", (req, res) => {
+
+    res.json({
+        id: req.params.id
+    });
+
+});
+
+
+app.post("/users", (req, res) => {
+
+    res.status(201).json(
+        req.body
+    );
+
+});
+
+
+app.listen(3000, () => {
+
+    console.log(
+        "Server running"
+    );
+
+});</code></pre>
+        </li>
+
+        <!-- 80 -->
+        <li>
+          <h2>Express.js Learning Roadmap</h2>
+
+          <pre class="language-text"><code>1. Node.js Basics
+
+2. npm
+
+3. Express Installation
+
+4. Express Server
+
+5. Routing
+
+6. GET
+
+7. POST
+
+8. PUT
+
+9. PATCH
+
+10. DELETE
+
+11. Request Object
+
+12. Response Object
+
+13. Route Parameters
+
+14. Query Parameters
+
+15. Request Body
+
+16. Middleware
+
+17. Custom Middleware
+
+18. Static Files
+
+19. Express Router
+
+20. Controllers
+
+21. MVC Structure
+
+22. REST API
+
+23. HTTP Status Codes
+
+24. Error Handling
+
+25. Environment Variables
+
+26. CORS
+
+27. MongoDB
+
+28. Mongoose
+
+29. Models
+
+30. CRUD Operations
+
+31. bcrypt
+
+32. JWT
+
+33. Authentication
+
+34. Authorization
+
+35. Cookies
+
+36. Sessions
+
+37. File Upload
+
+38. Validation
+
+39. Security
+
+40. Deployment</code></pre>
+        </li>
+      </ol>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+      <p>© 2026 CodeWithRohit | Express.js Cheat Sheet</p>
+    </footer>
+
+    <!-- Prism JS -->
+    <script src="../prism/prism.js"></script>
+
+    <!-- Common JS -->
+    <script src="../cheatsheet.js"></script>
+  </body>
+</html>

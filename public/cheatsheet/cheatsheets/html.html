@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Complete HTML Cheat Sheet by CodeWithRohit"
+    >
+
+    <title>HTML Cheat Sheet | CodeWithRohit</title>
+
+    <!-- Main Cheat Sheet CSS -->
+    <link rel="stylesheet" href="../cheatsheet.css">
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="../prism/prism.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="cheat-navbar">
+
+        <a href="../index.html" class="brand">
+            &lt;/&gt; CodeWithRohit
+        </a>
+
+        <div class="cheat-title">
+            HTML Cheat Sheet
+        </div>
+
+        <a href="../index.html" class="home-btn">
+            ← Home
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="cheat-hero">
+
+        <h1>HTML Cheat Sheet</h1>
+
+        <p>
+            Complete HTML quick reference from basics
+            to forms, tables, semantic HTML and HTML5.
+        </p>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <ol>
+
+
+            <!-- 1 -->
+
+            <li>
+
+                <h2>HTML Boilerplate</h2>
+
+                <pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport"
+          content="width=device-width, initial-scale=1.0"&gt;
+
+    &lt;title&gt;My Website&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Hello World&lt;/h1&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 2 -->
+
+            <li>
+
+                <h2>HTML Comments</h2>
+
+                <pre class="language-html"><code>&lt;!-- This is an HTML comment --&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 3 -->
+
+            <li>
+
+                <h2>Heading Tags</h2>
+
+                <pre class="language-html"><code>&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;h3&gt;Heading 3&lt;/h3&gt;
+&lt;h4&gt;Heading 4&lt;/h4&gt;
+&lt;h5&gt;Heading 5&lt;/h5&gt;
+&lt;h6&gt;Heading 6&lt;/h6&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 4 -->
+
+            <li>
+
+                <h2>Paragraph</h2>
+
+                <pre class="language-html"><code>&lt;p&gt;
+    This is a paragraph.
+&lt;/p&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 5 -->
+
+            <li>
+
+                <h2>Line Break</h2>
+
+                <pre class="language-html"><code>Hello&lt;br&gt;
+World</code></pre>
+
+            </li>
+
+
+            <!-- 6 -->
+
+            <li>
+
+                <h2>Horizontal Rule</h2>
+
+                <pre class="language-html"><code>&lt;hr&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 7 -->
+
+            <li>
+
+                <h2>Text Formatting</h2>
+
+                <pre class="language-html"><code>&lt;b&gt;Bold&lt;/b&gt;
+
+&lt;strong&gt;Important text&lt;/strong&gt;
+
+&lt;i&gt;Italic&lt;/i&gt;
+
+&lt;em&gt;Emphasized text&lt;/em&gt;
+
+&lt;u&gt;Underline&lt;/u&gt;
+
+&lt;mark&gt;Highlighted&lt;/mark&gt;
+
+&lt;small&gt;Small text&lt;/small&gt;
+
+&lt;del&gt;Deleted text&lt;/del&gt;
+
+&lt;ins&gt;Inserted text&lt;/ins&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 8 -->
+
+            <li>
+
+                <h2>Subscript & Superscript</h2>
+
+                <pre class="language-html"><code>H&lt;sub&gt;2&lt;/sub&gt;O
+
+x&lt;sup&gt;2&lt;/sup&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 9 -->
+
+            <li>
+
+                <h2>Anchor / Link</h2>
+
+                <pre class="language-html"><code>&lt;a href="https://example.com"&gt;
+    Visit Website
+&lt;/a&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 10 -->
+
+            <li>
+
+                <h2>Open Link in New Tab</h2>
+
+                <pre class="language-html"><code>&lt;a
+    href="https://example.com"
+    target="_blank"
+    rel="noopener noreferrer"
+&gt;
+    Open Website
+&lt;/a&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 11 -->
+
+            <li>
+
+                <h2>Email & Phone Links</h2>
+
+                <pre class="language-html"><code>&lt;a href="mailto:hello@example.com"&gt;
+    Send Email
+&lt;/a&gt;
+
+&lt;a href="tel:+911234567890"&gt;
+    Call Now
+&lt;/a&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 12 -->
+
+            <li>
+
+                <h2>Image</h2>
+
+                <pre class="language-html"><code>&lt;img
+    src="image.jpg"
+    alt="Description of image"
+    width="300"
+&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 13 -->
+
+            <li>
+
+                <h2>Unordered List</h2>
+
+                <pre class="language-html"><code>&lt;ul&gt;
+
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS&lt;/li&gt;
+    &lt;li&gt;JavaScript&lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 14 -->
+
+            <li>
+
+                <h2>Ordered List</h2>
+
+                <pre class="language-html"><code>&lt;ol&gt;
+
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS&lt;/li&gt;
+    &lt;li&gt;JavaScript&lt;/li&gt;
+
+&lt;/ol&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 15 -->
+
+            <li>
+
+                <h2>Description List</h2>
+
+                <pre class="language-html"><code>&lt;dl&gt;
+
+    &lt;dt&gt;HTML&lt;/dt&gt;
+
+    &lt;dd&gt;
+        HyperText Markup Language
+    &lt;/dd&gt;
+
+&lt;/dl&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 16 -->
+
+            <li>
+
+                <h2>Div</h2>
+
+                <pre class="language-html"><code>&lt;div&gt;
+
+    &lt;h2&gt;Title&lt;/h2&gt;
+
+    &lt;p&gt;Content&lt;/p&gt;
+
+&lt;/div&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 17 -->
+
+            <li>
+
+                <h2>Span</h2>
+
+                <pre class="language-html"><code>&lt;p&gt;
+    Learn
+    &lt;span&gt;HTML&lt;/span&gt;
+    today.
+&lt;/p&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 18 -->
+
+            <li>
+
+                <h2>Class & ID</h2>
+
+                <pre class="language-html"><code>&lt;div class="container"&gt;
+    Content
+&lt;/div&gt;
+
+&lt;h1 id="main-heading"&gt;
+    Welcome
+&lt;/h1&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 19 -->
+
+            <li>
+
+                <h2>HTML Table</h2>
+
+                <pre class="language-html"><code>&lt;table&gt;
+
+    &lt;thead&gt;
+
+        &lt;tr&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Marks&lt;/th&gt;
+        &lt;/tr&gt;
+
+    &lt;/thead&gt;
+
+    &lt;tbody&gt;
+
+        &lt;tr&gt;
+            &lt;td&gt;Rohit&lt;/td&gt;
+            &lt;td&gt;90&lt;/td&gt;
+        &lt;/tr&gt;
+
+    &lt;/tbody&gt;
+
+&lt;/table&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 20 -->
+
+            <li>
+
+                <h2>Colspan & Rowspan</h2>
+
+                <pre class="language-html"><code>&lt;td colspan="2"&gt;
+    Two Columns
+&lt;/td&gt;
+
+&lt;td rowspan="2"&gt;
+    Two Rows
+&lt;/td&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 21 -->
+
+            <li>
+
+                <h2>Basic Form</h2>
+
+                <pre class="language-html"><code>&lt;form action="/submit" method="post"&gt;
+
+    &lt;label for="name"&gt;
+        Name:
+    &lt;/label&gt;
+
+    &lt;input
+        type="text"
+        id="name"
+        name="name"
+    &gt;
+
+    &lt;button type="submit"&gt;
+        Submit
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 22 -->
+
+            <li>
+
+                <h2>Common Input Types</h2>
+
+                <pre class="language-html"><code>&lt;input type="text"&gt;
+
+&lt;input type="email"&gt;
+
+&lt;input type="password"&gt;
+
+&lt;input type="number"&gt;
+
+&lt;input type="date"&gt;
+
+&lt;input type="time"&gt;
+
+&lt;input type="file"&gt;
+
+&lt;input type="color"&gt;
+
+&lt;input type="range"&gt;
+
+&lt;input type="checkbox"&gt;
+
+&lt;input type="radio"&gt;
+
+&lt;input type="submit"&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 23 -->
+
+            <li>
+
+                <h2>Input Attributes</h2>
+
+                <pre class="language-html"><code>&lt;input
+    type="text"
+    name="username"
+    placeholder="Enter username"
+    required
+    minlength="3"
+    maxlength="20"
+&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 24 -->
+
+            <li>
+
+                <h2>Radio Buttons</h2>
+
+                <pre class="language-html"><code>&lt;input
+    type="radio"
+    id="male"
+    name="gender"
+    value="male"
+&gt;
+
+&lt;label for="male"&gt;
+    Male
+&lt;/label&gt;
+
+
+&lt;input
+    type="radio"
+    id="female"
+    name="gender"
+    value="female"
+&gt;
+
+&lt;label for="female"&gt;
+    Female
+&lt;/label&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 25 -->
+
+            <li>
+
+                <h2>Checkbox</h2>
+
+                <pre class="language-html"><code>&lt;input
+    type="checkbox"
+    id="html"
+    name="skills"
+    value="HTML"
+&gt;
+
+&lt;label for="html"&gt;
+    HTML
+&lt;/label&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 26 -->
+
+            <li>
+
+                <h2>Textarea</h2>
+
+                <pre class="language-html"><code>&lt;textarea
+    name="message"
+    rows="5"
+    cols="30"
+    placeholder="Enter message"
+&gt;&lt;/textarea&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 27 -->
+
+            <li>
+
+                <h2>Select / Dropdown</h2>
+
+                <pre class="language-html"><code>&lt;select name="language"&gt;
+
+    &lt;option value="html"&gt;
+        HTML
+    &lt;/option&gt;
+
+    &lt;option value="css"&gt;
+        CSS
+    &lt;/option&gt;
+
+    &lt;option value="javascript"&gt;
+        JavaScript
+    &lt;/option&gt;
+
+&lt;/select&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 28 -->
+
+            <li>
+
+                <h2>Fieldset & Legend</h2>
+
+                <pre class="language-html"><code>&lt;fieldset&gt;
+
+    &lt;legend&gt;
+        Personal Information
+    &lt;/legend&gt;
+
+    &lt;input type="text"&gt;
+
+&lt;/fieldset&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 29 -->
+
+            <li>
+
+                <h2>Audio</h2>
+
+                <pre class="language-html"><code>&lt;audio controls&gt;
+
+    &lt;source
+        src="music.mp3"
+        type="audio/mpeg"
+    &gt;
+
+&lt;/audio&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 30 -->
+
+            <li>
+
+                <h2>Video</h2>
+
+                <pre class="language-html"><code>&lt;video
+    width="500"
+    controls
+&gt;
+
+    &lt;source
+        src="video.mp4"
+        type="video/mp4"
+    &gt;
+
+&lt;/video&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 31 -->
+
+            <li>
+
+                <h2>Iframe</h2>
+
+                <pre class="language-html"><code>&lt;iframe
+    src="https://example.com"
+    title="Example Website"
+    width="600"
+    height="400"
+&gt;&lt;/iframe&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 32 -->
+
+            <li>
+
+                <h2>Semantic HTML</h2>
+
+                <pre class="language-html"><code>&lt;header&gt;
+    Header
+&lt;/header&gt;
+
+&lt;nav&gt;
+    Navigation
+&lt;/nav&gt;
+
+&lt;main&gt;
+
+    &lt;section&gt;
+        Section
+    &lt;/section&gt;
+
+    &lt;article&gt;
+        Article
+    &lt;/article&gt;
+
+    &lt;aside&gt;
+        Sidebar
+    &lt;/aside&gt;
+
+&lt;/main&gt;
+
+&lt;footer&gt;
+    Footer
+&lt;/footer&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 33 -->
+
+            <li>
+
+                <h2>Figure & Figcaption</h2>
+
+                <pre class="language-html"><code>&lt;figure&gt;
+
+    &lt;img
+        src="html.png"
+        alt="HTML Logo"
+    &gt;
+
+    &lt;figcaption&gt;
+        HTML Logo
+    &lt;/figcaption&gt;
+
+&lt;/figure&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 34 -->
+
+            <li>
+
+                <h2>Details & Summary</h2>
+
+                <pre class="language-html"><code>&lt;details&gt;
+
+    &lt;summary&gt;
+        What is HTML?
+    &lt;/summary&gt;
+
+    &lt;p&gt;
+        HTML stands for
+        HyperText Markup Language.
+    &lt;/p&gt;
+
+&lt;/details&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 35 -->
+
+            <li>
+
+                <h2>Progress</h2>
+
+                <pre class="language-html"><code>&lt;progress
+    value="70"
+    max="100"
+&gt;
+    70%
+&lt;/progress&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 36 -->
+
+            <li>
+
+                <h2>Meter</h2>
+
+                <pre class="language-html"><code>&lt;meter
+    min="0"
+    max="100"
+    value="80"
+&gt;
+    80%
+&lt;/meter&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 37 -->
+
+            <li>
+
+                <h2>Blockquote & Quote</h2>
+
+                <pre class="language-html"><code>&lt;blockquote&gt;
+    Learning never stops.
+&lt;/blockquote&gt;
+
+&lt;p&gt;
+    He said
+    &lt;q&gt;Learn HTML&lt;/q&gt;.
+&lt;/p&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 38 -->
+
+            <li>
+
+                <h2>Code & Pre</h2>
+
+                <pre class="language-html"><code>&lt;code&gt;
+    console.log("Hello");
+&lt;/code&gt;
+
+&lt;pre&gt;
+    Preformatted text
+&lt;/pre&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 39 -->
+
+            <li>
+
+                <h2>Keyboard Input</h2>
+
+                <pre class="language-html"><code>Press
+
+&lt;kbd&gt;Ctrl&lt;/kbd&gt;
++
+&lt;kbd&gt;C&lt;/kbd&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 40 -->
+
+            <li>
+
+                <h2>Abbreviation</h2>
+
+                <pre class="language-html"><code>&lt;abbr
+    title="HyperText Markup Language"
+&gt;
+    HTML
+&lt;/abbr&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 41 -->
+
+            <li>
+
+                <h2>Time</h2>
+
+                <pre class="language-html"><code>&lt;time datetime="2026-07-26"&gt;
+    July 26, 2026
+&lt;/time&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 42 -->
+
+            <li>
+
+                <h2>Data Attributes</h2>
+
+                <pre class="language-html"><code>&lt;button
+    data-user-id="101"
+    data-role="admin"
+&gt;
+    View User
+&lt;/button&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 43 -->
+
+            <li>
+
+                <h2>Content Editable</h2>
+
+                <pre class="language-html"><code>&lt;p contenteditable="true"&gt;
+    Edit this text.
+&lt;/p&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 44 -->
+
+            <li>
+
+                <h2>Download Attribute</h2>
+
+                <pre class="language-html"><code>&lt;a
+    href="resume.pdf"
+    download
+&gt;
+    Download Resume
+&lt;/a&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 45 -->
+
+            <li>
+
+                <h2>Required, Readonly & Disabled</h2>
+
+                <pre class="language-html"><code>&lt;input
+    type="text"
+    required
+&gt;
+
+&lt;input
+    type="text"
+    value="Rohit"
+    readonly
+&gt;
+
+&lt;input
+    type="text"
+    disabled
+&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 46 -->
+
+            <li>
+
+                <h2>Meta Description</h2>
+
+                <pre class="language-html"><code>&lt;meta
+    name="description"
+    content="Learn HTML easily"
+&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 47 -->
+
+            <li>
+
+                <h2>Viewport Meta Tag</h2>
+
+                <pre class="language-html"><code>&lt;meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 48 -->
+
+            <li>
+
+                <h2>Favicon</h2>
+
+                <pre class="language-html"><code>&lt;link
+    rel="icon"
+    href="favicon.ico"
+&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 49 -->
+
+            <li>
+
+                <h2>Connect CSS</h2>
+
+                <pre class="language-html"><code>&lt;link
+    rel="stylesheet"
+    href="style.css"
+&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 50 -->
+
+            <li>
+
+                <h2>Connect JavaScript</h2>
+
+                <pre class="language-html"><code>&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 51 -->
+
+            <li>
+
+                <h2>JavaScript with defer</h2>
+
+                <pre class="language-html"><code>&lt;script
+    src="script.js"
+    defer
+&gt;&lt;/script&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 52 -->
+
+            <li>
+
+                <h2>HTML Entities</h2>
+
+                <pre class="language-html"><code>&amp;lt;     = &lt;
+
+&amp;gt;     = &gt;
+
+&amp;amp;    = &amp;
+
+&amp;quot;   = "
+
+&amp;copy;   = ©
+
+&amp;reg;    = ®
+
+&amp;nbsp;   = Non-breaking space</code></pre>
+
+            </li>
+
+
+            <!-- 53 -->
+
+            <li>
+
+                <h2>Accessible Image</h2>
+
+                <pre class="language-html"><code>&lt;img
+    src="student.jpg"
+    alt="Student learning programming"
+&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 54 -->
+
+            <li>
+
+                <h2>Accessible Form Label</h2>
+
+                <pre class="language-html"><code>&lt;label for="email"&gt;
+    Email
+&lt;/label&gt;
+
+&lt;input
+    type="email"
+    id="email"
+    name="email"
+&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 55 -->
+
+            <li>
+
+                <h2>ARIA Label</h2>
+
+                <pre class="language-html"><code>&lt;button aria-label="Close menu"&gt;
+    ×
+&lt;/button&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 56 -->
+
+            <li>
+
+                <h2>Lazy Loading Image</h2>
+
+                <pre class="language-html"><code>&lt;img
+    src="image.jpg"
+    alt="Example"
+    loading="lazy"
+&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 57 -->
+
+            <li>
+
+                <h2>Picture Element</h2>
+
+                <pre class="language-html"><code>&lt;picture&gt;
+
+    &lt;source
+        media="(min-width: 800px)"
+        srcset="large.jpg"
+    &gt;
+
+    &lt;img
+        src="small.jpg"
+        alt="Responsive image"
+    &gt;
+
+&lt;/picture&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 58 -->
+
+            <li>
+
+                <h2>Responsive Image</h2>
+
+                <pre class="language-html"><code>&lt;img
+    src="image-500.jpg"
+
+    srcset="
+        image-500.jpg 500w,
+        image-1000.jpg 1000w
+    "
+
+    sizes="100vw"
+
+    alt="Responsive example"
+&gt;</code></pre>
+
+            </li>
+
+
+            <!-- 59 -->
+
+            <li>
+
+                <h2>Important Global Attributes</h2>
+
+                <pre class="language-html"><code>id="main"
+
+class="container"
+
+style="color: red;"
+
+title="More information"
+
+hidden
+
+tabindex="0"
+
+contenteditable="true"
+
+data-id="101"</code></pre>
+
+            </li>
+
+
+            <!-- 60 -->
+
+            <li>
+
+                <h2>HTML Quick Revision</h2>
+
+                <pre class="language-html"><code>&lt;!-- Heading --&gt;
+&lt;h1&gt;Title&lt;/h1&gt;
+
+&lt;!-- Paragraph --&gt;
+&lt;p&gt;Text&lt;/p&gt;
+
+&lt;!-- Link --&gt;
+&lt;a href="page.html"&gt;Link&lt;/a&gt;
+
+&lt;!-- Image --&gt;
+&lt;img src="image.jpg" alt="Image"&gt;
+
+&lt;!-- List --&gt;
+&lt;ul&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Form --&gt;
+&lt;form&gt;
+    &lt;input type="text"&gt;
+    &lt;button&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- Semantic Layout --&gt;
+&lt;header&gt;&lt;/header&gt;
+&lt;nav&gt;&lt;/nav&gt;
+&lt;main&gt;&lt;/main&gt;
+&lt;section&gt;&lt;/section&gt;
+&lt;article&gt;&lt;/article&gt;
+&lt;footer&gt;&lt;/footer&gt;</code></pre>
+
+            </li>
+
+
+        </ol>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <p>
+            © 2026 CodeWithRohit |
+            HTML Cheat Sheet
+        </p>
+
+    </footer>
+
+
+    <!-- ================= PRISM ================= -->
+
+    <script src="../prism/prism.js"></script>
+
+    <!-- Cheat Sheet JavaScript -->
+
+    <script src="../cheatsheet.js"></script>
+
+</body>
+
+</html>

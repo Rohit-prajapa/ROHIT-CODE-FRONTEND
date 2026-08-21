@@ -1,0 +1,2786 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Complete Object-Oriented Programming OOPs Cheat Sheet by CodeWithRohit"
+    >
+
+    <title>OOPs Cheat Sheet | CodeWithRohit</title>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="../cheatsheet.css">
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="../prism/prism.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="cheat-navbar">
+
+        <a href="../index.html" class="brand">
+            &lt;/&gt; CodeWithRohit
+        </a>
+
+        <div class="cheat-title">
+            OOPs Cheat Sheet
+        </div>
+
+        <a href="../index.html" class="home-btn">
+            ← Home
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="cheat-hero">
+
+        <h1>Object-Oriented Programming Cheat Sheet</h1>
+
+        <p>
+            Complete OOPs quick reference covering classes, objects,
+            constructors, encapsulation, abstraction, inheritance,
+            polymorphism, interfaces, relationships and SOLID principles.
+        </p>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <ol>
+
+            <!-- 1 -->
+            <li>
+                <h2>What is OOP?</h2>
+
+                <pre class="language-text"><code>OOP =
+Object-Oriented Programming
+
+A programming paradigm where
+software is designed around
+objects.
+
+Objects contain:
+
+Data / State
+
++
+
+Methods / Behavior</code></pre>
+            </li>
+
+
+            <!-- 2 -->
+            <li>
+                <h2>Main OOP Concepts</h2>
+
+                <pre class="language-text"><code>Class
+
+Object
+
+Encapsulation
+
+Abstraction
+
+Inheritance
+
+Polymorphism</code></pre>
+            </li>
+
+
+            <!-- 3 -->
+            <li>
+                <h2>Four Pillars of OOP</h2>
+
+                <pre class="language-text"><code>1. Encapsulation
+
+2. Abstraction
+
+3. Inheritance
+
+4. Polymorphism</code></pre>
+            </li>
+
+
+            <!-- 4 -->
+            <li>
+                <h2>What is a Class?</h2>
+
+                <pre class="language-text"><code>A Class is a blueprint
+for creating objects.
+
+Example:
+
+Class
+
+Car
+
+Properties:
+brand
+speed
+color
+
+Methods:
+start()
+stop()
+accelerate()</code></pre>
+            </li>
+
+
+            <!-- 5 -->
+            <li>
+                <h2>Java Class Example</h2>
+
+                <pre class="language-java"><code>class Car {
+
+    String brand;
+    int speed;
+
+    void start() {
+        System.out.println("Car started");
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 6 -->
+            <li>
+                <h2>What is an Object?</h2>
+
+                <pre class="language-text"><code>An Object is an instance
+of a class.
+
+Class
+
+Car
+
+↓
+
+Objects
+
+BMW
+
+Audi
+
+Tata
+
+Mahindra</code></pre>
+            </li>
+
+
+            <!-- 7 -->
+            <li>
+                <h2>Create Object in Java</h2>
+
+                <pre class="language-java"><code>Car car1 = new Car();
+
+car1.brand = "BMW";
+
+car1.speed = 200;
+
+car1.start();</code></pre>
+            </li>
+
+
+            <!-- 8 -->
+            <li>
+                <h2>Class vs Object</h2>
+
+                <pre class="language-text"><code>Class
+
+Blueprint / Type definition
+
+
+Object
+
+Instance of a class
+
+
+Example:
+
+Class = Car
+
+Object = car1</code></pre>
+            </li>
+
+
+            <!-- 9 -->
+            <li>
+                <h2>State and Behavior</h2>
+
+                <pre class="language-java"><code>class Student {
+
+    // State
+    String name;
+    int age;
+
+    // Behavior
+    void study() {
+        System.out.println("Studying");
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 10 -->
+            <li>
+                <h2>Method</h2>
+
+                <pre class="language-java"><code>class Calculator {
+
+    int add(int a, int b) {
+
+        return a + b;
+
+    }
+
+}</code></pre>
+
+                <pre class="language-text"><code>A method defines behavior
+associated with a class/object.</code></pre>
+            </li>
+
+
+            <!-- 11 -->
+            <li>
+                <h2>Constructor</h2>
+
+                <pre class="language-text"><code>A Constructor initializes
+a newly created object.
+
+In Java:
+
+Constructor name must
+match class name.
+
+It has no return type.</code></pre>
+
+                <pre class="language-java"><code>class Student {
+
+    String name;
+
+    Student() {
+
+        name = "Rohit";
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 12 -->
+            <li>
+                <h2>Parameterized Constructor</h2>
+
+                <pre class="language-java"><code>class Student {
+
+    String name;
+    int age;
+
+    Student(String name, int age) {
+
+        this.name = name;
+        this.age = age;
+
+    }
+
+}
+
+Student s1 =
+    new Student("Rohit", 21);</code></pre>
+            </li>
+
+
+            <!-- 13 -->
+            <li>
+                <h2>Default Constructor</h2>
+
+                <pre class="language-text"><code>In Java, if you do not
+declare any constructor,
+
+the compiler provides
+a default no-argument
+constructor.
+
+If you declare your own
+constructor, Java does not
+automatically add that
+default constructor.</code></pre>
+            </li>
+
+
+            <!-- 14 -->
+            <li>
+                <h2>Constructor Overloading</h2>
+
+                <pre class="language-java"><code>class Student {
+
+    String name;
+    int age;
+
+    Student() {
+
+    }
+
+    Student(String name) {
+
+        this.name = name;
+
+    }
+
+    Student(String name, int age) {
+
+        this.name = name;
+        this.age = age;
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 15 -->
+            <li>
+                <h2>this Keyword</h2>
+
+                <pre class="language-text"><code>this refers to the
+current object.
+
+Common uses:
+
+Access current object's fields
+
+Call another constructor
+
+Pass current object
+
+Return current object</code></pre>
+
+                <pre class="language-java"><code>class Student {
+
+    String name;
+
+    Student(String name) {
+
+        this.name = name;
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 16 -->
+            <li>
+                <h2>this() Constructor Call</h2>
+
+                <pre class="language-java"><code>class Student {
+
+    String name;
+    int age;
+
+    Student() {
+
+        this("Unknown", 0);
+
+    }
+
+    Student(String name, int age) {
+
+        this.name = name;
+        this.age = age;
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 17 -->
+            <li>
+                <h2>static Keyword</h2>
+
+                <pre class="language-text"><code>static members belong
+to the class rather than
+to each individual object.</code></pre>
+
+                <pre class="language-java"><code>class Student {
+
+    static String college = "MIT ADT";
+
+    String name;
+
+}</code></pre>
+            </li>
+
+
+            <!-- 18 -->
+            <li>
+                <h2>Static Method</h2>
+
+                <pre class="language-java"><code>class MathUtil {
+
+    static int square(int n) {
+
+        return n * n;
+
+    }
+
+}
+
+int result = MathUtil.square(5);</code></pre>
+            </li>
+
+
+            <!-- 19 -->
+            <li>
+                <h2>Access Modifiers</h2>
+
+                <pre class="language-text"><code>Java Access Modifiers:
+
+public
+
+protected
+
+default / package-private
+
+private</code></pre>
+            </li>
+
+
+            <!-- 20 -->
+            <li>
+                <h2>Access Modifier Summary</h2>
+
+                <pre class="language-text"><code>public
+
+Accessible broadly
+
+
+protected
+
+Same package +
+subclasses according to
+Java access rules
+
+
+package-private
+
+No modifier
+
+Accessible within
+same package
+
+
+private
+
+Accessible within
+the declaring class</code></pre>
+            </li>
+
+
+            <!-- 21 -->
+            <li>
+                <h2>Encapsulation</h2>
+
+                <pre class="language-text"><code>Encapsulation bundles data
+and behavior together and
+controls access to internal state.
+
+Common Java approach:
+
+private fields
+
++
+
+public methods</code></pre>
+            </li>
+
+
+            <!-- 22 -->
+            <li>
+                <h2>Encapsulation Example</h2>
+
+                <pre class="language-java"><code>class BankAccount {
+
+    private double balance;
+
+    public void deposit(double amount) {
+
+        if (amount > 0) {
+
+            balance += amount;
+
+        }
+
+    }
+
+    public double getBalance() {
+
+        return balance;
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 23 -->
+            <li>
+                <h2>Getter and Setter</h2>
+
+                <pre class="language-java"><code>class Student {
+
+    private String name;
+
+    public String getName() {
+
+        return name;
+
+    }
+
+    public void setName(String name) {
+
+        this.name = name;
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 24 -->
+            <li>
+                <h2>Benefits of Encapsulation</h2>
+
+                <pre class="language-text"><code>Controlled Data Access
+
+Validation
+
+Information Hiding
+
+Maintainability
+
+Reduced Coupling
+
+Better Internal Control</code></pre>
+            </li>
+
+
+            <!-- 25 -->
+            <li>
+                <h2>Abstraction</h2>
+
+                <pre class="language-text"><code>Abstraction exposes
+essential behavior while
+hiding unnecessary
+implementation details.
+
+Example:
+
+car.start()
+
+You use the operation
+without needing to know
+every internal mechanical
+detail.</code></pre>
+            </li>
+
+
+            <!-- 26 -->
+            <li>
+                <h2>Abstraction in Java</h2>
+
+                <pre class="language-text"><code>Common mechanisms:
+
+Abstract Classes
+
+Interfaces</code></pre>
+            </li>
+
+
+            <!-- 27 -->
+            <li>
+                <h2>Abstract Class</h2>
+
+                <pre class="language-java"><code>abstract class Animal {
+
+    abstract void sound();
+
+    void sleep() {
+
+        System.out.println("Sleeping");
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 28 -->
+            <li>
+                <h2>Abstract Method</h2>
+
+                <pre class="language-java"><code>abstract void sound();</code></pre>
+
+                <pre class="language-text"><code>An abstract method
+declares behavior without
+providing an implementation
+in that abstract declaration.</code></pre>
+            </li>
+
+
+            <!-- 29 -->
+            <li>
+                <h2>Using Abstract Class</h2>
+
+                <pre class="language-java"><code>abstract class Animal {
+
+    abstract void sound();
+
+}
+
+
+class Dog extends Animal {
+
+    @Override
+    void sound() {
+
+        System.out.println("Bark");
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 30 -->
+            <li>
+                <h2>Can We Create Abstract Class Object?</h2>
+
+                <pre class="language-text"><code>No.
+
+You cannot directly instantiate
+an abstract class.
+
+Invalid:
+
+Animal a = new Animal();
+
+
+But you can use
+an abstract-class reference:
+
+Animal a = new Dog();</code></pre>
+            </li>
+
+
+            <!-- 31 -->
+            <li>
+                <h2>Interface</h2>
+
+                <pre class="language-java"><code>interface Payment {
+
+    void pay(double amount);
+
+}</code></pre>
+            </li>
+
+
+            <!-- 32 -->
+            <li>
+                <h2>Implement Interface</h2>
+
+                <pre class="language-java"><code>class UpiPayment
+        implements Payment {
+
+    @Override
+    public void pay(double amount) {
+
+        System.out.println(
+            "Payment completed"
+        );
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 33 -->
+            <li>
+                <h2>Interface Features</h2>
+
+                <pre class="language-text"><code>Java interfaces can contain:
+
+Abstract Methods
+
+default Methods
+
+static Methods
+
+private helper methods
+(in modern Java)
+
+Constants
+
+
+Interface fields are
+implicitly:
+
+public static final</code></pre>
+            </li>
+
+
+            <!-- 34 -->
+            <li>
+                <h2>Abstract Class vs Interface</h2>
+
+                <pre class="language-text"><code>Abstract Class
+
+Can have instance fields
+
+Can have constructors
+
+Can have abstract methods
+
+Can have concrete methods
+
+Class extends one class
+
+
+Interface
+
+Defines a contract
+
+Can have abstract/default/
+static/private methods
+
+No normal per-object
+instance fields
+
+A class can implement
+multiple interfaces</code></pre>
+            </li>
+
+
+            <!-- 35 -->
+            <li>
+                <h2>Inheritance</h2>
+
+                <pre class="language-text"><code>Inheritance allows a
+class to derive behavior
+and state from another class.
+
+Parent / Superclass
+
+↓
+
+Child / Subclass</code></pre>
+            </li>
+
+
+            <!-- 36 -->
+            <li>
+                <h2>Inheritance Example</h2>
+
+                <pre class="language-java"><code>class Animal {
+
+    void eat() {
+
+        System.out.println("Eating");
+
+    }
+
+}
+
+
+class Dog extends Animal {
+
+    void bark() {
+
+        System.out.println("Barking");
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 37 -->
+            <li>
+                <h2>Using Inherited Members</h2>
+
+                <pre class="language-java"><code>Dog d = new Dog();
+
+d.eat();
+
+d.bark();</code></pre>
+            </li>
+
+
+            <!-- 38 -->
+            <li>
+                <h2>Types of Inheritance</h2>
+
+                <pre class="language-text"><code>Single
+
+Multilevel
+
+Hierarchical
+
+Multiple
+
+Hybrid
+
+
+Java classes directly support:
+
+Single
+
+Multilevel
+
+Hierarchical
+
+
+Multiple inheritance of
+class implementation is
+not supported.
+
+Multiple type inheritance
+can be achieved through
+interfaces.</code></pre>
+            </li>
+
+
+            <!-- 39 -->
+            <li>
+                <h2>Single Inheritance</h2>
+
+                <pre class="language-text"><code>Animal
+
+   ↓
+
+Dog</code></pre>
+
+                <pre class="language-java"><code>class Animal {
+
+}
+
+class Dog extends Animal {
+
+}</code></pre>
+            </li>
+
+
+            <!-- 40 -->
+            <li>
+                <h2>Multilevel Inheritance</h2>
+
+                <pre class="language-text"><code>Animal
+
+   ↓
+
+Dog
+
+   ↓
+
+Puppy</code></pre>
+
+                <pre class="language-java"><code>class Animal {
+
+}
+
+class Dog extends Animal {
+
+}
+
+class Puppy extends Dog {
+
+}</code></pre>
+            </li>
+
+
+            <!-- 41 -->
+            <li>
+                <h2>Hierarchical Inheritance</h2>
+
+                <pre class="language-text"><code>        Animal
+
+       /      \
+
+     Dog      Cat</code></pre>
+
+                <pre class="language-java"><code>class Animal {
+
+}
+
+class Dog extends Animal {
+
+}
+
+class Cat extends Animal {
+
+}</code></pre>
+            </li>
+
+
+            <!-- 42 -->
+            <li>
+                <h2>Multiple Inheritance with Interfaces</h2>
+
+                <pre class="language-java"><code>interface Camera {
+
+    void takePhoto();
+
+}
+
+interface GPS {
+
+    void navigate();
+
+}
+
+
+class Phone
+        implements Camera, GPS {
+
+    public void takePhoto() {
+
+        System.out.println("Photo");
+
+    }
+
+    public void navigate() {
+
+        System.out.println("Navigation");
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 43 -->
+            <li>
+                <h2>super Keyword</h2>
+
+                <pre class="language-text"><code>super refers to the
+superclass portion of
+the current object.
+
+Uses:
+
+Access parent field
+
+Call parent method
+
+Call parent constructor</code></pre>
+            </li>
+
+
+            <!-- 44 -->
+            <li>
+                <h2>super Method Example</h2>
+
+                <pre class="language-java"><code>class Animal {
+
+    void sound() {
+
+        System.out.println(
+            "Animal sound"
+        );
+
+    }
+
+}
+
+
+class Dog extends Animal {
+
+    void show() {
+
+        super.sound();
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 45 -->
+            <li>
+                <h2>super() Constructor</h2>
+
+                <pre class="language-java"><code>class Animal {
+
+    Animal(String name) {
+
+        System.out.println(name);
+
+    }
+
+}
+
+
+class Dog extends Animal {
+
+    Dog() {
+
+        super("Dog");
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 46 -->
+            <li>
+                <h2>IS-A Relationship</h2>
+
+                <pre class="language-text"><code>Inheritance represents
+an IS-A relationship.
+
+Example:
+
+Dog IS-A Animal
+
+Car IS-A Vehicle</code></pre>
+            </li>
+
+
+            <!-- 47 -->
+            <li>
+                <h2>HAS-A Relationship</h2>
+
+                <pre class="language-text"><code>Composition / aggregation
+can model HAS-A relationships.
+
+Example:
+
+Car HAS-A Engine
+
+University HAS-A Department</code></pre>
+            </li>
+
+
+            <!-- 48 -->
+            <li>
+                <h2>Polymorphism</h2>
+
+                <pre class="language-text"><code>Polymorphism means
+"many forms".
+
+The same interface,
+method call or reference
+can behave differently
+depending on the object/type.</code></pre>
+            </li>
+
+
+            <!-- 49 -->
+            <li>
+                <h2>Types of Polymorphism</h2>
+
+                <pre class="language-text"><code>Compile-Time Polymorphism
+
+→ Method Overloading
+
+
+Runtime Polymorphism
+
+→ Method Overriding
+  + Dynamic Dispatch</code></pre>
+            </li>
+
+
+            <!-- 50 -->
+            <li>
+                <h2>Method Overloading</h2>
+
+                <pre class="language-java"><code>class Calculator {
+
+    int add(int a, int b) {
+
+        return a + b;
+
+    }
+
+    int add(int a, int b, int c) {
+
+        return a + b + c;
+
+    }
+
+    double add(double a, double b) {
+
+        return a + b;
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 51 -->
+            <li>
+                <h2>Overloading Rules</h2>
+
+                <pre class="language-text"><code>Methods have the same name
+
+but different parameter lists.
+
+Difference can involve:
+
+Number of parameters
+
+Parameter types
+
+Parameter order
+
+
+Return type alone
+cannot overload a method.</code></pre>
+            </li>
+
+
+            <!-- 52 -->
+            <li>
+                <h2>Method Overriding</h2>
+
+                <pre class="language-java"><code>class Animal {
+
+    void sound() {
+
+        System.out.println(
+            "Animal sound"
+        );
+
+    }
+
+}
+
+
+class Dog extends Animal {
+
+    @Override
+    void sound() {
+
+        System.out.println("Bark");
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 53 -->
+            <li>
+                <h2>Runtime Polymorphism</h2>
+
+                <pre class="language-java"><code>Animal animal = new Dog();
+
+animal.sound();</code></pre>
+
+                <pre class="language-text"><code>Output:
+
+Bark
+
+
+The overridden instance method
+is selected according to
+the runtime object.</code></pre>
+            </li>
+
+
+            <!-- 54 -->
+            <li>
+                <h2>Overloading vs Overriding</h2>
+
+                <pre class="language-text"><code>OVERLOADING
+
+Same method name
+
+Different parameters
+
+Usually same class
+
+Compile-time resolution
+
+
+OVERRIDING
+
+Subclass provides a new
+implementation of an
+inherited instance method
+
+Same signature
+
+Runtime dispatch</code></pre>
+            </li>
+
+
+            <!-- 55 -->
+            <li>
+                <h2>Can Static Methods Be Overridden?</h2>
+
+                <pre class="language-text"><code>No, not in the normal
+runtime-polymorphism sense.
+
+Static methods belong
+to the class.
+
+A subclass may declare
+a static method with the
+same signature.
+
+This is called:
+
+Method Hiding</code></pre>
+            </li>
+
+
+            <!-- 56 -->
+            <li>
+                <h2>Can Private Methods Be Overridden?</h2>
+
+                <pre class="language-text"><code>No.
+
+A private method is not
+inherited as an accessible
+member by the subclass.
+
+Therefore it cannot
+be overridden.</code></pre>
+            </li>
+
+
+            <!-- 57 -->
+            <li>
+                <h2>final Keyword</h2>
+
+                <pre class="language-text"><code>final variable
+
+→ Cannot be reassigned
+  after initialization
+
+
+final method
+
+→ Cannot be overridden
+
+
+final class
+
+→ Cannot be extended</code></pre>
+            </li>
+
+
+            <!-- 58 -->
+            <li>
+                <h2>Final Variable</h2>
+
+                <pre class="language-java"><code>final int MAX_USERS = 100;</code></pre>
+            </li>
+
+
+            <!-- 59 -->
+            <li>
+                <h2>Final Method</h2>
+
+                <pre class="language-java"><code>class Parent {
+
+    final void show() {
+
+        System.out.println("Hello");
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 60 -->
+            <li>
+                <h2>Final Class</h2>
+
+                <pre class="language-java"><code>final class Security {
+
+}</code></pre>
+
+                <pre class="language-text"><code>This class cannot
+be extended.</code></pre>
+            </li>
+
+
+            <!-- 61 -->
+            <li>
+                <h2>Association</h2>
+
+                <pre class="language-text"><code>Association represents
+a relationship between
+independent objects.
+
+Example:
+
+Teacher
+
+teaches
+
+Student</code></pre>
+            </li>
+
+
+            <!-- 62 -->
+            <li>
+                <h2>Aggregation</h2>
+
+                <pre class="language-text"><code>Aggregation is a
+whole-part relationship
+with relatively independent
+lifecycles.
+
+Example:
+
+Department HAS-A Teacher
+
+A Teacher can exist
+independently of one
+specific Department.</code></pre>
+            </li>
+
+
+            <!-- 63 -->
+            <li>
+                <h2>Aggregation Example</h2>
+
+                <pre class="language-java"><code>class Teacher {
+
+    String name;
+
+    Teacher(String name) {
+
+        this.name = name;
+
+    }
+
+}
+
+
+class Department {
+
+    Teacher teacher;
+
+    Department(Teacher teacher) {
+
+        this.teacher = teacher;
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 64 -->
+            <li>
+                <h2>Composition</h2>
+
+                <pre class="language-text"><code>Composition is a strong
+whole-part relationship.
+
+The containing object
+owns the contained part's
+lifecycle in the model.
+
+Example:
+
+House HAS-A Room</code></pre>
+            </li>
+
+
+            <!-- 65 -->
+            <li>
+                <h2>Composition Example</h2>
+
+                <pre class="language-java"><code>class Engine {
+
+    void start() {
+
+        System.out.println(
+            "Engine started"
+        );
+
+    }
+
+}
+
+
+class Car {
+
+    private final Engine engine =
+        new Engine();
+
+    void start() {
+
+        engine.start();
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 66 -->
+            <li>
+                <h2>Aggregation vs Composition</h2>
+
+                <pre class="language-text"><code>Aggregation
+
+Weak ownership
+
+Parts can usually exist
+independently
+
+
+Composition
+
+Strong ownership
+
+Part lifecycle is typically
+controlled by the whole</code></pre>
+            </li>
+
+
+            <!-- 67 -->
+            <li>
+                <h2>Association vs Aggregation vs Composition</h2>
+
+                <pre class="language-text"><code>Association
+
+General relationship
+
+
+Aggregation
+
+Weak HAS-A relationship
+
+
+Composition
+
+Strong HAS-A relationship</code></pre>
+            </li>
+
+
+            <!-- 68 -->
+            <li>
+                <h2>Object Reference</h2>
+
+                <pre class="language-java"><code>Student s1 = new Student();
+
+Student s2 = s1;</code></pre>
+
+                <pre class="language-text"><code>s1 and s2 now refer
+to the same Student object.</code></pre>
+            </li>
+
+
+            <!-- 69 -->
+            <li>
+                <h2>Upcasting</h2>
+
+                <pre class="language-java"><code>Animal animal = new Dog();</code></pre>
+
+                <pre class="language-text"><code>Subclass object
+
+↓
+
+Superclass reference
+
+
+This is Upcasting.</code></pre>
+            </li>
+
+
+            <!-- 70 -->
+            <li>
+                <h2>Downcasting</h2>
+
+                <pre class="language-java"><code>Animal animal = new Dog();
+
+Dog dog = (Dog) animal;</code></pre>
+
+                <pre class="language-text"><code>Downcasting requires care.
+
+An invalid cast can cause:
+
+ClassCastException</code></pre>
+            </li>
+
+
+            <!-- 71 -->
+            <li>
+                <h2>instanceof</h2>
+
+                <pre class="language-java"><code>if (animal instanceof Dog) {
+
+    Dog dog = (Dog) animal;
+
+}</code></pre>
+            </li>
+
+
+            <!-- 72 -->
+            <li>
+                <h2>Object Class</h2>
+
+                <pre class="language-text"><code>java.lang.Object is the
+root class of Java's
+class hierarchy.
+
+Common methods include:
+
+toString()
+
+equals()
+
+hashCode()
+
+getClass()</code></pre>
+            </li>
+
+
+            <!-- 73 -->
+            <li>
+                <h2>toString()</h2>
+
+                <pre class="language-java"><code>class Student {
+
+    String name;
+
+    Student(String name) {
+
+        this.name = name;
+
+    }
+
+    @Override
+    public String toString() {
+
+        return "Student{name='" +
+                name + "'}";
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 74 -->
+            <li>
+                <h2>equals()</h2>
+
+                <pre class="language-text"><code>equals() is commonly
+overridden to define
+logical equality between
+objects.</code></pre>
+
+                <pre class="language-java"><code>if (user1.equals(user2)) {
+
+    System.out.println("Equal");
+
+}</code></pre>
+            </li>
+
+
+            <!-- 75 -->
+            <li>
+                <h2>== vs equals()</h2>
+
+                <pre class="language-text"><code>For objects:
+
+==
+
+Compares reference identity
+
+
+equals()
+
+Can compare logical/content
+equality depending on
+its implementation.</code></pre>
+            </li>
+
+
+            <!-- 76 -->
+            <li>
+                <h2>hashCode()</h2>
+
+                <pre class="language-text"><code>hashCode() produces an
+integer hash value used
+by hash-based collections.
+
+Important contract:
+
+If two objects are equal
+according to equals(),
+
+they must return the
+same hashCode().</code></pre>
+            </li>
+
+
+            <!-- 77 -->
+            <li>
+                <h2>Immutable Object</h2>
+
+                <pre class="language-text"><code>An immutable object's
+observable state cannot
+be changed after creation.
+
+Common design:
+
+final class
+
+private final fields
+
+Initialize in constructor
+
+No mutating setters
+
+Protect mutable fields
+with defensive copies</code></pre>
+            </li>
+
+
+            <!-- 78 -->
+            <li>
+                <h2>Immutable Class Example</h2>
+
+                <pre class="language-java"><code>final class Student {
+
+    private final String name;
+    private final int age;
+
+    Student(String name, int age) {
+
+        this.name = name;
+        this.age = age;
+
+    }
+
+    public String getName() {
+
+        return name;
+
+    }
+
+    public int getAge() {
+
+        return age;
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 79 -->
+            <li>
+                <h2>Coupling</h2>
+
+                <pre class="language-text"><code>Coupling describes
+dependency between modules
+or classes.
+
+Generally preferred:
+
+Lower coupling
+
+because it can improve:
+
+Maintainability
+
+Testing
+
+Flexibility
+
+Reusability</code></pre>
+            </li>
+
+
+            <!-- 80 -->
+            <li>
+                <h2>Cohesion</h2>
+
+                <pre class="language-text"><code>Cohesion describes
+how closely related
+responsibilities inside
+a module/class are.
+
+Generally preferred:
+
+High Cohesion
+
+A class should have
+a focused responsibility.</code></pre>
+            </li>
+
+
+            <!-- 81 -->
+            <li>
+                <h2>Coupling vs Cohesion</h2>
+
+                <pre class="language-text"><code>Good design often aims for:
+
+Low Coupling
+
++
+
+High Cohesion</code></pre>
+            </li>
+
+
+            <!-- 82 -->
+            <li>
+                <h2>SOLID Principles</h2>
+
+                <pre class="language-text"><code>S
+
+Single Responsibility Principle
+
+
+O
+
+Open/Closed Principle
+
+
+L
+
+Liskov Substitution Principle
+
+
+I
+
+Interface Segregation Principle
+
+
+D
+
+Dependency Inversion Principle</code></pre>
+            </li>
+
+
+            <!-- 83 -->
+            <li>
+                <h2>Single Responsibility Principle</h2>
+
+                <pre class="language-text"><code>SRP
+
+A module/class should
+have one focused reason
+to change.
+
+Avoid placing unrelated
+responsibilities inside
+one class.</code></pre>
+            </li>
+
+
+            <!-- 84 -->
+            <li>
+                <h2>SRP Example</h2>
+
+                <pre class="language-java"><code>class InvoiceCalculator {
+
+    double calculateTotal() {
+
+        return 1000;
+
+    }
+
+}
+
+
+class InvoicePrinter {
+
+    void print() {
+
+        System.out.println(
+            "Printing invoice"
+        );
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 85 -->
+            <li>
+                <h2>Open/Closed Principle</h2>
+
+                <pre class="language-text"><code>OCP
+
+Software entities should be:
+
+Open for Extension
+
+Closed for Modification
+
+
+Design so new behavior
+can often be added without
+rewriting stable existing code.</code></pre>
+            </li>
+
+
+            <!-- 86 -->
+            <li>
+                <h2>Liskov Substitution Principle</h2>
+
+                <pre class="language-text"><code>LSP
+
+Objects of a subtype
+should be usable where
+objects of the base type
+are expected without
+breaking the expected
+behavioral contract.</code></pre>
+            </li>
+
+
+            <!-- 87 -->
+            <li>
+                <h2>Interface Segregation Principle</h2>
+
+                <pre class="language-text"><code>ISP
+
+Prefer smaller,
+focused interfaces.
+
+Clients should not be
+forced to depend on
+methods they do not need.</code></pre>
+            </li>
+
+
+            <!-- 88 -->
+            <li>
+                <h2>Dependency Inversion Principle</h2>
+
+                <pre class="language-text"><code>DIP
+
+High-level policy should
+not depend directly on
+low-level implementation details.
+
+Both should depend on
+abstractions.</code></pre>
+            </li>
+
+
+            <!-- 89 -->
+            <li>
+                <h2>Dependency Injection</h2>
+
+                <pre class="language-java"><code>interface MessageService {
+
+    void send(String message);
+
+}
+
+
+class Notification {
+
+    private final MessageService service;
+
+    Notification(
+        MessageService service
+    ) {
+
+        this.service = service;
+
+    }
+
+    void notifyUser() {
+
+        service.send("Hello");
+
+    }
+
+}</code></pre>
+
+                <pre class="language-text"><code>The dependency is supplied
+from outside rather than
+created directly inside
+Notification.</code></pre>
+            </li>
+
+
+            <!-- 90 -->
+            <li>
+                <h2>Inheritance vs Composition</h2>
+
+                <pre class="language-text"><code>Inheritance
+
+IS-A
+
+Dog IS-A Animal
+
+
+Composition
+
+HAS-A
+
+Car HAS-A Engine
+
+
+Composition is often preferred
+when behavior should be assembled
+without creating a strict
+IS-A hierarchy.</code></pre>
+            </li>
+
+
+            <!-- 91 -->
+            <li>
+                <h2>Abstraction vs Encapsulation</h2>
+
+                <pre class="language-text"><code>Abstraction
+
+Focuses on:
+
+What an object does
+
+
+Encapsulation
+
+Focuses on:
+
+Bundling state/behavior and
+controlling access to
+implementation details</code></pre>
+            </li>
+
+
+            <!-- 92 -->
+            <li>
+                <h2>Interface Example — Payment System</h2>
+
+                <pre class="language-java"><code>interface Payment {
+
+    void pay(double amount);
+
+}
+
+
+class CardPayment
+        implements Payment {
+
+    public void pay(double amount) {
+
+        System.out.println(
+            "Paid using card"
+        );
+
+    }
+
+}
+
+
+class UpiPayment
+        implements Payment {
+
+    public void pay(double amount) {
+
+        System.out.println(
+            "Paid using UPI"
+        );
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 93 -->
+            <li>
+                <h2>Polymorphic Payment</h2>
+
+                <pre class="language-java"><code>Payment payment =
+    new UpiPayment();
+
+payment.pay(500);</code></pre>
+            </li>
+
+
+            <!-- 94 -->
+            <li>
+                <h2>Real-World OOP Example</h2>
+
+                <pre class="language-text"><code>E-Commerce Application
+
+
+User
+
+Product
+
+Cart
+
+Order
+
+Payment
+
+
+Relationships:
+
+User HAS-A Cart
+
+Cart HAS Products
+
+User places Order
+
+Order uses Payment</code></pre>
+            </li>
+
+
+            <!-- 95 -->
+            <li>
+                <h2>OOP Example — User</h2>
+
+                <pre class="language-java"><code>class User {
+
+    private String name;
+    private String email;
+
+    User(String name, String email) {
+
+        this.name = name;
+        this.email = email;
+
+    }
+
+    public String getName() {
+
+        return name;
+
+    }
+
+    public String getEmail() {
+
+        return email;
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 96 -->
+            <li>
+                <h2>OOP Example — Product</h2>
+
+                <pre class="language-java"><code>class Product {
+
+    private String name;
+    private double price;
+
+    Product(String name, double price) {
+
+        this.name = name;
+        this.price = price;
+
+    }
+
+    public double getPrice() {
+
+        return price;
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 97 -->
+            <li>
+                <h2>OOP Example — Cart</h2>
+
+                <pre class="language-java"><code>import java.util.ArrayList;
+import java.util.List;
+
+class Cart {
+
+    private final List&lt;Product&gt; products =
+        new ArrayList&lt;&gt;();
+
+    public void addProduct(Product product) {
+
+        products.add(product);
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 98 -->
+            <li>
+                <h2>OOP Example — Payment</h2>
+
+                <pre class="language-java"><code>interface Payment {
+
+    void pay(double amount);
+
+}
+
+
+class UpiPayment
+        implements Payment {
+
+    public void pay(double amount) {
+
+        System.out.println(
+            "Payment successful"
+        );
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 99 -->
+            <li>
+                <h2>Object Lifecycle</h2>
+
+                <pre class="language-text"><code>Object Creation
+
+↓
+
+Initialization
+
+↓
+
+Object Used
+
+↓
+
+Object becomes unreachable
+
+↓
+
+Eligible for Garbage Collection
+
+↓
+
+Memory may later
+be reclaimed by JVM</code></pre>
+            </li>
+
+
+            <!-- 100 -->
+            <li>
+                <h2>Garbage Collection</h2>
+
+                <pre class="language-text"><code>Java uses automatic
+garbage collection.
+
+The JVM can reclaim memory
+occupied by objects that
+are no longer reachable.
+
+Developers do not normally
+free Java objects manually.</code></pre>
+            </li>
+
+
+            <!-- 101 -->
+            <li>
+                <h2>Object-Oriented Design</h2>
+
+                <pre class="language-text"><code>Good OOP design often aims for:
+
+Clear responsibilities
+
+Encapsulation
+
+High cohesion
+
+Low coupling
+
+Useful abstractions
+
+Composition where appropriate
+
+Testable code
+
+Maintainable code</code></pre>
+            </li>
+
+
+            <!-- 102 -->
+            <li>
+                <h2>Common OOP Mistakes</h2>
+
+                <pre class="language-text"><code>Making everything public
+
+Huge classes
+
+Too many responsibilities
+
+Unnecessary inheritance
+
+Very deep inheritance trees
+
+Tight coupling
+
+Duplicated logic
+
+Ignoring interfaces
+
+Poor class naming
+
+Exposing mutable internal state</code></pre>
+            </li>
+
+
+            <!-- 103 -->
+            <li>
+                <h2>Important OOP Interview Questions</h2>
+
+                <pre class="language-text"><code>What is OOP?
+
+What is a Class?
+
+What is an Object?
+
+Class vs Object?
+
+What are the four pillars
+of OOP?
+
+What is Encapsulation?
+
+What is Abstraction?
+
+Abstraction vs Encapsulation?
+
+What is Inheritance?
+
+Types of Inheritance?
+
+What is Polymorphism?
+
+Types of Polymorphism?
+
+Overloading vs Overriding?
+
+What is a Constructor?
+
+Can constructors be overloaded?
+
+What is this?
+
+What is super?
+
+What is static?
+
+What is final?
+
+What is an Abstract Class?
+
+What is an Interface?
+
+Abstract Class vs Interface?
+
+What is Association?
+
+What is Aggregation?
+
+What is Composition?
+
+Aggregation vs Composition?
+
+IS-A vs HAS-A?
+
+What is Upcasting?
+
+What is Downcasting?
+
+== vs equals()?
+
+What is hashCode()?
+
+What is an Immutable Class?
+
+What is Coupling?
+
+What is Cohesion?
+
+What are SOLID Principles?
+
+Inheritance vs Composition?</code></pre>
+            </li>
+
+
+            <!-- 104 -->
+            <li>
+                <h2>Four Pillars Quick Revision</h2>
+
+                <pre class="language-text"><code>ENCAPSULATION
+
+Control access to
+object state
+
+
+ABSTRACTION
+
+Hide unnecessary details
+
+
+INHERITANCE
+
+Reuse / specialize
+existing behavior
+
+
+POLYMORPHISM
+
+Same abstraction,
+different behavior</code></pre>
+            </li>
+
+
+            <!-- 105 -->
+            <li>
+                <h2>Overloading Quick Revision</h2>
+
+                <pre class="language-java"><code>void show(int a) {
+
+}
+
+void show(String a) {
+
+}
+
+void show(int a, int b) {
+
+}</code></pre>
+
+                <pre class="language-text"><code>Same Name
+
+Different Parameters
+
+Compile-Time Resolution</code></pre>
+            </li>
+
+
+            <!-- 106 -->
+            <li>
+                <h2>Overriding Quick Revision</h2>
+
+                <pre class="language-java"><code>class Animal {
+
+    void sound() {
+
+    }
+
+}
+
+
+class Dog extends Animal {
+
+    @Override
+    void sound() {
+
+        System.out.println("Bark");
+
+    }
+
+}</code></pre>
+
+                <pre class="language-text"><code>Inheritance
+
+Same Method Signature
+
+New Implementation
+
+Runtime Dispatch</code></pre>
+            </li>
+
+
+            <!-- 107 -->
+            <li>
+                <h2>Class Structure Quick Revision</h2>
+
+                <pre class="language-java"><code>class Student {
+
+    // Fields
+
+    private String name;
+    private int age;
+
+
+    // Constructor
+
+    Student(String name, int age) {
+
+        this.name = name;
+        this.age = age;
+
+    }
+
+
+    // Method
+
+    void study() {
+
+        System.out.println("Studying");
+
+    }
+
+
+    // Getter
+
+    String getName() {
+
+        return name;
+
+    }
+
+}</code></pre>
+            </li>
+
+
+            <!-- 108 -->
+            <li>
+                <h2>Inheritance Quick Revision</h2>
+
+                <pre class="language-text"><code>Single
+
+A → B
+
+
+Multilevel
+
+A → B → C
+
+
+Hierarchical
+
+    A
+
+   / \
+
+  B   C
+
+
+Multiple through interfaces
+
+A + B
+
+  ↓
+
+  C</code></pre>
+            </li>
+
+
+            <!-- 109 -->
+            <li>
+                <h2>Relationship Quick Revision</h2>
+
+                <pre class="language-text"><code>Inheritance
+
+IS-A
+
+
+Association
+
+General relationship
+
+
+Aggregation
+
+Weak HAS-A
+
+
+Composition
+
+Strong HAS-A</code></pre>
+            </li>
+
+
+            <!-- 110 -->
+            <li>
+                <h2>SOLID Quick Revision</h2>
+
+                <pre class="language-text"><code>S
+
+Single Responsibility
+
+
+O
+
+Open / Closed
+
+
+L
+
+Liskov Substitution
+
+
+I
+
+Interface Segregation
+
+
+D
+
+Dependency Inversion</code></pre>
+            </li>
+
+
+            <!-- 111 -->
+            <li>
+                <h2>OOP Learning Roadmap</h2>
+
+                <pre class="language-text"><code>1. OOP Basics
+
+2. Class
+
+3. Object
+
+4. Fields
+
+5. Methods
+
+6. Constructors
+
+7. this
+
+8. static
+
+9. Access Modifiers
+
+10. Encapsulation
+
+11. Getter / Setter
+
+12. Abstraction
+
+13. Abstract Class
+
+14. Abstract Method
+
+15. Interface
+
+16. Inheritance
+
+17. super
+
+18. IS-A
+
+19. HAS-A
+
+20. Polymorphism
+
+21. Overloading
+
+22. Overriding
+
+23. Dynamic Dispatch
+
+24. final
+
+25. Association
+
+26. Aggregation
+
+27. Composition
+
+28. Upcasting
+
+29. Downcasting
+
+30. instanceof
+
+31. Object Class
+
+32. toString()
+
+33. equals()
+
+34. hashCode()
+
+35. Immutability
+
+36. Coupling
+
+37. Cohesion
+
+38. SOLID
+
+39. Dependency Injection
+
+40. OOP Design</code></pre>
+            </li>
+
+
+            <!-- 112 -->
+            <li>
+                <h2>Final OOP Interview Revision</h2>
+
+                <pre class="language-text"><code>OOP
+
+→ Object-Oriented Programming
+
+
+Class
+
+→ Blueprint / Type
+
+
+Object
+
+→ Instance
+
+
+Constructor
+
+→ Initializes object
+
+
+Encapsulation
+
+→ Control access to state
+
+
+Abstraction
+
+→ Hide unnecessary details
+
+
+Inheritance
+
+→ IS-A relationship
+
+
+Polymorphism
+
+→ Many forms
+
+
+Overloading
+
+→ Same name,
+  different parameters
+
+
+Overriding
+
+→ Subclass provides
+  new implementation
+
+
+Interface
+
+→ Contract
+
+
+Abstract Class
+
+→ Partial abstraction +
+  shared implementation
+
+
+this
+
+→ Current object
+
+
+super
+
+→ Superclass access
+
+
+static
+
+→ Class-level member
+
+
+final
+
+→ Restricts reassignment,
+  overriding or inheritance
+
+
+Association
+
+→ General relationship
+
+
+Aggregation
+
+→ Weak HAS-A
+
+
+Composition
+
+→ Strong HAS-A
+
+
+Good Design
+
+→ Low Coupling
+  + High Cohesion
+
+
+SOLID
+
+→ Five important
+  design principles</code></pre>
+            </li>
+
+        </ol>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <p>
+            © 2026 CodeWithRohit |
+            OOPs Cheat Sheet
+        </p>
+
+    </footer>
+
+
+    <!-- Prism JS -->
+    <script src="../prism/prism.js"></script>
+
+    <!-- Common JS -->
+    <script src="../cheatsheet.js"></script>
+
+</body>
+
+</html>

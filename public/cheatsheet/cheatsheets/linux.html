@@ -1,0 +1,2168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Complete Linux Commands Cheat Sheet by CodeWithRohit"
+    >
+
+    <title>Linux Commands Cheat Sheet | CodeWithRohit</title>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="../cheatsheet.css">
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="../prism/prism.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="cheat-navbar">
+
+        <a href="../index.html" class="brand">
+            &lt;/&gt; CodeWithRohit
+        </a>
+
+        <div class="cheat-title">
+            Linux Commands Cheat Sheet
+        </div>
+
+        <a href="../index.html" class="home-btn">
+            ← Home
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="cheat-hero">
+
+        <h1>Linux Commands Cheat Sheet</h1>
+
+        <p>
+            Complete Linux command-line quick reference covering
+            navigation, files, directories, permissions, processes,
+            networking, SSH, packages and system administration.
+        </p>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <ol>
+
+            <!-- 1 -->
+            <li>
+                <h2>What is Linux?</h2>
+
+                <pre class="language-text"><code>Linux is an open-source operating system.
+
+Popular Linux Distributions:
+
+Ubuntu
+Debian
+Fedora
+Arch Linux
+Linux Mint
+Kali Linux
+Red Hat
+CentOS Stream
+
+Linux is widely used for:
+
+Servers
+Cloud Computing
+DevOps
+Cybersecurity
+Programming
+Containers
+Supercomputers</code></pre>
+            </li>
+
+
+            <!-- 2 -->
+            <li>
+                <h2>Linux Command Structure</h2>
+
+                <pre class="language-bash"><code>command [options] [arguments]</code></pre>
+
+                <pre class="language-bash"><code>ls -la /home</code></pre>
+
+                <pre class="language-text"><code>ls       = command
+
+-la      = options
+
+/home    = argument</code></pre>
+            </li>
+
+
+            <!-- 3 -->
+            <li>
+                <h2>Print Current Directory — pwd</h2>
+
+                <pre class="language-bash"><code>pwd</code></pre>
+
+                <pre class="language-text"><code>Example Output:
+
+/home/rohit/projects</code></pre>
+            </li>
+
+
+            <!-- 4 -->
+            <li>
+                <h2>List Files — ls</h2>
+
+                <pre class="language-bash"><code>ls</code></pre>
+
+                <pre class="language-bash"><code>ls -l</code></pre>
+
+                <pre class="language-bash"><code>ls -a</code></pre>
+
+                <pre class="language-bash"><code>ls -la</code></pre>
+            </li>
+
+
+            <!-- 5 -->
+            <li>
+                <h2>Useful ls Options</h2>
+
+                <pre class="language-text"><code>ls
+
+List files
+
+
+ls -l
+
+Long format
+
+
+ls -a
+
+Show hidden files
+
+
+ls -h
+
+Human-readable sizes
+
+
+ls -lh
+
+Detailed + readable sizes
+
+
+ls -la
+
+Detailed + hidden files</code></pre>
+            </li>
+
+
+            <!-- 6 -->
+            <li>
+                <h2>Change Directory — cd</h2>
+
+                <pre class="language-bash"><code>cd Documents</code></pre>
+
+                <pre class="language-bash"><code>cd /home/rohit</code></pre>
+            </li>
+
+
+            <!-- 7 -->
+            <li>
+                <h2>Important cd Commands</h2>
+
+                <pre class="language-bash"><code># Home directory
+cd ~
+
+# Parent directory
+cd ..
+
+# Previous directory
+cd -
+
+# Root directory
+cd /
+
+# Current directory
+cd .</code></pre>
+            </li>
+
+
+            <!-- 8 -->
+            <li>
+                <h2>Absolute vs Relative Path</h2>
+
+                <pre class="language-text"><code>Absolute Path:
+
+/home/rohit/projects/app
+
+
+Relative Path:
+
+projects/app
+
+
+Absolute path starts
+from root /
+
+Relative path starts
+from current directory.</code></pre>
+            </li>
+
+
+            <!-- 9 -->
+            <li>
+                <h2>Create Directory — mkdir</h2>
+
+                <pre class="language-bash"><code>mkdir project</code></pre>
+
+                <pre class="language-bash"><code>mkdir html css javascript</code></pre>
+            </li>
+
+
+            <!-- 10 -->
+            <li>
+                <h2>Create Nested Directories</h2>
+
+                <pre class="language-bash"><code>mkdir -p project/src/components</code></pre>
+            </li>
+
+
+            <!-- 11 -->
+            <li>
+                <h2>Remove Empty Directory</h2>
+
+                <pre class="language-bash"><code>rmdir folder</code></pre>
+            </li>
+
+
+            <!-- 12 -->
+            <li>
+                <h2>Create Empty File — touch</h2>
+
+                <pre class="language-bash"><code>touch index.html</code></pre>
+
+                <pre class="language-bash"><code>touch style.css script.js</code></pre>
+            </li>
+
+
+            <!-- 13 -->
+            <li>
+                <h2>Display File Content — cat</h2>
+
+                <pre class="language-bash"><code>cat file.txt</code></pre>
+            </li>
+
+
+            <!-- 14 -->
+            <li>
+                <h2>Create File Using cat</h2>
+
+                <pre class="language-bash"><code>cat &gt; notes.txt</code></pre>
+
+                <pre class="language-text"><code>Type your content.
+
+Press:
+
+Ctrl + D
+
+to save and exit.</code></pre>
+            </li>
+
+
+            <!-- 15 -->
+            <li>
+                <h2>Append Using cat</h2>
+
+                <pre class="language-bash"><code>cat &gt;&gt; notes.txt</code></pre>
+            </li>
+
+
+            <!-- 16 -->
+            <li>
+                <h2>View File with less</h2>
+
+                <pre class="language-bash"><code>less largefile.txt</code></pre>
+
+                <pre class="language-text"><code>Useful for large files.
+
+Press:
+
+q
+
+to exit.</code></pre>
+            </li>
+
+
+            <!-- 17 -->
+            <li>
+                <h2>View File with more</h2>
+
+                <pre class="language-bash"><code>more file.txt</code></pre>
+            </li>
+
+
+            <!-- 18 -->
+            <li>
+                <h2>First Lines — head</h2>
+
+                <pre class="language-bash"><code>head file.txt</code></pre>
+
+                <pre class="language-bash"><code>head -n 20 file.txt</code></pre>
+            </li>
+
+
+            <!-- 19 -->
+            <li>
+                <h2>Last Lines — tail</h2>
+
+                <pre class="language-bash"><code>tail file.txt</code></pre>
+
+                <pre class="language-bash"><code>tail -n 20 file.txt</code></pre>
+            </li>
+
+
+            <!-- 20 -->
+            <li>
+                <h2>Watch Log File Live</h2>
+
+                <pre class="language-bash"><code>tail -f app.log</code></pre>
+
+                <pre class="language-text"><code>Useful for:
+
+Server logs
+Application logs
+Debugging</code></pre>
+            </li>
+
+
+            <!-- 21 -->
+            <li>
+                <h2>Copy File — cp</h2>
+
+                <pre class="language-bash"><code>cp file.txt backup.txt</code></pre>
+            </li>
+
+
+            <!-- 22 -->
+            <li>
+                <h2>Copy File to Directory</h2>
+
+                <pre class="language-bash"><code>cp file.txt Documents/</code></pre>
+            </li>
+
+
+            <!-- 23 -->
+            <li>
+                <h2>Copy Directory</h2>
+
+                <pre class="language-bash"><code>cp -r project backup/</code></pre>
+            </li>
+
+
+            <!-- 24 -->
+            <li>
+                <h2>Move File — mv</h2>
+
+                <pre class="language-bash"><code>mv file.txt Documents/</code></pre>
+            </li>
+
+
+            <!-- 25 -->
+            <li>
+                <h2>Rename File</h2>
+
+                <pre class="language-bash"><code>mv old.txt new.txt</code></pre>
+            </li>
+
+
+            <!-- 26 -->
+            <li>
+                <h2>Delete File — rm</h2>
+
+                <pre class="language-bash"><code>rm file.txt</code></pre>
+            </li>
+
+
+            <!-- 27 -->
+            <li>
+                <h2>Delete Directory</h2>
+
+                <pre class="language-bash"><code>rm -r folder</code></pre>
+            </li>
+
+
+            <!-- 28 -->
+            <li>
+                <h2>Force Delete</h2>
+
+                <pre class="language-bash"><code>rm -rf folder</code></pre>
+
+                <pre class="language-text"><code>WARNING:
+
+rm -rf permanently removes files.
+
+Use it carefully.
+
+There is usually no Recycle Bin
+for command-line deletion.</code></pre>
+            </li>
+
+
+            <!-- 29 -->
+            <li>
+                <h2>Wildcard — *</h2>
+
+                <pre class="language-bash"><code>ls *.txt</code></pre>
+
+                <pre class="language-bash"><code>rm *.log</code></pre>
+
+                <pre class="language-text"><code>* matches zero or more characters.</code></pre>
+            </li>
+
+
+            <!-- 30 -->
+            <li>
+                <h2>Wildcard — ?</h2>
+
+                <pre class="language-bash"><code>ls file?.txt</code></pre>
+
+                <pre class="language-text"><code>? matches exactly one character.</code></pre>
+            </li>
+
+
+            <!-- 31 -->
+            <li>
+                <h2>Find Files — find</h2>
+
+                <pre class="language-bash"><code>find . -name "index.html"</code></pre>
+            </li>
+
+
+            <!-- 32 -->
+            <li>
+                <h2>Find by Extension</h2>
+
+                <pre class="language-bash"><code>find . -name "*.js"</code></pre>
+            </li>
+
+
+            <!-- 33 -->
+            <li>
+                <h2>Find Directories</h2>
+
+                <pre class="language-bash"><code>find . -type d -name "node_modules"</code></pre>
+            </li>
+
+
+            <!-- 34 -->
+            <li>
+                <h2>Find Files Only</h2>
+
+                <pre class="language-bash"><code>find . -type f</code></pre>
+            </li>
+
+
+            <!-- 35 -->
+            <li>
+                <h2>Search Text — grep</h2>
+
+                <pre class="language-bash"><code>grep "hello" file.txt</code></pre>
+            </li>
+
+
+            <!-- 36 -->
+            <li>
+                <h2>Case-Insensitive Search</h2>
+
+                <pre class="language-bash"><code>grep -i "hello" file.txt</code></pre>
+            </li>
+
+
+            <!-- 37 -->
+            <li>
+                <h2>Recursive Search</h2>
+
+                <pre class="language-bash"><code>grep -r "TODO" .</code></pre>
+            </li>
+
+
+            <!-- 38 -->
+            <li>
+                <h2>Show Line Numbers with grep</h2>
+
+                <pre class="language-bash"><code>grep -n "error" app.log</code></pre>
+            </li>
+
+
+            <!-- 39 -->
+            <li>
+                <h2>Count Lines — wc</h2>
+
+                <pre class="language-bash"><code>wc -l file.txt</code></pre>
+            </li>
+
+
+            <!-- 40 -->
+            <li>
+                <h2>wc Options</h2>
+
+                <pre class="language-bash"><code># Lines
+wc -l file.txt
+
+# Words
+wc -w file.txt
+
+# Bytes
+wc -c file.txt</code></pre>
+            </li>
+
+
+            <!-- 41 -->
+            <li>
+                <h2>Sort File Content</h2>
+
+                <pre class="language-bash"><code>sort names.txt</code></pre>
+
+                <pre class="language-bash"><code>sort -r names.txt</code></pre>
+            </li>
+
+
+            <!-- 42 -->
+            <li>
+                <h2>Remove Adjacent Duplicate Lines — uniq</h2>
+
+                <pre class="language-bash"><code>sort names.txt | uniq</code></pre>
+            </li>
+
+
+            <!-- 43 -->
+            <li>
+                <h2>Pipe Operator — |</h2>
+
+                <pre class="language-bash"><code>ls -la | grep ".js"</code></pre>
+
+                <pre class="language-text"><code>Pipe sends output of one command
+as input to another command.
+
+Command 1
+   |
+   v
+Command 2</code></pre>
+            </li>
+
+
+            <!-- 44 -->
+            <li>
+                <h2>Output Redirection — &gt;</h2>
+
+                <pre class="language-bash"><code>echo "Hello Linux" &gt; file.txt</code></pre>
+
+                <pre class="text"><code>&gt; overwrites the file.</code></pre>
+            </li>
+
+
+            <!-- 45 -->
+            <li>
+                <h2>Append Redirection — &gt;&gt;</h2>
+
+                <pre class="language-bash"><code>echo "New line" &gt;&gt; file.txt</code></pre>
+
+                <pre class="language-text"><code>&gt;&gt; appends content.</code></pre>
+            </li>
+
+
+            <!-- 46 -->
+            <li>
+                <h2>Input Redirection — &lt;</h2>
+
+                <pre class="language-bash"><code>sort &lt; names.txt</code></pre>
+            </li>
+
+
+            <!-- 47 -->
+            <li>
+                <h2>Standard Streams</h2>
+
+                <pre class="language-text"><code>0 = stdin
+
+1 = stdout
+
+2 = stderr</code></pre>
+            </li>
+
+
+            <!-- 48 -->
+            <li>
+                <h2>Redirect Errors</h2>
+
+                <pre class="language-bash"><code>command 2&gt; errors.txt</code></pre>
+            </li>
+
+
+            <!-- 49 -->
+            <li>
+                <h2>Redirect Output and Errors</h2>
+
+                <pre class="language-bash"><code>command &gt; output.txt 2&gt;&amp;1</code></pre>
+            </li>
+
+
+            <!-- 50 -->
+            <li>
+                <h2>echo Command</h2>
+
+                <pre class="language-bash"><code>echo "Hello World"</code></pre>
+
+                <pre class="language-bash"><code>echo $HOME</code></pre>
+            </li>
+
+
+            <!-- 51 -->
+            <li>
+                <h2>Command History</h2>
+
+                <pre class="language-bash"><code>history</code></pre>
+            </li>
+
+
+            <!-- 52 -->
+            <li>
+                <h2>Clear Terminal</h2>
+
+                <pre class="language-bash"><code>clear</code></pre>
+
+                <pre class="language-text"><code>Shortcut:
+
+Ctrl + L</code></pre>
+            </li>
+
+
+            <!-- 53 -->
+            <li>
+                <h2>Manual Pages — man</h2>
+
+                <pre class="language-bash"><code>man ls</code></pre>
+
+                <pre class="language-bash"><code>man grep</code></pre>
+            </li>
+
+
+            <!-- 54 -->
+            <li>
+                <h2>Command Help</h2>
+
+                <pre class="language-bash"><code>ls --help</code></pre>
+
+                <pre class="language-bash"><code>grep --help</code></pre>
+            </li>
+
+
+            <!-- 55 -->
+            <li>
+                <h2>Who Am I?</h2>
+
+                <pre class="language-bash"><code>whoami</code></pre>
+            </li>
+
+
+            <!-- 56 -->
+            <li>
+                <h2>Current Logged-in Users</h2>
+
+                <pre class="language-bash"><code>who</code></pre>
+
+                <pre class="language-bash"><code>w</code></pre>
+            </li>
+
+
+            <!-- 57 -->
+            <li>
+                <h2>User ID Information</h2>
+
+                <pre class="language-bash"><code>id</code></pre>
+            </li>
+
+
+            <!-- 58 -->
+            <li>
+                <h2>Superuser Command — sudo</h2>
+
+                <pre class="language-bash"><code>sudo command</code></pre>
+
+                <pre class="language-bash"><code>sudo apt update</code></pre>
+
+                <pre class="language-text"><code>sudo runs a command with
+elevated privileges when
+the user is authorized.</code></pre>
+            </li>
+
+
+            <!-- 59 -->
+            <li>
+                <h2>Switch User</h2>
+
+                <pre class="language-bash"><code>su username</code></pre>
+            </li>
+
+
+            <!-- 60 -->
+            <li>
+                <h2>File Permissions</h2>
+
+                <pre class="language-text"><code>r = Read
+
+w = Write
+
+x = Execute
+
+
+Example:
+
+-rwxr-xr--
+
+
+Owner:
+rwx
+
+Group:
+r-x
+
+Others:
+r--</code></pre>
+            </li>
+
+
+            <!-- 61 -->
+            <li>
+                <h2>View Permissions</h2>
+
+                <pre class="language-bash"><code>ls -l</code></pre>
+            </li>
+
+
+            <!-- 62 -->
+            <li>
+                <h2>chmod</h2>
+
+                <pre class="language-bash"><code>chmod +x script.sh</code></pre>
+
+                <pre class="text"><code>Add execute permission.</code></pre>
+            </li>
+
+
+            <!-- 63 -->
+            <li>
+                <h2>Numeric Permissions</h2>
+
+                <pre class="language-text"><code>Read    = 4
+
+Write   = 2
+
+Execute = 1
+
+
+7 = rwx
+
+6 = rw-
+
+5 = r-x
+
+4 = r--</code></pre>
+            </li>
+
+
+            <!-- 64 -->
+            <li>
+                <h2>chmod 755</h2>
+
+                <pre class="language-bash"><code>chmod 755 script.sh</code></pre>
+
+                <pre class="language-text"><code>Owner:
+
+7 = rwx
+
+
+Group:
+
+5 = r-x
+
+
+Others:
+
+5 = r-x</code></pre>
+            </li>
+
+
+            <!-- 65 -->
+            <li>
+                <h2>chmod 644</h2>
+
+                <pre class="language-bash"><code>chmod 644 file.txt</code></pre>
+
+                <pre class="language-text"><code>Owner:
+
+rw-
+
+
+Group:
+
+r--
+
+
+Others:
+
+r--</code></pre>
+            </li>
+
+
+            <!-- 66 -->
+            <li>
+                <h2>Change Owner — chown</h2>
+
+                <pre class="language-bash"><code>sudo chown rohit file.txt</code></pre>
+            </li>
+
+
+            <!-- 67 -->
+            <li>
+                <h2>Change Owner and Group</h2>
+
+                <pre class="language-bash"><code>sudo chown rohit:developers file.txt</code></pre>
+            </li>
+
+
+            <!-- 68 -->
+            <li>
+                <h2>Process List — ps</h2>
+
+                <pre class="language-bash"><code>ps</code></pre>
+
+                <pre class="language-bash"><code>ps aux</code></pre>
+            </li>
+
+
+            <!-- 69 -->
+            <li>
+                <h2>Live Processes — top</h2>
+
+                <pre class="language-bash"><code>top</code></pre>
+            </li>
+
+
+            <!-- 70 -->
+            <li>
+                <h2>htop</h2>
+
+                <pre class="language-bash"><code>htop</code></pre>
+
+                <pre class="language-text"><code>Interactive process viewer.
+
+May need installation first.</code></pre>
+            </li>
+
+
+            <!-- 71 -->
+            <li>
+                <h2>Kill Process</h2>
+
+                <pre class="language-bash"><code>kill PID</code></pre>
+
+                <pre class="language-bash"><code>kill 1234</code></pre>
+            </li>
+
+
+            <!-- 72 -->
+            <li>
+                <h2>Force Kill Process</h2>
+
+                <pre class="language-bash"><code>kill -9 PID</code></pre>
+
+                <pre class="language-text"><code>SIGKILL immediately terminates
+the process.
+
+Use normal kill first when possible.</code></pre>
+            </li>
+
+
+            <!-- 73 -->
+            <li>
+                <h2>Kill Process by Name</h2>
+
+                <pre class="language-bash"><code>pkill node</code></pre>
+
+                <pre class="language-bash"><code>killall node</code></pre>
+            </li>
+
+
+            <!-- 74 -->
+            <li>
+                <h2>Run Command in Background</h2>
+
+                <pre class="language-bash"><code>node server.js &amp;</code></pre>
+            </li>
+
+
+            <!-- 75 -->
+            <li>
+                <h2>Background Jobs</h2>
+
+                <pre class="language-bash"><code>jobs</code></pre>
+            </li>
+
+
+            <!-- 76 -->
+            <li>
+                <h2>Move Job to Foreground</h2>
+
+                <pre class="language-bash"><code>fg</code></pre>
+
+                <pre class="language-bash"><code>fg %1</code></pre>
+            </li>
+
+
+            <!-- 77 -->
+            <li>
+                <h2>Move Job to Background</h2>
+
+                <pre class="language-bash"><code>bg %1</code></pre>
+            </li>
+
+
+            <!-- 78 -->
+            <li>
+                <h2>System Information — uname</h2>
+
+                <pre class="language-bash"><code>uname</code></pre>
+
+                <pre class="language-bash"><code>uname -a</code></pre>
+            </li>
+
+
+            <!-- 79 -->
+            <li>
+                <h2>Hostname</h2>
+
+                <pre class="language-bash"><code>hostname</code></pre>
+
+                <pre class="language-bash"><code>hostnamectl</code></pre>
+            </li>
+
+
+            <!-- 80 -->
+            <li>
+                <h2>Linux Distribution Information</h2>
+
+                <pre class="language-bash"><code>cat /etc/os-release</code></pre>
+            </li>
+
+
+            <!-- 81 -->
+            <li>
+                <h2>CPU Information</h2>
+
+                <pre class="language-bash"><code>lscpu</code></pre>
+            </li>
+
+
+            <!-- 82 -->
+            <li>
+                <h2>Memory Information</h2>
+
+                <pre class="language-bash"><code>free -h</code></pre>
+            </li>
+
+
+            <!-- 83 -->
+            <li>
+                <h2>Disk Space</h2>
+
+                <pre class="language-bash"><code>df -h</code></pre>
+            </li>
+
+
+            <!-- 84 -->
+            <li>
+                <h2>Directory Size</h2>
+
+                <pre class="language-bash"><code>du -sh folder</code></pre>
+
+                <pre class="language-bash"><code>du -sh *</code></pre>
+            </li>
+
+
+            <!-- 85 -->
+            <li>
+                <h2>Block Devices</h2>
+
+                <pre class="language-bash"><code>lsblk</code></pre>
+            </li>
+
+
+            <!-- 86 -->
+            <li>
+                <h2>System Uptime</h2>
+
+                <pre class="language-bash"><code>uptime</code></pre>
+            </li>
+
+
+            <!-- 87 -->
+            <li>
+                <h2>Current Date</h2>
+
+                <pre class="language-bash"><code>date</code></pre>
+            </li>
+
+
+            <!-- 88 -->
+            <li>
+                <h2>Calendar</h2>
+
+                <pre class="language-bash"><code>cal</code></pre>
+            </li>
+
+
+            <!-- 89 -->
+            <li>
+                <h2>IP Address</h2>
+
+                <pre class="language-bash"><code>ip addr</code></pre>
+
+                <pre class="language-bash"><code>ip a</code></pre>
+            </li>
+
+
+            <!-- 90 -->
+            <li>
+                <h2>Network Interfaces</h2>
+
+                <pre class="language-bash"><code>ip link</code></pre>
+            </li>
+
+
+            <!-- 91 -->
+            <li>
+                <h2>Routing Table</h2>
+
+                <pre class="language-bash"><code>ip route</code></pre>
+            </li>
+
+
+            <!-- 92 -->
+            <li>
+                <h2>Ping</h2>
+
+                <pre class="language-bash"><code>ping example.com</code></pre>
+
+                <pre class="bash"><code>ping -c 4 example.com</code></pre>
+            </li>
+
+
+            <!-- 93 -->
+            <li>
+                <h2>DNS Lookup</h2>
+
+                <pre class="language-bash"><code>nslookup example.com</code></pre>
+
+                <pre class="language-bash"><code>dig example.com</code></pre>
+            </li>
+
+
+            <!-- 94 -->
+            <li>
+                <h2>Download with wget</h2>
+
+                <pre class="language-bash"><code>wget https://example.com/file.zip</code></pre>
+            </li>
+
+
+            <!-- 95 -->
+            <li>
+                <h2>curl</h2>
+
+                <pre class="language-bash"><code>curl https://example.com</code></pre>
+            </li>
+
+
+            <!-- 96 -->
+            <li>
+                <h2>HTTP GET with curl</h2>
+
+                <pre class="language-bash"><code>curl https://api.example.com/users</code></pre>
+            </li>
+
+
+            <!-- 97 -->
+            <li>
+                <h2>HTTP POST with curl</h2>
+
+                <pre class="language-bash"><code>curl -X POST \
+-H "Content-Type: application/json" \
+-d '{"name":"Rohit"}' \
+https://api.example.com/users</code></pre>
+            </li>
+
+
+            <!-- 98 -->
+            <li>
+                <h2>Check Open Ports / Connections</h2>
+
+                <pre class="language-bash"><code>ss -tuln</code></pre>
+            </li>
+
+
+            <!-- 99 -->
+            <li>
+                <h2>Find Process Using a Port</h2>
+
+                <pre class="language-bash"><code>sudo lsof -i :3000</code></pre>
+            </li>
+
+
+            <!-- 100 -->
+            <li>
+                <h2>SSH</h2>
+
+                <pre class="language-bash"><code>ssh username@server-ip</code></pre>
+
+                <pre class="language-bash"><code>ssh rohit@192.0.2.10</code></pre>
+            </li>
+
+
+            <!-- 101 -->
+            <li>
+                <h2>SSH with Custom Port</h2>
+
+                <pre class="language-bash"><code>ssh -p 2222 username@server-ip</code></pre>
+            </li>
+
+
+            <!-- 102 -->
+            <li>
+                <h2>Create SSH Key</h2>
+
+                <pre class="language-bash"><code>ssh-keygen -t ed25519</code></pre>
+            </li>
+
+
+            <!-- 103 -->
+            <li>
+                <h2>Copy SSH Public Key</h2>
+
+                <pre class="language-bash"><code>ssh-copy-id username@server-ip</code></pre>
+            </li>
+
+
+            <!-- 104 -->
+            <li>
+                <h2>Secure Copy — scp</h2>
+
+                <pre class="language-bash"><code>scp file.txt username@server-ip:/home/username/</code></pre>
+            </li>
+
+
+            <!-- 105 -->
+            <li>
+                <h2>Copy from Remote Server</h2>
+
+                <pre class="language-bash"><code>scp username@server-ip:/home/username/file.txt .</code></pre>
+            </li>
+
+
+            <!-- 106 -->
+            <li>
+                <h2>APT Package Manager</h2>
+
+                <pre class="language-text"><code>Used by:
+
+Ubuntu
+Debian
+Linux Mint</code></pre>
+
+                <pre class="language-bash"><code>sudo apt update</code></pre>
+            </li>
+
+
+            <!-- 107 -->
+            <li>
+                <h2>Upgrade Packages</h2>
+
+                <pre class="language-bash"><code>sudo apt upgrade</code></pre>
+            </li>
+
+
+            <!-- 108 -->
+            <li>
+                <h2>Install Package</h2>
+
+                <pre class="language-bash"><code>sudo apt install git</code></pre>
+            </li>
+
+
+            <!-- 109 -->
+            <li>
+                <h2>Remove Package</h2>
+
+                <pre class="language-bash"><code>sudo apt remove git</code></pre>
+            </li>
+
+
+            <!-- 110 -->
+            <li>
+                <h2>Search Package</h2>
+
+                <pre class="language-bash"><code>apt search nginx</code></pre>
+            </li>
+
+
+            <!-- 111 -->
+            <li>
+                <h2>DNF Package Manager</h2>
+
+                <pre class="language-bash"><code>sudo dnf install git</code></pre>
+
+                <pre class="text"><code>Commonly used on Fedora and
+modern Red Hat-family systems.</code></pre>
+            </li>
+
+
+            <!-- 112 -->
+            <li>
+                <h2>Pacman Package Manager</h2>
+
+                <pre class="language-bash"><code>sudo pacman -S git</code></pre>
+
+                <pre class="language-text"><code>Used by Arch Linux.</code></pre>
+            </li>
+
+
+            <!-- 113 -->
+            <li>
+                <h2>Create tar Archive</h2>
+
+                <pre class="language-bash"><code>tar -cvf backup.tar project/</code></pre>
+            </li>
+
+
+            <!-- 114 -->
+            <li>
+                <h2>Extract tar Archive</h2>
+
+                <pre class="language-bash"><code>tar -xvf backup.tar</code></pre>
+            </li>
+
+
+            <!-- 115 -->
+            <li>
+                <h2>Create tar.gz Archive</h2>
+
+                <pre class="language-bash"><code>tar -czvf backup.tar.gz project/</code></pre>
+            </li>
+
+
+            <!-- 116 -->
+            <li>
+                <h2>Extract tar.gz</h2>
+
+                <pre class="language-bash"><code>tar -xzvf backup.tar.gz</code></pre>
+            </li>
+
+
+            <!-- 117 -->
+            <li>
+                <h2>Create ZIP File</h2>
+
+                <pre class="language-bash"><code>zip -r project.zip project/</code></pre>
+            </li>
+
+
+            <!-- 118 -->
+            <li>
+                <h2>Extract ZIP</h2>
+
+                <pre class="language-bash"><code>unzip project.zip</code></pre>
+            </li>
+
+
+            <!-- 119 -->
+            <li>
+                <h2>Environment Variables</h2>
+
+                <pre class="language-bash"><code>printenv</code></pre>
+            </li>
+
+
+            <!-- 120 -->
+            <li>
+                <h2>View PATH</h2>
+
+                <pre class="language-bash"><code>echo $PATH</code></pre>
+            </li>
+
+
+            <!-- 121 -->
+            <li>
+                <h2>Create Environment Variable</h2>
+
+                <pre class="language-bash"><code>export APP_ENV="development"</code></pre>
+
+                <pre class="language-bash"><code>echo $APP_ENV</code></pre>
+            </li>
+
+
+            <!-- 122 -->
+            <li>
+                <h2>HOME Variable</h2>
+
+                <pre class="language-bash"><code>echo $HOME</code></pre>
+            </li>
+
+
+            <!-- 123 -->
+            <li>
+                <h2>SHELL Variable</h2>
+
+                <pre class="language-bash"><code>echo $SHELL</code></pre>
+            </li>
+
+
+            <!-- 124 -->
+            <li>
+                <h2>Command Location — which</h2>
+
+                <pre class="language-bash"><code>which python</code></pre>
+
+                <pre class="language-bash"><code>which node</code></pre>
+
+                <pre class="language-bash"><code>which git</code></pre>
+            </li>
+
+
+            <!-- 125 -->
+            <li>
+                <h2>type Command</h2>
+
+                <pre class="language-bash"><code>type cd</code></pre>
+
+                <pre class="language-bash"><code>type ls</code></pre>
+            </li>
+
+
+            <!-- 126 -->
+            <li>
+                <h2>Command Chaining — &amp;&amp;</h2>
+
+                <pre class="language-bash"><code>mkdir project &amp;&amp; cd project</code></pre>
+
+                <pre class="language-text"><code>Second command runs only if
+first command succeeds.</code></pre>
+            </li>
+
+
+            <!-- 127 -->
+            <li>
+                <h2>OR Operator — ||</h2>
+
+                <pre class="language-bash"><code>cd project || echo "Folder not found"</code></pre>
+
+                <pre class="language-text"><code>Second command runs if
+first command fails.</code></pre>
+            </li>
+
+
+            <!-- 128 -->
+            <li>
+                <h2>Multiple Commands — ;</h2>
+
+                <pre class="language-bash"><code>pwd; ls; date</code></pre>
+            </li>
+
+
+            <!-- 129 -->
+            <li>
+                <h2>Run Shell Script</h2>
+
+                <pre class="language-bash"><code>bash script.sh</code></pre>
+            </li>
+
+
+            <!-- 130 -->
+            <li>
+                <h2>Executable Shell Script</h2>
+
+                <pre class="language-bash"><code>chmod +x script.sh
+
+./script.sh</code></pre>
+            </li>
+
+
+            <!-- 131 -->
+            <li>
+                <h2>Basic Bash Script</h2>
+
+                <pre class="language-bash"><code>#!/bin/bash
+
+echo "Hello Rohit"
+
+echo "Welcome to Linux"</code></pre>
+            </li>
+
+
+            <!-- 132 -->
+            <li>
+                <h2>Bash Variable</h2>
+
+                <pre class="language-bash"><code>#!/bin/bash
+
+name="Rohit"
+
+echo "Hello $name"</code></pre>
+            </li>
+
+
+            <!-- 133 -->
+            <li>
+                <h2>Bash if Statement</h2>
+
+                <pre class="language-bash"><code>#!/bin/bash
+
+age=21
+
+if [ "$age" -ge 18 ]; then
+
+    echo "Adult"
+
+else
+
+    echo "Minor"
+
+fi</code></pre>
+            </li>
+
+
+            <!-- 134 -->
+            <li>
+                <h2>Bash for Loop</h2>
+
+                <pre class="language-bash"><code>#!/bin/bash
+
+for i in 1 2 3 4 5
+
+do
+
+    echo "$i"
+
+done</code></pre>
+            </li>
+
+
+            <!-- 135 -->
+            <li>
+                <h2>Services with systemctl</h2>
+
+                <pre class="language-bash"><code>sudo systemctl status nginx</code></pre>
+
+                <pre class="language-bash"><code>sudo systemctl start nginx</code></pre>
+
+                <pre class="language-bash"><code>sudo systemctl stop nginx</code></pre>
+
+                <pre class="language-bash"><code>sudo systemctl restart nginx</code></pre>
+            </li>
+
+
+            <!-- 136 -->
+            <li>
+                <h2>Enable Service at Boot</h2>
+
+                <pre class="language-bash"><code>sudo systemctl enable nginx</code></pre>
+            </li>
+
+
+            <!-- 137 -->
+            <li>
+                <h2>Disable Service at Boot</h2>
+
+                <pre class="language-bash"><code>sudo systemctl disable nginx</code></pre>
+            </li>
+
+
+            <!-- 138 -->
+            <li>
+                <h2>View System Logs</h2>
+
+                <pre class="language-bash"><code>journalctl</code></pre>
+
+                <pre class="language-bash"><code>journalctl -u nginx</code></pre>
+            </li>
+
+
+            <!-- 139 -->
+            <li>
+                <h2>Follow Service Logs</h2>
+
+                <pre class="language-bash"><code>journalctl -u nginx -f</code></pre>
+            </li>
+
+
+            <!-- 140 -->
+            <li>
+                <h2>Crontab</h2>
+
+                <pre class="language-bash"><code>crontab -e</code></pre>
+
+                <pre class="language-bash"><code>crontab -l</code></pre>
+            </li>
+
+
+            <!-- 141 -->
+            <li>
+                <h2>Cron Format</h2>
+
+                <pre class="language-text"><code>* * * * * command
+
+│ │ │ │ │
+│ │ │ │ └── Day of Week
+│ │ │ └──── Month
+│ │ └────── Day of Month
+│ └──────── Hour
+└────────── Minute</code></pre>
+            </li>
+
+
+            <!-- 142 -->
+            <li>
+                <h2>Cron Example</h2>
+
+                <pre class="language-bash"><code>0 9 * * * /home/user/backup.sh</code></pre>
+
+                <pre class="language-text"><code>Runs every day at 9:00 AM.</code></pre>
+            </li>
+
+
+            <!-- 143 -->
+            <li>
+                <h2>Useful Terminal Shortcuts</h2>
+
+                <pre class="language-text"><code>Ctrl + C
+
+Stop current command
+
+
+Ctrl + L
+
+Clear screen
+
+
+Ctrl + D
+
+Exit shell / EOF
+
+
+Ctrl + A
+
+Move to beginning
+
+
+Ctrl + E
+
+Move to end
+
+
+Ctrl + U
+
+Delete before cursor
+
+
+Ctrl + K
+
+Delete after cursor
+
+
+Ctrl + R
+
+Search command history
+
+
+Tab
+
+Auto-complete
+
+
+Up Arrow
+
+Previous command
+
+
+Down Arrow
+
+Next command</code></pre>
+            </li>
+
+
+            <!-- 144 -->
+            <li>
+                <h2>Previous Command</h2>
+
+                <pre class="language-bash"><code>!!</code></pre>
+
+                <pre class="language-bash"><code>sudo !!</code></pre>
+
+                <pre class="language-text"><code>!! repeats the previous command.</code></pre>
+            </li>
+
+
+            <!-- 145 -->
+            <li>
+                <h2>Hidden Files</h2>
+
+                <pre class="language-text"><code>Linux hidden files start with:
+
+.
+
+Examples:
+
+.git
+
+.env
+
+.bashrc
+
+.profile
+
+.ssh</code></pre>
+
+                <pre class="language-bash"><code>ls -a</code></pre>
+            </li>
+
+
+            <!-- 146 -->
+            <li>
+                <h2>Important Linux Directories</h2>
+
+                <pre class="language-text"><code>/       Root
+
+/home   User home directories
+
+/root   Root user's home
+
+/etc    Configuration files
+
+/bin    Essential commands
+
+/usr    User applications/data
+
+/var    Variable data/logs
+
+/tmp    Temporary files
+
+/dev    Device files
+
+/proc   Process/kernel information
+
+/boot   Boot files
+
+/opt    Optional software
+
+/mnt    Mount points</code></pre>
+            </li>
+
+
+            <!-- 147 -->
+            <li>
+                <h2>Important Configuration Files</h2>
+
+                <pre class="language-text"><code>/etc/passwd
+
+User information
+
+
+/etc/group
+
+Group information
+
+
+/etc/hosts
+
+Local hostname mapping
+
+
+/etc/hostname
+
+System hostname
+
+
+/etc/os-release
+
+Linux distribution information
+
+
+~/.bashrc
+
+Bash user configuration
+
+
+~/.ssh/
+
+SSH configuration and keys</code></pre>
+            </li>
+
+
+            <!-- 148 -->
+            <li>
+                <h2>Developer Commands</h2>
+
+                <pre class="language-bash"><code>git --version
+
+node --version
+
+npm --version
+
+python --version
+
+java -version
+
+gcc --version
+
+g++ --version</code></pre>
+            </li>
+
+
+            <!-- 149 -->
+            <li>
+                <h2>Compile C Program</h2>
+
+                <pre class="language-bash"><code>gcc main.c -o main
+
+./main</code></pre>
+            </li>
+
+
+            <!-- 150 -->
+            <li>
+                <h2>Compile C++ Program</h2>
+
+                <pre class="language-bash"><code>g++ main.cpp -o main
+
+./main</code></pre>
+            </li>
+
+
+            <!-- 151 -->
+            <li>
+                <h2>Run Python Program</h2>
+
+                <pre class="language-bash"><code>python3 app.py</code></pre>
+            </li>
+
+
+            <!-- 152 -->
+            <li>
+                <h2>Run Java Program</h2>
+
+                <pre class="language-bash"><code>javac Main.java
+
+java Main</code></pre>
+            </li>
+
+
+            <!-- 153 -->
+            <li>
+                <h2>Run Node.js Program</h2>
+
+                <pre class="language-bash"><code>node app.js</code></pre>
+            </li>
+
+
+            <!-- 154 -->
+            <li>
+                <h2>Common Server Debugging Commands</h2>
+
+                <pre class="language-bash"><code># Check processes
+ps aux
+
+# Search process
+ps aux | grep node
+
+# Check port
+sudo lsof -i :3000
+
+# Check listening ports
+ss -tuln
+
+# Check memory
+free -h
+
+# Check disk
+df -h
+
+# Check service
+systemctl status nginx
+
+# Watch logs
+tail -f app.log</code></pre>
+            </li>
+
+
+            <!-- 155 -->
+            <li>
+                <h2>Linux Command Quick Revision</h2>
+
+                <pre class="language-text"><code>pwd
+→ Current directory
+
+ls
+→ List files
+
+cd
+→ Change directory
+
+mkdir
+→ Create directory
+
+touch
+→ Create file
+
+cat
+→ View file
+
+cp
+→ Copy
+
+mv
+→ Move / Rename
+
+rm
+→ Delete
+
+find
+→ Find files
+
+grep
+→ Search text
+
+chmod
+→ Change permissions
+
+chown
+→ Change owner
+
+ps
+→ Processes
+
+top
+→ Live processes
+
+kill
+→ Stop process
+
+df
+→ Disk space
+
+du
+→ File/directory size
+
+free
+→ Memory
+
+ip
+→ Network configuration
+
+ping
+→ Test connectivity
+
+curl
+→ HTTP requests
+
+ssh
+→ Remote login
+
+scp
+→ Secure file copy
+
+tar
+→ Archive files
+
+systemctl
+→ Manage services</code></pre>
+            </li>
+
+
+            <!-- 156 -->
+            <li>
+                <h2>Linux Learning Roadmap</h2>
+
+                <pre class="language-text"><code>1. Linux Introduction
+
+2. Terminal Basics
+
+3. Command Syntax
+
+4. pwd
+
+5. ls
+
+6. cd
+
+7. Paths
+
+8. mkdir
+
+9. touch
+
+10. cat
+
+11. less / more
+
+12. head / tail
+
+13. cp
+
+14. mv
+
+15. rm
+
+16. Wildcards
+
+17. find
+
+18. grep
+
+19. sort
+
+20. uniq
+
+21. wc
+
+22. Pipes
+
+23. Redirection
+
+24. Environment Variables
+
+25. Users
+
+26. Groups
+
+27. Permissions
+
+28. chmod
+
+29. chown
+
+30. Processes
+
+31. ps
+
+32. top
+
+33. kill
+
+34. Jobs
+
+35. System Information
+
+36. Memory
+
+37. Disk
+
+38. Networking
+
+39. IP Commands
+
+40. DNS
+
+41. curl
+
+42. wget
+
+43. SSH
+
+44. SCP
+
+45. Package Management
+
+46. Compression
+
+47. Bash Scripting
+
+48. Services
+
+49. systemctl
+
+50. Logs
+
+51. Cron Jobs
+
+52. Server Administration
+
+53. Linux for Developers
+
+54. Linux for DevOps
+
+55. Linux Interview Commands</code></pre>
+            </li>
+
+
+            <!-- 157 -->
+            <li>
+                <h2>20 Must-Know Linux Commands</h2>
+
+                <pre class="language-bash"><code>pwd
+
+ls
+
+cd
+
+mkdir
+
+touch
+
+cat
+
+cp
+
+mv
+
+rm
+
+find
+
+grep
+
+chmod
+
+ps
+
+kill
+
+top
+
+df
+
+du
+
+curl
+
+ssh
+
+sudo</code></pre>
+            </li>
+
+
+            <!-- 158 -->
+            <li>
+                <h2>Final Linux Revision</h2>
+
+                <pre class="language-text"><code>Navigation
+↓
+pwd
+ls
+cd
+
+
+Files
+↓
+touch
+cat
+cp
+mv
+rm
+
+
+Search
+↓
+find
+grep
+
+
+Permissions
+↓
+chmod
+chown
+
+
+Processes
+↓
+ps
+top
+kill
+
+
+System
+↓
+uname
+free
+df
+du
+
+
+Networking
+↓
+ip
+ping
+curl
+ss
+
+
+Remote Server
+↓
+ssh
+scp
+
+
+Packages
+↓
+apt
+dnf
+pacman
+
+
+Services
+↓
+systemctl
+journalctl
+
+
+Automation
+↓
+bash
+cron</code></pre>
+            </li>
+
+        </ol>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <p>
+            © 2026 CodeWithRohit |
+            Linux Commands Cheat Sheet
+        </p>
+
+    </footer>
+
+
+    <!-- Prism JS -->
+    <script src="../prism/prism.js"></script>
+
+    <!-- Common JS -->
+    <script src="../cheatsheet.js"></script>
+
+</body>
+
+</html>

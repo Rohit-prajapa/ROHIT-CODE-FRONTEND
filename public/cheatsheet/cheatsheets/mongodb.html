@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Complete MongoDB Cheat Sheet by CodeWithRohit"
+    >
+
+    <title>MongoDB Cheat Sheet | CodeWithRohit</title>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="../cheatsheet.css">
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="../prism/prism.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="cheat-navbar">
+
+        <a href="../index.html" class="brand">
+            &lt;/&gt; CodeWithRohit
+        </a>
+
+        <div class="cheat-title">
+            MongoDB Cheat Sheet
+        </div>
+
+        <a href="../index.html" class="home-btn">
+            ← Home
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="cheat-hero">
+
+        <h1>MongoDB Cheat Sheet</h1>
+
+        <p>
+            Complete MongoDB quick reference covering databases,
+            collections, CRUD operations, operators, arrays,
+            indexes, aggregation and Mongoose.
+        </p>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <ol>
+
+            <!-- 1 -->
+            <li>
+                <h2>Check MongoDB Version</h2>
+
+                <pre class="language-bash"><code>mongod --version</code></pre>
+            </li>
+
+
+            <!-- 2 -->
+            <li>
+                <h2>Start MongoDB Shell</h2>
+
+                <pre class="language-bash"><code>mongosh</code></pre>
+            </li>
+
+
+            <!-- 3 -->
+            <li>
+                <h2>Show Databases</h2>
+
+                <pre class="language-javascript"><code>show dbs</code></pre>
+            </li>
+
+
+            <!-- 4 -->
+            <li>
+                <h2>Create / Switch Database</h2>
+
+                <pre class="language-javascript"><code>use college</code></pre>
+            </li>
+
+
+            <!-- 5 -->
+            <li>
+                <h2>Current Database</h2>
+
+                <pre class="language-javascript"><code>db</code></pre>
+            </li>
+
+
+            <!-- 6 -->
+            <li>
+                <h2>Delete Database</h2>
+
+                <pre class="language-javascript"><code>db.dropDatabase()</code></pre>
+            </li>
+
+
+            <!-- 7 -->
+            <li>
+                <h2>Create Collection</h2>
+
+                <pre class="language-javascript"><code>db.createCollection("students")</code></pre>
+            </li>
+
+
+            <!-- 8 -->
+            <li>
+                <h2>Show Collections</h2>
+
+                <pre class="language-javascript"><code>show collections</code></pre>
+            </li>
+
+
+            <!-- 9 -->
+            <li>
+                <h2>Delete Collection</h2>
+
+                <pre class="language-javascript"><code>db.students.drop()</code></pre>
+            </li>
+
+
+            <!-- 10 -->
+            <li>
+                <h2>Insert One Document</h2>
+
+                <pre class="language-javascript"><code>db.students.insertOne({
+    name: "Rohit",
+    age: 21,
+    course: "B.Tech",
+    city: "Pune"
+})</code></pre>
+            </li>
+
+
+            <!-- 11 -->
+            <li>
+                <h2>Insert Multiple Documents</h2>
+
+                <pre class="language-javascript"><code>db.students.insertMany([
+    {
+        name: "Rohit",
+        age: 21,
+        marks: 90
+    },
+    {
+        name: "Aman",
+        age: 22,
+        marks: 85
+    },
+    {
+        name: "Priya",
+        age: 20,
+        marks: 95
+    }
+])</code></pre>
+            </li>
+
+
+            <!-- 12 -->
+            <li>
+                <h2>Find All Documents</h2>
+
+                <pre class="language-javascript"><code>db.students.find()</code></pre>
+            </li>
+
+
+            <!-- 13 -->
+            <li>
+                <h2>Find One Document</h2>
+
+                <pre class="language-javascript"><code>db.students.findOne()</code></pre>
+            </li>
+
+
+            <!-- 14 -->
+            <li>
+                <h2>Find with Condition</h2>
+
+                <pre class="language-javascript"><code>db.students.find({
+    age: 21
+})</code></pre>
+            </li>
+
+
+            <!-- 15 -->
+            <li>
+                <h2>Find One with Condition</h2>
+
+                <pre class="language-javascript"><code>db.students.findOne({
+    name: "Rohit"
+})</code></pre>
+            </li>
+
+
+            <!-- 16 -->
+            <li>
+                <h2>Projection</h2>
+
+                <pre class="language-javascript"><code>db.students.find(
+    {},
+    {
+        name: 1,
+        marks: 1,
+        _id: 0
+    }
+)</code></pre>
+            </li>
+
+
+            <!-- 17 -->
+            <li>
+                <h2>Greater Than</h2>
+
+                <pre class="language-javascript"><code>db.students.find({
+    marks: {
+        $gt: 80
+    }
+})</code></pre>
+            </li>
+
+
+            <!-- 18 -->
+            <li>
+                <h2>Greater Than or Equal</h2>
+
+                <pre class="language-javascript"><code>db.students.find({
+    marks: {
+        $gte: 80
+    }
+})</code></pre>
+            </li>
+
+
+            <!-- 19 -->
+            <li>
+                <h2>Less Than</h2>
+
+                <pre class="language-javascript"><code>db.students.find({
+    age: {
+        $lt: 22
+    }
+})</code></pre>
+            </li>
+
+
+            <!-- 20 -->
+            <li>
+                <h2>Less Than or Equal</h2>
+
+                <pre class="language-javascript"><code>db.students.find({
+    age: {
+        $lte: 21
+    }
+})</code></pre>
+            </li>
+
+
+            <!-- 21 -->
+            <li>
+                <h2>Not Equal</h2>
+
+                <pre class="language-javascript"><code>db.students.find({
+    city: {
+        $ne: "Mumbai"
+    }
+})</code></pre>
+            </li>
+
+
+            <!-- 22 -->
+            <li>
+                <h2>$in Operator</h2>
+
+                <pre class="language-javascript"><code>db.students.find({
+    age: {
+        $in: [20, 21, 22]
+    }
+})</code></pre>
+            </li>
+
+
+            <!-- 23 -->
+            <li>
+                <h2>$nin Operator</h2>
+
+                <pre class="language-javascript"><code>db.students.find({
+    age: {
+        $nin: [18, 19]
+    }
+})</code></pre>
+            </li>
+
+
+            <!-- 24 -->
+            <li>
+                <h2>$and Operator</h2>
+
+                <pre class="language-javascript"><code>db.students.find({
+    $and: [
+        {
+            age: {
+                $gte: 18
+            }
+        },
+        {
+            marks: {
+                $gte: 80
+            }
+        }
+    ]
+})</code></pre>
+            </li>
+
+
+            <!-- 25 -->
+            <li>
+                <h2>$or Operator</h2>
+
+                <pre class="language-javascript"><code>db.students.find({
+    $or: [
+        {
+            city: "Pune"
+        },
+        {
+            marks: {
+                $gt: 90
+            }
+        }
+    ]
+})</code></pre>
+            </li>
+
+
+            <!-- 26 -->
+            <li>
+                <h2>$not Operator</h2>
+
+                <pre class="language-javascript"><code>db.students.find({
+    age: {
+        $not: {
+            $gt: 21
+        }
+    }
+})</code></pre>
+            </li>
+
+
+            <!-- 27 -->
+            <li>
+                <h2>Check Field Exists</h2>
+
+                <pre class="language-javascript"><code>db.students.find({
+    email: {
+        $exists: true
+    }
+})</code></pre>
+            </li>
+
+
+            <!-- 28 -->
+            <li>
+                <h2>Regular Expression</h2>
+
+                <pre class="language-javascript"><code>db.students.find({
+    name: {
+        $regex: "^R",
+        $options: "i"
+    }
+})</code></pre>
+            </li>
+
+
+            <!-- 29 -->
+            <li>
+                <h2>Update One Document</h2>
+
+                <pre class="language-javascript"><code>db.students.updateOne(
+    {
+        name: "Rohit"
+    },
+    {
+        $set: {
+            marks: 95
+        }
+    }
+)</code></pre>
+            </li>
+
+
+            <!-- 30 -->
+            <li>
+                <h2>Update Multiple Documents</h2>
+
+                <pre class="language-javascript"><code>db.students.updateMany(
+    {
+        city: "Pune"
+    },
+    {
+        $set: {
+            state: "Maharashtra"
+        }
+    }
+)</code></pre>
+            </li>
+
+
+            <!-- 31 -->
+            <li>
+                <h2>$unset Operator</h2>
+
+                <pre class="language-javascript"><code>db.students.updateOne(
+    {
+        name: "Rohit"
+    },
+    {
+        $unset: {
+            city: ""
+        }
+    }
+)</code></pre>
+            </li>
+
+
+            <!-- 32 -->
+            <li>
+                <h2>$inc Operator</h2>
+
+                <pre class="language-javascript"><code>db.students.updateOne(
+    {
+        name: "Rohit"
+    },
+    {
+        $inc: {
+            marks: 5
+        }
+    }
+)</code></pre>
+            </li>
+
+
+            <!-- 33 -->
+            <li>
+                <h2>$mul Operator</h2>
+
+                <pre class="language-javascript"><code>db.products.updateOne(
+    {
+        name: "Laptop"
+    },
+    {
+        $mul: {
+            price: 1.1
+        }
+    }
+)</code></pre>
+            </li>
+
+
+            <!-- 34 -->
+            <li>
+                <h2>Rename Field</h2>
+
+                <pre class="language-javascript"><code>db.students.updateMany(
+    {},
+    {
+        $rename: {
+            "course": "degree"
+        }
+    }
+)</code></pre>
+            </li>
+
+
+            <!-- 35 -->
+            <li>
+                <h2>Upsert</h2>
+
+                <pre class="language-javascript"><code>db.students.updateOne(
+    {
+        name: "Rahul"
+    },
+    {
+        $set: {
+            age: 22
+        }
+    },
+    {
+        upsert: true
+    }
+)</code></pre>
+            </li>
+
+
+            <!-- 36 -->
+            <li>
+                <h2>Delete One Document</h2>
+
+                <pre class="language-javascript"><code>db.students.deleteOne({
+    name: "Rohit"
+})</code></pre>
+            </li>
+
+
+            <!-- 37 -->
+            <li>
+                <h2>Delete Multiple Documents</h2>
+
+                <pre class="language-javascript"><code>db.students.deleteMany({
+    marks: {
+        $lt: 40
+    }
+})</code></pre>
+            </li>
+
+
+            <!-- 38 -->
+            <li>
+                <h2>Delete All Documents</h2>
+
+                <pre class="language-javascript"><code>db.students.deleteMany({})</code></pre>
+            </li>
+
+
+            <!-- 39 -->
+            <li>
+                <h2>Sort Ascending</h2>
+
+                <pre class="language-javascript"><code>db.students.find()
+    .sort({
+        marks: 1
+    })</code></pre>
+            </li>
+
+
+            <!-- 40 -->
+            <li>
+                <h2>Sort Descending</h2>
+
+                <pre class="language-javascript"><code>db.students.find()
+    .sort({
+        marks: -1
+    })</code></pre>
+            </li>
+
+
+            <!-- 41 -->
+            <li>
+                <h2>Limit Results</h2>
+
+                <pre class="language-javascript"><code>db.students.find()
+    .limit(5)</code></pre>
+            </li>
+
+
+            <!-- 42 -->
+            <li>
+                <h2>Skip Results</h2>
+
+                <pre class="language-javascript"><code>db.students.find()
+    .skip(5)</code></pre>
+            </li>
+
+
+            <!-- 43 -->
+            <li>
+                <h2>Pagination</h2>
+
+                <pre class="language-javascript"><code>db.students.find()
+    .skip(10)
+    .limit(10)</code></pre>
+            </li>
+
+
+            <!-- 44 -->
+            <li>
+                <h2>Count Documents</h2>
+
+                <pre class="language-javascript"><code>db.students.countDocuments()</code></pre>
+            </li>
+
+
+            <!-- 45 -->
+            <li>
+                <h2>Count with Condition</h2>
+
+                <pre class="language-javascript"><code>db.students.countDocuments({
+    marks: {
+        $gte: 80
+    }
+})</code></pre>
+            </li>
+
+
+            <!-- 46 -->
+            <li>
+                <h2>Array Document</h2>
+
+                <pre class="language-javascript"><code>db.students.insertOne({
+    name: "Rohit",
+
+    skills: [
+        "HTML",
+        "CSS",
+        "JavaScript"
+    ]
+})</code></pre>
+            </li>
+
+
+            <!-- 47 -->
+            <li>
+                <h2>Find Value in Array</h2>
+
+                <pre class="language-javascript"><code>db.students.find({
+    skills: "JavaScript"
+})</code></pre>
+            </li>
+
+
+            <!-- 48 -->
+            <li>
+                <h2>$all Operator</h2>
+
+                <pre class="language-javascript"><code>db.students.find({
+    skills: {
+        $all: [
+            "HTML",
+            "JavaScript"
+        ]
+    }
+})</code></pre>
+            </li>
+
+
+            <!-- 49 -->
+            <li>
+                <h2>$size Operator</h2>
+
+                <pre class="language-javascript"><code>db.students.find({
+    skills: {
+        $size: 3
+    }
+})</code></pre>
+            </li>
+
+
+            <!-- 50 -->
+            <li>
+                <h2>Add Value to Array</h2>
+
+                <pre class="language-javascript"><code>db.students.updateOne(
+    {
+        name: "Rohit"
+    },
+    {
+        $push: {
+            skills: "React"
+        }
+    }
+)</code></pre>
+            </li>
+
+
+            <!-- 51 -->
+            <li>
+                <h2>$addToSet</h2>
+
+                <pre class="language-javascript"><code>db.students.updateOne(
+    {
+        name: "Rohit"
+    },
+    {
+        $addToSet: {
+            skills: "React"
+        }
+    }
+)</code></pre>
+            </li>
+
+
+            <!-- 52 -->
+            <li>
+                <h2>Remove Value from Array</h2>
+
+                <pre class="language-javascript"><code>db.students.updateOne(
+    {
+        name: "Rohit"
+    },
+    {
+        $pull: {
+            skills: "CSS"
+        }
+    }
+)</code></pre>
+            </li>
+
+
+            <!-- 53 -->
+            <li>
+                <h2>Nested Document</h2>
+
+                <pre class="language-javascript"><code>db.students.insertOne({
+    name: "Rohit",
+
+    address: {
+        city: "Pune",
+        state: "Maharashtra",
+        country: "India"
+    }
+})</code></pre>
+            </li>
+
+
+            <!-- 54 -->
+            <li>
+                <h2>Query Nested Field</h2>
+
+                <pre class="language-javascript"><code>db.students.find({
+    "address.city": "Pune"
+})</code></pre>
+            </li>
+
+
+            <!-- 55 -->
+            <li>
+                <h2>Update Nested Field</h2>
+
+                <pre class="language-javascript"><code>db.students.updateOne(
+    {
+        name: "Rohit"
+    },
+    {
+        $set: {
+            "address.city":
+                "Mumbai"
+        }
+    }
+)</code></pre>
+            </li>
+
+
+            <!-- 56 -->
+            <li>
+                <h2>Create Index</h2>
+
+                <pre class="language-javascript"><code>db.students.createIndex({
+    name: 1
+})</code></pre>
+            </li>
+
+
+            <!-- 57 -->
+            <li>
+                <h2>Create Unique Index</h2>
+
+                <pre class="language-javascript"><code>db.users.createIndex(
+    {
+        email: 1
+    },
+    {
+        unique: true
+    }
+)</code></pre>
+            </li>
+
+
+            <!-- 58 -->
+            <li>
+                <h2>Show Indexes</h2>
+
+                <pre class="language-javascript"><code>db.students.getIndexes()</code></pre>
+            </li>
+
+
+            <!-- 59 -->
+            <li>
+                <h2>Drop Index</h2>
+
+                <pre class="language-javascript"><code>db.students.dropIndex(
+    "name_1"
+)</code></pre>
+            </li>
+
+
+            <!-- 60 -->
+            <li>
+                <h2>Aggregation Pipeline</h2>
+
+                <pre class="language-javascript"><code>db.students.aggregate([
+    {
+        $match: {
+            marks: {
+                $gte: 80
+            }
+        }
+    }
+])</code></pre>
+            </li>
+
+
+            <!-- 61 -->
+            <li>
+                <h2>$group</h2>
+
+                <pre class="language-javascript"><code>db.students.aggregate([
+    {
+        $group: {
+            _id: "$city",
+
+            totalStudents: {
+                $sum: 1
+            }
+        }
+    }
+])</code></pre>
+            </li>
+
+
+            <!-- 62 -->
+            <li>
+                <h2>Average with Aggregation</h2>
+
+                <pre class="language-javascript"><code>db.students.aggregate([
+    {
+        $group: {
+            _id: "$city",
+
+            averageMarks: {
+                $avg: "$marks"
+            }
+        }
+    }
+])</code></pre>
+            </li>
+
+
+            <!-- 63 -->
+            <li>
+                <h2>Maximum Value</h2>
+
+                <pre class="language-javascript"><code>db.students.aggregate([
+    {
+        $group: {
+            _id: null,
+
+            highestMarks: {
+                $max: "$marks"
+            }
+        }
+    }
+])</code></pre>
+            </li>
+
+
+            <!-- 64 -->
+            <li>
+                <h2>Minimum Value</h2>
+
+                <pre class="language-javascript"><code>db.students.aggregate([
+    {
+        $group: {
+            _id: null,
+
+            lowestMarks: {
+                $min: "$marks"
+            }
+        }
+    }
+])</code></pre>
+            </li>
+
+
+            <!-- 65 -->
+            <li>
+                <h2>$project</h2>
+
+                <pre class="language-javascript"><code>db.students.aggregate([
+    {
+        $project: {
+            name: 1,
+            marks: 1,
+            _id: 0
+        }
+    }
+])</code></pre>
+            </li>
+
+
+            <!-- 66 -->
+            <li>
+                <h2>$sort in Aggregation</h2>
+
+                <pre class="language-javascript"><code>db.students.aggregate([
+    {
+        $sort: {
+            marks: -1
+        }
+    }
+])</code></pre>
+            </li>
+
+
+            <!-- 67 -->
+            <li>
+                <h2>$limit in Aggregation</h2>
+
+                <pre class="language-javascript"><code>db.students.aggregate([
+    {
+        $sort: {
+            marks: -1
+        }
+    },
+    {
+        $limit: 5
+    }
+])</code></pre>
+            </li>
+
+
+            <!-- 68 -->
+            <li>
+                <h2>$unwind</h2>
+
+                <pre class="language-javascript"><code>db.students.aggregate([
+    {
+        $unwind: "$skills"
+    }
+])</code></pre>
+            </li>
+
+
+            <!-- 69 -->
+            <li>
+                <h2>$lookup — Join Collections</h2>
+
+                <pre class="language-javascript"><code>db.students.aggregate([
+    {
+        $lookup: {
+            from: "courses",
+
+            localField:
+                "courseId",
+
+            foreignField:
+                "_id",
+
+            as:
+                "courseDetails"
+        }
+    }
+])</code></pre>
+            </li>
+
+
+            <!-- 70 -->
+            <li>
+                <h2>Aggregation Example</h2>
+
+                <pre class="language-javascript"><code>db.students.aggregate([
+    {
+        $match: {
+            marks: {
+                $gte: 60
+            }
+        }
+    },
+
+    {
+        $group: {
+            _id: "$city",
+
+            averageMarks: {
+                $avg: "$marks"
+            },
+
+            totalStudents: {
+                $sum: 1
+            }
+        }
+    },
+
+    {
+        $sort: {
+            averageMarks: -1
+        }
+    }
+])</code></pre>
+            </li>
+
+
+            <!-- 71 -->
+            <li>
+                <h2>MongoDB ObjectId</h2>
+
+                <pre class="language-javascript"><code>ObjectId(
+    "507f1f77bcf86cd799439011"
+)</code></pre>
+            </li>
+
+
+            <!-- 72 -->
+            <li>
+                <h2>Find by ObjectId</h2>
+
+                <pre class="language-javascript"><code>db.students.findOne({
+    _id: ObjectId(
+        "507f1f77bcf86cd799439011"
+    )
+})</code></pre>
+            </li>
+
+
+            <!-- 73 -->
+            <li>
+                <h2>MongoDB Common Data Types</h2>
+
+                <pre class="language-text"><code>String
+
+Number
+
+Boolean
+
+Array
+
+Object
+
+ObjectId
+
+Date
+
+Null
+
+Decimal128
+
+Binary Data
+
+Regular Expression</code></pre>
+            </li>
+
+
+            <!-- 74 -->
+            <li>
+                <h2>SQL vs MongoDB</h2>
+
+                <pre class="language-text"><code>SQL             MongoDB
+
+Database        Database
+
+Table           Collection
+
+Row             Document
+
+Column          Field
+
+Primary Key     _id
+
+JOIN            $lookup</code></pre>
+            </li>
+
+
+            <!-- 75 -->
+            <li>
+                <h2>Install Mongoose</h2>
+
+                <pre class="language-bash"><code>npm install mongoose</code></pre>
+            </li>
+
+
+            <!-- 76 -->
+            <li>
+                <h2>Connect MongoDB with Mongoose</h2>
+
+                <pre class="language-javascript"><code>const mongoose =
+    require("mongoose");
+
+
+async function connectDB() {
+
+    try {
+
+        await mongoose.connect(
+            process.env.MONGO_URI
+        );
+
+        console.log(
+            "MongoDB Connected"
+        );
+
+    } catch (error) {
+
+        console.error(
+            error.message
+        );
+
+        process.exit(1);
+    }
+}
+
+
+module.exports = connectDB;</code></pre>
+            </li>
+
+
+            <!-- 77 -->
+            <li>
+                <h2>Mongoose Schema</h2>
+
+                <pre class="language-javascript"><code>const mongoose =
+    require("mongoose");
+
+
+const studentSchema =
+    new mongoose.Schema({
+
+        name: {
+            type: String,
+            required: true
+        },
+
+        email: {
+            type: String,
+            required: true,
+            unique: true
+        },
+
+        age: {
+            type: Number
+        },
+
+        skills: [
+            String
+        ]
+
+    }, {
+        timestamps: true
+    });</code></pre>
+            </li>
+
+
+            <!-- 78 -->
+            <li>
+                <h2>Mongoose Model</h2>
+
+                <pre class="language-javascript"><code>const Student =
+    mongoose.model(
+        "Student",
+        studentSchema
+    );
+
+
+module.exports = Student;</code></pre>
+            </li>
+
+
+            <!-- 79 -->
+            <li>
+                <h2>Create Document with Mongoose</h2>
+
+                <pre class="language-javascript"><code>const student =
+    await Student.create({
+
+        name: "Rohit",
+
+        email:
+            "rohit@example.com",
+
+        age: 21
+    });</code></pre>
+            </li>
+
+
+            <!-- 80 -->
+            <li>
+                <h2>Mongoose find()</h2>
+
+                <pre class="language-javascript"><code>const students =
+    await Student.find();</code></pre>
+            </li>
+
+
+            <!-- 81 -->
+            <li>
+                <h2>Mongoose findOne()</h2>
+
+                <pre class="language-javascript"><code>const student =
+    await Student.findOne({
+        email:
+            "rohit@example.com"
+    });</code></pre>
+            </li>
+
+
+            <!-- 82 -->
+            <li>
+                <h2>Mongoose findById()</h2>
+
+                <pre class="language-javascript"><code>const student =
+    await Student.findById(
+        req.params.id
+    );</code></pre>
+            </li>
+
+
+            <!-- 83 -->
+            <li>
+                <h2>Mongoose Update</h2>
+
+                <pre class="language-javascript"><code>const student =
+    await Student.findByIdAndUpdate(
+
+        req.params.id,
+
+        {
+            marks: 95
+        },
+
+        {
+            new: true,
+            runValidators: true
+        }
+    );</code></pre>
+            </li>
+
+
+            <!-- 84 -->
+            <li>
+                <h2>Mongoose Delete</h2>
+
+                <pre class="language-javascript"><code>const student =
+    await Student.findByIdAndDelete(
+        req.params.id
+    );</code></pre>
+            </li>
+
+
+            <!-- 85 -->
+            <li>
+                <h2>Mongoose Query Operators</h2>
+
+                <pre class="language-javascript"><code>const students =
+    await Student.find({
+
+        age: {
+            $gte: 18,
+            $lte: 25
+        },
+
+        marks: {
+            $gt: 70
+        }
+
+    });</code></pre>
+            </li>
+
+
+            <!-- 86 -->
+            <li>
+                <h2>Mongoose Sort and Limit</h2>
+
+                <pre class="language-javascript"><code>const students =
+    await Student
+        .find()
+        .sort({
+            marks: -1
+        })
+        .limit(10);</code></pre>
+            </li>
+
+
+            <!-- 87 -->
+            <li>
+                <h2>Mongoose Pagination</h2>
+
+                <pre class="language-javascript"><code>const page = 2;
+const limit = 10;
+
+const students =
+    await Student
+        .find()
+        .skip(
+            (page - 1)
+            * limit
+        )
+        .limit(limit);</code></pre>
+            </li>
+
+
+            <!-- 88 -->
+            <li>
+                <h2>Mongoose Reference</h2>
+
+                <pre class="language-javascript"><code>const courseSchema =
+    new mongoose.Schema({
+
+        name: String,
+
+        teacher: {
+            type:
+                mongoose.Schema.Types.ObjectId,
+
+            ref: "Teacher"
+        }
+
+    });</code></pre>
+            </li>
+
+
+            <!-- 89 -->
+            <li>
+                <h2>Mongoose populate()</h2>
+
+                <pre class="language-javascript"><code>const courses =
+    await Course
+        .find()
+        .populate(
+            "teacher"
+        );</code></pre>
+            </li>
+
+
+            <!-- 90 -->
+            <li>
+                <h2>MongoDB CRUD Quick Reference</h2>
+
+                <pre class="language-javascript"><code>// CREATE
+
+db.students.insertOne({})
+
+db.students.insertMany([])
+
+
+// READ
+
+db.students.find()
+
+db.students.findOne({})
+
+
+// UPDATE
+
+db.students.updateOne(
+    {},
+    {
+        $set: {}
+    }
+)
+
+db.students.updateMany(
+    {},
+    {
+        $set: {}
+    }
+)
+
+
+// DELETE
+
+db.students.deleteOne({})
+
+db.students.deleteMany({})</code></pre>
+            </li>
+
+
+            <!-- 91 -->
+            <li>
+                <h2>Common MongoDB Operators</h2>
+
+                <pre class="language-text"><code>Comparison
+----------------
+$eq
+$ne
+$gt
+$gte
+$lt
+$lte
+$in
+$nin
+
+
+Logical
+----------------
+$and
+$or
+$not
+$nor
+
+
+Update
+----------------
+$set
+$unset
+$inc
+$mul
+$rename
+
+
+Array
+----------------
+$push
+$pull
+$addToSet
+$pop
+$all
+$size
+
+
+Aggregation
+----------------
+$match
+$group
+$project
+$sort
+$limit
+$skip
+$unwind
+$lookup</code></pre>
+            </li>
+
+
+            <!-- 92 -->
+            <li>
+                <h2>MongoDB Learning Roadmap</h2>
+
+                <pre class="language-text"><code>1. NoSQL Basics
+
+2. MongoDB Installation
+
+3. MongoDB Shell
+
+4. Databases
+
+5. Collections
+
+6. Documents
+
+7. BSON
+
+8. Data Types
+
+9. insertOne()
+
+10. insertMany()
+
+11. find()
+
+12. findOne()
+
+13. Projection
+
+14. Comparison Operators
+
+15. Logical Operators
+
+16. Regular Expressions
+
+17. updateOne()
+
+18. updateMany()
+
+19. Update Operators
+
+20. deleteOne()
+
+21. deleteMany()
+
+22. Sorting
+
+23. Limit
+
+24. Skip
+
+25. Pagination
+
+26. Arrays
+
+27. Nested Documents
+
+28. ObjectId
+
+29. Indexes
+
+30. Aggregation Pipeline
+
+31. $match
+
+32. $group
+
+33. $project
+
+34. $sort
+
+35. $unwind
+
+36. $lookup
+
+37. Data Modeling
+
+38. Relationships
+
+39. MongoDB Atlas
+
+40. Mongoose
+
+41. Schemas
+
+42. Models
+
+43. Validation
+
+44. populate()
+
+45. MongoDB + Node.js
+
+46. MERN Stack
+
+47. MongoDB Projects</code></pre>
+            </li>
+
+        </ol>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <p>
+            © 2026 CodeWithRohit |
+            MongoDB Cheat Sheet
+        </p>
+
+    </footer>
+
+
+    <!-- Prism JS -->
+    <script src="../prism/prism.js"></script>
+
+    <!-- Common JS -->
+    <script src="../cheatsheet.js"></script>
+
+</body>
+
+</html>

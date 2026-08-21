@@ -1,0 +1,3413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Complete Operating System Cheat Sheet by CodeWithRohit"
+    >
+
+    <title>Operating System Cheat Sheet | CodeWithRohit</title>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="../cheatsheet.css">
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="../prism/prism.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="cheat-navbar">
+
+        <a href="../index.html" class="brand">
+            &lt;/&gt; CodeWithRohit
+        </a>
+
+        <div class="cheat-title">
+            Operating System Cheat Sheet
+        </div>
+
+        <a href="../index.html" class="home-btn">
+            ← Home
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="cheat-hero">
+
+        <h1>Operating System Complete Cheat Sheet</h1>
+
+        <p>
+            Complete Operating System quick reference covering processes,
+            threads, CPU scheduling, synchronization, deadlocks, memory
+            management, virtual memory, file systems and disk scheduling.
+        </p>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <ol>
+
+            <!-- 1 -->
+            <li>
+                <h2>What is an Operating System?</h2>
+
+                <pre class="language-text"><code>Operating System (OS)
+
+An Operating System is system
+software that manages computer
+hardware and software resources.
+
+It acts as an interface between:
+
+User / Applications
+
+        ↓
+
+Operating System
+
+        ↓
+
+Hardware</code></pre>
+            </li>
+
+
+            <!-- 2 -->
+            <li>
+                <h2>Examples of Operating Systems</h2>
+
+                <pre class="language-text"><code>Windows
+
+Linux
+
+macOS
+
+Android
+
+iOS
+
+ChromeOS
+
+Unix</code></pre>
+            </li>
+
+
+            <!-- 3 -->
+            <li>
+                <h2>Main Functions of OS</h2>
+
+                <pre class="language-text"><code>Process Management
+
+Memory Management
+
+File Management
+
+Device Management
+
+CPU Scheduling
+
+Security
+
+User Interface
+
+Resource Allocation
+
+Networking
+
+Error Handling</code></pre>
+            </li>
+
+
+            <!-- 4 -->
+            <li>
+                <h2>Operating System Structure</h2>
+
+                <pre class="language-text"><code>User
+
+↓
+
+Applications
+
+↓
+
+System Libraries
+
+↓
+
+System Calls
+
+↓
+
+Kernel
+
+↓
+
+Hardware</code></pre>
+            </li>
+
+
+            <!-- 5 -->
+            <li>
+                <h2>Kernel</h2>
+
+                <pre class="language-text"><code>Kernel is the core part
+of an Operating System.
+
+It manages:
+
+CPU
+
+Memory
+
+Processes
+
+Devices
+
+Interrupts
+
+System Calls
+
+Hardware Resources</code></pre>
+            </li>
+
+
+            <!-- 6 -->
+            <li>
+                <h2>Types of Kernel</h2>
+
+                <pre class="language-text"><code>Monolithic Kernel
+
+Microkernel
+
+Hybrid Kernel
+
+Exokernel</code></pre>
+            </li>
+
+
+            <!-- 7 -->
+            <li>
+                <h2>Monolithic Kernel</h2>
+
+                <pre class="language-text"><code>Most OS services run
+inside kernel space.
+
+Advantages:
+
+Fast communication
+
+High performance
+
+
+Disadvantages:
+
+Large kernel
+
+Faults can have
+large impact
+
+
+Example:
+
+Linux uses a monolithic
+kernel design with
+loadable modules.</code></pre>
+            </li>
+
+
+            <!-- 8 -->
+            <li>
+                <h2>Microkernel</h2>
+
+                <pre class="language-text"><code>Only essential services
+remain in kernel space.
+
+Other services may run
+in user space.
+
+Advantages:
+
+Modularity
+
+Isolation
+
+Reliability
+
+
+Trade-off:
+
+More communication
+overhead may occur.</code></pre>
+            </li>
+
+
+            <!-- 9 -->
+            <li>
+                <h2>User Mode vs Kernel Mode</h2>
+
+                <pre class="language-text"><code>User Mode
+
+Limited privileges
+
+Applications execute here
+
+
+Kernel Mode
+
+Full hardware privileges
+
+OS kernel executes here</code></pre>
+            </li>
+
+
+            <!-- 10 -->
+            <li>
+                <h2>System Call</h2>
+
+                <pre class="language-text"><code>A System Call allows a
+user program to request
+services from the OS kernel.
+
+Examples:
+
+Create Process
+
+Read File
+
+Write File
+
+Allocate Memory
+
+Network Communication</code></pre>
+            </li>
+
+
+            <!-- 11 -->
+            <li>
+                <h2>Types of System Calls</h2>
+
+                <pre class="language-text"><code>Process Control
+
+File Management
+
+Device Management
+
+Information Maintenance
+
+Communication
+
+Protection</code></pre>
+            </li>
+
+
+            <!-- 12 -->
+            <li>
+                <h2>Common Unix/Linux System Calls</h2>
+
+                <pre class="language-c"><code>fork();
+
+exec();
+
+wait();
+
+exit();
+
+open();
+
+read();
+
+write();
+
+close();</code></pre>
+            </li>
+
+
+            <!-- 13 -->
+            <li>
+                <h2>Program vs Process</h2>
+
+                <pre class="language-text"><code>Program
+
+Passive set of instructions
+stored on disk.
+
+
+Process
+
+A program currently
+being executed.
+
+
+Program
+
+↓
+
+Execution
+
+↓
+
+Process</code></pre>
+            </li>
+
+
+            <!-- 14 -->
+            <li>
+                <h2>Process</h2>
+
+                <pre class="language-text"><code>A Process is a program
+in execution.
+
+A process typically has:
+
+Program Code
+
+Stack
+
+Heap
+
+Data
+
+Registers
+
+Program Counter
+
+Process State</code></pre>
+            </li>
+
+
+            <!-- 15 -->
+            <li>
+                <h2>Process Memory Layout</h2>
+
+                <pre class="language-text"><code>High Address
+
++----------------+
+|     Stack      |
++----------------+
+|       ↓        |
+|                |
+|       ↑        |
++----------------+
+|      Heap      |
++----------------+
+|      Data      |
++----------------+
+|      Code      |
++----------------+
+
+Low Address</code></pre>
+            </li>
+
+
+            <!-- 16 -->
+            <li>
+                <h2>Process States</h2>
+
+                <pre class="language-text"><code>Common process states:
+
+New
+
+Ready
+
+Running
+
+Waiting / Blocked
+
+Terminated</code></pre>
+            </li>
+
+
+            <!-- 17 -->
+            <li>
+                <h2>Process State Diagram</h2>
+
+                <pre class="language-text"><code>New
+
+ ↓
+
+Ready
+
+ ↓
+
+Running
+ ↙    ↘
+Waiting  Terminated
+   ↓
+ Ready</code></pre>
+            </li>
+
+
+            <!-- 18 -->
+            <li>
+                <h2>PCB</h2>
+
+                <pre class="language-text"><code>PCB =
+
+Process Control Block
+
+OS data structure used
+to store information
+about a process.</code></pre>
+            </li>
+
+
+            <!-- 19 -->
+            <li>
+                <h2>Information Stored in PCB</h2>
+
+                <pre class="language-text"><code>Process ID
+
+Process State
+
+Program Counter
+
+CPU Registers
+
+Scheduling Information
+
+Memory Information
+
+Accounting Information
+
+I/O Status Information</code></pre>
+            </li>
+
+
+            <!-- 20 -->
+            <li>
+                <h2>Context Switching</h2>
+
+                <pre class="language-text"><code>Context Switching occurs
+when the CPU switches
+from one process/thread
+to another.
+
+Typical idea:
+
+Save state of P1
+
+↓
+
+Load state of P2
+
+↓
+
+Execute P2</code></pre>
+            </li>
+
+
+            <!-- 21 -->
+            <li>
+                <h2>Context Switch Overhead</h2>
+
+                <pre class="language-text"><code>Context switching consumes
+CPU time.
+
+During the switch,
+useful application work
+may not be performed.
+
+Too many context switches
+can reduce performance.</code></pre>
+            </li>
+
+
+            <!-- 22 -->
+            <li>
+                <h2>Thread</h2>
+
+                <pre class="language-text"><code>A Thread is a unit
+of execution within
+a process.
+
+Threads in the same process
+typically share:
+
+Code
+
+Data
+
+Heap
+
+Open Resources
+
+But each thread has its own:
+
+Stack
+
+Registers
+
+Program Counter</code></pre>
+            </li>
+
+
+            <!-- 23 -->
+            <li>
+                <h2>Process vs Thread</h2>
+
+                <pre class="language-text"><code>PROCESS
+
+Separate address space
+
+Higher creation/switching cost
+
+Strong isolation
+
+
+THREAD
+
+Runs within a process
+
+Shares process resources
+
+Usually lighter weight
+
+Communication is easier
+through shared memory</code></pre>
+            </li>
+
+
+            <!-- 24 -->
+            <li>
+                <h2>Benefits of Multithreading</h2>
+
+                <pre class="language-text"><code>Responsiveness
+
+Resource Sharing
+
+Parallelism
+
+Concurrency
+
+Lower overhead than
+multiple processes
+
+Better CPU utilization
+for suitable workloads</code></pre>
+            </li>
+
+
+            <!-- 25 -->
+            <li>
+                <h2>User-Level vs Kernel-Level Threads</h2>
+
+                <pre class="language-text"><code>User-Level Threads
+
+Managed primarily by
+a user-space library.
+
+
+Kernel-Level Threads
+
+Managed and scheduled
+by the operating system kernel.</code></pre>
+            </li>
+
+
+            <!-- 26 -->
+            <li>
+                <h2>CPU Scheduling</h2>
+
+                <pre class="language-text"><code>CPU Scheduling decides
+which ready process
+gets the CPU next.
+
+Goals may include:
+
+High CPU Utilization
+
+High Throughput
+
+Low Waiting Time
+
+Low Turnaround Time
+
+Low Response Time
+
+Fairness</code></pre>
+            </li>
+
+
+            <!-- 27 -->
+            <li>
+                <h2>Scheduling Terminology</h2>
+
+                <pre class="language-text"><code>AT = Arrival Time
+
+BT = Burst Time
+
+CT = Completion Time
+
+TAT = Turnaround Time
+
+WT = Waiting Time
+
+RT = Response Time</code></pre>
+            </li>
+
+
+            <!-- 28 -->
+            <li>
+                <h2>Turnaround Time</h2>
+
+                <pre class="language-text"><code>Turnaround Time
+
+TAT = CT - AT
+
+
+Where:
+
+CT = Completion Time
+
+AT = Arrival Time</code></pre>
+            </li>
+
+
+            <!-- 29 -->
+            <li>
+                <h2>Waiting Time</h2>
+
+                <pre class="language-text"><code>Waiting Time
+
+WT = TAT - BT
+
+
+Where:
+
+TAT = Turnaround Time
+
+BT = Burst Time</code></pre>
+            </li>
+
+
+            <!-- 30 -->
+            <li>
+                <h2>Response Time</h2>
+
+                <pre class="language-text"><code>Response Time
+
+RT = First CPU Start Time
+     - Arrival Time</code></pre>
+            </li>
+
+
+            <!-- 31 -->
+            <li>
+                <h2>CPU Scheduling Algorithms</h2>
+
+                <pre class="language-text"><code>FCFS
+
+SJF
+
+SRTF
+
+Priority Scheduling
+
+Round Robin
+
+Multilevel Queue
+
+Multilevel Feedback Queue</code></pre>
+            </li>
+
+
+            <!-- 32 -->
+            <li>
+                <h2>FCFS Scheduling</h2>
+
+                <pre class="language-text"><code>FCFS =
+
+First Come First Serve
+
+Process arriving first
+gets CPU first.
+
+Type:
+
+Non-Preemptive</code></pre>
+            </li>
+
+
+            <!-- 33 -->
+            <li>
+                <h2>FCFS Example</h2>
+
+                <pre class="language-text"><code>Process    Burst Time
+
+P1         5
+
+P2         3
+
+P3         2
+
+
+Gantt Chart:
+
+0       5      8     10
+|  P1   |  P2  | P3 |</code></pre>
+            </li>
+
+
+            <!-- 34 -->
+            <li>
+                <h2>FCFS Advantages & Disadvantages</h2>
+
+                <pre class="language-text"><code>Advantages:
+
+Simple
+
+Easy to implement
+
+
+Disadvantages:
+
+Convoy Effect
+
+Long waiting time
+can occur
+
+Poor response for
+interactive workloads</code></pre>
+            </li>
+
+
+            <!-- 35 -->
+            <li>
+                <h2>Convoy Effect</h2>
+
+                <pre class="language-text"><code>Convoy Effect occurs when
+short processes wait behind
+a long CPU-bound process.
+
+Example:
+
+Long Process
+
+↓
+
+Short
+
+↓
+
+Short
+
+↓
+
+Short</code></pre>
+            </li>
+
+
+            <!-- 36 -->
+            <li>
+                <h2>SJF Scheduling</h2>
+
+                <pre class="language-text"><code>SJF =
+
+Shortest Job First
+
+The ready process with
+the smallest predicted
+CPU burst is selected.
+
+Usually discussed as:
+
+Non-Preemptive SJF</code></pre>
+            </li>
+
+
+            <!-- 37 -->
+            <li>
+                <h2>SJF Example</h2>
+
+                <pre class="language-text"><code>Process    Burst
+
+P1         6
+
+P2         2
+
+P3         4
+
+
+If all arrive together:
+
+P2 → P3 → P1</code></pre>
+            </li>
+
+
+            <!-- 38 -->
+            <li>
+                <h2>SJF Advantage</h2>
+
+                <pre class="language-text"><code>SJF minimizes average
+waiting time for a given
+set of jobs when their
+CPU burst lengths are known.
+
+Practical challenge:
+
+Future burst time must
+usually be estimated.</code></pre>
+            </li>
+
+
+            <!-- 39 -->
+            <li>
+                <h2>SRTF</h2>
+
+                <pre class="language-text"><code>SRTF =
+
+Shortest Remaining Time First
+
+Preemptive version of SJF.
+
+CPU is assigned to the
+process with the shortest
+remaining execution time.</code></pre>
+            </li>
+
+
+            <!-- 40 -->
+            <li>
+                <h2>Priority Scheduling</h2>
+
+                <pre class="language-text"><code>Each process receives
+a priority.
+
+CPU is assigned according
+to priority.
+
+Can be:
+
+Preemptive
+
+or
+
+Non-Preemptive</code></pre>
+            </li>
+
+
+            <!-- 41 -->
+            <li>
+                <h2>Starvation</h2>
+
+                <pre class="language-text"><code>Starvation occurs when
+a process waits for a
+very long time because
+other processes repeatedly
+receive the required resource.
+
+Can occur in:
+
+Priority Scheduling
+
+SJF-style scheduling</code></pre>
+            </li>
+
+
+            <!-- 42 -->
+            <li>
+                <h2>Aging</h2>
+
+                <pre class="language-text"><code>Aging is a technique
+used to reduce starvation.
+
+The priority of a waiting
+process is gradually improved
+over time.</code></pre>
+            </li>
+
+
+            <!-- 43 -->
+            <li>
+                <h2>Round Robin Scheduling</h2>
+
+                <pre class="language-text"><code>Round Robin gives each
+ready process a fixed
+time slice.
+
+Time slice is called:
+
+Time Quantum
+
+
+Process Queue:
+
+P1 → P2 → P3 → P1...</code></pre>
+            </li>
+
+
+            <!-- 44 -->
+            <li>
+                <h2>Round Robin Example</h2>
+
+                <pre class="language-text"><code>Time Quantum = 2
+
+Burst:
+
+P1 = 5
+
+P2 = 3
+
+P3 = 1
+
+
+Possible sequence:
+
+P1 → P2 → P3 → P1 → P2 → P1</code></pre>
+            </li>
+
+
+            <!-- 45 -->
+            <li>
+                <h2>Time Quantum Effect</h2>
+
+                <pre class="language-text"><code>Very Small Quantum
+
+→ More Context Switching
+
+
+Very Large Quantum
+
+→ Round Robin approaches
+  FCFS behavior
+
+
+Quantum selection affects
+responsiveness and overhead.</code></pre>
+            </li>
+
+
+            <!-- 46 -->
+            <li>
+                <h2>Preemptive vs Non-Preemptive</h2>
+
+                <pre class="language-text"><code>PREEMPTIVE
+
+OS can interrupt a
+running process.
+
+Examples:
+
+Round Robin
+
+SRTF
+
+Preemptive Priority
+
+
+NON-PREEMPTIVE
+
+Running process keeps CPU
+until it blocks or finishes.
+
+Examples:
+
+FCFS
+
+Non-Preemptive SJF</code></pre>
+            </li>
+
+
+            <!-- 47 -->
+            <li>
+                <h2>Scheduler Types</h2>
+
+                <pre class="language-text"><code>Long-Term Scheduler
+
+Short-Term Scheduler
+
+Medium-Term Scheduler</code></pre>
+            </li>
+
+
+            <!-- 48 -->
+            <li>
+                <h2>Long-Term Scheduler</h2>
+
+                <pre class="language-text"><code>Selects which jobs
+are admitted into the
+system / ready pool.
+
+Helps control:
+
+Degree of Multiprogramming</code></pre>
+            </li>
+
+
+            <!-- 49 -->
+            <li>
+                <h2>Short-Term Scheduler</h2>
+
+                <pre class="language-text"><code>Selects a process
+from the ready queue
+for CPU execution.
+
+Runs very frequently.
+
+Also called:
+
+CPU Scheduler</code></pre>
+            </li>
+
+
+            <!-- 50 -->
+            <li>
+                <h2>Medium-Term Scheduler</h2>
+
+                <pre class="language-text"><code>May temporarily remove
+processes from memory
+and later restore them.
+
+Associated concept:
+
+Swapping</code></pre>
+            </li>
+
+
+            <!-- 51 -->
+            <li>
+                <h2>Dispatcher</h2>
+
+                <pre class="language-text"><code>Dispatcher gives control
+of the CPU to the process
+selected by the scheduler.
+
+Tasks include:
+
+Context Switch
+
+Switch to User Mode
+
+Jump to Correct Instruction</code></pre>
+            </li>
+
+
+            <!-- 52 -->
+            <li>
+                <h2>Process Synchronization</h2>
+
+                <pre class="language-text"><code>Synchronization coordinates
+concurrent processes/threads
+accessing shared resources.
+
+Goals:
+
+Correctness
+
+Data Consistency
+
+Avoid Race Conditions</code></pre>
+            </li>
+
+
+            <!-- 53 -->
+            <li>
+                <h2>Race Condition</h2>
+
+                <pre class="language-text"><code>A Race Condition occurs
+when program behavior depends
+on the timing/interleaving
+of concurrent operations.
+
+Example:
+
+Thread 1 → balance++
+
+Thread 2 → balance++
+
+Without synchronization,
+an update may be lost.</code></pre>
+            </li>
+
+
+            <!-- 54 -->
+            <li>
+                <h2>Critical Section</h2>
+
+                <pre class="language-text"><code>Critical Section is
+the part of a program
+that accesses shared data
+or resources.
+
+Only appropriately
+synchronized execution
+should occur there.</code></pre>
+            </li>
+
+
+            <!-- 55 -->
+            <li>
+                <h2>Critical Section Structure</h2>
+
+                <pre class="language-text"><code>Entry Section
+
+↓
+
+Critical Section
+
+↓
+
+Exit Section
+
+↓
+
+Remainder Section</code></pre>
+            </li>
+
+
+            <!-- 56 -->
+            <li>
+                <h2>Critical Section Requirements</h2>
+
+                <pre class="language-text"><code>Mutual Exclusion
+
+Progress
+
+Bounded Waiting</code></pre>
+            </li>
+
+
+            <!-- 57 -->
+            <li>
+                <h2>Mutual Exclusion</h2>
+
+                <pre class="language-text"><code>Mutual Exclusion means
+only one process/thread
+at a time can execute
+a protected critical section
+for a mutually exclusive
+resource.</code></pre>
+            </li>
+
+
+            <!-- 58 -->
+            <li>
+                <h2>Mutex</h2>
+
+                <pre class="language-text"><code>Mutex = Mutual Exclusion
+
+A mutex protects
+a critical section.
+
+Basic idea:
+
+lock()
+
+Critical Section
+
+unlock()</code></pre>
+            </li>
+
+
+            <!-- 59 -->
+            <li>
+                <h2>Semaphore</h2>
+
+                <pre class="language-text"><code>A Semaphore is a
+synchronization primitive
+represented conceptually
+by a counter.
+
+Operations:
+
+wait()
+
+signal()
+
+Also commonly called:
+
+P()
+
+V()</code></pre>
+            </li>
+
+
+            <!-- 60 -->
+            <li>
+                <h2>Types of Semaphore</h2>
+
+                <pre class="language-text"><code>Binary Semaphore
+
+Values conceptually:
+
+0 or 1
+
+
+Counting Semaphore
+
+Represents multiple
+available resource units.</code></pre>
+            </li>
+
+
+            <!-- 61 -->
+            <li>
+                <h2>Semaphore Example</h2>
+
+                <pre class="language-c"><code>wait(semaphore);
+
+/* Critical Section */
+
+signal(semaphore);</code></pre>
+            </li>
+
+
+            <!-- 62 -->
+            <li>
+                <h2>Mutex vs Semaphore</h2>
+
+                <pre class="language-text"><code>MUTEX
+
+Primarily mutual exclusion
+
+Usually has ownership semantics
+
+One owner locks/unlocks
+
+
+SEMAPHORE
+
+Counter-based synchronization
+
+Can represent multiple resources
+
+Can also be used for signaling</code></pre>
+            </li>
+
+
+            <!-- 63 -->
+            <li>
+                <h2>Classic Synchronization Problems</h2>
+
+                <pre class="language-text"><code>Producer-Consumer
+
+Readers-Writers
+
+Dining Philosophers
+
+Sleeping Barber</code></pre>
+            </li>
+
+
+            <!-- 64 -->
+            <li>
+                <h2>Producer-Consumer Problem</h2>
+
+                <pre class="language-text"><code>Producer
+
+↓
+
+Shared Buffer
+
+↓
+
+Consumer
+
+
+Need synchronization to avoid:
+
+Buffer Overflow
+
+Buffer Underflow
+
+Race Conditions</code></pre>
+            </li>
+
+
+            <!-- 65 -->
+            <li>
+                <h2>Readers-Writers Problem</h2>
+
+                <pre class="language-text"><code>Multiple Readers
+
+→ May read concurrently
+  under suitable policy
+
+
+Writer
+
+→ Requires exclusive
+  access while writing</code></pre>
+            </li>
+
+
+            <!-- 66 -->
+            <li>
+                <h2>Dining Philosophers Problem</h2>
+
+                <pre class="language-text"><code>Classic synchronization
+problem used to demonstrate:
+
+Deadlock
+
+Starvation
+
+Resource Allocation
+
+Synchronization</code></pre>
+            </li>
+
+
+            <!-- 67 -->
+            <li>
+                <h2>Deadlock</h2>
+
+                <pre class="language-text"><code>Deadlock occurs when
+a set of processes are
+permanently waiting for
+resources/events that can
+only be caused by another
+process in the same set.
+
+Example:
+
+P1 holds R1
+and waits for R2
+
+P2 holds R2
+and waits for R1</code></pre>
+            </li>
+
+
+            <!-- 68 -->
+            <li>
+                <h2>Four Necessary Deadlock Conditions</h2>
+
+                <pre class="language-text"><code>1. Mutual Exclusion
+
+2. Hold and Wait
+
+3. No Preemption
+
+4. Circular Wait</code></pre>
+            </li>
+
+
+            <!-- 69 -->
+            <li>
+                <h2>Mutual Exclusion Condition</h2>
+
+                <pre class="language-text"><code>At least one resource
+must be non-shareable.
+
+Only one process can
+use that resource
+at a time.</code></pre>
+            </li>
+
+
+            <!-- 70 -->
+            <li>
+                <h2>Hold and Wait</h2>
+
+                <pre class="language-text"><code>A process holds one
+or more resources
+
+while waiting to acquire
+additional resources.</code></pre>
+            </li>
+
+
+            <!-- 71 -->
+            <li>
+                <h2>No Preemption</h2>
+
+                <pre class="language-text"><code>Resources cannot simply
+be forcibly taken away
+under the resource model.
+
+They are released
+voluntarily by the
+holding process.</code></pre>
+            </li>
+
+
+            <!-- 72 -->
+            <li>
+                <h2>Circular Wait</h2>
+
+                <pre class="language-text"><code>P1 waits for P2
+
+P2 waits for P3
+
+P3 waits for P1
+
+
+Forms a cycle.</code></pre>
+            </li>
+
+
+            <!-- 73 -->
+            <li>
+                <h2>Deadlock Handling</h2>
+
+                <pre class="language-text"><code>Deadlock Prevention
+
+Deadlock Avoidance
+
+Deadlock Detection
+
+Deadlock Recovery
+
+Ignore Deadlocks
+(in some systems/scenarios)</code></pre>
+            </li>
+
+
+            <!-- 74 -->
+            <li>
+                <h2>Deadlock Prevention</h2>
+
+                <pre class="language-text"><code>Prevent deadlock by
+ensuring at least one
+necessary deadlock condition
+cannot hold.
+
+Examples:
+
+Resource ordering
+
+Request all resources
+under certain policies</code></pre>
+            </li>
+
+
+            <!-- 75 -->
+            <li>
+                <h2>Deadlock Avoidance</h2>
+
+                <pre class="language-text"><code>Deadlock Avoidance checks
+whether granting a resource
+request keeps the system
+in a safe state.
+
+Famous Algorithm:
+
+Banker's Algorithm</code></pre>
+            </li>
+
+
+            <!-- 76 -->
+            <li>
+                <h2>Banker's Algorithm</h2>
+
+                <pre class="language-text"><code>Used for deadlock avoidance.
+
+Important Data:
+
+Available
+
+Max
+
+Allocation
+
+Need
+
+
+Formula:
+
+Need = Max - Allocation</code></pre>
+            </li>
+
+
+            <!-- 77 -->
+            <li>
+                <h2>Safe State</h2>
+
+                <pre class="language-text"><code>A system is in a
+safe state if there exists
+at least one sequence
+of process completion
+that allows every process
+to finish.
+
+This sequence is called:
+
+Safe Sequence</code></pre>
+            </li>
+
+
+            <!-- 78 -->
+            <li>
+                <h2>Unsafe State</h2>
+
+                <pre class="language-text"><code>Unsafe State does not
+necessarily mean deadlock
+has already occurred.
+
+It means the system
+cannot guarantee avoiding
+a future deadlock.</code></pre>
+            </li>
+
+
+            <!-- 79 -->
+            <li>
+                <h2>Deadlock Detection</h2>
+
+                <pre class="language-text"><code>Allow deadlock to occur
+
+↓
+
+Detect it
+
+↓
+
+Recover from it</code></pre>
+            </li>
+
+
+            <!-- 80 -->
+            <li>
+                <h2>Deadlock Recovery</h2>
+
+                <pre class="language-text"><code>Possible techniques:
+
+Terminate Process
+
+Terminate Multiple Processes
+
+Resource Preemption
+
+Rollback Process</code></pre>
+            </li>
+
+
+            <!-- 81 -->
+            <li>
+                <h2>Deadlock vs Starvation</h2>
+
+                <pre class="language-text"><code>DEADLOCK
+
+Processes wait on each other
+and cannot proceed.
+
+
+STARVATION
+
+A process waits indefinitely
+because resources/CPU keep
+being given to others.</code></pre>
+            </li>
+
+
+            <!-- 82 -->
+            <li>
+                <h2>Memory Management</h2>
+
+                <pre class="language-text"><code>Memory Management controls
+how memory is allocated
+and used.
+
+Responsibilities:
+
+Allocation
+
+Deallocation
+
+Protection
+
+Address Translation
+
+Virtual Memory
+
+Sharing</code></pre>
+            </li>
+
+
+            <!-- 83 -->
+            <li>
+                <h2>Logical vs Physical Address</h2>
+
+                <pre class="language-text"><code>Logical / Virtual Address
+
+Generated/used by CPU
+and process.
+
+
+Physical Address
+
+Actual address in
+physical memory (RAM).</code></pre>
+            </li>
+
+
+            <!-- 84 -->
+            <li>
+                <h2>MMU</h2>
+
+                <pre class="language-text"><code>MMU =
+
+Memory Management Unit
+
+Hardware responsible for
+translating virtual/logical
+addresses into physical
+addresses.</code></pre>
+            </li>
+
+
+            <!-- 85 -->
+            <li>
+                <h2>Contiguous Memory Allocation</h2>
+
+                <pre class="language-text"><code>Each process receives
+a contiguous block
+of physical memory.
+
+Can lead to:
+
+Internal Fragmentation
+
+External Fragmentation</code></pre>
+            </li>
+
+
+            <!-- 86 -->
+            <li>
+                <h2>Internal Fragmentation</h2>
+
+                <pre class="language-text"><code>Allocated block is larger
+than the requested memory.
+
+Unused space remains
+inside the allocated block.
+
+This wasted space is:
+
+Internal Fragmentation</code></pre>
+            </li>
+
+
+            <!-- 87 -->
+            <li>
+                <h2>External Fragmentation</h2>
+
+                <pre class="language-text"><code>Free memory exists,
+but it is split into
+separate non-contiguous
+holes.
+
+A large contiguous request
+may fail even if total
+free memory is sufficient.</code></pre>
+            </li>
+
+
+            <!-- 88 -->
+            <li>
+                <h2>Memory Allocation Strategies</h2>
+
+                <pre class="language-text"><code>First Fit
+
+Best Fit
+
+Worst Fit</code></pre>
+            </li>
+
+
+            <!-- 89 -->
+            <li>
+                <h2>First Fit</h2>
+
+                <pre class="language-text"><code>Allocate the first
+available memory block
+large enough to satisfy
+the request.</code></pre>
+            </li>
+
+
+            <!-- 90 -->
+            <li>
+                <h2>Best Fit</h2>
+
+                <pre class="language-text"><code>Allocate the smallest
+available block that
+is large enough for
+the request.</code></pre>
+            </li>
+
+
+            <!-- 91 -->
+            <li>
+                <h2>Worst Fit</h2>
+
+                <pre class="language-text"><code>Allocate from the largest
+available free block.</code></pre>
+            </li>
+
+
+            <!-- 92 -->
+            <li>
+                <h2>Paging</h2>
+
+                <pre class="language-text"><code>Paging divides:
+
+Virtual Memory
+
+into fixed-size:
+
+Pages
+
+
+Physical Memory
+
+into fixed-size:
+
+Frames
+
+
+Page Size = Frame Size</code></pre>
+            </li>
+
+
+            <!-- 93 -->
+            <li>
+                <h2>Paging Address Translation</h2>
+
+                <pre class="language-text"><code>Virtual Address
+
+↓
+
+Page Number + Offset
+
+↓
+
+Page Table
+
+↓
+
+Frame Number + Offset
+
+↓
+
+Physical Address</code></pre>
+            </li>
+
+
+            <!-- 94 -->
+            <li>
+                <h2>Page Table</h2>
+
+                <pre class="language-text"><code>Page Table maps:
+
+Virtual Page Number
+
+↓
+
+Physical Frame Number</code></pre>
+            </li>
+
+
+            <!-- 95 -->
+            <li>
+                <h2>Paging Advantages</h2>
+
+                <pre class="language-text"><code>Eliminates external
+fragmentation for process
+allocation.
+
+Supports Virtual Memory.
+
+Allows non-contiguous
+physical allocation.
+
+Simplifies memory allocation.</code></pre>
+            </li>
+
+
+            <!-- 96 -->
+            <li>
+                <h2>Paging Disadvantages</h2>
+
+                <pre class="language-text"><code>Page Table Overhead
+
+Address Translation Overhead
+
+Possible Internal Fragmentation
+
+Page Fault Overhead</code></pre>
+            </li>
+
+
+            <!-- 97 -->
+            <li>
+                <h2>TLB</h2>
+
+                <pre class="language-text"><code>TLB =
+
+Translation Lookaside Buffer
+
+A small, fast cache
+that stores recent
+virtual-page to
+physical-frame translations.</code></pre>
+            </li>
+
+
+            <!-- 98 -->
+            <li>
+                <h2>TLB Hit vs Miss</h2>
+
+                <pre class="language-text"><code>TLB Hit
+
+Translation found
+in TLB
+
+→ Fast
+
+
+TLB Miss
+
+Translation not found
+
+→ Page table must
+  be consulted</code></pre>
+            </li>
+
+
+            <!-- 99 -->
+            <li>
+                <h2>Segmentation</h2>
+
+                <pre class="language-text"><code>Segmentation divides a
+program into variable-sized
+logical units.
+
+Examples:
+
+Code Segment
+
+Data Segment
+
+Stack Segment
+
+Heap Segment</code></pre>
+            </li>
+
+
+            <!-- 100 -->
+            <li>
+                <h2>Paging vs Segmentation</h2>
+
+                <pre class="language-text"><code>PAGING
+
+Fixed-size blocks
+
+Pages and Frames
+
+Physical memory management
+
+
+SEGMENTATION
+
+Variable-size logical units
+
+Segments correspond to
+program structure</code></pre>
+            </li>
+
+
+            <!-- 101 -->
+            <li>
+                <h2>Virtual Memory</h2>
+
+                <pre class="language-text"><code>Virtual Memory allows
+a process to use an
+address space that can
+be larger than the
+currently available
+physical RAM.
+
+Only required portions
+need to be resident
+in memory at a time.</code></pre>
+            </li>
+
+
+            <!-- 102 -->
+            <li>
+                <h2>Demand Paging</h2>
+
+                <pre class="language-text"><code>Demand Paging loads
+a page into memory
+only when it is needed.
+
+If page is absent:
+
+Page Fault occurs.</code></pre>
+            </li>
+
+
+            <!-- 103 -->
+            <li>
+                <h2>Page Fault</h2>
+
+                <pre class="language-text"><code>Page Fault occurs when
+a process references
+a page that is not
+currently resident in
+physical memory.
+
+OS must bring the
+required page into RAM.</code></pre>
+            </li>
+
+
+            <!-- 104 -->
+            <li>
+                <h2>Page Fault Handling</h2>
+
+                <pre class="language-text"><code>Page Reference
+
+↓
+
+Page Not Present
+
+↓
+
+Page Fault Trap
+
+↓
+
+Validate Reference
+
+↓
+
+Find Free Frame
+or Choose Victim
+
+↓
+
+Load Page
+
+↓
+
+Update Page Table
+
+↓
+
+Restart Instruction</code></pre>
+            </li>
+
+
+            <!-- 105 -->
+            <li>
+                <h2>Page Replacement Algorithms</h2>
+
+                <pre class="language-text"><code>FIFO
+
+Optimal
+
+LRU
+
+Second Chance / Clock</code></pre>
+            </li>
+
+
+            <!-- 106 -->
+            <li>
+                <h2>FIFO Page Replacement</h2>
+
+                <pre class="language-text"><code>FIFO =
+
+First In First Out
+
+The oldest loaded page
+is selected for replacement.</code></pre>
+            </li>
+
+
+            <!-- 107 -->
+            <li>
+                <h2>Belady's Anomaly</h2>
+
+                <pre class="language-text"><code>Belady's Anomaly:
+
+For some page replacement
+algorithms, increasing the
+number of frames can
+increase page faults.
+
+Classic example:
+
+FIFO</code></pre>
+            </li>
+
+
+            <!-- 108 -->
+            <li>
+                <h2>Optimal Page Replacement</h2>
+
+                <pre class="language-text"><code>Replace the page whose
+next use is farthest
+in the future.
+
+Produces the minimum
+possible page faults
+for a known reference string.
+
+Not directly implementable
+in general because future
+references are unknown.</code></pre>
+            </li>
+
+
+            <!-- 109 -->
+            <li>
+                <h2>LRU</h2>
+
+                <pre class="language-text"><code>LRU =
+
+Least Recently Used
+
+Replace the page that
+has not been used
+for the longest time
+in the past.</code></pre>
+            </li>
+
+
+            <!-- 110 -->
+            <li>
+                <h2>FIFO vs LRU vs Optimal</h2>
+
+                <pre class="language-text"><code>FIFO
+
+Replace oldest page
+
+
+LRU
+
+Replace least recently
+used page
+
+
+Optimal
+
+Replace page used
+farthest in future</code></pre>
+            </li>
+
+
+            <!-- 111 -->
+            <li>
+                <h2>Thrashing</h2>
+
+                <pre class="language-text"><code>Thrashing occurs when
+the system spends a
+large amount of time
+handling page faults
+and moving pages instead
+of executing useful work.
+
+Common cause:
+
+Insufficient frames for
+active working sets.</code></pre>
+            </li>
+
+
+            <!-- 112 -->
+            <li>
+                <h2>Working Set</h2>
+
+                <pre class="language-text"><code>Working Set represents
+the set of pages actively
+used by a process during
+a recent time window.
+
+It can help guide
+memory allocation and
+thrashing control.</code></pre>
+            </li>
+
+
+            <!-- 113 -->
+            <li>
+                <h2>File System</h2>
+
+                <pre class="language-text"><code>A File System manages
+how data is:
+
+Stored
+
+Named
+
+Organized
+
+Retrieved
+
+Protected
+
+on storage devices.</code></pre>
+            </li>
+
+
+            <!-- 114 -->
+            <li>
+                <h2>File Attributes</h2>
+
+                <pre class="language-text"><code>Name
+
+Identifier
+
+Type
+
+Location
+
+Size
+
+Permissions
+
+Owner
+
+Creation Time
+
+Modification Time</code></pre>
+            </li>
+
+
+            <!-- 115 -->
+            <li>
+                <h2>File Operations</h2>
+
+                <pre class="language-text"><code>Create
+
+Open
+
+Read
+
+Write
+
+Append
+
+Seek
+
+Close
+
+Delete
+
+Rename</code></pre>
+            </li>
+
+
+            <!-- 116 -->
+            <li>
+                <h2>Directory Structures</h2>
+
+                <pre class="language-text"><code>Single-Level Directory
+
+Two-Level Directory
+
+Tree-Structured Directory
+
+Acyclic Graph Directory
+
+General Graph Directory</code></pre>
+            </li>
+
+
+            <!-- 117 -->
+            <li>
+                <h2>File Allocation Methods</h2>
+
+                <pre class="language-text"><code>Contiguous Allocation
+
+Linked Allocation
+
+Indexed Allocation</code></pre>
+            </li>
+
+
+            <!-- 118 -->
+            <li>
+                <h2>Contiguous Allocation</h2>
+
+                <pre class="language-text"><code>File occupies consecutive
+disk blocks.
+
+Advantages:
+
+Simple
+
+Fast sequential access
+
+Fast direct access
+
+
+Disadvantages:
+
+External fragmentation
+
+Growth can be difficult</code></pre>
+            </li>
+
+
+            <!-- 119 -->
+            <li>
+                <h2>Linked Allocation</h2>
+
+                <pre class="language-text"><code>File blocks can be
+stored anywhere.
+
+Each block points to
+the next block.
+
+Advantage:
+
+No external fragmentation
+for file blocks.
+
+Disadvantage:
+
+Poor direct/random access.</code></pre>
+            </li>
+
+
+            <!-- 120 -->
+            <li>
+                <h2>Indexed Allocation</h2>
+
+                <pre class="language-text"><code>An index block stores
+pointers to the blocks
+belonging to a file.
+
+Supports:
+
+Direct Access
+
+Non-Contiguous Allocation</code></pre>
+            </li>
+
+
+            <!-- 121 -->
+            <li>
+                <h2>Disk Scheduling</h2>
+
+                <pre class="language-text"><code>Traditional disk scheduling
+algorithms determine the
+order in which disk I/O
+requests are serviced.
+
+Important Algorithms:
+
+FCFS
+
+SSTF
+
+SCAN
+
+C-SCAN
+
+LOOK
+
+C-LOOK</code></pre>
+            </li>
+
+
+            <!-- 122 -->
+            <li>
+                <h2>FCFS Disk Scheduling</h2>
+
+                <pre class="language-text"><code>Requests are processed
+in arrival order.
+
+Advantages:
+
+Simple
+
+Fair
+
+
+Disadvantage:
+
+May cause large
+head movement.</code></pre>
+            </li>
+
+
+            <!-- 123 -->
+            <li>
+                <h2>SSTF</h2>
+
+                <pre class="language-text"><code>SSTF =
+
+Shortest Seek Time First
+
+Service the request
+closest to the current
+disk head position.
+
+Can cause starvation
+for far-away requests.</code></pre>
+            </li>
+
+
+            <!-- 124 -->
+            <li>
+                <h2>SCAN Algorithm</h2>
+
+                <pre class="language-text"><code>Also called:
+
+Elevator Algorithm
+
+Disk head moves in
+one direction servicing
+requests.
+
+At the end, direction
+is reversed.</code></pre>
+            </li>
+
+
+            <!-- 125 -->
+            <li>
+                <h2>C-SCAN</h2>
+
+                <pre class="language-text"><code>C-SCAN =
+
+Circular SCAN
+
+Head services requests
+in one direction.
+
+After reaching the end,
+it returns to the beginning
+and continues in the
+same service direction.</code></pre>
+            </li>
+
+
+            <!-- 126 -->
+            <li>
+                <h2>LOOK</h2>
+
+                <pre class="language-text"><code>Similar to SCAN.
+
+But the head reverses
+at the last pending
+request in that direction
+instead of necessarily
+going to the physical end.</code></pre>
+            </li>
+
+
+            <!-- 127 -->
+            <li>
+                <h2>C-LOOK</h2>
+
+                <pre class="language-text"><code>Similar to C-SCAN.
+
+But it moves only as
+far as the last request
+before jumping to the
+other end of the
+pending request range.</code></pre>
+            </li>
+
+
+            <!-- 128 -->
+            <li>
+                <h2>Interrupt</h2>
+
+                <pre class="language-text"><code>An Interrupt is a signal
+that causes the CPU
+to temporarily suspend
+its current execution
+and handle an event.
+
+Examples:
+
+Keyboard Input
+
+Timer
+
+Disk I/O
+
+Network Event</code></pre>
+            </li>
+
+
+            <!-- 129 -->
+            <li>
+                <h2>Types of Interrupts</h2>
+
+                <pre class="language-text"><code>Hardware Interrupt
+
+Software Interrupt
+
+Maskable Interrupt
+
+Non-Maskable Interrupt</code></pre>
+            </li>
+
+
+            <!-- 130 -->
+            <li>
+                <h2>Interrupt Handling</h2>
+
+                <pre class="language-text"><code>Interrupt Occurs
+
+↓
+
+CPU Saves Relevant State
+
+↓
+
+Runs Interrupt Handler
+
+↓
+
+Handles Event
+
+↓
+
+Restores State
+
+↓
+
+Continues Execution</code></pre>
+            </li>
+
+
+            <!-- 131 -->
+            <li>
+                <h2>IPC</h2>
+
+                <pre class="language-text"><code>IPC =
+
+Inter-Process Communication
+
+Allows processes to
+exchange data and
+coordinate execution.</code></pre>
+            </li>
+
+
+            <!-- 132 -->
+            <li>
+                <h2>IPC Methods</h2>
+
+                <pre class="language-text"><code>Pipes
+
+Named Pipes
+
+Message Queues
+
+Shared Memory
+
+Sockets
+
+Signals
+
+Semaphores</code></pre>
+            </li>
+
+
+            <!-- 133 -->
+            <li>
+                <h2>Shared Memory</h2>
+
+                <pre class="language-text"><code>Multiple processes map
+a common memory region.
+
+Advantages:
+
+Very fast communication
+
+
+Challenge:
+
+Requires synchronization
+to avoid race conditions.</code></pre>
+            </li>
+
+
+            <!-- 134 -->
+            <li>
+                <h2>Pipe</h2>
+
+                <pre class="language-text"><code>A Pipe provides a
+communication channel
+between processes.
+
+Concept:
+
+Process A
+
+↓
+
+Pipe
+
+↓
+
+Process B</code></pre>
+            </li>
+
+
+            <!-- 135 -->
+            <li>
+                <h2>Socket</h2>
+
+                <pre class="language-text"><code>A Socket is an endpoint
+for communication.
+
+Can be used for:
+
+Communication between
+local processes
+
+or
+
+Communication over
+a network.</code></pre>
+            </li>
+
+
+            <!-- 136 -->
+            <li>
+                <h2>Multiprogramming</h2>
+
+                <pre class="language-text"><code>Multiple programs are
+kept available so the CPU
+can switch to another
+when one is waiting.
+
+Goal:
+
+Improve CPU utilization.</code></pre>
+            </li>
+
+
+            <!-- 137 -->
+            <li>
+                <h2>Multitasking</h2>
+
+                <pre class="language-text"><code>CPU rapidly switches
+among multiple tasks.
+
+Creates the experience
+of concurrent execution
+on a single CPU core.</code></pre>
+            </li>
+
+
+            <!-- 138 -->
+            <li>
+                <h2>Multiprocessing</h2>
+
+                <pre class="language-text"><code>A system uses multiple
+processing units / CPU cores
+to execute work.
+
+Benefits can include:
+
+Parallelism
+
+Higher Throughput
+
+Improved Reliability</code></pre>
+            </li>
+
+
+            <!-- 139 -->
+            <li>
+                <h2>Concurrency vs Parallelism</h2>
+
+                <pre class="language-text"><code>CONCURRENCY
+
+Multiple tasks make
+progress during overlapping
+time periods.
+
+
+PARALLELISM
+
+Multiple tasks literally
+execute at the same time
+on different processing units.</code></pre>
+            </li>
+
+
+            <!-- 140 -->
+            <li>
+                <h2>Booting</h2>
+
+                <pre class="language-text"><code>Booting is the process
+of starting a computer
+and loading the operating
+system into memory.</code></pre>
+            </li>
+
+
+            <!-- 141 -->
+            <li>
+                <h2>Boot Process</h2>
+
+                <pre class="language-text"><code>Power On
+
+↓
+
+Firmware (BIOS / UEFI)
+
+↓
+
+Bootloader
+
+↓
+
+Kernel Loaded
+
+↓
+
+Kernel Initializes System
+
+↓
+
+Services Start
+
+↓
+
+Login / User Environment</code></pre>
+            </li>
+
+
+            <!-- 142 -->
+            <li>
+                <h2>BIOS vs UEFI</h2>
+
+                <pre class="language-text"><code>BIOS
+
+Older firmware interface
+
+
+UEFI
+
+Modern firmware interface
+
+Supports modern boot
+features and GPT-based
+systems more naturally.</code></pre>
+            </li>
+
+
+            <!-- 143 -->
+            <li>
+                <h2>Cache Memory</h2>
+
+                <pre class="language-text"><code>Cache is small,
+high-speed memory used
+to keep frequently/recently
+needed data close to CPU.
+
+Common CPU cache levels:
+
+L1
+
+L2
+
+L3</code></pre>
+            </li>
+
+
+            <!-- 144 -->
+            <li>
+                <h2>Memory Hierarchy</h2>
+
+                <pre class="language-text"><code>Fastest / Smallest
+
+Registers
+
+↓
+
+Cache
+
+↓
+
+RAM
+
+↓
+
+SSD / HDD
+
+↓
+
+Secondary / Archival Storage
+
+Slower / Larger</code></pre>
+            </li>
+
+
+            <!-- 145 -->
+            <li>
+                <h2>Protection and Security</h2>
+
+                <pre class="language-text"><code>Operating systems provide:
+
+Authentication
+
+Authorization
+
+Access Control
+
+Process Isolation
+
+Memory Protection
+
+File Permissions
+
+Auditing
+
+Security Policies</code></pre>
+            </li>
+
+
+            <!-- 146 -->
+            <li>
+                <h2>Authentication vs Authorization</h2>
+
+                <pre class="language-text"><code>Authentication
+
+Who are you?
+
+
+Authorization
+
+What are you
+allowed to do?</code></pre>
+            </li>
+
+
+            <!-- 147 -->
+            <li>
+                <h2>Real-Time Operating System</h2>
+
+                <pre class="language-text"><code>RTOS =
+
+Real-Time Operating System
+
+Designed for predictable,
+time-constrained responses.
+
+Used in:
+
+Embedded Systems
+
+Automotive Systems
+
+Industrial Control
+
+Robotics
+
+Medical Devices</code></pre>
+            </li>
+
+
+            <!-- 148 -->
+            <li>
+                <h2>Hard vs Soft Real-Time System</h2>
+
+                <pre class="language-text"><code>HARD REAL-TIME
+
+Missing a deadline
+is considered a
+system failure.
+
+
+SOFT REAL-TIME
+
+Occasional missed deadlines
+reduce quality/performance
+but are not necessarily
+catastrophic.</code></pre>
+            </li>
+
+
+            <!-- 149 -->
+            <li>
+                <h2>Important OS Interview Questions</h2>
+
+                <pre class="language-text"><code>What is an Operating System?
+
+What is a Kernel?
+
+Kernel vs Operating System?
+
+What is a System Call?
+
+What is a Process?
+
+Program vs Process?
+
+What is PCB?
+
+What is a Thread?
+
+Process vs Thread?
+
+What is Context Switching?
+
+What is CPU Scheduling?
+
+What is FCFS?
+
+What is SJF?
+
+What is SRTF?
+
+What is Round Robin?
+
+What is Priority Scheduling?
+
+What is Starvation?
+
+What is Aging?
+
+What is Race Condition?
+
+What is Critical Section?
+
+What is Mutex?
+
+What is Semaphore?
+
+Mutex vs Semaphore?
+
+What is Deadlock?
+
+Four conditions of Deadlock?
+
+What is Banker's Algorithm?
+
+Safe vs Unsafe State?
+
+Deadlock vs Starvation?
+
+What is Paging?
+
+What is Segmentation?
+
+Paging vs Segmentation?
+
+What is Virtual Memory?
+
+What is Demand Paging?
+
+What is Page Fault?
+
+What is TLB?
+
+What is Thrashing?
+
+What is LRU?
+
+What is Belady's Anomaly?
+
+What is IPC?
+
+What is Shared Memory?
+
+Concurrency vs Parallelism?
+
+What is Disk Scheduling?</code></pre>
+            </li>
+
+
+            <!-- 150 -->
+            <li>
+                <h2>CPU Scheduling Quick Revision</h2>
+
+                <pre class="language-text"><code>FCFS
+
+→ First Come First Serve
+
+
+SJF
+
+→ Shortest Job First
+
+
+SRTF
+
+→ Shortest Remaining Time First
+
+
+Priority
+
+→ Highest-priority process
+  according to policy
+
+
+Round Robin
+
+→ Fixed Time Quantum</code></pre>
+            </li>
+
+
+            <!-- 151 -->
+            <li>
+                <h2>Scheduling Formula Revision</h2>
+
+                <pre class="language-text"><code>Turnaround Time:
+
+TAT = CT - AT
+
+
+Waiting Time:
+
+WT = TAT - BT
+
+
+Response Time:
+
+RT = First Start Time - AT</code></pre>
+            </li>
+
+
+            <!-- 152 -->
+            <li>
+                <h2>Deadlock Quick Revision</h2>
+
+                <pre class="language-text"><code>Four Necessary Conditions:
+
+1. Mutual Exclusion
+
+2. Hold and Wait
+
+3. No Preemption
+
+4. Circular Wait
+
+
+Handling:
+
+Prevention
+
+Avoidance
+
+Detection
+
+Recovery</code></pre>
+            </li>
+
+
+            <!-- 153 -->
+            <li>
+                <h2>Memory Quick Revision</h2>
+
+                <pre class="language-text"><code>Logical Address
+
+↓
+
+MMU
+
+↓
+
+Physical Address
+
+
+Paging:
+
+Page → Frame
+
+
+Segmentation:
+
+Logical Segments
+
+
+Virtual Memory:
+
+Uses secondary storage
+to support larger
+virtual address spaces</code></pre>
+            </li>
+
+
+            <!-- 154 -->
+            <li>
+                <h2>Page Replacement Quick Revision</h2>
+
+                <pre class="language-text"><code>FIFO
+
+→ Oldest Page
+
+
+LRU
+
+→ Least Recently Used
+
+
+Optimal
+
+→ Used Farthest
+  in Future
+
+
+FIFO may show:
+
+Belady's Anomaly</code></pre>
+            </li>
+
+
+            <!-- 155 -->
+            <li>
+                <h2>Process Quick Revision</h2>
+
+                <pre class="language-text"><code>Process
+
+→ Program in Execution
+
+
+PCB
+
+→ Process Information
+
+
+Thread
+
+→ Unit of Execution
+
+
+Context Switch
+
+→ Switch CPU execution
+  between tasks
+
+
+IPC
+
+→ Communication between
+  processes</code></pre>
+            </li>
+
+
+            <!-- 156 -->
+            <li>
+                <h2>OS Learning Roadmap</h2>
+
+                <pre class="language-text"><code>1. Operating System Basics
+
+2. OS Functions
+
+3. Kernel
+
+4. User Mode / Kernel Mode
+
+5. System Calls
+
+6. Program vs Process
+
+7. Process States
+
+8. PCB
+
+9. Context Switching
+
+10. Threads
+
+11. Process vs Thread
+
+12. CPU Scheduling
+
+13. FCFS
+
+14. SJF
+
+15. SRTF
+
+16. Priority Scheduling
+
+17. Round Robin
+
+18. Starvation
+
+19. Aging
+
+20. Synchronization
+
+21. Race Condition
+
+22. Critical Section
+
+23. Mutex
+
+24. Semaphore
+
+25. Producer-Consumer
+
+26. Readers-Writers
+
+27. Dining Philosophers
+
+28. Deadlock
+
+29. Deadlock Conditions
+
+30. Banker's Algorithm
+
+31. Memory Management
+
+32. Fragmentation
+
+33. Paging
+
+34. Page Table
+
+35. TLB
+
+36. Segmentation
+
+37. Virtual Memory
+
+38. Demand Paging
+
+39. Page Fault
+
+40. FIFO
+
+41. LRU
+
+42. Optimal
+
+43. Thrashing
+
+44. File System
+
+45. File Allocation
+
+46. Disk Scheduling
+
+47. Interrupts
+
+48. IPC
+
+49. Booting
+
+50. OS Security</code></pre>
+            </li>
+
+
+            <!-- 157 -->
+            <li>
+                <h2>Final OS Interview Revision</h2>
+
+                <pre class="language-text"><code>OS
+
+→ Manages hardware
+  and software resources
+
+
+Kernel
+
+→ Core of OS
+
+
+System Call
+
+→ Request service
+  from kernel
+
+
+Process
+
+→ Program in execution
+
+
+PCB
+
+→ Stores process state
+
+
+Thread
+
+→ Unit of execution
+
+
+Context Switching
+
+→ Switch running task
+
+
+CPU Scheduling
+
+→ Select next process
+
+
+FCFS
+
+→ Arrival order
+
+
+SJF
+
+→ Shortest job
+
+
+SRTF
+
+→ Shortest remaining time
+
+
+Round Robin
+
+→ Time quantum
+
+
+Starvation
+
+→ Indefinite waiting
+
+
+Aging
+
+→ Reduce starvation
+
+
+Race Condition
+
+→ Timing-dependent
+  shared-data error
+
+
+Mutex
+
+→ Mutual exclusion lock
+
+
+Semaphore
+
+→ Counter-based
+  synchronization
+
+
+Deadlock
+
+→ Processes permanently
+  wait for each other
+
+
+Banker's Algorithm
+
+→ Deadlock avoidance
+
+
+Paging
+
+→ Fixed-size pages
+
+
+Segmentation
+
+→ Variable logical segments
+
+
+Virtual Memory
+
+→ Larger virtual
+  address space
+
+
+Page Fault
+
+→ Page not in RAM
+
+
+TLB
+
+→ Translation cache
+
+
+FIFO
+
+→ Oldest page replaced
+
+
+LRU
+
+→ Least recently used
+
+
+Optimal
+
+→ Farthest future use
+
+
+Thrashing
+
+→ Excessive paging
+
+
+IPC
+
+→ Inter-process
+  communication
+
+
+Most Important Topics:
+
+Processes
+
+Threads
+
+CPU Scheduling
+
+Synchronization
+
+Semaphore
+
+Mutex
+
+Deadlock
+
+Banker's Algorithm
+
+Paging
+
+Virtual Memory
+
+Page Replacement
+
+Disk Scheduling</code></pre>
+            </li>
+
+        </ol>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <p>
+            © 2026 CodeWithRohit |
+            Operating System Cheat Sheet
+        </p>
+
+    </footer>
+
+
+    <!-- Prism JS -->
+    <script src="../prism/prism.js"></script>
+
+    <!-- Common JS -->
+    <script src="../cheatsheet.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Complete Bootstrap Cheat Sheet by CodeWithRohit"
+    >
+
+    <title>Bootstrap Cheat Sheet | CodeWithRohit</title>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="../cheatsheet.css">
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="../prism/prism.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="cheat-navbar">
+
+        <a href="../index.html" class="brand">
+            &lt;/&gt; CodeWithRohit
+        </a>
+
+        <div class="cheat-title">
+            Bootstrap Cheat Sheet
+        </div>
+
+        <a href="../index.html" class="home-btn">
+            ← Home
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="cheat-hero">
+
+        <h1>Bootstrap Cheat Sheet</h1>
+
+        <p>
+            Complete Bootstrap quick reference covering layout,
+            grid, buttons, forms, cards, navbar, modal,
+            responsive utilities and components.
+        </p>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <ol>
+
+            <!-- 1 -->
+            <li>
+                <h2>Bootstrap CDN Setup</h2>
+
+                <pre class="language-html"><code>&lt;link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+&gt;</code></pre>
+            </li>
+
+
+            <!-- 2 -->
+            <li>
+                <h2>Bootstrap JavaScript</h2>
+
+                <pre class="language-html"><code>&lt;script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js"
+&gt;&lt;/script&gt;</code></pre>
+            </li>
+
+
+            <!-- 3 -->
+            <li>
+                <h2>Bootstrap Starter Template</h2>
+
+                <pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+
+    &lt;meta charset="UTF-8"&gt;
+
+    &lt;meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    &gt;
+
+    &lt;title&gt;Bootstrap&lt;/title&gt;
+
+    &lt;link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    &gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+    &lt;h1&gt;
+        Hello Bootstrap
+    &lt;/h1&gt;
+
+
+    &lt;script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js"
+    &gt;&lt;/script&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+            </li>
+
+
+            <!-- 4 -->
+            <li>
+                <h2>Container</h2>
+
+                <pre class="language-html"><code>&lt;div class="container"&gt;
+
+    Content
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 5 -->
+            <li>
+                <h2>Fluid Container</h2>
+
+                <pre class="language-html"><code>&lt;div class="container-fluid"&gt;
+
+    Full width content
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 6 -->
+            <li>
+                <h2>Responsive Containers</h2>
+
+                <pre class="language-text"><code>.container
+
+.container-sm
+
+.container-md
+
+.container-lg
+
+.container-xl
+
+.container-xxl
+
+.container-fluid</code></pre>
+            </li>
+
+
+            <!-- 7 -->
+            <li>
+                <h2>Bootstrap Grid</h2>
+
+                <pre class="language-html"><code>&lt;div class="container"&gt;
+
+    &lt;div class="row"&gt;
+
+        &lt;div class="col"&gt;
+            Column 1
+        &lt;/div&gt;
+
+        &lt;div class="col"&gt;
+            Column 2
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 8 -->
+            <li>
+                <h2>12 Column Grid</h2>
+
+                <pre class="language-html"><code>&lt;div class="row"&gt;
+
+    &lt;div class="col-4"&gt;
+        4 Columns
+    &lt;/div&gt;
+
+    &lt;div class="col-8"&gt;
+        8 Columns
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 9 -->
+            <li>
+                <h2>Responsive Grid</h2>
+
+                <pre class="language-html"><code>&lt;div class="row"&gt;
+
+    &lt;div class="col-12 col-md-6 col-lg-4"&gt;
+        Column
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 10 -->
+            <li>
+                <h2>Bootstrap Breakpoints</h2>
+
+                <pre class="language-text"><code>xs   &lt; 576px
+
+sm   ≥ 576px
+
+md   ≥ 768px
+
+lg   ≥ 992px
+
+xl   ≥ 1200px
+
+xxl  ≥ 1400px</code></pre>
+            </li>
+
+
+            <!-- 11 -->
+            <li>
+                <h2>Grid Gap</h2>
+
+                <pre class="language-html"><code>&lt;div class="row g-3"&gt;
+
+    &lt;div class="col-6"&gt;
+        One
+    &lt;/div&gt;
+
+    &lt;div class="col-6"&gt;
+        Two
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 12 -->
+            <li>
+                <h2>Headings</h2>
+
+                <pre class="language-html"><code>&lt;h1&gt;Heading 1&lt;/h1&gt;
+
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+
+&lt;h3&gt;Heading 3&lt;/h3&gt;
+
+
+&lt;p class="h1"&gt;
+    Heading Style
+&lt;/p&gt;</code></pre>
+            </li>
+
+
+            <!-- 13 -->
+            <li>
+                <h2>Display Headings</h2>
+
+                <pre class="language-html"><code>&lt;h1 class="display-1"&gt;
+    Display 1
+&lt;/h1&gt;
+
+&lt;h1 class="display-6"&gt;
+    Display 6
+&lt;/h1&gt;</code></pre>
+            </li>
+
+
+            <!-- 14 -->
+            <li>
+                <h2>Text Alignment</h2>
+
+                <pre class="language-html"><code>&lt;p class="text-start"&gt;
+    Left
+&lt;/p&gt;
+
+&lt;p class="text-center"&gt;
+    Center
+&lt;/p&gt;
+
+&lt;p class="text-end"&gt;
+    Right
+&lt;/p&gt;</code></pre>
+            </li>
+
+
+            <!-- 15 -->
+            <li>
+                <h2>Font Weight</h2>
+
+                <pre class="language-html"><code>&lt;p class="fw-bold"&gt;
+    Bold
+&lt;/p&gt;
+
+&lt;p class="fw-semibold"&gt;
+    Semibold
+&lt;/p&gt;
+
+&lt;p class="fw-normal"&gt;
+    Normal
+&lt;/p&gt;
+
+&lt;p class="fw-light"&gt;
+    Light
+&lt;/p&gt;</code></pre>
+            </li>
+
+
+            <!-- 16 -->
+            <li>
+                <h2>Text Colors</h2>
+
+                <pre class="language-html"><code>&lt;p class="text-primary"&gt;
+    Primary
+&lt;/p&gt;
+
+&lt;p class="text-success"&gt;
+    Success
+&lt;/p&gt;
+
+&lt;p class="text-danger"&gt;
+    Danger
+&lt;/p&gt;
+
+&lt;p class="text-warning"&gt;
+    Warning
+&lt;/p&gt;
+
+&lt;p class="text-info"&gt;
+    Info
+&lt;/p&gt;
+
+&lt;p class="text-muted"&gt;
+    Muted
+&lt;/p&gt;</code></pre>
+            </li>
+
+
+            <!-- 17 -->
+            <li>
+                <h2>Background Colors</h2>
+
+                <pre class="language-html"><code>&lt;div class="bg-primary"&gt;
+    Primary
+&lt;/div&gt;
+
+&lt;div class="bg-success"&gt;
+    Success
+&lt;/div&gt;
+
+&lt;div class="bg-danger"&gt;
+    Danger
+&lt;/div&gt;
+
+&lt;div class="bg-warning"&gt;
+    Warning
+&lt;/div&gt;
+
+&lt;div class="bg-dark text-white"&gt;
+    Dark
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 18 -->
+            <li>
+                <h2>Basic Buttons</h2>
+
+                <pre class="language-html"><code>&lt;button class="btn btn-primary"&gt;
+    Primary
+&lt;/button&gt;
+
+&lt;button class="btn btn-success"&gt;
+    Success
+&lt;/button&gt;
+
+&lt;button class="btn btn-danger"&gt;
+    Danger
+&lt;/button&gt;
+
+&lt;button class="btn btn-warning"&gt;
+    Warning
+&lt;/button&gt;</code></pre>
+            </li>
+
+
+            <!-- 19 -->
+            <li>
+                <h2>Outline Buttons</h2>
+
+                <pre class="language-html"><code>&lt;button class="btn btn-outline-primary"&gt;
+    Primary
+&lt;/button&gt;
+
+&lt;button class="btn btn-outline-success"&gt;
+    Success
+&lt;/button&gt;
+
+&lt;button class="btn btn-outline-danger"&gt;
+    Danger
+&lt;/button&gt;</code></pre>
+            </li>
+
+
+            <!-- 20 -->
+            <li>
+                <h2>Button Sizes</h2>
+
+                <pre class="language-html"><code>&lt;button class="btn btn-primary btn-lg"&gt;
+    Large
+&lt;/button&gt;
+
+&lt;button class="btn btn-primary"&gt;
+    Normal
+&lt;/button&gt;
+
+&lt;button class="btn btn-primary btn-sm"&gt;
+    Small
+&lt;/button&gt;</code></pre>
+            </li>
+
+
+            <!-- 21 -->
+            <li>
+                <h2>Disabled Button</h2>
+
+                <pre class="language-html"><code>&lt;button
+    class="btn btn-primary"
+    disabled
+&gt;
+    Disabled
+&lt;/button&gt;</code></pre>
+            </li>
+
+
+            <!-- 22 -->
+            <li>
+                <h2>Alerts</h2>
+
+                <pre class="language-html"><code>&lt;div class="alert alert-success"&gt;
+    Success!
+&lt;/div&gt;
+
+&lt;div class="alert alert-danger"&gt;
+    Error!
+&lt;/div&gt;
+
+&lt;div class="alert alert-warning"&gt;
+    Warning!
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 23 -->
+            <li>
+                <h2>Dismissible Alert</h2>
+
+                <pre class="language-html"><code>&lt;div
+    class="alert alert-warning alert-dismissible fade show"
+&gt;
+
+    Warning message
+
+    &lt;button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+    &gt;&lt;/button&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 24 -->
+            <li>
+                <h2>Badges</h2>
+
+                <pre class="language-html"><code>&lt;span class="badge bg-primary"&gt;
+    New
+&lt;/span&gt;
+
+&lt;span class="badge bg-success"&gt;
+    Success
+&lt;/span&gt;
+
+&lt;span class="badge bg-danger"&gt;
+    Error
+&lt;/span&gt;</code></pre>
+            </li>
+
+
+            <!-- 25 -->
+            <li>
+                <h2>Rounded Badge</h2>
+
+                <pre class="language-html"><code>&lt;span
+    class="badge rounded-pill bg-primary"
+&gt;
+    New
+&lt;/span&gt;</code></pre>
+            </li>
+
+
+            <!-- 26 -->
+            <li>
+                <h2>Basic Card</h2>
+
+                <pre class="language-html"><code>&lt;div class="card"&gt;
+
+    &lt;div class="card-body"&gt;
+
+        &lt;h5 class="card-title"&gt;
+            Card Title
+        &lt;/h5&gt;
+
+        &lt;p class="card-text"&gt;
+            Card description.
+        &lt;/p&gt;
+
+        &lt;a
+            href="#"
+            class="btn btn-primary"
+        &gt;
+            Read More
+        &lt;/a&gt;
+
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 27 -->
+            <li>
+                <h2>Card with Image</h2>
+
+                <pre class="language-html"><code>&lt;div class="card" style="width: 18rem;"&gt;
+
+    &lt;img
+        src="image.jpg"
+        class="card-img-top"
+        alt="Card"
+    &gt;
+
+    &lt;div class="card-body"&gt;
+
+        &lt;h5 class="card-title"&gt;
+            Project
+        &lt;/h5&gt;
+
+        &lt;p class="card-text"&gt;
+            Project description
+        &lt;/p&gt;
+
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 28 -->
+            <li>
+                <h2>Basic Form</h2>
+
+                <pre class="language-html"><code>&lt;form&gt;
+
+    &lt;div class="mb-3"&gt;
+
+        &lt;label
+            for="email"
+            class="form-label"
+        &gt;
+            Email
+        &lt;/label&gt;
+
+        &lt;input
+            type="email"
+            class="form-control"
+            id="email"
+        &gt;
+
+    &lt;/div&gt;
+
+
+    &lt;button
+        type="submit"
+        class="btn btn-primary"
+    &gt;
+        Submit
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+            </li>
+
+
+            <!-- 29 -->
+            <li>
+                <h2>Input Types</h2>
+
+                <pre class="language-html"><code>&lt;input
+    type="text"
+    class="form-control"
+&gt;
+
+&lt;input
+    type="email"
+    class="form-control"
+&gt;
+
+&lt;input
+    type="password"
+    class="form-control"
+&gt;
+
+&lt;input
+    type="number"
+    class="form-control"
+&gt;
+
+&lt;input
+    type="date"
+    class="form-control"
+&gt;</code></pre>
+            </li>
+
+
+            <!-- 30 -->
+            <li>
+                <h2>Textarea</h2>
+
+                <pre class="language-html"><code>&lt;textarea
+    class="form-control"
+    rows="5"
+&gt;&lt;/textarea&gt;</code></pre>
+            </li>
+
+
+            <!-- 31 -->
+            <li>
+                <h2>Select</h2>
+
+                <pre class="language-html"><code>&lt;select class="form-select"&gt;
+
+    &lt;option&gt;
+        HTML
+    &lt;/option&gt;
+
+    &lt;option&gt;
+        CSS
+    &lt;/option&gt;
+
+    &lt;option&gt;
+        JavaScript
+    &lt;/option&gt;
+
+&lt;/select&gt;</code></pre>
+            </li>
+
+
+            <!-- 32 -->
+            <li>
+                <h2>Checkbox</h2>
+
+                <pre class="language-html"><code>&lt;div class="form-check"&gt;
+
+    &lt;input
+        class="form-check-input"
+        type="checkbox"
+        id="terms"
+    &gt;
+
+    &lt;label
+        class="form-check-label"
+        for="terms"
+    &gt;
+        Accept Terms
+    &lt;/label&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 33 -->
+            <li>
+                <h2>Radio Button</h2>
+
+                <pre class="language-html"><code>&lt;div class="form-check"&gt;
+
+    &lt;input
+        class="form-check-input"
+        type="radio"
+        name="gender"
+        id="male"
+    &gt;
+
+    &lt;label
+        class="form-check-label"
+        for="male"
+    &gt;
+        Male
+    &lt;/label&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 34 -->
+            <li>
+                <h2>Switch</h2>
+
+                <pre class="language-html"><code>&lt;div class="form-check form-switch"&gt;
+
+    &lt;input
+        class="form-check-input"
+        type="checkbox"
+        role="switch"
+    &gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 35 -->
+            <li>
+                <h2>Input Group</h2>
+
+                <pre class="language-html"><code>&lt;div class="input-group"&gt;
+
+    &lt;span class="input-group-text"&gt;
+        @
+    &lt;/span&gt;
+
+    &lt;input
+        type="text"
+        class="form-control"
+        placeholder="Username"
+    &gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 36 -->
+            <li>
+                <h2>Table</h2>
+
+                <pre class="language-html"><code>&lt;table class="table"&gt;
+
+    &lt;thead&gt;
+
+        &lt;tr&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Age&lt;/th&gt;
+        &lt;/tr&gt;
+
+    &lt;/thead&gt;
+
+
+    &lt;tbody&gt;
+
+        &lt;tr&gt;
+            &lt;td&gt;Rohit&lt;/td&gt;
+            &lt;td&gt;21&lt;/td&gt;
+        &lt;/tr&gt;
+
+    &lt;/tbody&gt;
+
+&lt;/table&gt;</code></pre>
+            </li>
+
+
+            <!-- 37 -->
+            <li>
+                <h2>Table Styles</h2>
+
+                <pre class="language-html"><code>&lt;table class="table table-striped"&gt;
+
+&lt;table class="table table-bordered"&gt;
+
+&lt;table class="table table-hover"&gt;
+
+&lt;table class="table table-dark"&gt;</code></pre>
+            </li>
+
+
+            <!-- 38 -->
+            <li>
+                <h2>Responsive Table</h2>
+
+                <pre class="language-html"><code>&lt;div class="table-responsive"&gt;
+
+    &lt;table class="table"&gt;
+
+        ...
+
+    &lt;/table&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 39 -->
+            <li>
+                <h2>Basic Navbar</h2>
+
+                <pre class="language-html"><code>&lt;nav class="navbar navbar-dark bg-dark"&gt;
+
+    &lt;div class="container"&gt;
+
+        &lt;a
+            class="navbar-brand"
+            href="#"
+        &gt;
+            CodeWithRohit
+        &lt;/a&gt;
+
+    &lt;/div&gt;
+
+&lt;/nav&gt;</code></pre>
+            </li>
+
+
+            <!-- 40 -->
+            <li>
+                <h2>Responsive Navbar</h2>
+
+                <pre class="language-html"><code>&lt;nav
+    class="navbar navbar-expand-lg bg-dark"
+    data-bs-theme="dark"
+&gt;
+
+    &lt;div class="container"&gt;
+
+        &lt;a
+            class="navbar-brand"
+            href="#"
+        &gt;
+            CodeWithRohit
+        &lt;/a&gt;
+
+
+        &lt;button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarMenu"
+        &gt;
+
+            &lt;span
+                class="navbar-toggler-icon"
+            &gt;&lt;/span&gt;
+
+        &lt;/button&gt;
+
+
+        &lt;div
+            class="collapse navbar-collapse"
+            id="navbarMenu"
+        &gt;
+
+            &lt;ul class="navbar-nav ms-auto"&gt;
+
+                &lt;li class="nav-item"&gt;
+
+                    &lt;a
+                        class="nav-link"
+                        href="#"
+                    &gt;
+                        Home
+                    &lt;/a&gt;
+
+                &lt;/li&gt;
+
+
+                &lt;li class="nav-item"&gt;
+
+                    &lt;a
+                        class="nav-link"
+                        href="#"
+                    &gt;
+                        About
+                    &lt;/a&gt;
+
+                &lt;/li&gt;
+
+            &lt;/ul&gt;
+
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+&lt;/nav&gt;</code></pre>
+            </li>
+
+
+            <!-- 41 -->
+            <li>
+                <h2>Dropdown</h2>
+
+                <pre class="language-html"><code>&lt;div class="dropdown"&gt;
+
+    &lt;button
+        class="btn btn-primary dropdown-toggle"
+        data-bs-toggle="dropdown"
+    &gt;
+        Languages
+    &lt;/button&gt;
+
+
+    &lt;ul class="dropdown-menu"&gt;
+
+        &lt;li&gt;
+            &lt;a
+                class="dropdown-item"
+                href="#"
+            &gt;
+                HTML
+            &lt;/a&gt;
+        &lt;/li&gt;
+
+        &lt;li&gt;
+            &lt;a
+                class="dropdown-item"
+                href="#"
+            &gt;
+                CSS
+            &lt;/a&gt;
+        &lt;/li&gt;
+
+    &lt;/ul&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 42 -->
+            <li>
+                <h2>Modal Button</h2>
+
+                <pre class="language-html"><code>&lt;button
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#myModal"
+&gt;
+    Open Modal
+&lt;/button&gt;</code></pre>
+            </li>
+
+
+            <!-- 43 -->
+            <li>
+                <h2>Modal</h2>
+
+                <pre class="language-html"><code>&lt;div
+    class="modal fade"
+    id="myModal"
+&gt;
+
+    &lt;div class="modal-dialog"&gt;
+
+        &lt;div class="modal-content"&gt;
+
+
+            &lt;div class="modal-header"&gt;
+
+                &lt;h5 class="modal-title"&gt;
+                    Welcome
+                &lt;/h5&gt;
+
+                &lt;button
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                &gt;&lt;/button&gt;
+
+            &lt;/div&gt;
+
+
+            &lt;div class="modal-body"&gt;
+
+                Hello from Bootstrap!
+
+            &lt;/div&gt;
+
+
+            &lt;div class="modal-footer"&gt;
+
+                &lt;button
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                &gt;
+                    Close
+                &lt;/button&gt;
+
+            &lt;/div&gt;
+
+
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 44 -->
+            <li>
+                <h2>Accordion</h2>
+
+                <pre class="language-html"><code>&lt;div
+    class="accordion"
+    id="accordionExample"
+&gt;
+
+    &lt;div class="accordion-item"&gt;
+
+        &lt;h2 class="accordion-header"&gt;
+
+            &lt;button
+                class="accordion-button"
+                data-bs-toggle="collapse"
+                data-bs-target="#itemOne"
+            &gt;
+                HTML
+            &lt;/button&gt;
+
+        &lt;/h2&gt;
+
+
+        &lt;div
+            id="itemOne"
+            class="accordion-collapse collapse show"
+            data-bs-parent="#accordionExample"
+        &gt;
+
+            &lt;div class="accordion-body"&gt;
+
+                HTML is used to create
+                webpage structure.
+
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 45 -->
+            <li>
+                <h2>Progress Bar</h2>
+
+                <pre class="language-html"><code>&lt;div class="progress"&gt;
+
+    &lt;div
+        class="progress-bar"
+        style="width: 75%;"
+    &gt;
+        75%
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 46 -->
+            <li>
+                <h2>Spinner</h2>
+
+                <pre class="language-html"><code>&lt;div
+    class="spinner-border text-primary"
+&gt;
+
+    &lt;span class="visually-hidden"&gt;
+        Loading...
+    &lt;/span&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 47 -->
+            <li>
+                <h2>Pagination</h2>
+
+                <pre class="language-html"><code>&lt;nav&gt;
+
+    &lt;ul class="pagination"&gt;
+
+        &lt;li class="page-item"&gt;
+
+            &lt;a
+                class="page-link"
+                href="#"
+            &gt;
+                Previous
+            &lt;/a&gt;
+
+        &lt;/li&gt;
+
+
+        &lt;li class="page-item active"&gt;
+
+            &lt;a
+                class="page-link"
+                href="#"
+            &gt;
+                1
+            &lt;/a&gt;
+
+        &lt;/li&gt;
+
+
+        &lt;li class="page-item"&gt;
+
+            &lt;a
+                class="page-link"
+                href="#"
+            &gt;
+                Next
+            &lt;/a&gt;
+
+        &lt;/li&gt;
+
+    &lt;/ul&gt;
+
+&lt;/nav&gt;</code></pre>
+            </li>
+
+
+            <!-- 48 -->
+            <li>
+                <h2>Breadcrumb</h2>
+
+                <pre class="language-html"><code>&lt;nav&gt;
+
+    &lt;ol class="breadcrumb"&gt;
+
+        &lt;li class="breadcrumb-item"&gt;
+
+            &lt;a href="#"&gt;
+                Home
+            &lt;/a&gt;
+
+        &lt;/li&gt;
+
+        &lt;li
+            class="breadcrumb-item active"
+        &gt;
+            Bootstrap
+        &lt;/li&gt;
+
+    &lt;/ol&gt;
+
+&lt;/nav&gt;</code></pre>
+            </li>
+
+
+            <!-- 49 -->
+            <li>
+                <h2>List Group</h2>
+
+                <pre class="language-html"><code>&lt;ul class="list-group"&gt;
+
+    &lt;li class="list-group-item"&gt;
+        HTML
+    &lt;/li&gt;
+
+    &lt;li class="list-group-item"&gt;
+        CSS
+    &lt;/li&gt;
+
+    &lt;li class="list-group-item"&gt;
+        JavaScript
+    &lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+            </li>
+
+
+            <!-- 50 -->
+            <li>
+                <h2>Image Utilities</h2>
+
+                <pre class="language-html"><code>&lt;img
+    src="image.jpg"
+    class="img-fluid"
+    alt="Responsive"
+&gt;
+
+
+&lt;img
+    src="image.jpg"
+    class="rounded"
+    alt="Rounded"
+&gt;
+
+
+&lt;img
+    src="image.jpg"
+    class="rounded-circle"
+    alt="Circle"
+&gt;
+
+
+&lt;img
+    src="image.jpg"
+    class="img-thumbnail"
+    alt="Thumbnail"
+&gt;</code></pre>
+            </li>
+
+
+            <!-- 51 -->
+            <li>
+                <h2>Margin Utilities</h2>
+
+                <pre class="language-text"><code>m-0
+
+m-1
+
+m-2
+
+m-3
+
+m-4
+
+m-5
+
+
+mt-* = margin top
+
+mb-* = margin bottom
+
+ms-* = margin start
+
+me-* = margin end
+
+mx-* = horizontal margin
+
+my-* = vertical margin</code></pre>
+            </li>
+
+
+            <!-- 52 -->
+            <li>
+                <h2>Padding Utilities</h2>
+
+                <pre class="language-text"><code>p-0
+
+p-1
+
+p-2
+
+p-3
+
+p-4
+
+p-5
+
+
+pt-* = padding top
+
+pb-* = padding bottom
+
+ps-* = padding start
+
+pe-* = padding end
+
+px-* = horizontal padding
+
+py-* = vertical padding</code></pre>
+            </li>
+
+
+            <!-- 53 -->
+            <li>
+                <h2>Width Utilities</h2>
+
+                <pre class="language-html"><code>&lt;div class="w-25"&gt;25%&lt;/div&gt;
+
+&lt;div class="w-50"&gt;50%&lt;/div&gt;
+
+&lt;div class="w-75"&gt;75%&lt;/div&gt;
+
+&lt;div class="w-100"&gt;100%&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 54 -->
+            <li>
+                <h2>Display Utilities</h2>
+
+                <pre class="language-text"><code>d-none
+
+d-block
+
+d-inline
+
+d-inline-block
+
+d-flex
+
+d-grid</code></pre>
+            </li>
+
+
+            <!-- 55 -->
+            <li>
+                <h2>Responsive Display</h2>
+
+                <pre class="language-html"><code>&lt;div
+    class="d-none d-md-block"
+&gt;
+
+    Hidden on small screens
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 56 -->
+            <li>
+                <h2>Flexbox</h2>
+
+                <pre class="language-html"><code>&lt;div class="d-flex"&gt;
+
+    &lt;div&gt;One&lt;/div&gt;
+
+    &lt;div&gt;Two&lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 57 -->
+            <li>
+                <h2>Flex Direction</h2>
+
+                <pre class="language-text"><code>flex-row
+
+flex-row-reverse
+
+flex-column
+
+flex-column-reverse</code></pre>
+            </li>
+
+
+            <!-- 58 -->
+            <li>
+                <h2>Justify Content</h2>
+
+                <pre class="language-text"><code>justify-content-start
+
+justify-content-center
+
+justify-content-end
+
+justify-content-between
+
+justify-content-around
+
+justify-content-evenly</code></pre>
+            </li>
+
+
+            <!-- 59 -->
+            <li>
+                <h2>Align Items</h2>
+
+                <pre class="language-text"><code>align-items-start
+
+align-items-center
+
+align-items-end
+
+align-items-stretch</code></pre>
+            </li>
+
+
+            <!-- 60 -->
+            <li>
+                <h2>Flex Center</h2>
+
+                <pre class="language-html"><code>&lt;div
+    class="d-flex justify-content-center align-items-center"
+&gt;
+
+    Centered Content
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 61 -->
+            <li>
+                <h2>Gap</h2>
+
+                <pre class="language-html"><code>&lt;div class="d-flex gap-3"&gt;
+
+    &lt;button class="btn btn-primary"&gt;
+        One
+    &lt;/button&gt;
+
+    &lt;button class="btn btn-success"&gt;
+        Two
+    &lt;/button&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 62 -->
+            <li>
+                <h2>Border Utilities</h2>
+
+                <pre class="language-text"><code>border
+
+border-0
+
+border-top
+
+border-bottom
+
+border-start
+
+border-end
+
+border-primary
+
+border-success
+
+border-danger</code></pre>
+            </li>
+
+
+            <!-- 63 -->
+            <li>
+                <h2>Border Radius</h2>
+
+                <pre class="language-text"><code>rounded
+
+rounded-0
+
+rounded-1
+
+rounded-2
+
+rounded-3
+
+rounded-4
+
+rounded-5
+
+rounded-circle
+
+rounded-pill</code></pre>
+            </li>
+
+
+            <!-- 64 -->
+            <li>
+                <h2>Shadow</h2>
+
+                <pre class="language-html"><code>&lt;div class="shadow-sm"&gt;
+    Small Shadow
+&lt;/div&gt;
+
+&lt;div class="shadow"&gt;
+    Shadow
+&lt;/div&gt;
+
+&lt;div class="shadow-lg"&gt;
+    Large Shadow
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 65 -->
+            <li>
+                <h2>Position Utilities</h2>
+
+                <pre class="language-text"><code>position-static
+
+position-relative
+
+position-absolute
+
+position-fixed
+
+position-sticky</code></pre>
+            </li>
+
+
+            <!-- 66 -->
+            <li>
+                <h2>Position Example</h2>
+
+                <pre class="language-html"><code>&lt;div class="position-relative"&gt;
+
+    &lt;span
+        class="position-absolute top-0 end-0"
+    &gt;
+        Top Right
+    &lt;/span&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 67 -->
+            <li>
+                <h2>Fixed Navbar</h2>
+
+                <pre class="language-html"><code>&lt;nav
+    class="navbar bg-dark fixed-top"
+&gt;
+
+    ...
+
+&lt;/nav&gt;</code></pre>
+            </li>
+
+
+            <!-- 68 -->
+            <li>
+                <h2>Sticky Navbar</h2>
+
+                <pre class="language-html"><code>&lt;nav
+    class="navbar bg-dark sticky-top"
+&gt;
+
+    ...
+
+&lt;/nav&gt;</code></pre>
+            </li>
+
+
+            <!-- 69 -->
+            <li>
+                <h2>Carousel</h2>
+
+                <pre class="language-html"><code>&lt;div
+    id="carouselExample"
+    class="carousel slide"
+&gt;
+
+    &lt;div class="carousel-inner"&gt;
+
+
+        &lt;div class="carousel-item active"&gt;
+
+            &lt;img
+                src="image1.jpg"
+                class="d-block w-100"
+                alt="Slide 1"
+            &gt;
+
+        &lt;/div&gt;
+
+
+        &lt;div class="carousel-item"&gt;
+
+            &lt;img
+                src="image2.jpg"
+                class="d-block w-100"
+                alt="Slide 2"
+            &gt;
+
+        &lt;/div&gt;
+
+
+    &lt;/div&gt;
+
+
+    &lt;button
+        class="carousel-control-prev"
+        data-bs-target="#carouselExample"
+        data-bs-slide="prev"
+    &gt;
+
+        &lt;span
+            class="carousel-control-prev-icon"
+        &gt;&lt;/span&gt;
+
+    &lt;/button&gt;
+
+
+    &lt;button
+        class="carousel-control-next"
+        data-bs-target="#carouselExample"
+        data-bs-slide="next"
+    &gt;
+
+        &lt;span
+            class="carousel-control-next-icon"
+        &gt;&lt;/span&gt;
+
+    &lt;/button&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 70 -->
+            <li>
+                <h2>Collapse</h2>
+
+                <pre class="language-html"><code>&lt;button
+    class="btn btn-primary"
+    data-bs-toggle="collapse"
+    data-bs-target="#content"
+&gt;
+    Show / Hide
+&lt;/button&gt;
+
+
+&lt;div
+    class="collapse"
+    id="content"
+&gt;
+
+    Hidden Content
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 71 -->
+            <li>
+                <h2>Offcanvas</h2>
+
+                <pre class="language-html"><code>&lt;button
+    class="btn btn-primary"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#menu"
+&gt;
+    Open Menu
+&lt;/button&gt;
+
+
+&lt;div
+    class="offcanvas offcanvas-start"
+    id="menu"
+&gt;
+
+    &lt;div class="offcanvas-header"&gt;
+
+        &lt;h5&gt;Menu&lt;/h5&gt;
+
+        &lt;button
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+        &gt;&lt;/button&gt;
+
+    &lt;/div&gt;
+
+
+    &lt;div class="offcanvas-body"&gt;
+
+        Menu Content
+
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 72 -->
+            <li>
+                <h2>Bootstrap Icons Setup</h2>
+
+                <pre class="language-html"><code>&lt;link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+&gt;</code></pre>
+            </li>
+
+
+            <!-- 73 -->
+            <li>
+                <h2>Bootstrap Icons</h2>
+
+                <pre class="language-html"><code>&lt;i class="bi bi-house"&gt;&lt;/i&gt;
+
+&lt;i class="bi bi-github"&gt;&lt;/i&gt;
+
+&lt;i class="bi bi-linkedin"&gt;&lt;/i&gt;
+
+&lt;i class="bi bi-code-slash"&gt;&lt;/i&gt;
+
+&lt;i class="bi bi-search"&gt;&lt;/i&gt;</code></pre>
+            </li>
+
+
+            <!-- 74 -->
+            <li>
+                <h2>Responsive Card Grid</h2>
+
+                <pre class="language-html"><code>&lt;div class="container"&gt;
+
+    &lt;div class="row g-4"&gt;
+
+
+        &lt;div class="col-12 col-md-6 col-lg-4"&gt;
+
+            &lt;div class="card h-100"&gt;
+
+                &lt;div class="card-body"&gt;
+
+                    &lt;h5 class="card-title"&gt;
+                        HTML
+                    &lt;/h5&gt;
+
+                    &lt;p class="card-text"&gt;
+                        HTML Cheat Sheet
+                    &lt;/p&gt;
+
+                &lt;/div&gt;
+
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+
+
+        &lt;div class="col-12 col-md-6 col-lg-4"&gt;
+
+            &lt;div class="card h-100"&gt;
+
+                &lt;div class="card-body"&gt;
+
+                    &lt;h5 class="card-title"&gt;
+                        CSS
+                    &lt;/h5&gt;
+
+                    &lt;p class="card-text"&gt;
+                        CSS Cheat Sheet
+                    &lt;/p&gt;
+
+                &lt;/div&gt;
+
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+
+
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 75 -->
+            <li>
+                <h2>Common Bootstrap Classes</h2>
+
+                <pre class="language-text"><code>Layout
+--------------------
+container
+container-fluid
+row
+col
+col-md-6
+col-lg-4
+
+
+Spacing
+--------------------
+m-*
+mt-*
+mb-*
+mx-*
+my-*
+
+p-*
+pt-*
+pb-*
+px-*
+py-*
+
+
+Flex
+--------------------
+d-flex
+justify-content-center
+align-items-center
+gap-*
+
+
+Text
+--------------------
+text-center
+text-start
+text-end
+fw-bold
+text-primary
+text-muted
+
+
+Background
+--------------------
+bg-primary
+bg-success
+bg-danger
+bg-dark
+
+
+Components
+--------------------
+btn
+card
+alert
+navbar
+modal
+dropdown
+accordion
+carousel</code></pre>
+            </li>
+
+
+            <!-- 76 -->
+            <li>
+                <h2>Bootstrap Quick Revision</h2>
+
+                <pre class="language-html"><code>&lt;div class="container py-5"&gt;
+
+    &lt;div class="row g-4"&gt;
+
+
+        &lt;div class="col-12 col-md-6"&gt;
+
+            &lt;div class="card shadow"&gt;
+
+                &lt;div class="card-body"&gt;
+
+                    &lt;h2
+                        class="card-title text-primary"
+                    &gt;
+                        CodeWithRohit
+                    &lt;/h2&gt;
+
+
+                    &lt;p class="card-text"&gt;
+                        Bootstrap Cheat Sheet
+                    &lt;/p&gt;
+
+
+                    &lt;button
+                        class="btn btn-primary"
+                    &gt;
+                        Learn More
+                    &lt;/button&gt;
+
+                &lt;/div&gt;
+
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+
+
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+            </li>
+
+
+            <!-- 77 -->
+            <li>
+                <h2>Bootstrap Learning Roadmap</h2>
+
+                <pre class="language-text"><code>1. Bootstrap Introduction
+
+2. Bootstrap Setup
+
+3. Containers
+
+4. Grid System
+
+5. Breakpoints
+
+6. Columns
+
+7. Gutters
+
+8. Typography
+
+9. Colors
+
+10. Backgrounds
+
+11. Buttons
+
+12. Alerts
+
+13. Badges
+
+14. Cards
+
+15. Forms
+
+16. Inputs
+
+17. Select
+
+18. Checkbox
+
+19. Radio
+
+20. Tables
+
+21. Navbar
+
+22. Dropdown
+
+23. Modal
+
+24. Accordion
+
+25. Carousel
+
+26. Collapse
+
+27. Offcanvas
+
+28. Pagination
+
+29. Breadcrumb
+
+30. List Group
+
+31. Images
+
+32. Spacing
+
+33. Display
+
+34. Flexbox
+
+35. Borders
+
+36. Shadows
+
+37. Position
+
+38. Responsive Utilities
+
+39. Bootstrap Icons
+
+40. Bootstrap Projects</code></pre>
+            </li>
+
+        </ol>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <p>
+            © 2026 CodeWithRohit |
+            Bootstrap Cheat Sheet
+        </p>
+
+    </footer>
+
+
+    <!-- Prism JS -->
+    <script src="../prism/prism.js"></script>
+
+    <!-- Common JS -->
+    <script src="../cheatsheet.js"></script>
+
+</body>
+
+</html>

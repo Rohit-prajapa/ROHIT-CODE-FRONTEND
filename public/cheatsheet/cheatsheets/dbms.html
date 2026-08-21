@@ -1,0 +1,3523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Complete DBMS Cheat Sheet by CodeWithRohit"
+    >
+
+    <title>DBMS Cheat Sheet | CodeWithRohit</title>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="../cheatsheet.css">
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="../prism/prism.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="cheat-navbar">
+
+        <a href="../index.html" class="brand">
+            &lt;/&gt; CodeWithRohit
+        </a>
+
+        <div class="cheat-title">
+            DBMS Cheat Sheet
+        </div>
+
+        <a href="../index.html" class="home-btn">
+            ← Home
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="cheat-hero">
+
+        <h1>DBMS Complete Cheat Sheet</h1>
+
+        <p>
+            Complete Database Management System quick reference covering
+            DBMS, RDBMS, keys, normalization, SQL, joins, transactions,
+            ACID properties, indexing, concurrency and deadlocks.
+        </p>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <ol>
+
+            <!-- 1 -->
+            <li>
+                <h2>What is Data?</h2>
+
+                <pre class="language-text"><code>Data is raw facts or information.
+
+Examples:
+
+Name: Rohit
+
+Age: 21
+
+Course: B.Tech
+
+Marks: 85</code></pre>
+            </li>
+
+
+            <!-- 2 -->
+            <li>
+                <h2>What is a Database?</h2>
+
+                <pre class="language-text"><code>A Database is an organized
+collection of related data.
+
+Examples:
+
+Student Database
+
+Employee Database
+
+Bank Database
+
+E-Commerce Database
+
+Hospital Database</code></pre>
+            </li>
+
+
+            <!-- 3 -->
+            <li>
+                <h2>What is DBMS?</h2>
+
+                <pre class="language-text"><code>DBMS =
+
+Database Management System
+
+Software used to:
+
+Create databases
+
+Store data
+
+Retrieve data
+
+Update data
+
+Delete data
+
+Control access
+
+Maintain consistency
+
+Manage transactions</code></pre>
+            </li>
+
+
+            <!-- 4 -->
+            <li>
+                <h2>Examples of DBMS</h2>
+
+                <pre class="language-text"><code>MySQL
+
+PostgreSQL
+
+Oracle Database
+
+Microsoft SQL Server
+
+SQLite
+
+MongoDB</code></pre>
+            </li>
+
+
+            <!-- 5 -->
+            <li>
+                <h2>Advantages of DBMS</h2>
+
+                <pre class="language-text"><code>Reduced Data Redundancy
+
+Better Data Consistency
+
+Data Security
+
+Data Sharing
+
+Backup and Recovery
+
+Concurrency Control
+
+Data Integrity
+
+Transaction Management</code></pre>
+            </li>
+
+
+            <!-- 6 -->
+            <li>
+                <h2>DBMS vs File System</h2>
+
+                <pre class="language-text"><code>File System
+
+More manual management
+
+Higher risk of redundancy
+
+Limited querying
+
+Limited concurrency control
+
+
+DBMS
+
+Structured data management
+
+Powerful querying
+
+Security controls
+
+Transactions
+
+Concurrency control
+
+Backup / recovery features</code></pre>
+            </li>
+
+
+            <!-- 7 -->
+            <li>
+                <h2>What is RDBMS?</h2>
+
+                <pre class="language-text"><code>RDBMS =
+
+Relational Database
+Management System
+
+Data is organized using:
+
+Tables
+
+Rows
+
+Columns
+
+Relationships
+
+Keys</code></pre>
+            </li>
+
+
+            <!-- 8 -->
+            <li>
+                <h2>DBMS vs RDBMS</h2>
+
+                <pre class="language-text"><code>DBMS
+
+General term for database
+management systems.
+
+
+RDBMS
+
+A DBMS based on
+the relational model.
+
+Uses:
+
+Tables
+
+Keys
+
+Relations
+
+Relational constraints</code></pre>
+            </li>
+
+
+            <!-- 9 -->
+            <li>
+                <h2>Table</h2>
+
+                <pre class="language-text"><code>STUDENT TABLE
+
++----+-------+-----+
+| ID | Name  | Age |
++----+-------+-----+
+| 1  | Rohit | 21  |
+| 2  | Aman  | 20  |
+| 3  | Neha  | 22  |
++----+-------+-----+</code></pre>
+            </li>
+
+
+            <!-- 10 -->
+            <li>
+                <h2>Row / Tuple</h2>
+
+                <pre class="language-text"><code>A row represents
+one record.
+
+Example:
+
+1 | Rohit | 21
+
+
+In relational terminology:
+
+Row = Tuple</code></pre>
+            </li>
+
+
+            <!-- 11 -->
+            <li>
+                <h2>Column / Attribute</h2>
+
+                <pre class="language-text"><code>A column represents
+a property.
+
+Example:
+
+ID
+
+Name
+
+Age
+
+
+In relational terminology:
+
+Column = Attribute</code></pre>
+            </li>
+
+
+            <!-- 12 -->
+            <li>
+                <h2>Degree and Cardinality</h2>
+
+                <pre class="language-text"><code>Degree:
+
+Number of attributes
+in a relation.
+
+
+Cardinality:
+
+Number of tuples
+in a relation.
+
+
+Example:
+
+Student(ID, Name, Age)
+
+Degree = 3
+
+
+If table contains
+100 rows:
+
+Cardinality = 100</code></pre>
+            </li>
+
+
+            <!-- 13 -->
+            <li>
+                <h2>Schema</h2>
+
+                <pre class="language-text"><code>Schema describes the
+logical structure of
+a database.
+
+Example:
+
+Student(
+
+    student_id,
+
+    name,
+
+    email,
+
+    course
+
+)</code></pre>
+            </li>
+
+
+            <!-- 14 -->
+            <li>
+                <h2>Database Instance</h2>
+
+                <pre class="language-text"><code>Schema
+
+→ Database structure
+
+
+Instance
+
+→ Actual data stored
+at a particular time</code></pre>
+            </li>
+
+
+            <!-- 15 -->
+            <li>
+                <h2>Types of Database Models</h2>
+
+                <pre class="language-text"><code>Hierarchical Model
+
+Network Model
+
+Relational Model
+
+Object-Oriented Model
+
+Document Model
+
+Key-Value Model
+
+Graph Model</code></pre>
+            </li>
+
+
+            <!-- 16 -->
+            <li>
+                <h2>Relational Model</h2>
+
+                <pre class="language-text"><code>Relational Model stores
+data in relations.
+
+Relation
+
+↓
+
+Table
+
+
+Tuple
+
+↓
+
+Row
+
+
+Attribute
+
+↓
+
+Column</code></pre>
+            </li>
+
+
+            <!-- 17 -->
+            <li>
+                <h2>What is a Key?</h2>
+
+                <pre class="language-text"><code>A key is an attribute
+or set of attributes used
+to identify tuples or
+define relationships.
+
+Important Keys:
+
+Super Key
+
+Candidate Key
+
+Primary Key
+
+Alternate Key
+
+Foreign Key
+
+Composite Key</code></pre>
+            </li>
+
+
+            <!-- 18 -->
+            <li>
+                <h2>Super Key</h2>
+
+                <pre class="language-text"><code>A Super Key is any
+set of attributes that
+uniquely identifies a row.
+
+Example:
+
+Student(
+
+ID,
+
+Email,
+
+Name
+
+)
+
+
+Possible Super Keys:
+
+{ID}
+
+{Email}
+
+{ID, Name}
+
+{ID, Email}</code></pre>
+            </li>
+
+
+            <!-- 19 -->
+            <li>
+                <h2>Candidate Key</h2>
+
+                <pre class="language-text"><code>A Candidate Key is a
+minimal Super Key.
+
+It uniquely identifies
+a row and contains no
+unnecessary attribute.
+
+Example:
+
+ID
+
+Email</code></pre>
+            </li>
+
+
+            <!-- 20 -->
+            <li>
+                <h2>Primary Key</h2>
+
+                <pre class="language-text"><code>A Primary Key is the
+candidate key selected to
+identify rows.
+
+Properties:
+
+Unique
+
+Not NULL
+
+One primary key constraint
+per table
+
+May contain multiple columns</code></pre>
+
+                <pre class="language-sql"><code>CREATE TABLE Student (
+
+    id INT PRIMARY KEY,
+
+    name VARCHAR(100)
+
+);</code></pre>
+            </li>
+
+
+            <!-- 21 -->
+            <li>
+                <h2>Alternate Key</h2>
+
+                <pre class="language-text"><code>Candidate keys not selected
+as the primary key are
+called Alternate Keys.
+
+Example:
+
+Candidate Keys:
+
+ID
+
+Email
+
+
+Primary Key:
+
+ID
+
+
+Alternate Key:
+
+Email</code></pre>
+            </li>
+
+
+            <!-- 22 -->
+            <li>
+                <h2>Foreign Key</h2>
+
+                <pre class="language-text"><code>A Foreign Key references
+a candidate/primary key
+in another table.
+
+It helps maintain
+referential integrity.</code></pre>
+
+                <pre class="language-sql"><code>CREATE TABLE Orders (
+
+    order_id INT PRIMARY KEY,
+
+    user_id INT,
+
+    FOREIGN KEY (user_id)
+        REFERENCES Users(id)
+
+);</code></pre>
+            </li>
+
+
+            <!-- 23 -->
+            <li>
+                <h2>Composite Key</h2>
+
+                <pre class="language-text"><code>A Composite Key consists
+of multiple attributes.
+
+Example:
+
+Enrollment(
+
+student_id,
+
+course_id
+
+)
+
+
+Primary Key:
+
+(student_id, course_id)</code></pre>
+            </li>
+
+
+            <!-- 24 -->
+            <li>
+                <h2>Primary Key vs Foreign Key</h2>
+
+                <pre class="language-text"><code>Primary Key
+
+Uniquely identifies
+a row in its table.
+
+Cannot be NULL.
+
+
+Foreign Key
+
+Creates a relationship
+with another table.
+
+Values may repeat.
+
+NULL may be allowed
+depending on the definition.</code></pre>
+            </li>
+
+
+            <!-- 25 -->
+            <li>
+                <h2>Constraints</h2>
+
+                <pre class="language-text"><code>Common SQL Constraints:
+
+PRIMARY KEY
+
+FOREIGN KEY
+
+UNIQUE
+
+NOT NULL
+
+CHECK
+
+DEFAULT</code></pre>
+            </li>
+
+
+            <!-- 26 -->
+            <li>
+                <h2>NOT NULL</h2>
+
+                <pre class="language-sql"><code>CREATE TABLE Student (
+
+    id INT,
+
+    name VARCHAR(100) NOT NULL
+
+);</code></pre>
+            </li>
+
+
+            <!-- 27 -->
+            <li>
+                <h2>UNIQUE</h2>
+
+                <pre class="language-sql"><code>CREATE TABLE Users (
+
+    id INT PRIMARY KEY,
+
+    email VARCHAR(255) UNIQUE
+
+);</code></pre>
+            </li>
+
+
+            <!-- 28 -->
+            <li>
+                <h2>CHECK</h2>
+
+                <pre class="language-sql"><code>CREATE TABLE Student (
+
+    id INT PRIMARY KEY,
+
+    age INT CHECK (age &gt;= 18)
+
+);</code></pre>
+            </li>
+
+
+            <!-- 29 -->
+            <li>
+                <h2>DEFAULT</h2>
+
+                <pre class="language-sql"><code>CREATE TABLE Users (
+
+    id INT PRIMARY KEY,
+
+    status VARCHAR(20)
+        DEFAULT 'active'
+
+);</code></pre>
+            </li>
+
+
+            <!-- 30 -->
+            <li>
+                <h2>Entity Relationship Model</h2>
+
+                <pre class="language-text"><code>ER Model represents:
+
+Entities
+
+Attributes
+
+Relationships
+
+
+Example:
+
+STUDENT
+
+   |
+
+Enrolls
+
+   |
+
+COURSE</code></pre>
+            </li>
+
+
+            <!-- 31 -->
+            <li>
+                <h2>Entity</h2>
+
+                <pre class="language-text"><code>An Entity is a
+real-world object.
+
+Examples:
+
+Student
+
+Employee
+
+Product
+
+Customer
+
+Course</code></pre>
+            </li>
+
+
+            <!-- 32 -->
+            <li>
+                <h2>Attribute</h2>
+
+                <pre class="language-text"><code>Attributes describe entities.
+
+Student:
+
+Student_ID
+
+Name
+
+Age
+
+Email</code></pre>
+            </li>
+
+
+            <!-- 33 -->
+            <li>
+                <h2>Types of Attributes</h2>
+
+                <pre class="language-text"><code>Simple Attribute
+
+Composite Attribute
+
+Single-Valued Attribute
+
+Multi-Valued Attribute
+
+Derived Attribute
+
+Key Attribute</code></pre>
+            </li>
+
+
+            <!-- 34 -->
+            <li>
+                <h2>Relationship Types</h2>
+
+                <pre class="language-text"><code>One-to-One
+
+1 : 1
+
+
+One-to-Many
+
+1 : N
+
+
+Many-to-One
+
+N : 1
+
+
+Many-to-Many
+
+M : N</code></pre>
+            </li>
+
+
+            <!-- 35 -->
+            <li>
+                <h2>One-to-One Relationship</h2>
+
+                <pre class="language-text"><code>PERSON
+
+   1
+
+   |
+
+   1
+
+PASSPORT</code></pre>
+            </li>
+
+
+            <!-- 36 -->
+            <li>
+                <h2>One-to-Many Relationship</h2>
+
+                <pre class="language-text"><code>DEPARTMENT
+
+     1
+
+     |
+
+     N
+
+EMPLOYEES
+
+
+One department can
+have many employees.</code></pre>
+            </li>
+
+
+            <!-- 37 -->
+            <li>
+                <h2>Many-to-Many Relationship</h2>
+
+                <pre class="language-text"><code>STUDENT
+
+   M
+
+   |
+
+   N
+
+COURSE
+
+
+Students can enroll
+in many courses.
+
+Courses can contain
+many students.</code></pre>
+            </li>
+
+
+            <!-- 38 -->
+            <li>
+                <h2>Weak Entity</h2>
+
+                <pre class="language-text"><code>A Weak Entity cannot
+be uniquely identified
+only by its own attributes.
+
+It depends on another
+entity for identification.</code></pre>
+            </li>
+
+
+            <!-- 39 -->
+            <li>
+                <h2>What is Normalization?</h2>
+
+                <pre class="language-text"><code>Normalization organizes
+relational data to reduce
+undesirable redundancy
+and update anomalies.
+
+Common Normal Forms:
+
+1NF
+
+2NF
+
+3NF
+
+BCNF
+
+4NF
+
+5NF</code></pre>
+            </li>
+
+
+            <!-- 40 -->
+            <li>
+                <h2>Why Normalize?</h2>
+
+                <pre class="language-text"><code>Reduce Redundancy
+
+Improve Consistency
+
+Prevent Update Anomalies
+
+Prevent Insertion Anomalies
+
+Prevent Deletion Anomalies
+
+Improve Data Integrity</code></pre>
+            </li>
+
+
+            <!-- 41 -->
+            <li>
+                <h2>Insertion Anomaly</h2>
+
+                <pre class="language-text"><code>Insertion Anomaly:
+
+You cannot insert
+some information without
+also inserting unrelated
+information.</code></pre>
+            </li>
+
+
+            <!-- 42 -->
+            <li>
+                <h2>Update Anomaly</h2>
+
+                <pre class="language-text"><code>Update Anomaly:
+
+The same fact appears
+in multiple rows.
+
+Changing only some copies
+creates inconsistency.</code></pre>
+            </li>
+
+
+            <!-- 43 -->
+            <li>
+                <h2>Deletion Anomaly</h2>
+
+                <pre class="language-text"><code>Deletion Anomaly:
+
+Deleting one record
+accidentally removes
+other useful information.</code></pre>
+            </li>
+
+
+            <!-- 44 -->
+            <li>
+                <h2>First Normal Form — 1NF</h2>
+
+                <pre class="language-text"><code>1NF requires values
+to be atomic within
+the relational design.
+
+Avoid repeating groups.
+
+Bad:
+
+Student
+
+Name: Rohit
+
+Phones:
+9876, 1234
+
+
+Better:
+
+Store phone values
+as separate related rows.</code></pre>
+            </li>
+
+
+            <!-- 45 -->
+            <li>
+                <h2>Second Normal Form — 2NF</h2>
+
+                <pre class="language-text"><code>2NF:
+
+Table must be in 1NF
+
+AND
+
+Every non-prime attribute
+must be fully dependent
+on the whole candidate key.
+
+Main issue removed:
+
+Partial Dependency</code></pre>
+            </li>
+
+
+            <!-- 46 -->
+            <li>
+                <h2>Third Normal Form — 3NF</h2>
+
+                <pre class="language-text"><code>3NF:
+
+Table must be in 2NF
+
+AND
+
+It should remove problematic
+transitive dependencies
+of non-key attributes.
+
+Simple interview idea:
+
+Non-key attributes should
+depend on the key,
+not on other non-key attributes.</code></pre>
+            </li>
+
+
+            <!-- 47 -->
+            <li>
+                <h2>BCNF</h2>
+
+                <pre class="language-text"><code>BCNF =
+
+Boyce-Codd Normal Form
+
+For every non-trivial
+functional dependency:
+
+X → Y
+
+X must be a Super Key.
+
+BCNF is stricter than 3NF.</code></pre>
+            </li>
+
+
+            <!-- 48 -->
+            <li>
+                <h2>Normal Forms Quick Revision</h2>
+
+                <pre class="language-text"><code>1NF
+
+Atomic values
+
+
+2NF
+
+1NF +
+
+No partial dependency
+
+
+3NF
+
+2NF +
+
+Remove problematic
+transitive dependency
+
+
+BCNF
+
+Every determinant
+must be a Super Key</code></pre>
+            </li>
+
+
+            <!-- 49 -->
+            <li>
+                <h2>Functional Dependency</h2>
+
+                <pre class="language-text"><code>Functional Dependency:
+
+X → Y
+
+means:
+
+If two rows have the
+same X value,
+
+they must have the
+same Y value.
+
+
+Example:
+
+Student_ID → Student_Name</code></pre>
+            </li>
+
+
+            <!-- 50 -->
+            <li>
+                <h2>Full Functional Dependency</h2>
+
+                <pre class="language-text"><code>Y is fully functionally
+dependent on X when it
+depends on the whole X
+
+and not on a proper
+subset of X.</code></pre>
+            </li>
+
+
+            <!-- 51 -->
+            <li>
+                <h2>Partial Dependency</h2>
+
+                <pre class="language-text"><code>Suppose composite key:
+
+(Student_ID, Course_ID)
+
+
+If:
+
+Student_ID → Student_Name
+
+
+Then Student_Name depends
+only on part of the
+composite key.
+
+This is Partial Dependency.</code></pre>
+            </li>
+
+
+            <!-- 52 -->
+            <li>
+                <h2>Transitive Dependency</h2>
+
+                <pre class="language-text"><code>Example:
+
+Student_ID → Department_ID
+
+Department_ID → Department_Name
+
+
+Therefore:
+
+Student_ID
+
+indirectly determines
+
+Department_Name</code></pre>
+            </li>
+
+
+            <!-- 53 -->
+            <li>
+                <h2>What is SQL?</h2>
+
+                <pre class="language-text"><code>SQL =
+
+Structured Query Language
+
+Used to:
+
+Create database objects
+
+Read data
+
+Insert data
+
+Update data
+
+Delete data
+
+Control permissions
+
+Manage transactions</code></pre>
+            </li>
+
+
+            <!-- 54 -->
+            <li>
+                <h2>SQL Command Categories</h2>
+
+                <pre class="language-text"><code>DDL
+
+Data Definition Language
+
+
+DML
+
+Data Manipulation Language
+
+
+DQL
+
+Data Query Language
+
+
+DCL
+
+Data Control Language
+
+
+TCL
+
+Transaction Control Language</code></pre>
+            </li>
+
+
+            <!-- 55 -->
+            <li>
+                <h2>DDL Commands</h2>
+
+                <pre class="language-text"><code>CREATE
+
+ALTER
+
+DROP
+
+TRUNCATE</code></pre>
+            </li>
+
+
+            <!-- 56 -->
+            <li>
+                <h2>DML Commands</h2>
+
+                <pre class="language-text"><code>INSERT
+
+UPDATE
+
+DELETE</code></pre>
+            </li>
+
+
+            <!-- 57 -->
+            <li>
+                <h2>DQL</h2>
+
+                <pre class="language-sql"><code>SELECT * FROM Student;</code></pre>
+            </li>
+
+
+            <!-- 58 -->
+            <li>
+                <h2>DCL Commands</h2>
+
+                <pre class="language-text"><code>GRANT
+
+REVOKE</code></pre>
+            </li>
+
+
+            <!-- 59 -->
+            <li>
+                <h2>TCL Commands</h2>
+
+                <pre class="language-text"><code>COMMIT
+
+ROLLBACK
+
+SAVEPOINT</code></pre>
+            </li>
+
+
+            <!-- 60 -->
+            <li>
+                <h2>Create Database</h2>
+
+                <pre class="language-sql"><code>CREATE DATABASE college;</code></pre>
+            </li>
+
+
+            <!-- 61 -->
+            <li>
+                <h2>Create Table</h2>
+
+                <pre class="language-sql"><code>CREATE TABLE Student (
+
+    id INT PRIMARY KEY,
+
+    name VARCHAR(100) NOT NULL,
+
+    age INT,
+
+    email VARCHAR(255) UNIQUE
+
+);</code></pre>
+            </li>
+
+
+            <!-- 62 -->
+            <li>
+                <h2>INSERT</h2>
+
+                <pre class="language-sql"><code>INSERT INTO Student
+(id, name, age, email)
+
+VALUES
+(1, 'Rohit', 21, 'rohit@example.com');</code></pre>
+            </li>
+
+
+            <!-- 63 -->
+            <li>
+                <h2>Insert Multiple Rows</h2>
+
+                <pre class="language-sql"><code>INSERT INTO Student
+(id, name, age)
+
+VALUES
+
+(1, 'Rohit', 21),
+
+(2, 'Aman', 20),
+
+(3, 'Neha', 22);</code></pre>
+            </li>
+
+
+            <!-- 64 -->
+            <li>
+                <h2>SELECT</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM Student;</code></pre>
+            </li>
+
+
+            <!-- 65 -->
+            <li>
+                <h2>Select Specific Columns</h2>
+
+                <pre class="language-sql"><code>SELECT name, age
+FROM Student;</code></pre>
+            </li>
+
+
+            <!-- 66 -->
+            <li>
+                <h2>WHERE</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM Student
+WHERE age &gt; 20;</code></pre>
+            </li>
+
+
+            <!-- 67 -->
+            <li>
+                <h2>Comparison Operators</h2>
+
+                <pre class="language-text"><code>=
+
+&lt;&gt;
+
+!=
+
+&gt;
+
+&lt;
+
+&gt;=
+
+&lt;=</code></pre>
+            </li>
+
+
+            <!-- 68 -->
+            <li>
+                <h2>Logical Operators</h2>
+
+                <pre class="language-text"><code>AND
+
+OR
+
+NOT</code></pre>
+
+                <pre class="language-sql"><code>SELECT *
+FROM Student
+WHERE age &gt;= 18
+AND age &lt;= 25;</code></pre>
+            </li>
+
+
+            <!-- 69 -->
+            <li>
+                <h2>BETWEEN</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM Student
+WHERE age BETWEEN 18 AND 25;</code></pre>
+            </li>
+
+
+            <!-- 70 -->
+            <li>
+                <h2>IN</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM Student
+WHERE city IN (
+    'Pune',
+    'Mumbai',
+    'Delhi'
+);</code></pre>
+            </li>
+
+
+            <!-- 71 -->
+            <li>
+                <h2>LIKE</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM Student
+WHERE name LIKE 'R%';</code></pre>
+
+                <pre class="language-text"><code>R%
+
+Starts with R
+
+
+%R
+
+Ends with R
+
+
+%R%
+
+Contains R
+
+
+_
+
+Matches one character</code></pre>
+            </li>
+
+
+            <!-- 72 -->
+            <li>
+                <h2>NULL</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM Student
+WHERE email IS NULL;</code></pre>
+
+                <pre class="language-sql"><code>SELECT *
+FROM Student
+WHERE email IS NOT NULL;</code></pre>
+            </li>
+
+
+            <!-- 73 -->
+            <li>
+                <h2>UPDATE</h2>
+
+                <pre class="language-sql"><code>UPDATE Student
+
+SET age = 22
+
+WHERE id = 1;</code></pre>
+            </li>
+
+
+            <!-- 74 -->
+            <li>
+                <h2>DELETE</h2>
+
+                <pre class="language-sql"><code>DELETE FROM Student
+WHERE id = 1;</code></pre>
+            </li>
+
+
+            <!-- 75 -->
+            <li>
+                <h2>DELETE vs TRUNCATE vs DROP</h2>
+
+                <pre class="language-text"><code>DELETE
+
+Removes selected/all rows
+
+Supports WHERE
+
+
+TRUNCATE
+
+Removes all rows quickly
+
+No WHERE
+
+
+DROP
+
+Removes the database object
+itself, such as a table
+
+
+Exact transaction/identity behavior
+can vary by DBMS.</code></pre>
+            </li>
+
+
+            <!-- 76 -->
+            <li>
+                <h2>ALTER TABLE</h2>
+
+                <pre class="language-sql"><code>ALTER TABLE Student
+
+ADD phone VARCHAR(20);</code></pre>
+            </li>
+
+
+            <!-- 77 -->
+            <li>
+                <h2>ORDER BY</h2>
+
+                <pre class="language-sql"><code>SELECT *
+FROM Student
+ORDER BY age ASC;</code></pre>
+
+                <pre class="language-sql"><code>SELECT *
+FROM Student
+ORDER BY age DESC;</code></pre>
+            </li>
+
+
+            <!-- 78 -->
+            <li>
+                <h2>DISTINCT</h2>
+
+                <pre class="language-sql"><code>SELECT DISTINCT city
+FROM Student;</code></pre>
+            </li>
+
+
+            <!-- 79 -->
+            <li>
+                <h2>Aggregate Functions</h2>
+
+                <pre class="language-text"><code>COUNT()
+
+SUM()
+
+AVG()
+
+MIN()
+
+MAX()</code></pre>
+            </li>
+
+
+            <!-- 80 -->
+            <li>
+                <h2>COUNT</h2>
+
+                <pre class="language-sql"><code>SELECT COUNT(*)
+FROM Student;</code></pre>
+            </li>
+
+
+            <!-- 81 -->
+            <li>
+                <h2>AVG</h2>
+
+                <pre class="language-sql"><code>SELECT AVG(age)
+FROM Student;</code></pre>
+            </li>
+
+
+            <!-- 82 -->
+            <li>
+                <h2>MIN and MAX</h2>
+
+                <pre class="language-sql"><code>SELECT MIN(age)
+FROM Student;
+
+SELECT MAX(age)
+FROM Student;</code></pre>
+            </li>
+
+
+            <!-- 83 -->
+            <li>
+                <h2>GROUP BY</h2>
+
+                <pre class="language-sql"><code>SELECT department,
+       COUNT(*) AS total
+
+FROM Employee
+
+GROUP BY department;</code></pre>
+            </li>
+
+
+            <!-- 84 -->
+            <li>
+                <h2>HAVING</h2>
+
+                <pre class="language-sql"><code>SELECT department,
+       COUNT(*) AS total
+
+FROM Employee
+
+GROUP BY department
+
+HAVING COUNT(*) &gt; 5;</code></pre>
+            </li>
+
+
+            <!-- 85 -->
+            <li>
+                <h2>WHERE vs HAVING</h2>
+
+                <pre class="language-text"><code>WHERE
+
+Filters rows before
+grouping/aggregation.
+
+
+HAVING
+
+Filters groups after
+GROUP BY.</code></pre>
+            </li>
+
+
+            <!-- 86 -->
+            <li>
+                <h2>SQL JOIN</h2>
+
+                <pre class="language-text"><code>JOIN combines rows
+from multiple tables
+using related columns.
+
+Important Joins:
+
+INNER JOIN
+
+LEFT JOIN
+
+RIGHT JOIN
+
+FULL OUTER JOIN
+
+CROSS JOIN
+
+SELF JOIN</code></pre>
+            </li>
+
+
+            <!-- 87 -->
+            <li>
+                <h2>INNER JOIN</h2>
+
+                <pre class="language-sql"><code>SELECT Student.name,
+       Course.course_name
+
+FROM Student
+
+INNER JOIN Course
+
+ON Student.course_id = Course.id;</code></pre>
+
+                <pre class="language-text"><code>Returns matching rows
+from both sides.</code></pre>
+            </li>
+
+
+            <!-- 88 -->
+            <li>
+                <h2>LEFT JOIN</h2>
+
+                <pre class="language-sql"><code>SELECT Student.name,
+       Course.course_name
+
+FROM Student
+
+LEFT JOIN Course
+
+ON Student.course_id = Course.id;</code></pre>
+
+                <pre class="language-text"><code>Returns all rows from
+the left table plus
+matching rows from
+the right table.</code></pre>
+            </li>
+
+
+            <!-- 89 -->
+            <li>
+                <h2>RIGHT JOIN</h2>
+
+                <pre class="language-sql"><code>SELECT Student.name,
+       Course.course_name
+
+FROM Student
+
+RIGHT JOIN Course
+
+ON Student.course_id = Course.id;</code></pre>
+            </li>
+
+
+            <!-- 90 -->
+            <li>
+                <h2>FULL OUTER JOIN</h2>
+
+                <pre class="language-sql"><code>SELECT *
+
+FROM A
+
+FULL OUTER JOIN B
+
+ON A.id = B.id;</code></pre>
+
+                <pre class="language-text"><code>Returns matched rows
+plus unmatched rows
+from both tables.
+
+Syntax/support varies
+between DBMS products.</code></pre>
+            </li>
+
+
+            <!-- 91 -->
+            <li>
+                <h2>CROSS JOIN</h2>
+
+                <pre class="language-sql"><code>SELECT *
+
+FROM Student
+
+CROSS JOIN Course;</code></pre>
+
+                <pre class="language-text"><code>Returns the Cartesian
+product of both tables.</code></pre>
+            </li>
+
+
+            <!-- 92 -->
+            <li>
+                <h2>SELF JOIN</h2>
+
+                <pre class="language-sql"><code>SELECT
+    e.name AS employee,
+    m.name AS manager
+
+FROM Employee e
+
+LEFT JOIN Employee m
+
+ON e.manager_id = m.id;</code></pre>
+            </li>
+
+
+            <!-- 93 -->
+            <li>
+                <h2>Subquery</h2>
+
+                <pre class="language-sql"><code>SELECT name
+
+FROM Employee
+
+WHERE salary &gt; (
+
+    SELECT AVG(salary)
+    FROM Employee
+
+);</code></pre>
+            </li>
+
+
+            <!-- 94 -->
+            <li>
+                <h2>Nested Query</h2>
+
+                <pre class="language-text"><code>A query inside
+another query is
+called a Subquery
+or Nested Query.</code></pre>
+            </li>
+
+
+            <!-- 95 -->
+            <li>
+                <h2>Correlated Subquery</h2>
+
+                <pre class="language-sql"><code>SELECT e1.name
+
+FROM Employee e1
+
+WHERE e1.salary &gt; (
+
+    SELECT AVG(e2.salary)
+
+    FROM Employee e2
+
+    WHERE e2.department_id =
+          e1.department_id
+
+);</code></pre>
+
+                <pre class="language-text"><code>A correlated subquery
+references columns from
+the outer query.</code></pre>
+            </li>
+
+
+            <!-- 96 -->
+            <li>
+                <h2>UNION</h2>
+
+                <pre class="language-sql"><code>SELECT city
+FROM Customers
+
+UNION
+
+SELECT city
+FROM Suppliers;</code></pre>
+
+                <pre class="language-text"><code>UNION removes duplicate
+result rows.</code></pre>
+            </li>
+
+
+            <!-- 97 -->
+            <li>
+                <h2>UNION ALL</h2>
+
+                <pre class="language-sql"><code>SELECT city
+FROM Customers
+
+UNION ALL
+
+SELECT city
+FROM Suppliers;</code></pre>
+
+                <pre class="language-text"><code>UNION ALL keeps duplicates.</code></pre>
+            </li>
+
+
+            <!-- 98 -->
+            <li>
+                <h2>View</h2>
+
+                <pre class="language-sql"><code>CREATE VIEW adult_students AS
+
+SELECT id, name, age
+
+FROM Student
+
+WHERE age &gt;= 18;</code></pre>
+
+                <pre class="language-sql"><code>SELECT *
+FROM adult_students;</code></pre>
+            </li>
+
+
+            <!-- 99 -->
+            <li>
+                <h2>What is an Index?</h2>
+
+                <pre class="language-text"><code>An Index is a data
+structure used by a DBMS
+to speed up data retrieval.
+
+Trade-off:
+
+Faster reads
+
+but
+
+Additional storage
+
+and
+
+Extra work during
+INSERT / UPDATE / DELETE</code></pre>
+            </li>
+
+
+            <!-- 100 -->
+            <li>
+                <h2>Create Index</h2>
+
+                <pre class="language-sql"><code>CREATE INDEX idx_student_email
+
+ON Student(email);</code></pre>
+            </li>
+
+
+            <!-- 101 -->
+            <li>
+                <h2>Common Index Structures</h2>
+
+                <pre class="language-text"><code>Common structures include:
+
+B-Tree
+
+B+ Tree
+
+Hash Index
+
+
+Availability depends
+on the DBMS.</code></pre>
+            </li>
+
+
+            <!-- 102 -->
+            <li>
+                <h2>B+ Tree</h2>
+
+                <pre class="language-text"><code>B+ Trees are widely used
+for database indexing.
+
+Useful for:
+
+Equality Search
+
+Range Search
+
+Ordered Traversal
+
+
+Records / record references
+are typically associated
+with leaf-level entries.</code></pre>
+            </li>
+
+
+            <!-- 103 -->
+            <li>
+                <h2>Clustered vs Non-Clustered Index</h2>
+
+                <pre class="language-text"><code>Clustered-style Index
+
+Determines or closely relates
+to the physical/order organization
+of table data.
+
+
+Non-Clustered-style Index
+
+Separate index structure
+points to table rows.
+
+
+Exact implementation and terminology
+vary by DBMS.</code></pre>
+            </li>
+
+
+            <!-- 104 -->
+            <li>
+                <h2>What is a Transaction?</h2>
+
+                <pre class="language-text"><code>A Transaction is a
+logical unit of database work.
+
+Example:
+
+Bank Transfer
+
+1. Debit Account A
+
+2. Credit Account B
+
+
+Both operations should
+behave as one logical unit.</code></pre>
+            </li>
+
+
+            <!-- 105 -->
+            <li>
+                <h2>ACID Properties</h2>
+
+                <pre class="language-text"><code>A
+
+Atomicity
+
+
+C
+
+Consistency
+
+
+I
+
+Isolation
+
+
+D
+
+Durability</code></pre>
+            </li>
+
+
+            <!-- 106 -->
+            <li>
+                <h2>Atomicity</h2>
+
+                <pre class="language-text"><code>Atomicity means:
+
+All operations of a
+transaction succeed
+
+OR
+
+the transaction's effects
+are rolled back.
+
+All or Nothing.</code></pre>
+            </li>
+
+
+            <!-- 107 -->
+            <li>
+                <h2>Consistency</h2>
+
+                <pre class="language-text"><code>Consistency means a
+successful transaction moves
+the database from one
+valid state to another
+while preserving defined
+integrity rules.</code></pre>
+            </li>
+
+
+            <!-- 108 -->
+            <li>
+                <h2>Isolation</h2>
+
+                <pre class="language-text"><code>Isolation controls how
+concurrent transactions
+interact and what intermediate
+effects they can observe.</code></pre>
+            </li>
+
+
+            <!-- 109 -->
+            <li>
+                <h2>Durability</h2>
+
+                <pre class="language-text"><code>Durability means:
+
+After a transaction
+is successfully committed,
+
+its committed changes
+survive later failures
+according to the DBMS's
+durability guarantees.</code></pre>
+            </li>
+
+
+            <!-- 110 -->
+            <li>
+                <h2>Transaction Example</h2>
+
+                <pre class="language-sql"><code>START TRANSACTION;
+
+UPDATE Accounts
+
+SET balance = balance - 1000
+
+WHERE id = 1;
+
+
+UPDATE Accounts
+
+SET balance = balance + 1000
+
+WHERE id = 2;
+
+
+COMMIT;</code></pre>
+            </li>
+
+
+            <!-- 111 -->
+            <li>
+                <h2>COMMIT</h2>
+
+                <pre class="language-sql"><code>COMMIT;</code></pre>
+
+                <pre class="language-text"><code>Makes the transaction's
+changes permanent.</code></pre>
+            </li>
+
+
+            <!-- 112 -->
+            <li>
+                <h2>ROLLBACK</h2>
+
+                <pre class="language-sql"><code>ROLLBACK;</code></pre>
+
+                <pre class="language-text"><code>Aborts the current transaction
+and reverses its uncommitted
+changes.</code></pre>
+            </li>
+
+
+            <!-- 113 -->
+            <li>
+                <h2>SAVEPOINT</h2>
+
+                <pre class="language-sql"><code>START TRANSACTION;
+
+UPDATE Accounts
+SET balance = balance - 500
+WHERE id = 1;
+
+SAVEPOINT payment_step;
+
+UPDATE Accounts
+SET balance = balance + 500
+WHERE id = 2;
+
+ROLLBACK TO payment_step;
+
+COMMIT;</code></pre>
+            </li>
+
+
+            <!-- 114 -->
+            <li>
+                <h2>Transaction States</h2>
+
+                <pre class="language-text"><code>Common conceptual states:
+
+Active
+
+Partially Committed
+
+Committed
+
+Failed
+
+Aborted
+
+Terminated</code></pre>
+            </li>
+
+
+            <!-- 115 -->
+            <li>
+                <h2>Concurrency Control</h2>
+
+                <pre class="language-text"><code>Concurrency Control manages
+simultaneous transactions.
+
+Goals:
+
+Maintain correctness
+
+Provide isolation
+
+Prevent harmful conflicts
+
+Allow useful concurrency</code></pre>
+            </li>
+
+
+            <!-- 116 -->
+            <li>
+                <h2>Common Concurrency Problems</h2>
+
+                <pre class="language-text"><code>Lost Update
+
+Dirty Read
+
+Non-Repeatable Read
+
+Phantom Read</code></pre>
+            </li>
+
+
+            <!-- 117 -->
+            <li>
+                <h2>Dirty Read</h2>
+
+                <pre class="language-text"><code>Transaction A updates data
+but has not committed.
+
+Transaction B reads
+that uncommitted data.
+
+Transaction A rolls back.
+
+B has read a value
+that never became committed.</code></pre>
+            </li>
+
+
+            <!-- 118 -->
+            <li>
+                <h2>Non-Repeatable Read</h2>
+
+                <pre class="language-text"><code>Transaction A reads row X.
+
+Transaction B updates
+and commits row X.
+
+Transaction A reads X again.
+
+It may receive
+a different value.</code></pre>
+            </li>
+
+
+            <!-- 119 -->
+            <li>
+                <h2>Phantom Read</h2>
+
+                <pre class="language-text"><code>Transaction A runs
+a query returning
+a set of rows.
+
+Transaction B inserts/deletes
+rows matching that query
+and commits.
+
+Transaction A repeats
+the query.
+
+The result set contains
+new or missing rows.</code></pre>
+            </li>
+
+
+            <!-- 120 -->
+            <li>
+                <h2>Lost Update</h2>
+
+                <pre class="language-text"><code>Two transactions read
+the same value.
+
+Both update it.
+
+One update overwrites
+the effect of another.
+
+This can cause a
+Lost Update.</code></pre>
+            </li>
+
+
+            <!-- 121 -->
+            <li>
+                <h2>Isolation Levels</h2>
+
+                <pre class="language-text"><code>SQL isolation levels:
+
+READ UNCOMMITTED
+
+READ COMMITTED
+
+REPEATABLE READ
+
+SERIALIZABLE
+
+
+Database implementations may
+also provide snapshot-based
+isolation modes.</code></pre>
+            </li>
+
+
+            <!-- 122 -->
+            <li>
+                <h2>Isolation Level Comparison</h2>
+
+                <pre class="language-text"><code>READ UNCOMMITTED
+
+Weak isolation
+
+
+READ COMMITTED
+
+Prevents dirty reads
+
+
+REPEATABLE READ
+
+Also protects repeated
+reads of existing rows
+
+
+SERIALIZABLE
+
+Strongest standard level
+
+Execution behaves as if
+transactions were serialized
+for relevant operations.</code></pre>
+            </li>
+
+
+            <!-- 123 -->
+            <li>
+                <h2>Locks</h2>
+
+                <pre class="language-text"><code>Locks are used to
+coordinate concurrent access.
+
+Common concepts:
+
+Shared Lock
+
+Exclusive Lock
+
+Row Lock
+
+Table Lock</code></pre>
+            </li>
+
+
+            <!-- 124 -->
+            <li>
+                <h2>Shared Lock</h2>
+
+                <pre class="language-text"><code>Shared Lock
+
+Typically used for reading.
+
+Multiple transactions may
+hold compatible shared locks
+on the same resource.</code></pre>
+            </li>
+
+
+            <!-- 125 -->
+            <li>
+                <h2>Exclusive Lock</h2>
+
+                <pre class="language-text"><code>Exclusive Lock
+
+Typically used when
+modifying data.
+
+It conflicts with other
+incompatible locks on
+the same resource.</code></pre>
+            </li>
+
+
+            <!-- 126 -->
+            <li>
+                <h2>Two-Phase Locking</h2>
+
+                <pre class="language-text"><code>2PL has two phases:
+
+Growing Phase
+
+Locks can be acquired.
+
+No locks released.
+
+
+Shrinking Phase
+
+Locks are released.
+
+No new locks acquired.</code></pre>
+            </li>
+
+
+            <!-- 127 -->
+            <li>
+                <h2>What is Deadlock?</h2>
+
+                <pre class="language-text"><code>Deadlock occurs when
+transactions wait indefinitely
+for resources held by
+each other.
+
+Example:
+
+T1 holds A
+and waits for B.
+
+T2 holds B
+and waits for A.</code></pre>
+            </li>
+
+
+            <!-- 128 -->
+            <li>
+                <h2>Deadlock Conditions</h2>
+
+                <pre class="language-text"><code>Four Coffman Conditions:
+
+Mutual Exclusion
+
+Hold and Wait
+
+No Preemption
+
+Circular Wait</code></pre>
+            </li>
+
+
+            <!-- 129 -->
+            <li>
+                <h2>Handling Deadlocks</h2>
+
+                <pre class="language-text"><code>Approaches include:
+
+Deadlock Prevention
+
+Deadlock Avoidance
+
+Deadlock Detection
+
+Recovery
+
+Timeout-based handling</code></pre>
+            </li>
+
+
+            <!-- 130 -->
+            <li>
+                <h2>Serial Schedule</h2>
+
+                <pre class="language-text"><code>Serial Schedule:
+
+One transaction completes
+before another transaction
+starts.
+
+Example:
+
+T1
+
+↓
+
+T2
+
+↓
+
+T3</code></pre>
+            </li>
+
+
+            <!-- 131 -->
+            <li>
+                <h2>Serializable Schedule</h2>
+
+                <pre class="language-text"><code>A concurrent schedule
+is serializable if its
+effect is equivalent to
+some serial schedule.
+
+Important concept:
+
+Conflict Serializability</code></pre>
+            </li>
+
+
+            <!-- 132 -->
+            <li>
+                <h2>Conflict Serializability</h2>
+
+                <pre class="language-text"><code>A schedule is conflict
+serializable if it can
+be transformed into a
+serial schedule by swapping
+non-conflicting operations.
+
+A precedence graph can
+be used to test it.
+
+Acyclic graph
+
+→ Conflict Serializable</code></pre>
+            </li>
+
+
+            <!-- 133 -->
+            <li>
+                <h2>Database Recovery</h2>
+
+                <pre class="language-text"><code>Recovery restores a
+database to a consistent
+state after failures.
+
+Techniques include:
+
+Logs
+
+Checkpoints
+
+Backup
+
+Undo
+
+Redo</code></pre>
+            </li>
+
+
+            <!-- 134 -->
+            <li>
+                <h2>Write-Ahead Logging</h2>
+
+                <pre class="language-text"><code>WAL =
+
+Write-Ahead Logging
+
+The relevant log record
+is written to durable log
+storage before the corresponding
+data page is written.
+
+Helps support:
+
+Recovery
+
+Undo
+
+Redo</code></pre>
+            </li>
+
+
+            <!-- 135 -->
+            <li>
+                <h2>Checkpoint</h2>
+
+                <pre class="language-text"><code>A checkpoint provides
+a known recovery point
+that can reduce the
+amount of log processing
+needed after failure.</code></pre>
+            </li>
+
+
+            <!-- 136 -->
+            <li>
+                <h2>Stored Procedure</h2>
+
+                <pre class="language-text"><code>A Stored Procedure is
+a named database program
+stored and executed
+inside the DBMS.
+
+Syntax differs between
+database systems.</code></pre>
+            </li>
+
+
+            <!-- 137 -->
+            <li>
+                <h2>Trigger</h2>
+
+                <pre class="language-text"><code>A Trigger automatically
+executes in response
+to specified database events.
+
+Examples:
+
+INSERT
+
+UPDATE
+
+DELETE</code></pre>
+            </li>
+
+
+            <!-- 138 -->
+            <li>
+                <h2>Procedure vs Trigger</h2>
+
+                <pre class="language-text"><code>Procedure
+
+Explicitly invoked
+by application/user
+or another routine.
+
+
+Trigger
+
+Automatically invoked
+when its configured
+database event occurs.</code></pre>
+            </li>
+
+
+            <!-- 139 -->
+            <li>
+                <h2>SQL Injection</h2>
+
+                <pre class="language-text"><code>SQL Injection occurs when
+untrusted input changes
+the intended structure
+of an SQL query.
+
+Never build SQL queries
+by blindly concatenating
+user input.</code></pre>
+            </li>
+
+
+            <!-- 140 -->
+            <li>
+                <h2>Prevent SQL Injection</h2>
+
+                <pre class="language-text"><code>Use:
+
+Parameterized Queries
+
+Prepared Statements
+
+Input Validation
+
+Least Privilege
+
+Safe ORM APIs</code></pre>
+
+                <pre class="language-javascript"><code>const [rows] = await db.execute(
+
+    "SELECT * FROM users WHERE email = ?",
+
+    [email]
+
+);</code></pre>
+            </li>
+
+
+            <!-- 141 -->
+            <li>
+                <h2>Database Backup</h2>
+
+                <pre class="language-text"><code>Backup types/concepts include:
+
+Full Backup
+
+Incremental Backup
+
+Differential Backup
+
+Logical Backup
+
+Physical Backup</code></pre>
+            </li>
+
+
+            <!-- 142 -->
+            <li>
+                <h2>Database Replication</h2>
+
+                <pre class="language-text"><code>Replication copies database
+data between database servers.
+
+Possible benefits:
+
+High Availability
+
+Read Scaling
+
+Disaster Recovery
+
+Redundancy</code></pre>
+            </li>
+
+
+            <!-- 143 -->
+            <li>
+                <h2>Database Sharding</h2>
+
+                <pre class="language-text"><code>Sharding horizontally
+partitions data across
+multiple database nodes.
+
+Example:
+
+Shard 1
+
+Users 1 - 100000
+
+
+Shard 2
+
+Users 100001 - 200000</code></pre>
+            </li>
+
+
+            <!-- 144 -->
+            <li>
+                <h2>Partitioning</h2>
+
+                <pre class="language-text"><code>Partitioning divides
+a large table/index into
+smaller logical or physical
+parts.
+
+Common types:
+
+Range
+
+List
+
+Hash
+
+Composite</code></pre>
+            </li>
+
+
+            <!-- 145 -->
+            <li>
+                <h2>SQL vs NoSQL</h2>
+
+                <pre class="language-text"><code>SQL Databases
+
+Relational model
+
+Tables
+
+Structured relationships
+
+SQL querying
+
+Examples:
+
+MySQL
+PostgreSQL
+
+
+NoSQL Databases
+
+Several non-relational models
+
+Document
+
+Key-Value
+
+Column-Family
+
+Graph
+
+Example:
+
+MongoDB</code></pre>
+            </li>
+
+
+            <!-- 146 -->
+            <li>
+                <h2>Relational vs Document Database</h2>
+
+                <pre class="language-text"><code>Relational
+
+Table
+
+Row
+
+Column
+
+
+Document Database
+
+Collection
+
+Document
+
+Fields
+
+
+Example document:
+
+{
+    "name": "Rohit",
+    "skills": ["Java", "React"]
+}</code></pre>
+            </li>
+
+
+            <!-- 147 -->
+            <li>
+                <h2>CAP Theorem</h2>
+
+                <pre class="language-text"><code>CAP discusses distributed
+data systems.
+
+C
+
+Consistency
+
+
+A
+
+Availability
+
+
+P
+
+Partition Tolerance
+
+
+When a network partition
+occurs, a distributed system
+cannot simultaneously guarantee
+both full consistency and
+full availability.</code></pre>
+            </li>
+
+
+            <!-- 148 -->
+            <li>
+                <h2>Database Architecture</h2>
+
+                <pre class="language-text"><code>Common conceptual architecture:
+
+External Level
+
+↓
+
+Conceptual Level
+
+↓
+
+Internal Level</code></pre>
+            </li>
+
+
+            <!-- 149 -->
+            <li>
+                <h2>Three-Schema Architecture</h2>
+
+                <pre class="language-text"><code>External Level
+
+User Views
+
+
+Conceptual Level
+
+Overall logical schema
+
+
+Internal Level
+
+Physical storage details</code></pre>
+            </li>
+
+
+            <!-- 150 -->
+            <li>
+                <h2>Data Independence</h2>
+
+                <pre class="language-text"><code>Data Independence means
+changes at one schema level
+can be made with limited
+impact on higher levels.
+
+Types:
+
+Physical Data Independence
+
+Logical Data Independence</code></pre>
+            </li>
+
+
+            <!-- 151 -->
+            <li>
+                <h2>Physical Data Independence</h2>
+
+                <pre class="language-text"><code>Changes in physical
+storage should not require
+changes to the logical schema.
+
+Examples:
+
+Change indexing
+
+Change file organization</code></pre>
+            </li>
+
+
+            <!-- 152 -->
+            <li>
+                <h2>Logical Data Independence</h2>
+
+                <pre class="language-text"><code>Changes to the conceptual
+schema should have limited
+impact on external views
+and applications.
+
+Generally harder to achieve
+than physical data independence.</code></pre>
+            </li>
+
+
+            <!-- 153 -->
+            <li>
+                <h2>Second Highest Salary</h2>
+
+                <pre class="language-sql"><code>SELECT MAX(salary)
+
+FROM Employee
+
+WHERE salary &lt; (
+
+    SELECT MAX(salary)
+    FROM Employee
+
+);</code></pre>
+            </li>
+
+
+            <!-- 154 -->
+            <li>
+                <h2>Nth Highest Salary</h2>
+
+                <pre class="language-sql"><code>SELECT DISTINCT salary
+
+FROM Employee e1
+
+WHERE 3 - 1 = (
+
+    SELECT COUNT(
+        DISTINCT e2.salary
+    )
+
+    FROM Employee e2
+
+    WHERE e2.salary &gt; e1.salary
+
+);</code></pre>
+
+                <pre class="language-text"><code>Example above:
+
+3rd highest distinct salary.
+
+For real applications,
+window functions are often
+cleaner when supported.</code></pre>
+            </li>
+
+
+            <!-- 155 -->
+            <li>
+                <h2>Find Duplicate Values</h2>
+
+                <pre class="language-sql"><code>SELECT email,
+       COUNT(*) AS total
+
+FROM Users
+
+GROUP BY email
+
+HAVING COUNT(*) &gt; 1;</code></pre>
+            </li>
+
+
+            <!-- 156 -->
+            <li>
+                <h2>Find Highest Salary by Department</h2>
+
+                <pre class="language-sql"><code>SELECT department_id,
+       MAX(salary) AS max_salary
+
+FROM Employee
+
+GROUP BY department_id;</code></pre>
+            </li>
+
+
+            <!-- 157 -->
+            <li>
+                <h2>Count Employees by Department</h2>
+
+                <pre class="language-sql"><code>SELECT department_id,
+       COUNT(*) AS employees
+
+FROM Employee
+
+GROUP BY department_id;</code></pre>
+            </li>
+
+
+            <!-- 158 -->
+            <li>
+                <h2>SQL Execution Order</h2>
+
+                <pre class="language-text"><code>Conceptual query-processing order:
+
+1. FROM / JOIN
+
+2. WHERE
+
+3. GROUP BY
+
+4. HAVING
+
+5. SELECT
+
+6. DISTINCT
+
+7. ORDER BY
+
+8. LIMIT / OFFSET
+
+
+Exact optimizer execution
+may differ internally.</code></pre>
+            </li>
+
+
+            <!-- 159 -->
+            <li>
+                <h2>Important DBMS Interview Questions</h2>
+
+                <pre class="language-text"><code>What is DBMS?
+
+DBMS vs RDBMS?
+
+DBMS vs File System?
+
+What is a Primary Key?
+
+Primary Key vs Foreign Key?
+
+What is a Candidate Key?
+
+What is a Super Key?
+
+What is a Composite Key?
+
+What is Normalization?
+
+Explain 1NF.
+
+Explain 2NF.
+
+Explain 3NF.
+
+What is BCNF?
+
+What is Functional Dependency?
+
+What is Partial Dependency?
+
+What is Transitive Dependency?
+
+What is SQL?
+
+DDL vs DML?
+
+DELETE vs TRUNCATE vs DROP?
+
+WHERE vs HAVING?
+
+What is JOIN?
+
+Types of JOIN?
+
+What is Subquery?
+
+What is Correlated Subquery?
+
+What is an Index?
+
+What is B+ Tree?
+
+What is a Transaction?
+
+Explain ACID.
+
+What is Concurrency Control?
+
+What is Dirty Read?
+
+What is Phantom Read?
+
+What is Deadlock?
+
+What is Serializability?
+
+What is a View?
+
+What is a Trigger?
+
+What is a Stored Procedure?
+
+SQL vs NoSQL?</code></pre>
+            </li>
+
+
+            <!-- 160 -->
+            <li>
+                <h2>Keys Quick Revision</h2>
+
+                <pre class="language-text"><code>Super Key
+
+Uniquely identifies row
+
+
+Candidate Key
+
+Minimal Super Key
+
+
+Primary Key
+
+Selected Candidate Key
+
+
+Alternate Key
+
+Candidate Key not selected
+
+
+Foreign Key
+
+References another relation
+
+
+Composite Key
+
+Multiple attributes
+forming a key</code></pre>
+            </li>
+
+
+            <!-- 161 -->
+            <li>
+                <h2>SQL Quick Revision</h2>
+
+                <pre class="language-sql"><code>CREATE DATABASE college;
+
+CREATE TABLE Student (
+    id INT PRIMARY KEY,
+    name VARCHAR(100)
+);
+
+INSERT INTO Student
+VALUES (1, 'Rohit');
+
+SELECT *
+FROM Student;
+
+UPDATE Student
+SET name = 'Rohit Prajapati'
+WHERE id = 1;
+
+DELETE FROM Student
+WHERE id = 1;</code></pre>
+            </li>
+
+
+            <!-- 162 -->
+            <li>
+                <h2>JOIN Quick Revision</h2>
+
+                <pre class="language-text"><code>INNER JOIN
+
+Matching rows
+
+
+LEFT JOIN
+
+All left rows
++ matching right rows
+
+
+RIGHT JOIN
+
+All right rows
++ matching left rows
+
+
+FULL OUTER JOIN
+
+All rows from both sides
+
+
+CROSS JOIN
+
+Cartesian Product
+
+
+SELF JOIN
+
+Table joined with itself</code></pre>
+            </li>
+
+
+            <!-- 163 -->
+            <li>
+                <h2>ACID Quick Revision</h2>
+
+                <pre class="language-text"><code>A
+
+Atomicity
+
+All or Nothing
+
+
+C
+
+Consistency
+
+Valid State → Valid State
+
+
+I
+
+Isolation
+
+Concurrent transactions
+are controlled
+
+
+D
+
+Durability
+
+Committed changes survive
+according to durability guarantees</code></pre>
+            </li>
+
+
+            <!-- 164 -->
+            <li>
+                <h2>Normalization Quick Revision</h2>
+
+                <pre class="language-text"><code>1NF
+
+Atomic values
+
+
+2NF
+
+No partial dependency
+
+
+3NF
+
+Remove problematic
+transitive dependency
+
+
+BCNF
+
+Every determinant
+is a Super Key</code></pre>
+            </li>
+
+
+            <!-- 165 -->
+            <li>
+                <h2>DBMS Learning Roadmap</h2>
+
+                <pre class="language-text"><code>1. Data
+
+2. Database
+
+3. DBMS
+
+4. File System vs DBMS
+
+5. RDBMS
+
+6. Relational Model
+
+7. Tables
+
+8. Schema
+
+9. Keys
+
+10. Constraints
+
+11. ER Model
+
+12. Entities
+
+13. Attributes
+
+14. Relationships
+
+15. Functional Dependency
+
+16. Normalization
+
+17. 1NF
+
+18. 2NF
+
+19. 3NF
+
+20. BCNF
+
+21. SQL
+
+22. DDL
+
+23. DML
+
+24. DQL
+
+25. DCL
+
+26. TCL
+
+27. SELECT
+
+28. WHERE
+
+29. GROUP BY
+
+30. HAVING
+
+31. Aggregate Functions
+
+32. JOIN
+
+33. Subquery
+
+34. Views
+
+35. Indexing
+
+36. B+ Tree
+
+37. Transactions
+
+38. ACID
+
+39. Concurrency Control
+
+40. Isolation Levels
+
+41. Locks
+
+42. Deadlock
+
+43. Serializability
+
+44. Recovery
+
+45. Logging
+
+46. Stored Procedures
+
+47. Triggers
+
+48. SQL Injection
+
+49. SQL vs NoSQL
+
+50. Interview SQL Queries</code></pre>
+            </li>
+
+
+            <!-- 166 -->
+            <li>
+                <h2>Final DBMS Interview Revision</h2>
+
+                <pre class="language-text"><code>DBMS
+
+→ Manages databases
+
+
+RDBMS
+
+→ Relational DBMS
+
+
+Primary Key
+
+→ Unique row identifier
+
+
+Foreign Key
+
+→ Relationship between tables
+
+
+Normalization
+
+→ Reduce redundancy/anomalies
+
+
+1NF
+
+→ Atomic values
+
+
+2NF
+
+→ No partial dependency
+
+
+3NF
+
+→ Remove problematic
+transitive dependency
+
+
+BCNF
+
+→ Every determinant
+is a super key
+
+
+SQL
+
+→ Database query language
+
+
+JOIN
+
+→ Combine related tables
+
+
+Index
+
+→ Faster lookup
+
+
+Transaction
+
+→ Logical unit of work
+
+
+ACID
+
+→ Transaction properties
+
+
+Concurrency
+
+→ Multiple transactions
+
+
+Lock
+
+→ Coordinate data access
+
+
+Deadlock
+
+→ Transactions wait
+for each other
+
+
+COMMIT
+
+→ Save transaction
+
+
+ROLLBACK
+
+→ Undo uncommitted transaction
+
+
+Most Important Topics:
+
+Keys
+
+Normalization
+
+SQL
+
+Joins
+
+Transactions
+
+ACID
+
+Indexes
+
+Concurrency
+
+Deadlock
+
+SQL Queries</code></pre>
+            </li>
+
+        </ol>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <p>
+            © 2026 CodeWithRohit |
+            DBMS Cheat Sheet
+        </p>
+
+    </footer>
+
+
+    <!-- Prism JS -->
+    <script src="../prism/prism.js"></script>
+
+    <!-- Common JS -->
+    <script src="../cheatsheet.js"></script>
+
+</body>
+
+</html>

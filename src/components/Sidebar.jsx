@@ -22,6 +22,7 @@ import ActivityBar from "./ActivityBar";
 import ExtensionsPanel from "./ExtensionsPanel";
 import SourceControlPanel from "./SourceControlPanel";
 import RunDebugPanel from "./RunDebugPanel";
+import Cheatsheet from "./Cheatsheet";
 
 function getFileMeta(file) {
   const name = file?.name?.toLowerCase() || "";
@@ -35,11 +36,7 @@ function getFileMeta(file) {
     return { icon: "🐍", color: "#4ec9b0" };
   }
 
-  if (
-    name.endsWith(".cpp") ||
-    name.endsWith(".cc") ||
-    language === "cpp"
-  ) {
+  if (name.endsWith(".cpp") || name.endsWith(".cc") || language === "cpp") {
     return { icon: "C+", color: "#519aba" };
   }
 
@@ -112,55 +109,39 @@ function Sidebar({
   onStop,
   isRunning = false,
 }) {
-  const [activePanel, setActivePanel] =
-    useState("explorer");
+  const [activePanel, setActivePanel] = useState("explorer");
 
-  const [sidebarWidth, setSidebarWidth] =
-    useState(300);
+  const [sidebarWidth, setSidebarWidth] = useState(300);
 
   const resizingRef = useRef(false);
 
-  const [newFileName, setNewFileName] =
-    useState("");
+  const [newFileName, setNewFileName] = useState("");
 
-  const [newFolderName, setNewFolderName] =
-    useState("");
+  const [newFolderName, setNewFolderName] = useState("");
 
-  const [showFileInput, setShowFileInput] =
-    useState(false);
+  const [showFileInput, setShowFileInput] = useState(false);
 
-  const [showFolderInput, setShowFolderInput] =
-    useState(false);
+  const [showFolderInput, setShowFolderInput] = useState(false);
 
-  const [editingFileId, setEditingFileId] =
-    useState(null);
+  const [editingFileId, setEditingFileId] = useState(null);
 
-  const [editingFolderId, setEditingFolderId] =
-    useState(null);
+  const [editingFolderId, setEditingFolderId] = useState(null);
 
-  const [editingName, setEditingName] =
-    useState("");
+  const [editingName, setEditingName] = useState("");
 
-  const [editingFolderName, setEditingFolderName] =
-    useState("");
+  const [editingFolderName, setEditingFolderName] = useState("");
 
-  const [searchQuery, setSearchQuery] =
-    useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const [expandedFolders, setExpandedFolders] =
-    useState({});
+  const [expandedFolders, setExpandedFolders] = useState({});
 
-  const [selectedFolderId, setSelectedFolderId] =
-    useState(null);
+  const [selectedFolderId, setSelectedFolderId] = useState(null);
 
-  const [contextMenu, setContextMenu] =
-    useState(null);
+  const [contextMenu, setContextMenu] = useState(null);
 
-  const [contextFile, setContextFile] =
-    useState(null);
+  const [contextFile, setContextFile] = useState(null);
 
-  const [contextFolder, setContextFolder] =
-    useState(null);
+  const [contextFolder, setContextFolder] = useState(null);
 
   /* =====================================================
      SEARCH SHORTCUT
@@ -171,22 +152,14 @@ function Sidebar({
       setActivePanel("search");
 
       setTimeout(() => {
-        document
-          .querySelector(".rohit-sidebar-search-input")
-          ?.focus();
+        document.querySelector(".rohit-sidebar-search-input")?.focus();
       }, 50);
     };
 
-    window.addEventListener(
-      "rohit-code-search",
-      handleSearchShortcut,
-    );
+    window.addEventListener("rohit-code-search", handleSearchShortcut);
 
     return () => {
-      window.removeEventListener(
-        "rohit-code-search",
-        handleSearchShortcut,
-      );
+      window.removeEventListener("rohit-code-search", handleSearchShortcut);
     };
   }, []);
 
@@ -201,16 +174,10 @@ function Sidebar({
       setContextFolder(null);
     };
 
-    document.addEventListener(
-      "click",
-      closeMenu,
-    );
+    document.addEventListener("click", closeMenu);
 
     return () => {
-      document.removeEventListener(
-        "click",
-        closeMenu,
-      );
+      document.removeEventListener("click", closeMenu);
     };
   }, []);
 
@@ -222,12 +189,7 @@ function Sidebar({
     const handleMouseMove = (event) => {
       if (!resizingRef.current) return;
 
-      setSidebarWidth(
-        Math.min(
-          450,
-          Math.max(250, event.clientX),
-        ),
-      );
+      setSidebarWidth(Math.min(450, Math.max(250, event.clientX)));
     };
 
     const handleMouseUp = () => {
@@ -238,31 +200,17 @@ function Sidebar({
       document.body.style.cursor = "";
       document.body.style.userSelect = "";
 
-      document.body.classList.remove(
-        "rohit-sidebar-resizing",
-      );
+      document.body.classList.remove("rohit-sidebar-resizing");
     };
 
-    window.addEventListener(
-      "mousemove",
-      handleMouseMove,
-    );
+    window.addEventListener("mousemove", handleMouseMove);
 
-    window.addEventListener(
-      "mouseup",
-      handleMouseUp,
-    );
+    window.addEventListener("mouseup", handleMouseUp);
 
     return () => {
-      window.removeEventListener(
-        "mousemove",
-        handleMouseMove,
-      );
+      window.removeEventListener("mousemove", handleMouseMove);
 
-      window.removeEventListener(
-        "mouseup",
-        handleMouseUp,
-      );
+      window.removeEventListener("mouseup", handleMouseUp);
     };
   }, []);
 
@@ -272,15 +220,11 @@ function Sidebar({
 
     resizingRef.current = true;
 
-    document.body.style.cursor =
-      "col-resize";
+    document.body.style.cursor = "col-resize";
 
-    document.body.style.userSelect =
-      "none";
+    document.body.style.userSelect = "none";
 
-    document.body.classList.add(
-      "rohit-sidebar-resizing",
-    );
+    document.body.classList.add("rohit-sidebar-resizing");
   };
 
   /* =====================================================
@@ -294,23 +238,16 @@ function Sidebar({
 
     const exists = files.some(
       (file) =>
-        file.name.toLowerCase() ===
-          name.toLowerCase() &&
-        String(file.folderId) ===
-          String(selectedFolderId),
+        file.name.toLowerCase() === name.toLowerCase() &&
+        String(file.folderId) === String(selectedFolderId),
     );
 
     if (exists) {
-      alert(
-        "A file with this name already exists.",
-      );
+      alert("A file with this name already exists.");
       return;
     }
 
-    onCreateFile?.(
-      name,
-      selectedFolderId,
-    );
+    onCreateFile?.(name, selectedFolderId);
 
     setNewFileName("");
     setShowFileInput(false);
@@ -326,15 +263,11 @@ function Sidebar({
     if (!name) return;
 
     const exists = folders.some(
-      (folder) =>
-        folder.name.toLowerCase() ===
-        name.toLowerCase(),
+      (folder) => folder.name.toLowerCase() === name.toLowerCase(),
     );
 
     if (exists) {
-      alert(
-        "A folder with this name already exists.",
-      );
+      alert("A folder with this name already exists.");
       return;
     }
 
@@ -360,32 +293,22 @@ function Sidebar({
     if (!name) return;
 
     const currentFile = files.find(
-      (file) =>
-        String(file.id) ===
-        String(editingFileId),
+      (file) => String(file.id) === String(editingFileId),
     );
 
     const exists = files.some(
       (file) =>
-        String(file.id) !==
-          String(editingFileId) &&
-        String(file.folderId) ===
-          String(currentFile?.folderId) &&
-        file.name.toLowerCase() ===
-          name.toLowerCase(),
+        String(file.id) !== String(editingFileId) &&
+        String(file.folderId) === String(currentFile?.folderId) &&
+        file.name.toLowerCase() === name.toLowerCase(),
     );
 
     if (exists) {
-      alert(
-        "A file with this name already exists.",
-      );
+      alert("A file with this name already exists.");
       return;
     }
 
-    onRenameFile?.(
-      editingFileId,
-      name,
-    );
+    onRenameFile?.(editingFileId, name);
 
     setEditingFileId(null);
     setEditingName("");
@@ -398,23 +321,17 @@ function Sidebar({
   const toggleFolder = (folderId) => {
     setSelectedFolderId(folderId);
 
-    setExpandedFolders(
-      (previous) => ({
-        ...previous,
-        [folderId]:
-          !previous[folderId],
-      }),
-    );
+    setExpandedFolders((previous) => ({
+      ...previous,
+      [folderId]: !previous[folderId],
+    }));
   };
 
   /* =====================================================
      CONTEXT MENU
      ===================================================== */
 
-  const handleContextMenu = (
-    event,
-    file,
-  ) => {
+  const handleContextMenu = (event, file) => {
     event.preventDefault();
     event.stopPropagation();
 
@@ -457,9 +374,7 @@ function Sidebar({
     if (!contextFile) return;
 
     try {
-      await navigator.clipboard.writeText(
-        contextFile.name,
-      );
+      await navigator.clipboard.writeText(contextFile.name);
     } catch {
       // Ignore clipboard errors.
     }
@@ -485,23 +400,16 @@ function Sidebar({
 
     const exists = folders.some(
       (folder) =>
-        String(folder.id) !==
-          String(editingFolderId) &&
-        folder.name.toLowerCase() ===
-          name.toLowerCase(),
+        String(folder.id) !== String(editingFolderId) &&
+        folder.name.toLowerCase() === name.toLowerCase(),
     );
 
     if (exists) {
-      alert(
-        "A folder with this name already exists.",
-      );
+      alert("A folder with this name already exists.");
       return;
     }
 
-    onRenameFolder?.(
-      editingFolderId,
-      name,
-    );
+    onRenameFolder?.(editingFolderId, name);
 
     setEditingFolderId(null);
     setEditingFolderName("");
@@ -511,10 +419,7 @@ function Sidebar({
      FOLDER CONTEXT MENU
      ===================================================== */
 
-  const handleFolderContextMenu = (
-    event,
-    folder,
-  ) => {
+  const handleFolderContextMenu = (event, folder) => {
     event.preventDefault();
     event.stopPropagation();
 
@@ -553,53 +458,31 @@ function Sidebar({
      FILTER
      ===================================================== */
 
-  const filteredFiles = files.filter(
-    (file) =>
-      file.name
-        .toLowerCase()
-        .includes(
-          searchQuery.toLowerCase(),
-        ),
+  const filteredFiles = files.filter((file) =>
+    file.name.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
-  const rootFiles =
-    filteredFiles.filter(
-      (file) =>
-        file.folderId == null,
-    );
+  const rootFiles = filteredFiles.filter((file) => file.folderId == null);
 
   /* =====================================================
      FILE ITEM
      ===================================================== */
 
   const renderFile = (file) => {
-    const active =
-      String(activeFile) ===
-      String(file.id);
+    const active = String(activeFile) === String(file.id);
 
     const meta = getFileMeta(file);
 
-    const dirty =
-      file.content !==
-      file.savedContent;
+    const dirty = file.content !== file.savedContent;
 
     return (
       <div
         key={file.id}
         className={`rohit-sidebar-file ${
-          active
-            ? "rohit-sidebar-file-active"
-            : ""
+          active ? "rohit-sidebar-file-active" : ""
         }`}
-        onClick={() =>
-          onFileSelect?.(file.id)
-        }
-        onContextMenu={(event) =>
-          handleContextMenu(
-            event,
-            file,
-          )
-        }
+        onClick={() => onFileSelect?.(file.id)}
+        onContextMenu={(event) => handleContextMenu(event, file)}
         title={file.name}
       >
         <span
@@ -611,48 +494,30 @@ function Sidebar({
           {meta.icon}
         </span>
 
-        {editingFileId ===
-        file.id ? (
+        {editingFileId === file.id ? (
           <input
             autoFocus
             className="rohit-sidebar-rename"
             value={editingName}
-            onChange={(event) =>
-              setEditingName(
-                event.target.value,
-              )
-            }
-            onClick={(event) =>
-              event.stopPropagation()
-            }
+            onChange={(event) => setEditingName(event.target.value)}
+            onClick={(event) => event.stopPropagation()}
             onKeyDown={(event) => {
-              if (
-                event.key ===
-                "Enter"
-              ) {
+              if (event.key === "Enter") {
                 saveRename();
               }
 
-              if (
-                event.key ===
-                "Escape"
-              ) {
-                setEditingFileId(
-                  null,
-                );
+              if (event.key === "Escape") {
+                setEditingFileId(null);
 
                 setEditingName("");
               }
             }}
           />
         ) : (
-          <span className="rohit-sidebar-file-name">
-            {file.name}
-          </span>
+          <span className="rohit-sidebar-file-name">{file.name}</span>
         )}
 
-        {editingFileId ===
-        file.id ? (
+        {editingFileId === file.id ? (
           <>
             <button
               type="button"
@@ -673,9 +538,7 @@ function Sidebar({
               onClick={(event) => {
                 event.stopPropagation();
 
-                setEditingFileId(
-                  null,
-                );
+                setEditingFileId(null);
 
                 setEditingName("");
               }}
@@ -686,10 +549,7 @@ function Sidebar({
         ) : (
           <>
             {dirty && (
-              <span
-                className="rohit-sidebar-dirty"
-                title="Unsaved changes"
-              >
+              <span className="rohit-sidebar-dirty" title="Unsaved changes">
                 ●
               </span>
             )}
@@ -714,9 +574,7 @@ function Sidebar({
               onClick={(event) => {
                 event.stopPropagation();
 
-                onDeleteFile?.(
-                  file.id,
-                );
+                onDeleteFile?.(file.id);
               }}
             >
               <Trash2 size={12} />
@@ -1400,11 +1258,7 @@ function Sidebar({
 
             if (panel === "search") {
               setTimeout(() => {
-                document
-                  .querySelector(
-                    ".rohit-sidebar-search-input",
-                  )
-                  ?.focus();
+                document.querySelector(".rohit-sidebar-search-input")?.focus();
               }, 50);
             }
           }}
@@ -1415,13 +1269,10 @@ function Sidebar({
               EXPLORER
              ================================================= */}
 
-          {activePanel ===
-            "explorer" && (
+          {activePanel === "explorer" && (
             <>
               <div className="rohit-sidebar-header">
-                <span className="rohit-sidebar-title">
-                  EXPLORER
-                </span>
+                <span className="rohit-sidebar-title">EXPLORER</span>
 
                 <div className="rohit-sidebar-actions">
                   <button
@@ -1429,13 +1280,9 @@ function Sidebar({
                     className="rohit-sidebar-icon-button"
                     title="New File"
                     onClick={() => {
-                      setShowFileInput(
-                        true,
-                      );
+                      setShowFileInput(true);
 
-                      setShowFolderInput(
-                        false,
-                      );
+                      setShowFolderInput(false);
                     }}
                   >
                     <FilePlus2 size={18} />
@@ -1446,13 +1293,9 @@ function Sidebar({
                     className="rohit-sidebar-icon-button"
                     title="New Folder"
                     onClick={() => {
-                      setShowFolderInput(
-                        true,
-                      );
+                      setShowFolderInput(true);
 
-                      setShowFileInput(
-                        false,
-                      );
+                      setShowFileInput(false);
                     }}
                   >
                     <FolderPlus size={18} />
@@ -1463,9 +1306,7 @@ function Sidebar({
                     className="rohit-sidebar-icon-button"
                     title="More Actions"
                   >
-                    <MoreHorizontal
-                      size={18}
-                    />
+                    <MoreHorizontal size={18} />
                   </button>
                 </div>
               </div>
@@ -1479,11 +1320,7 @@ function Sidebar({
                   className="rohit-sidebar-search-input"
                   placeholder="Search files..."
                   value={searchQuery}
-                  onChange={(event) =>
-                    setSearchQuery(
-                      event.target.value,
-                    )
-                  }
+                  onChange={(event) => setSearchQuery(event.target.value)}
                 />
 
                 {searchQuery && (
@@ -1494,9 +1331,7 @@ function Sidebar({
                       width: 20,
                       height: 20,
                     }}
-                    onClick={() =>
-                      setSearchQuery("")
-                    }
+                    onClick={() => setSearchQuery("")}
                   >
                     <X size={12} />
                   </button>
@@ -1513,47 +1348,28 @@ function Sidebar({
                     autoFocus
                     placeholder="File name..."
                     value={newFileName}
-                    onChange={(event) =>
-                      setNewFileName(
-                        event.target.value,
-                      )
-                    }
+                    onChange={(event) => setNewFileName(event.target.value)}
                     onKeyDown={(event) => {
-                      if (
-                        event.key ===
-                        "Enter"
-                      ) {
+                      if (event.key === "Enter") {
                         handleCreateFile();
                       }
 
-                      if (
-                        event.key ===
-                        "Escape"
-                      ) {
-                        setShowFileInput(
-                          false,
-                        );
+                      if (event.key === "Escape") {
+                        setShowFileInput(false);
 
                         setNewFileName("");
                       }
                     }}
                   />
 
-                  <button
-                    type="button"
-                    onClick={
-                      handleCreateFile
-                    }
-                  >
+                  <button type="button" onClick={handleCreateFile}>
                     <Check size={13} />
                   </button>
 
                   <button
                     type="button"
                     onClick={() => {
-                      setShowFileInput(
-                        false,
-                      );
+                      setShowFileInput(false);
 
                       setNewFileName("");
                     }}
@@ -1573,47 +1389,28 @@ function Sidebar({
                     autoFocus
                     placeholder="Folder name..."
                     value={newFolderName}
-                    onChange={(event) =>
-                      setNewFolderName(
-                        event.target.value,
-                      )
-                    }
+                    onChange={(event) => setNewFolderName(event.target.value)}
                     onKeyDown={(event) => {
-                      if (
-                        event.key ===
-                        "Enter"
-                      ) {
+                      if (event.key === "Enter") {
                         handleCreateFolder();
                       }
 
-                      if (
-                        event.key ===
-                        "Escape"
-                      ) {
-                        setShowFolderInput(
-                          false,
-                        );
+                      if (event.key === "Escape") {
+                        setShowFolderInput(false);
 
                         setNewFolderName("");
                       }
                     }}
                   />
 
-                  <button
-                    type="button"
-                    onClick={
-                      handleCreateFolder
-                    }
-                  >
+                  <button type="button" onClick={handleCreateFolder}>
                     <Check size={13} />
                   </button>
 
                   <button
                     type="button"
                     onClick={() => {
-                      setShowFolderInput(
-                        false,
-                      );
+                      setShowFolderInput(false);
 
                       setNewFolderName("");
                     }}
@@ -1628,133 +1425,69 @@ function Sidebar({
               <div className="rohit-sidebar-tree">
                 <div
                   className="rohit-sidebar-project"
-                  onClick={() =>
-                    setSelectedFolderId(
-                      null,
-                    )
-                  }
+                  onClick={() => setSelectedFolderId(null)}
                 >
-                  <ChevronDown
-                    size={14}
-                  />
+                  <ChevronDown size={14} />
 
-                  <FolderOpen
-                    size={15}
-                    color="#dcb67a"
-                  />
+                  <FolderOpen size={15} color="#dcb67a" />
 
-                  <span className="rohit-sidebar-project-name">
-                    ROHIT-CODE
-                  </span>
+                  <span className="rohit-sidebar-project-name">ROHIT-CODE</span>
                 </div>
 
                 {/* FOLDERS */}
 
                 {folders.map((folder) => {
                   const isExpanded =
-                    expandedFolders[
-                      folder.id
-                    ] ??
-                    folder.expanded ??
-                    true;
+                    expandedFolders[folder.id] ?? folder.expanded ?? true;
 
-                  const folderFiles =
-                    filteredFiles.filter(
-                      (file) =>
-                        String(
-                          file.folderId,
-                        ) ===
-                        String(
-                          folder.id,
-                        ),
-                    );
+                  const folderFiles = filteredFiles.filter(
+                    (file) => String(file.folderId) === String(folder.id),
+                  );
 
-                  const selected =
-                    selectedFolderId ===
-                    folder.id;
+                  const selected = selectedFolderId === folder.id;
 
                   return (
-                    <div
-                      key={folder.id}
-                    >
+                    <div key={folder.id}>
                       <div
                         className={`
                           rohit-sidebar-folder
-                          ${
-                            selected
-                              ? "rohit-sidebar-folder-selected"
-                              : ""
-                          }
+                          ${selected ? "rohit-sidebar-folder-selected" : ""}
                         `}
-                        onClick={() =>
-                          toggleFolder(
-                            folder.id,
-                          )
-                        }
+                        onClick={() => toggleFolder(folder.id)}
                         onContextMenu={(event) =>
-                          handleFolderContextMenu(
-                            event,
-                            folder,
-                          )
+                          handleFolderContextMenu(event, folder)
                         }
                       >
                         {isExpanded ? (
-                          <ChevronDown
-                            size={16}
-                          />
+                          <ChevronDown size={16} />
                         ) : (
-                          <ChevronRight
-                            size={16}
-                          />
+                          <ChevronRight size={16} />
                         )}
 
                         {isExpanded ? (
-                          <FolderOpen
-                            size={17}
-                            color="#dcb67a"
-                          />
+                          <FolderOpen size={17} color="#dcb67a" />
                         ) : (
-                          <Folder
-                            size={17}
-                            color="#dcb67a"
-                          />
+                          <Folder size={17} color="#dcb67a" />
                         )}
 
-                        {editingFolderId ===
-                        folder.id ? (
+                        {editingFolderId === folder.id ? (
                           <>
                             <input
                               autoFocus
                               className="rohit-sidebar-rename rohit-sidebar-folder-rename"
-                              value={
-                                editingFolderName
-                              }
+                              value={editingFolderName}
                               onChange={(event) =>
-                                setEditingFolderName(
-                                  event.target.value,
-                                )
+                                setEditingFolderName(event.target.value)
                               }
-                              onClick={(event) =>
-                                event.stopPropagation()
-                              }
+                              onClick={(event) => event.stopPropagation()}
                               onKeyDown={(event) => {
-                                if (
-                                  event.key ===
-                                  "Enter"
-                                ) {
+                                if (event.key === "Enter") {
                                   saveFolderRename();
                                 }
 
-                                if (
-                                  event.key ===
-                                  "Escape"
-                                ) {
-                                  setEditingFolderId(
-                                    null,
-                                  );
-                                  setEditingFolderName(
-                                    "",
-                                  );
+                                if (event.key === "Escape") {
+                                  setEditingFolderId(null);
+                                  setEditingFolderName("");
                                 }
                               }}
                             />
@@ -1777,12 +1510,8 @@ function Sidebar({
                               title="Cancel"
                               onClick={(event) => {
                                 event.stopPropagation();
-                                setEditingFolderId(
-                                  null,
-                                );
-                                setEditingFolderName(
-                                  "",
-                                );
+                                setEditingFolderId(null);
+                                setEditingFolderName("");
                               }}
                             >
                               <X size={13} />
@@ -1800,9 +1529,7 @@ function Sidebar({
                               title="Rename folder"
                               onClick={(event) => {
                                 event.stopPropagation();
-                                startFolderRename(
-                                  folder,
-                                );
+                                startFolderRename(folder);
                               }}
                             >
                               <Pencil size={12} />
@@ -1815,15 +1542,12 @@ function Sidebar({
                               onClick={(event) => {
                                 event.stopPropagation();
 
-                                const confirmed =
-                                  window.confirm(
-                                    `Delete folder "${folder.name}" and all files inside it?`,
-                                  );
+                                const confirmed = window.confirm(
+                                  `Delete folder "${folder.name}" and all files inside it?`,
+                                );
 
                                 if (confirmed) {
-                                  onDeleteFolder?.(
-                                    folder.id,
-                                  );
+                                  onDeleteFolder?.(folder.id);
                                 }
                               }}
                             >
@@ -1835,9 +1559,7 @@ function Sidebar({
 
                       {isExpanded && (
                         <div className="rohit-sidebar-folder-files">
-                          {folderFiles.map(
-                            renderFile,
-                          )}
+                          {folderFiles.map(renderFile)}
                         </div>
                       )}
                     </div>
@@ -1846,26 +1568,19 @@ function Sidebar({
 
                 {/* ROOT FILES */}
 
-                {rootFiles.map(
-                  renderFile,
-                )}
+                {rootFiles.map(renderFile)}
 
                 {files.length === 0 && (
                   <div className="rohit-sidebar-empty">
                     No files yet.
                     <br />
-                    Create a file to start
-                    coding.
+                    Create a file to start coding.
                   </div>
                 )}
 
-                {files.length > 0 &&
-                  filteredFiles.length ===
-                    0 && (
-                    <div className="rohit-sidebar-empty">
-                      No matching files.
-                    </div>
-                  )}
+                {files.length > 0 && filteredFiles.length === 0 && (
+                  <div className="rohit-sidebar-empty">No matching files.</div>
+                )}
               </div>
             </>
           )}
@@ -1877,9 +1592,7 @@ function Sidebar({
           {activePanel === "search" && (
             <div className="rohit-sidebar-panel">
               <div className="rohit-sidebar-header">
-                <span className="rohit-sidebar-title">
-                  SEARCH
-                </span>
+                <span className="rohit-sidebar-title">SEARCH</span>
               </div>
 
               <div className="rohit-sidebar-search">
@@ -1890,24 +1603,15 @@ function Sidebar({
                   className="rohit-sidebar-search-input"
                   placeholder="Search files..."
                   value={searchQuery}
-                  onChange={(event) =>
-                    setSearchQuery(
-                      event.target.value,
-                    )
-                  }
+                  onChange={(event) => setSearchQuery(event.target.value)}
                 />
               </div>
 
               <div className="rohit-sidebar-tree">
-                {filteredFiles.map(
-                  renderFile,
-                )}
+                {filteredFiles.map(renderFile)}
 
-                {filteredFiles.length ===
-                  0 && (
-                  <div className="rohit-sidebar-empty">
-                    No files found.
-                  </div>
+                {filteredFiles.length === 0 && (
+                  <div className="rohit-sidebar-empty">No files found.</div>
                 )}
               </div>
             </div>
@@ -1917,15 +1621,12 @@ function Sidebar({
               SOURCE CONTROL
              ================================================= */}
 
-          {activePanel ===
-            "source-control" && (
+          {activePanel === "source-control" && (
             <div className="rohit-sidebar-panel">
               <SourceControlPanel
                 files={files}
                 activeFile={activeFile}
-                onFileSelect={
-                  onFileSelect
-                }
+                onFileSelect={onFileSelect}
               />
             </div>
           )}
@@ -1938,9 +1639,7 @@ function Sidebar({
             <div className="rohit-sidebar-panel">
               <RunDebugPanel
                 file={files.find(
-                  (file) =>
-                    String(file.id) ===
-                    String(activeFile),
+                  (file) => String(file.id) === String(activeFile),
                 )}
                 onRun={onRun}
                 onStop={onStop}
@@ -1950,11 +1649,24 @@ function Sidebar({
           )}
 
           {/* =================================================
+              CHEATSHEET
+             ================================================= */}
+
+          {activePanel === "cheatsheet" && (
+            <div className="rohit-sidebar-panel">
+              <Cheatsheet
+                onClose={() => {
+                  setActivePanel("explorer");
+                }}
+              />
+            </div>
+          )}
+
+          {/* =================================================
               EXTENSIONS
              ================================================= */}
 
-          {activePanel ===
-            "extensions" && (
+          {activePanel === "extensions" && (
             <div className="rohit-sidebar-panel">
               <ExtensionsPanel />
             </div>
@@ -1965,95 +1677,66 @@ function Sidebar({
             CONTEXT MENU
            =================================================== */}
 
-        {contextMenu &&
-          (contextFile || contextFolder) && (
-            <div
-              className="rohit-sidebar-context"
-              style={{
-                position: "fixed",
-                left: contextMenu.x,
-                top: contextMenu.y,
-                zIndex: 20000,
-              }}
-              onClick={(event) =>
-                event.stopPropagation()
-              }
-            >
-              {contextFile ? (
-                <>
-                  <button
-                    type="button"
-                    onClick={
-                      handleContextOpen
-                    }
-                  >
-                    <ExternalLink
-                      size={13}
-                    />
-                    Open
-                  </button>
+        {contextMenu && (contextFile || contextFolder) && (
+          <div
+            className="rohit-sidebar-context"
+            style={{
+              position: "fixed",
+              left: contextMenu.x,
+              top: contextMenu.y,
+              zIndex: 20000,
+            }}
+            onClick={(event) => event.stopPropagation()}
+          >
+            {contextFile ? (
+              <>
+                <button type="button" onClick={handleContextOpen}>
+                  <ExternalLink size={13} />
+                  Open
+                </button>
 
-                  <button
-                    type="button"
-                    onClick={
-                      handleContextRename
-                    }
-                  >
-                    <Pencil size={13} />
-                    Rename
-                  </button>
+                <button type="button" onClick={handleContextRename}>
+                  <Pencil size={13} />
+                  Rename
+                </button>
 
-                  <button
-                    type="button"
-                    onClick={
-                      handleCopyPath
-                    }
-                  >
-                    <Copy size={13} />
-                    Copy Path
-                  </button>
+                <button type="button" onClick={handleCopyPath}>
+                  <Copy size={13} />
+                  Copy Path
+                </button>
 
-                  <div className="rohit-sidebar-context-divider" />
+                <div className="rohit-sidebar-context-divider" />
 
-                  <button
-                    type="button"
-                    className="danger"
-                    onClick={
-                      handleContextDelete
-                    }
-                  >
-                    <Trash2 size={13} />
-                    Delete
-                  </button>
-                </>
-              ) : (
-                <>
-                  <button
-                    type="button"
-                    onClick={
-                      handleFolderContextRename
-                    }
-                  >
-                    <Pencil size={13} />
-                    Rename
-                  </button>
+                <button
+                  type="button"
+                  className="danger"
+                  onClick={handleContextDelete}
+                >
+                  <Trash2 size={13} />
+                  Delete
+                </button>
+              </>
+            ) : (
+              <>
+                <button type="button" onClick={handleFolderContextRename}>
+                  <Pencil size={13} />
+                  Rename
+                </button>
 
-                  <div className="rohit-sidebar-context-divider" />
+                <div className="rohit-sidebar-context-divider" />
 
-                  <button
-                    type="button"
-                    className="danger"
-                    onClick={
-                      handleFolderContextDelete
-                    }
-                  >
-                    <Trash2 size={13} />
-                    Delete Folder
-                  </button>
-                </>
-              )}
-            </div>
-          )}
+                <button
+                  type="button"
+                  className="danger"
+                  onClick={handleFolderContextDelete}
+                >
+                  <Trash2 size={13} />
+                  Delete Folder
+                </button>
+              </>
+            )}
+          </div>
+        )}
 
         {/* ===================================================
             RESIZE
@@ -2061,9 +1744,7 @@ function Sidebar({
 
         <div
           className="rohit-sidebar-resize"
-          onMouseDown={
-            startSidebarResize
-          }
+          onMouseDown={startSidebarResize}
           role="separator"
           aria-orientation="vertical"
           aria-label="Resize Explorer"

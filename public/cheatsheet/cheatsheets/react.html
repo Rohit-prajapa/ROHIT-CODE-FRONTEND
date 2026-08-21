@@ -1,0 +1,2039 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Complete React.js Cheat Sheet by CodeWithRohit"
+    >
+
+    <title>React Cheat Sheet | CodeWithRohit</title>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="../cheatsheet.css">
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="../prism/prism.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="cheat-navbar">
+
+        <a href="../index.html" class="brand">
+            &lt;/&gt; CodeWithRohit
+        </a>
+
+        <div class="cheat-title">
+            React.js Cheat Sheet
+        </div>
+
+        <a href="../index.html" class="home-btn">
+            ← Home
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="cheat-hero">
+
+        <h1>React.js Cheat Sheet</h1>
+
+        <p>
+            Complete React quick reference covering JSX, components,
+            props, state, hooks, forms, routing, Context API and APIs.
+        </p>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <ol>
+
+            <!-- 1 -->
+            <li>
+                <h2>Create React App with Vite</h2>
+
+                <pre class="language-bash"><code>npm create vite@latest my-app
+
+cd my-app
+
+npm install
+
+npm run dev</code></pre>
+            </li>
+
+
+            <!-- 2 -->
+            <li>
+                <h2>React Project Structure</h2>
+
+                <pre class="language-text"><code>my-app/
+│
+├── public/
+│
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── App.jsx
+│   ├── App.css
+│   ├── index.css
+│   └── main.jsx
+│
+├── index.html
+├── package.json
+└── vite.config.js</code></pre>
+            </li>
+
+
+            <!-- 3 -->
+            <li>
+                <h2>main.jsx</h2>
+
+                <pre class="language-jsx"><code>import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import App from "./App.jsx";
+import "./index.css";
+
+createRoot(
+    document.getElementById("root")
+).render(
+    &lt;StrictMode&gt;
+        &lt;App /&gt;
+    &lt;/StrictMode&gt;
+);</code></pre>
+            </li>
+
+
+            <!-- 4 -->
+            <li>
+                <h2>Basic Component</h2>
+
+                <pre class="language-jsx"><code>function App() {
+
+    return (
+        &lt;h1&gt;
+            Hello React
+        &lt;/h1&gt;
+    );
+}
+
+export default App;</code></pre>
+            </li>
+
+
+            <!-- 5 -->
+            <li>
+                <h2>JSX</h2>
+
+                <pre class="language-jsx"><code>function App() {
+
+    const name = "Rohit";
+
+    return (
+        &lt;div&gt;
+
+            &lt;h1&gt;
+                Hello {name}
+            &lt;/h1&gt;
+
+            &lt;p&gt;
+                Welcome to React
+            &lt;/p&gt;
+
+        &lt;/div&gt;
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 6 -->
+            <li>
+                <h2>JSX Rules</h2>
+
+                <pre class="language-jsx"><code>// Return one parent element
+
+return (
+    &lt;div&gt;
+        &lt;h1&gt;Hello&lt;/h1&gt;
+        &lt;p&gt;React&lt;/p&gt;
+    &lt;/div&gt;
+);
+
+
+// Use className
+
+&lt;div className="container"&gt;
+    Hello
+&lt;/div&gt;
+
+
+// Close all tags
+
+&lt;img src="logo.png" /&gt;
+
+&lt;input type="text" /&gt;</code></pre>
+            </li>
+
+
+            <!-- 7 -->
+            <li>
+                <h2>React Fragment</h2>
+
+                <pre class="language-jsx"><code>function App() {
+
+    return (
+        &lt;&gt;
+
+            &lt;h1&gt;Hello&lt;/h1&gt;
+
+            &lt;p&gt;React&lt;/p&gt;
+
+        &lt;/&gt;
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 8 -->
+            <li>
+                <h2>Create Component</h2>
+
+                <pre class="language-jsx"><code>function Navbar() {
+
+    return (
+        &lt;nav&gt;
+            CodeWithRohit
+        &lt;/nav&gt;
+    );
+}
+
+export default Navbar;</code></pre>
+            </li>
+
+
+            <!-- 9 -->
+            <li>
+                <h2>Import Component</h2>
+
+                <pre class="language-jsx"><code>import Navbar
+    from "./components/Navbar";
+
+function App() {
+
+    return (
+        &lt;&gt;
+
+            &lt;Navbar /&gt;
+
+            &lt;h1&gt;
+                Home Page
+            &lt;/h1&gt;
+
+        &lt;/&gt;
+    );
+}
+
+export default App;</code></pre>
+            </li>
+
+
+            <!-- 10 -->
+            <li>
+                <h2>Props</h2>
+
+                <pre class="language-jsx"><code>function Student(props) {
+
+    return (
+        &lt;h2&gt;
+            Hello {props.name}
+        &lt;/h2&gt;
+    );
+}
+
+
+function App() {
+
+    return (
+        &lt;Student
+            name="Rohit"
+        /&gt;
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 11 -->
+            <li>
+                <h2>Props Destructuring</h2>
+
+                <pre class="language-jsx"><code>function Student({
+    name,
+    age
+}) {
+
+    return (
+        &lt;div&gt;
+
+            &lt;h2&gt;
+                {name}
+            &lt;/h2&gt;
+
+            &lt;p&gt;
+                Age: {age}
+            &lt;/p&gt;
+
+        &lt;/div&gt;
+    );
+}
+
+
+&lt;Student
+    name="Rohit"
+    age={21}
+/&gt;</code></pre>
+            </li>
+
+
+            <!-- 12 -->
+            <li>
+                <h2>Children Prop</h2>
+
+                <pre class="language-jsx"><code>function Card({
+    children
+}) {
+
+    return (
+        &lt;div className="card"&gt;
+
+            {children}
+
+        &lt;/div&gt;
+    );
+}
+
+
+&lt;Card&gt;
+
+    &lt;h2&gt;
+        React
+    &lt;/h2&gt;
+
+    &lt;p&gt;
+        Learn React
+    &lt;/p&gt;
+
+&lt;/Card&gt;</code></pre>
+            </li>
+
+
+            <!-- 13 -->
+            <li>
+                <h2>Event Handling</h2>
+
+                <pre class="language-jsx"><code>function App() {
+
+    function handleClick() {
+
+        alert("Button clicked!");
+    }
+
+    return (
+        &lt;button
+            onClick={handleClick}
+        &gt;
+            Click Me
+        &lt;/button&gt;
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 14 -->
+            <li>
+                <h2>Event with Arrow Function</h2>
+
+                <pre class="language-jsx"><code>&lt;button
+    onClick={() =&gt; {
+        alert("Hello Rohit");
+    }}
+&gt;
+    Click
+&lt;/button&gt;</code></pre>
+            </li>
+
+
+            <!-- 15 -->
+            <li>
+                <h2>useState</h2>
+
+                <pre class="language-jsx"><code>import {
+    useState
+} from "react";
+
+
+function App() {
+
+    const [count, setCount] =
+        useState(0);
+
+    return (
+        &lt;div&gt;
+
+            &lt;h1&gt;
+                {count}
+            &lt;/h1&gt;
+
+            &lt;button
+                onClick={() =&gt;
+                    setCount(count + 1)
+                }
+            &gt;
+                Increase
+            &lt;/button&gt;
+
+        &lt;/div&gt;
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 16 -->
+            <li>
+                <h2>Counter Example</h2>
+
+                <pre class="language-jsx"><code>import {
+    useState
+} from "react";
+
+
+function Counter() {
+
+    const [count, setCount] =
+        useState(0);
+
+
+    return (
+        &lt;div&gt;
+
+            &lt;h2&gt;
+                {count}
+            &lt;/h2&gt;
+
+
+            &lt;button
+                onClick={() =&gt;
+                    setCount(count + 1)
+                }
+            &gt;
+                +
+            &lt;/button&gt;
+
+
+            &lt;button
+                onClick={() =&gt;
+                    setCount(count - 1)
+                }
+            &gt;
+                -
+            &lt;/button&gt;
+
+
+            &lt;button
+                onClick={() =&gt;
+                    setCount(0)
+                }
+            &gt;
+                Reset
+            &lt;/button&gt;
+
+        &lt;/div&gt;
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 17 -->
+            <li>
+                <h2>Update State Using Previous State</h2>
+
+                <pre class="language-jsx"><code>setCount(
+    previousCount =&gt;
+        previousCount + 1
+);</code></pre>
+            </li>
+
+
+            <!-- 18 -->
+            <li>
+                <h2>Boolean State</h2>
+
+                <pre class="language-jsx"><code>const [isOpen, setIsOpen] =
+    useState(false);
+
+
+&lt;button
+    onClick={() =&gt;
+        setIsOpen(!isOpen)
+    }
+&gt;
+    Toggle
+&lt;/button&gt;
+
+
+{isOpen &amp;&amp; (
+    &lt;p&gt;
+        Menu Open
+    &lt;/p&gt;
+)}</code></pre>
+            </li>
+
+
+            <!-- 19 -->
+            <li>
+                <h2>String State</h2>
+
+                <pre class="language-jsx"><code>const [name, setName] =
+    useState("Rohit");
+
+
+&lt;button
+    onClick={() =&gt;
+        setName("CodeWithRohit")
+    }
+&gt;
+    Change Name
+&lt;/button&gt;
+
+
+&lt;h2&gt;
+    {name}
+&lt;/h2&gt;</code></pre>
+            </li>
+
+
+            <!-- 20 -->
+            <li>
+                <h2>Object State</h2>
+
+                <pre class="language-jsx"><code>const [user, setUser] =
+    useState({
+
+        name: "Rohit",
+
+        age: 21
+    });
+
+
+setUser({
+    ...user,
+
+    age: 22
+});</code></pre>
+            </li>
+
+
+            <!-- 21 -->
+            <li>
+                <h2>Array State</h2>
+
+                <pre class="language-jsx"><code>const [languages, setLanguages] =
+    useState([
+        "HTML",
+        "CSS"
+    ]);
+
+
+setLanguages([
+    ...languages,
+
+    "JavaScript"
+]);</code></pre>
+            </li>
+
+
+            <!-- 22 -->
+            <li>
+                <h2>Conditional Rendering</h2>
+
+                <pre class="language-jsx"><code>const isLoggedIn = true;
+
+
+return (
+    &lt;div&gt;
+
+        {
+            isLoggedIn
+                ? &lt;h1&gt;Welcome&lt;/h1&gt;
+                : &lt;h1&gt;Login&lt;/h1&gt;
+        }
+
+    &lt;/div&gt;
+);</code></pre>
+            </li>
+
+
+            <!-- 23 -->
+            <li>
+                <h2>Rendering with &&</h2>
+
+                <pre class="language-jsx"><code>const isAdmin = true;
+
+
+return (
+    &lt;&gt;
+
+        {isAdmin &amp;&amp; (
+            &lt;button&gt;
+                Admin Panel
+            &lt;/button&gt;
+        )}
+
+    &lt;/&gt;
+);</code></pre>
+            </li>
+
+
+            <!-- 24 -->
+            <li>
+                <h2>Render List with map()</h2>
+
+                <pre class="language-jsx"><code>const languages = [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React"
+];
+
+
+return (
+    &lt;ul&gt;
+
+        {languages.map(
+            (language, index) =&gt; (
+
+                &lt;li key={index}&gt;
+                    {language}
+                &lt;/li&gt;
+            )
+        )}
+
+    &lt;/ul&gt;
+);</code></pre>
+            </li>
+
+
+            <!-- 25 -->
+            <li>
+                <h2>Render Object Array</h2>
+
+                <pre class="language-jsx"><code>const students = [
+
+    {
+        id: 1,
+        name: "Rohit"
+    },
+
+    {
+        id: 2,
+        name: "Aman"
+    }
+
+];
+
+
+return (
+    &lt;div&gt;
+
+        {students.map(
+            student =&gt; (
+
+                &lt;h2
+                    key={student.id}
+                &gt;
+
+                    {student.name}
+
+                &lt;/h2&gt;
+            )
+        )}
+
+    &lt;/div&gt;
+);</code></pre>
+            </li>
+
+
+            <!-- 26 -->
+            <li>
+                <h2>Controlled Input</h2>
+
+                <pre class="language-jsx"><code>import {
+    useState
+} from "react";
+
+
+function App() {
+
+    const [name, setName] =
+        useState("");
+
+
+    return (
+        &lt;&gt;
+
+            &lt;input
+
+                type="text"
+
+                value={name}
+
+                onChange={
+                    event =&gt;
+                        setName(
+                            event.target.value
+                        )
+                }
+
+            /&gt;
+
+
+            &lt;h2&gt;
+                {name}
+            &lt;/h2&gt;
+
+        &lt;/&gt;
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 27 -->
+            <li>
+                <h2>Form Handling</h2>
+
+                <pre class="language-jsx"><code>import {
+    useState
+} from "react";
+
+
+function App() {
+
+    const [name, setName] =
+        useState("");
+
+
+    function handleSubmit(event) {
+
+        event.preventDefault();
+
+        console.log(name);
+    }
+
+
+    return (
+        &lt;form
+            onSubmit={handleSubmit}
+        &gt;
+
+            &lt;input
+
+                value={name}
+
+                onChange={
+                    event =&gt;
+                        setName(
+                            event.target.value
+                        )
+                }
+
+            /&gt;
+
+
+            &lt;button
+                type="submit"
+            &gt;
+                Submit
+            &lt;/button&gt;
+
+        &lt;/form&gt;
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 28 -->
+            <li>
+                <h2>Multiple Form Inputs</h2>
+
+                <pre class="language-jsx"><code>const [form, setForm] =
+    useState({
+
+        name: "",
+
+        email: ""
+    });
+
+
+function handleChange(event) {
+
+    const {
+        name,
+        value
+    } = event.target;
+
+
+    setForm({
+
+        ...form,
+
+        [name]: value
+    });
+}
+
+
+&lt;input
+    name="name"
+    value={form.name}
+    onChange={handleChange}
+/&gt;
+
+
+&lt;input
+    name="email"
+    value={form.email}
+    onChange={handleChange}
+/&gt;</code></pre>
+            </li>
+
+
+            <!-- 29 -->
+            <li>
+                <h2>useEffect</h2>
+
+                <pre class="language-jsx"><code>import {
+    useEffect
+} from "react";
+
+
+useEffect(() =&gt; {
+
+    console.log(
+        "Component rendered"
+    );
+
+});</code></pre>
+            </li>
+
+
+            <!-- 30 -->
+            <li>
+                <h2>useEffect - Run Once</h2>
+
+                <pre class="language-jsx"><code>useEffect(() =&gt; {
+
+    console.log(
+        "Runs after initial mount"
+    );
+
+}, []);</code></pre>
+            </li>
+
+
+            <!-- 31 -->
+            <li>
+                <h2>useEffect with Dependency</h2>
+
+                <pre class="language-jsx"><code>useEffect(() =&gt; {
+
+    console.log(
+        "Count changed"
+    );
+
+}, [count]);</code></pre>
+            </li>
+
+
+            <!-- 32 -->
+            <li>
+                <h2>useEffect Cleanup</h2>
+
+                <pre class="language-jsx"><code>useEffect(() =&gt; {
+
+    const timer =
+        setInterval(() =&gt; {
+
+            console.log(
+                "Running..."
+            );
+
+        }, 1000);
+
+
+    return () =&gt; {
+
+        clearInterval(timer);
+    };
+
+}, []);</code></pre>
+            </li>
+
+
+            <!-- 33 -->
+            <li>
+                <h2>Fetch API</h2>
+
+                <pre class="language-jsx"><code>useEffect(() =&gt; {
+
+    fetch(
+        "https://jsonplaceholder.typicode.com/users"
+    )
+
+        .then(response =&gt;
+            response.json()
+        )
+
+        .then(data =&gt;
+            console.log(data)
+        )
+
+        .catch(error =&gt;
+            console.error(error)
+        );
+
+}, []);</code></pre>
+            </li>
+
+
+            <!-- 34 -->
+            <li>
+                <h2>Fetch API with async/await</h2>
+
+                <pre class="language-jsx"><code>useEffect(() =&gt; {
+
+    async function fetchUsers() {
+
+        try {
+
+            const response =
+                await fetch(
+                    "https://jsonplaceholder.typicode.com/users"
+                );
+
+            const data =
+                await response.json();
+
+            console.log(data);
+
+        } catch (error) {
+
+            console.error(error);
+        }
+    }
+
+
+    fetchUsers();
+
+}, []);</code></pre>
+            </li>
+
+
+            <!-- 35 -->
+            <li>
+                <h2>Loading State</h2>
+
+                <pre class="language-jsx"><code>const [loading, setLoading] =
+    useState(true);
+
+
+useEffect(() =&gt; {
+
+    async function loadData() {
+
+        try {
+
+            const response =
+                await fetch(API_URL);
+
+            const data =
+                await response.json();
+
+            console.log(data);
+
+        } finally {
+
+            setLoading(false);
+        }
+    }
+
+
+    loadData();
+
+}, []);
+
+
+if (loading) {
+
+    return &lt;h2&gt;Loading...&lt;/h2&gt;;
+}</code></pre>
+            </li>
+
+
+            <!-- 36 -->
+            <li>
+                <h2>useRef</h2>
+
+                <pre class="language-jsx"><code>import {
+    useRef
+} from "react";
+
+
+function App() {
+
+    const inputRef =
+        useRef(null);
+
+
+    function focusInput() {
+
+        inputRef.current.focus();
+    }
+
+
+    return (
+        &lt;&gt;
+
+            &lt;input
+                ref={inputRef}
+            /&gt;
+
+
+            &lt;button
+                onClick={focusInput}
+            &gt;
+                Focus
+            &lt;/button&gt;
+
+        &lt;/&gt;
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 37 -->
+            <li>
+                <h2>useMemo</h2>
+
+                <pre class="language-jsx"><code>import {
+    useMemo
+} from "react";
+
+
+const result =
+    useMemo(() =&gt; {
+
+        return expensiveCalculation(
+            number
+        );
+
+    }, [number]);</code></pre>
+            </li>
+
+
+            <!-- 38 -->
+            <li>
+                <h2>useCallback</h2>
+
+                <pre class="language-jsx"><code>import {
+    useCallback
+} from "react";
+
+
+const handleClick =
+    useCallback(() =&gt; {
+
+        console.log(
+            "Clicked"
+        );
+
+    }, []);</code></pre>
+            </li>
+
+
+            <!-- 39 -->
+            <li>
+                <h2>Context API - Create Context</h2>
+
+                <pre class="language-jsx"><code>import {
+    createContext
+} from "react";
+
+
+export const UserContext =
+    createContext(null);</code></pre>
+            </li>
+
+
+            <!-- 40 -->
+            <li>
+                <h2>Context Provider</h2>
+
+                <pre class="language-jsx"><code>import {
+    UserContext
+} from "./UserContext";
+
+
+function App() {
+
+    const user = {
+        name: "Rohit"
+    };
+
+
+    return (
+
+        &lt;UserContext.Provider
+            value={user}
+        &gt;
+
+            &lt;Profile /&gt;
+
+        &lt;/UserContext.Provider&gt;
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 41 -->
+            <li>
+                <h2>useContext</h2>
+
+                <pre class="language-jsx"><code>import {
+    useContext
+} from "react";
+
+import {
+    UserContext
+} from "./UserContext";
+
+
+function Profile() {
+
+    const user =
+        useContext(
+            UserContext
+        );
+
+
+    return (
+        &lt;h2&gt;
+            {user.name}
+        &lt;/h2&gt;
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 42 -->
+            <li>
+                <h2>Custom Hook</h2>
+
+                <pre class="language-jsx"><code>import {
+    useState
+} from "react";
+
+
+function useCounter() {
+
+    const [count, setCount] =
+        useState(0);
+
+
+    const increase = () =&gt;
+        setCount(
+            count =&gt; count + 1
+        );
+
+
+    const decrease = () =&gt;
+        setCount(
+            count =&gt; count - 1
+        );
+
+
+    return {
+        count,
+        increase,
+        decrease
+    };
+}
+
+
+export default useCounter;</code></pre>
+            </li>
+
+
+            <!-- 43 -->
+            <li>
+                <h2>Use Custom Hook</h2>
+
+                <pre class="language-jsx"><code>import useCounter
+    from "./useCounter";
+
+
+function Counter() {
+
+    const {
+        count,
+        increase,
+        decrease
+    } = useCounter();
+
+
+    return (
+        &lt;&gt;
+
+            &lt;h2&gt;
+                {count}
+            &lt;/h2&gt;
+
+            &lt;button
+                onClick={increase}
+            &gt;
+                +
+            &lt;/button&gt;
+
+            &lt;button
+                onClick={decrease}
+            &gt;
+                -
+            &lt;/button&gt;
+
+        &lt;/&gt;
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 44 -->
+            <li>
+                <h2>Install React Router</h2>
+
+                <pre class="language-bash"><code>npm install react-router-dom</code></pre>
+            </li>
+
+
+            <!-- 45 -->
+            <li>
+                <h2>React Router Setup</h2>
+
+                <pre class="language-jsx"><code>import {
+    BrowserRouter,
+    Routes,
+    Route
+} from "react-router-dom";
+
+
+function App() {
+
+    return (
+        &lt;BrowserRouter&gt;
+
+            &lt;Routes&gt;
+
+                &lt;Route
+                    path="/"
+                    element={&lt;Home /&gt;}
+                /&gt;
+
+                &lt;Route
+                    path="/about"
+                    element={&lt;About /&gt;}
+                /&gt;
+
+            &lt;/Routes&gt;
+
+        &lt;/BrowserRouter&gt;
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 46 -->
+            <li>
+                <h2>Link Component</h2>
+
+                <pre class="language-jsx"><code>import {
+    Link
+} from "react-router-dom";
+
+
+&lt;nav&gt;
+
+    &lt;Link to="/"&gt;
+        Home
+    &lt;/Link&gt;
+
+    &lt;Link to="/about"&gt;
+        About
+    &lt;/Link&gt;
+
+&lt;/nav&gt;</code></pre>
+            </li>
+
+
+            <!-- 47 -->
+            <li>
+                <h2>NavLink</h2>
+
+                <pre class="language-jsx"><code>import {
+    NavLink
+} from "react-router-dom";
+
+
+&lt;NavLink
+    to="/about"
+
+    className={
+        ({ isActive }) =&gt;
+            isActive
+                ? "active"
+                : ""
+    }
+&gt;
+    About
+&lt;/NavLink&gt;</code></pre>
+            </li>
+
+
+            <!-- 48 -->
+            <li>
+                <h2>Dynamic Route</h2>
+
+                <pre class="language-jsx"><code>&lt;Route
+    path="/user/:id"
+    element={&lt;User /&gt;}
+/&gt;</code></pre>
+            </li>
+
+
+            <!-- 49 -->
+            <li>
+                <h2>useParams</h2>
+
+                <pre class="language-jsx"><code>import {
+    useParams
+} from "react-router-dom";
+
+
+function User() {
+
+    const { id } =
+        useParams();
+
+
+    return (
+        &lt;h1&gt;
+            User ID: {id}
+        &lt;/h1&gt;
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 50 -->
+            <li>
+                <h2>useNavigate</h2>
+
+                <pre class="language-jsx"><code>import {
+    useNavigate
+} from "react-router-dom";
+
+
+function Login() {
+
+    const navigate =
+        useNavigate();
+
+
+    function login() {
+
+        // Login logic
+
+        navigate(
+            "/dashboard"
+        );
+    }
+
+
+    return (
+        &lt;button
+            onClick={login}
+        &gt;
+            Login
+        &lt;/button&gt;
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 51 -->
+            <li>
+                <h2>Axios Installation</h2>
+
+                <pre class="language-bash"><code>npm install axios</code></pre>
+            </li>
+
+
+            <!-- 52 -->
+            <li>
+                <h2>Axios GET Request</h2>
+
+                <pre class="language-jsx"><code>import axios
+    from "axios";
+
+
+async function getUsers() {
+
+    try {
+
+        const response =
+            await axios.get(
+                "/api/users"
+            );
+
+        console.log(
+            response.data
+        );
+
+    } catch (error) {
+
+        console.error(error);
+    }
+}</code></pre>
+            </li>
+
+
+            <!-- 53 -->
+            <li>
+                <h2>Axios POST Request</h2>
+
+                <pre class="language-jsx"><code>const user = {
+
+    name: "Rohit",
+
+    email:
+        "rohit@example.com"
+};
+
+
+const response =
+    await axios.post(
+        "/api/users",
+        user
+    );
+
+
+console.log(
+    response.data
+);</code></pre>
+            </li>
+
+
+            <!-- 54 -->
+            <li>
+                <h2>Environment Variables with Vite</h2>
+
+                <pre class="language-text"><code># .env
+
+VITE_API_URL=http://localhost:5000</code></pre>
+
+                <pre class="language-js"><code>const API_URL =
+    import.meta.env.VITE_API_URL;</code></pre>
+            </li>
+
+
+            <!-- 55 -->
+            <li>
+                <h2>CSS Import</h2>
+
+                <pre class="language-jsx"><code>import "./App.css";
+
+
+function App() {
+
+    return (
+        &lt;div
+            className="container"
+        &gt;
+            Hello React
+        &lt;/div&gt;
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 56 -->
+            <li>
+                <h2>Inline CSS</h2>
+
+                <pre class="language-jsx"><code>const style = {
+
+    color: "white",
+
+    backgroundColor:
+        "black",
+
+    padding: "20px"
+};
+
+
+&lt;h1 style={style}&gt;
+
+    Hello React
+
+&lt;/h1&gt;</code></pre>
+            </li>
+
+
+            <!-- 57 -->
+            <li>
+                <h2>Dynamic Inline Style</h2>
+
+                <pre class="language-jsx"><code>const active = true;
+
+
+&lt;button
+
+    style={{
+        backgroundColor:
+            active
+                ? "green"
+                : "gray"
+    }}
+
+&gt;
+
+    Button
+
+&lt;/button&gt;</code></pre>
+            </li>
+
+
+            <!-- 58 -->
+            <li>
+                <h2>React.memo()</h2>
+
+                <pre class="language-jsx"><code>import {
+    memo
+} from "react";
+
+
+const User =
+    memo(function User({
+        name
+    }) {
+
+        return (
+            &lt;h2&gt;
+                {name}
+            &lt;/h2&gt;
+        );
+    });
+
+
+export default User;</code></pre>
+            </li>
+
+
+            <!-- 59 -->
+            <li>
+                <h2>Lazy Loading</h2>
+
+                <pre class="language-jsx"><code>import {
+    lazy,
+    Suspense
+} from "react";
+
+
+const About =
+    lazy(() =&gt;
+        import("./About")
+    );
+
+
+function App() {
+
+    return (
+        &lt;Suspense
+            fallback={
+                &lt;h2&gt;
+                    Loading...
+                &lt;/h2&gt;
+            }
+        &gt;
+
+            &lt;About /&gt;
+
+        &lt;/Suspense&gt;
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 60 -->
+            <li>
+                <h2>Error Handling in API</h2>
+
+                <pre class="language-jsx"><code>const [error, setError] =
+    useState(null);
+
+
+try {
+
+    const response =
+        await fetch(API_URL);
+
+    if (!response.ok) {
+
+        throw new Error(
+            "Failed to fetch data"
+        );
+    }
+
+    const data =
+        await response.json();
+
+} catch (error) {
+
+    setError(
+        error.message
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 61 -->
+            <li>
+                <h2>Delete Item from State</h2>
+
+                <pre class="language-jsx"><code>function deleteUser(id) {
+
+    setUsers(
+        users.filter(
+            user =&gt;
+                user.id !== id
+        )
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 62 -->
+            <li>
+                <h2>Update Item in State</h2>
+
+                <pre class="language-jsx"><code>function updateUser(id) {
+
+    setUsers(
+        users.map(
+            user =&gt;
+
+                user.id === id
+
+                    ? {
+                        ...user,
+                        name: "Updated"
+                    }
+
+                    : user
+        )
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 63 -->
+            <li>
+                <h2>Add Item to State</h2>
+
+                <pre class="language-jsx"><code>const newUser = {
+
+    id: Date.now(),
+
+    name: "Rohit"
+};
+
+
+setUsers([
+    ...users,
+
+    newUser
+]);</code></pre>
+            </li>
+
+
+            <!-- 64 -->
+            <li>
+                <h2>React Component Structure</h2>
+
+                <pre class="language-jsx"><code>import {
+    useEffect,
+    useState
+} from "react";
+
+
+function Users() {
+
+    // State
+
+    const [users, setUsers] =
+        useState([]);
+
+
+    const [loading, setLoading] =
+        useState(true);
+
+
+    // Effects
+
+    useEffect(() =&gt; {
+
+        // Fetch data
+
+    }, []);
+
+
+    // Functions
+
+    function handleClick() {
+
+        console.log(
+            "Clicked"
+        );
+    }
+
+
+    // Conditional UI
+
+    if (loading) {
+
+        return (
+            &lt;h2&gt;
+                Loading...
+            &lt;/h2&gt;
+        );
+    }
+
+
+    // UI
+
+    return (
+        &lt;div&gt;
+
+            &lt;button
+                onClick={handleClick}
+            &gt;
+                Click
+            &lt;/button&gt;
+
+        &lt;/div&gt;
+    );
+}
+
+
+export default Users;</code></pre>
+            </li>
+
+
+            <!-- 65 -->
+            <li>
+                <h2>Common React Hooks</h2>
+
+                <pre class="language-js"><code>useState()
+
+useEffect()
+
+useContext()
+
+useRef()
+
+useMemo()
+
+useCallback()
+
+useReducer()
+
+useId()
+
+useTransition()
+
+useDeferredValue()</code></pre>
+            </li>
+
+
+            <!-- 66 -->
+            <li>
+                <h2>useReducer</h2>
+
+                <pre class="language-jsx"><code>import {
+    useReducer
+} from "react";
+
+
+function reducer(
+    state,
+    action
+) {
+
+    switch (action.type) {
+
+        case "increment":
+
+            return {
+                count:
+                    state.count + 1
+            };
+
+
+        case "decrement":
+
+            return {
+                count:
+                    state.count - 1
+            };
+
+
+        default:
+
+            return state;
+    }
+}
+
+
+function Counter() {
+
+    const [
+        state,
+        dispatch
+    ] = useReducer(
+        reducer,
+        { count: 0 }
+    );
+
+
+    return (
+        &lt;&gt;
+
+            &lt;h2&gt;
+                {state.count}
+            &lt;/h2&gt;
+
+
+            &lt;button
+                onClick={() =&gt;
+                    dispatch({
+                        type:
+                            "increment"
+                    })
+                }
+            &gt;
+                +
+            &lt;/button&gt;
+
+        &lt;/&gt;
+    );
+}</code></pre>
+            </li>
+
+
+            <!-- 67 -->
+            <li>
+                <h2>React Quick Revision</h2>
+
+                <pre class="language-jsx"><code>import {
+    useEffect,
+    useState
+} from "react";
+
+
+function App() {
+
+    const [count, setCount] =
+        useState(0);
+
+
+    useEffect(() =&gt; {
+
+        console.log(
+            "App mounted"
+        );
+
+    }, []);
+
+
+    const languages = [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React"
+    ];
+
+
+    return (
+        &lt;div&gt;
+
+            &lt;h1&gt;
+                React App
+            &lt;/h1&gt;
+
+
+            &lt;h2&gt;
+                Count: {count}
+            &lt;/h2&gt;
+
+
+            &lt;button
+                onClick={() =&gt;
+                    setCount(
+                        count + 1
+                    )
+                }
+            &gt;
+                Increase
+            &lt;/button&gt;
+
+
+            &lt;ul&gt;
+
+                {languages.map(
+                    language =&gt; (
+
+                        &lt;li
+                            key={language}
+                        &gt;
+                            {language}
+                        &lt;/li&gt;
+                    )
+                )}
+
+            &lt;/ul&gt;
+
+        &lt;/div&gt;
+    );
+}
+
+
+export default App;</code></pre>
+            </li>
+
+
+            <!-- 68 -->
+            <li>
+                <h2>React Learning Roadmap</h2>
+
+                <pre class="language-text"><code>1. JavaScript ES6+
+
+2. npm
+
+3. Vite
+
+4. JSX
+
+5. Components
+
+6. Props
+
+7. Events
+
+8. State
+
+9. useState
+
+10. Conditional Rendering
+
+11. Lists & Keys
+
+12. Forms
+
+13. useEffect
+
+14. API Fetching
+
+15. useRef
+
+16. useContext
+
+17. Context API
+
+18. useReducer
+
+19. useMemo
+
+20. useCallback
+
+21. Custom Hooks
+
+22. React Router
+
+23. Axios
+
+24. Environment Variables
+
+25. Authentication
+
+26. Protected Routes
+
+27. State Management
+
+28. Redux Toolkit
+
+29. Performance Optimization
+
+30. Lazy Loading
+
+31. Error Handling
+
+32. Testing
+
+33. Full-Stack React Projects
+
+34. Deployment</code></pre>
+            </li>
+
+        </ol>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <p>
+            © 2026 CodeWithRohit |
+            React.js Cheat Sheet
+        </p>
+
+    </footer>
+
+
+    <!-- Prism JS -->
+    <script src="../prism/prism.js"></script>
+
+    <!-- Common JS -->
+    <script src="../cheatsheet.js"></script>
+
+</body>
+
+</html>

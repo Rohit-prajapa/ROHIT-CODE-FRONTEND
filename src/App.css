@@ -1240,25 +1240,39 @@ button {
 }
 
 .settings-panel {
-  position: fixed;
+  position: relative !important;
 
-  top: 68px;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
 
-  right: 16px;
+  transform: none !important;
+  margin: 0 !important;
 
-  width: 300px;
+  width: min(900px, calc(100vw - 40px)) !important;
 
-  z-index: 10000;
+  height: calc(100vh - 40px) !important;
+  max-height: calc(100vh - 40px) !important;
+  min-height: 0 !important;
 
-  background: #161b22;
+  display: flex !important;
+  flex-direction: column !important;
 
-  color: #c9d1d9;
+  overflow: hidden !important;
 
-  border: 1px solid #30363d;
+  box-sizing: border-box !important;
 
-  border-radius: 8px;
+  background: #1e1e1e !important;
 
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+  border: 1px solid #3b3b3b !important;
+  border-radius: 10px !important;
+
+  color: #cccccc !important;
+
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.65),
+    0 8px 24px rgba(0, 0, 0, 0.35) !important;
 }
 
 .settings-header {
@@ -2730,7 +2744,6 @@ button {
   color: #c9d1d9;
 }
 
-
 /* ================================
    QUICK OPEN
 ================================ */
@@ -3229,10 +3242,8 @@ button {
   color: #d29922;
 }
 
-.status-problems:hover
-.status-error-count,
-.status-problems:hover
-.status-warning-count {
+.status-problems:hover .status-error-count,
+.status-problems:hover .status-warning-count {
   color: inherit;
 }
 
@@ -3526,7 +3537,6 @@ button {
   }
 }
 
-
 /* =========================================
    VS CODE STYLE BOTTOM PANEL
 ========================================= */
@@ -3655,11 +3665,7 @@ button {
 
   padding: 10px 14px;
 
-  font-family:
-    "Cascadia Code",
-    "Fira Code",
-    Consolas,
-    monospace;
+  font-family: "Cascadia Code", "Fira Code", Consolas, monospace;
 
   font-size: 12px;
 
@@ -3677,11 +3683,7 @@ button {
 
   color: #8b949e;
 
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   font-size: 11px;
 }
@@ -3756,11 +3758,7 @@ button {
 
   color: #6e7681;
 
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   font-size: 12px;
 }
@@ -3885,7 +3883,6 @@ button {
   color: #d29922;
 }
 
-
 /* =========================================
    SETTINGS OVERLAY
 ========================================= */
@@ -3990,11 +3987,16 @@ button {
 ========================================= */
 
 .settings-content {
-  flex: 1;
+  flex: 1 1 auto !important;
 
-  overflow-y: auto;
+  min-height: 0 !important;
 
-  padding: 18px 20px;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+
+  padding: 12px 18px 16px !important;
+
+  box-sizing: border-box !important;
 }
 
 /* =========================================
@@ -4325,9 +4327,23 @@ button {
     width: calc(100vw - 20px);
   }
 
-  .settings-header {
-    padding: 0 15px;
-  }
+ .settings-header {
+  flex: 0 0 58px !important;
+
+  min-height: 58px !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 20px;
+
+  border-bottom: 1px solid #303030;
+
+  background: #252526;
+
+  box-sizing: border-box;
+}
 
   .settings-content {
     padding: 15px;
@@ -4337,7 +4353,23 @@ button {
     padding: 0 15px;
   }
 }
+.settings-footer {
+  flex: 0 0 52px !important;
 
+  min-height: 52px !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 18px;
+
+  border-top: 1px solid #303030;
+
+  background: #252526;
+
+  box-sizing: border-box;
+}
 
 /* =========================================
    APP THEMES
@@ -5174,28 +5206,21 @@ button {
    HIGH CONTRAST
 ========================================= */
 
-.app-theme-high-contrast
-  .header-run-button {
+.app-theme-high-contrast .header-run-button {
   background: #00ffff;
 
   color: #000000;
 }
 
-.app-theme-high-contrast
-  .header-save-button,
-.app-theme-high-contrast
-  .header-icon-button,
-.app-theme-high-contrast
-  .language-selector {
+.app-theme-high-contrast .header-save-button,
+.app-theme-high-contrast .header-icon-button,
+.app-theme-high-contrast .language-selector {
   color: #ffffff;
 }
 
-.app-theme-high-contrast
-  .header-save-button:hover,
-.app-theme-high-contrast
-  .header-icon-button:hover,
-.app-theme-high-contrast
-  .language-selector:hover {
+.app-theme-high-contrast .header-save-button:hover,
+.app-theme-high-contrast .header-icon-button:hover,
+.app-theme-high-contrast .language-selector:hover {
   background: #1a1a1a;
   color: #00ffff;
 }
@@ -5654,7 +5679,6 @@ body,
     height: 40px;
   }
 }
-
 
 /* =========================================================
    ROHIT-CODE - FINAL LAYOUT OVERRIDE
@@ -6307,8 +6331,7 @@ body,
   border: 1px solid #30363d !important;
   border-radius: 6px !important;
 
-  box-shadow:
-    0 8px 24px rgba(0, 0, 0, 0.45) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
 
   z-index: 99999 !important;
 }
@@ -7143,7 +7166,7 @@ textarea {
   min-width: 70px;
   border-radius: 6px !important;
   background: var(--rc-green) !important;
-  box-shadow: 0 1px 2px rgba(0,0,0,.25);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 .run-button:hover {
@@ -7209,7 +7232,7 @@ textarea {
 
 .explorer-title {
   font-size: 11px !important;
-  letter-spacing: .7px !important;
+  letter-spacing: 0.7px !important;
   text-transform: uppercase;
 }
 
@@ -7226,7 +7249,7 @@ textarea {
 }
 
 .file-item.active-file {
-  background: rgba(31,111,235,.20) !important;
+  background: rgba(31, 111, 235, 0.2) !important;
   color: #ffffff !important;
   box-shadow: inset 2px 0 0 #58a6ff;
 }
@@ -7318,15 +7341,15 @@ textarea {
 .search-input:focus,
 .explorer-search:focus-within {
   border-color: #58a6ff !important;
-  box-shadow: 0 0 0 1px rgba(88,166,255,.12);
+  box-shadow: 0 0 0 1px rgba(88, 166, 255, 0.12);
 }
 
 .command-palette,
 .quick-open {
   border-radius: 9px !important;
   box-shadow:
-    0 24px 70px rgba(0,0,0,.58),
-    0 8px 24px rgba(0,0,0,.28) !important;
+    0 24px 70px rgba(0, 0, 0, 0.58),
+    0 8px 24px rgba(0, 0, 0, 0.28) !important;
 }
 
 .command-item,
@@ -7340,7 +7363,7 @@ textarea {
 
 .settings-overlay {
   z-index: 30000 !important;
-  background: rgba(0,0,0,.48) !important;
+  background: rgba(0, 0, 0, 0.48) !important;
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
 }
@@ -7456,7 +7479,7 @@ textarea {
 }
 
 .app-theme-light .settings-overlay {
-  background: rgba(0,0,0,.25) !important;
+  background: rgba(0, 0, 0, 0.25) !important;
 }
 
 .app-theme-light .settings-panel {
@@ -7675,7 +7698,6 @@ textarea:focus-visible {
     scroll-behavior: auto !important;
   }
 }
-
 
 /* =========================================================
    ROHIT-CODE - MULTI THEME UI OVERRIDES
@@ -8153,7 +8175,11 @@ textarea:focus-visible {
 .app.theme-dark .theme-option.selected,
 .app-theme-dark .tab-size-button.selected,
 .app.theme-dark .tab-size-button.selected {
-  background: color-mix(in srgb, var(--rc-accent) 18%, var(--rc-surface-2)) !important;
+  background: color-mix(
+    in srgb,
+    var(--rc-accent) 18%,
+    var(--rc-surface-2)
+  ) !important;
   border-color: var(--rc-accent) !important;
   color: var(--rc-accent) !important;
 }
@@ -8362,7 +8388,6 @@ textarea:focus-visible {
     border-color 0.15s ease,
     color 0.15s ease;
 }
-
 
 /* =========================================================
    ROHIT-CODE - FINAL FIX
