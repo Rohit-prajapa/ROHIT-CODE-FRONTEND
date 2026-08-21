@@ -10,6 +10,7 @@ import QuickOpen from "./components/QuickOpen";
 import SaveChangesModal from "./components/SaveChangesModal";
 import StatusBar from "./components/StatusBar";
 import SettingsPanel from "./components/SettingsPanel";
+import ActivityBar from "./components/ActivityBar";
 
 const SOCKET_URL = "https://rohit-code-backend.onrender.com";
 const AI_API_URL = "https://rohit-code-backend.onrender.com/api/ai/generate";
@@ -139,6 +140,58 @@ int main() {
   const [filePendingClose, setFilePendingClose] = useState(null);
 
   const [settingsOpen, setSettingsOpen] = useState(false);
+
+  // =========================================================
+  // CHEATSHEET STATE
+  // =========================================================
+
+  const [activeActivityPanel, setActiveActivityPanel] = useState("explorer");
+  const [cheatsheetOpen, setCheatsheetOpen] = useState(false);
+  const [selectedCheatsheet, setSelectedCheatsheet] = useState("c.html");
+
+  const cheatsheets = [
+    { name: "C", file: "c.html" },
+    { name: "C++", file: "cpp.html" },
+    { name: "Java", file: "java.html" },
+    { name: "Python", file: "python.html" },
+    { name: "JavaScript", file: "javascript.html" },
+    { name: "TypeScript", file: "typescript.html" },
+    { name: "HTML", file: "html.html" },
+    { name: "CSS", file: "css.html" },
+    { name: "React", file: "react.html" },
+    { name: "Node.js", file: "node.html" },
+    { name: "Express", file: "express.html" },
+    { name: "MongoDB", file: "mongodb.html" },
+    { name: "MySQL", file: "mysql.html" },
+    { name: "SQL", file: "sql.html" },
+    { name: "DSA", file: "dsa.html" },
+    { name: "OOPS", file: "oops.html" },
+    { name: "OS", file: "os.html" },
+    { name: "Computer Networks", file: "computer-networks.html" },
+    { name: "Git & GitHub", file: "Git&GitHub.html" },
+    { name: "Linux", file: "linux.html" },
+    { name: "Bootstrap", file: "bootstrap.html" },
+    { name: "Tailwind CSS", file: "tailwindCSS.html" },
+    { name: "HTTP / API", file: "http-api.html" },
+    { name: "VS Code", file: "vscode.html" },
+  ];
+
+  const handleActivityPanelChange = (panel) => {
+    setActiveActivityPanel(panel);
+
+    if (panel === "extensions") {
+      setCheatsheetOpen(true);
+      setActiveActivityPanel("extensions");
+    } else if (panel !== "extensions") {
+      setCheatsheetOpen(false);
+    }
+  };
+
+  const openCheatsheet = (file) => {
+    setSelectedCheatsheet(file);
+    setCheatsheetOpen(true);
+    setActiveActivityPanel("extensions");
+  };
 
   // =========================================================
   // EDITOR STATE
@@ -1292,6 +1345,8 @@ int main() {
 
         setSettingsOpen(false);
 
+        setCheatsheetOpen(false);
+
         if (aiOpen && !aiLoading) {
           setAiOpen(false);
         }
@@ -1511,6 +1566,16 @@ int main() {
 
       <div className="main-layout">
         {/* ===================================================
+            ACTIVITY BAR
+        ==================================================== */}
+
+        <ActivityBar
+          activePanel={activeActivityPanel}
+          onPanelChange={handleActivityPanelChange}
+          onSettings={() => setSettingsOpen((previous) => !previous)}
+        />
+
+        {/* ===================================================
             SIDEBAR
         ==================================================== */}
 
@@ -1533,6 +1598,64 @@ int main() {
         ==================================================== */}
 
         <main className="main-area">
+
+          {cheatsheetOpen && (
+            <div className="rohit-cheatsheet-overlay">
+              <div className="rohit-cheatsheet-panel">
+                <div className="rohit-cheatsheet-header">
+                  <div className="rohit-cheatsheet-title">
+                    <strong>CodeWithRohit Cheatsheets</strong>
+                    <span>Quick programming reference</span>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="rohit-cheatsheet-close"
+                    onClick={() => {
+                      setCheatsheetOpen(false);
+                      setActiveActivityPanel("explorer");
+                    }}
+                    title="Close Cheatsheet"
+                    aria-label="Close Cheatsheet"
+                  >
+                    ×
+                  </button>
+                </div>
+
+                <div className="rohit-cheatsheet-body">
+                  <aside className="rohit-cheatsheet-list">
+                    <div className="rohit-cheatsheet-list-title">
+                      CHEATSHEETS
+                    </div>
+
+                    {cheatsheets.map((item) => (
+                      <button
+                        key={item.file}
+                        type="button"
+                        className={`rohit-cheatsheet-item ${
+                          selectedCheatsheet === item.file ? "active" : ""
+                        }`}
+                        onClick={() => openCheatsheet(item.file)}
+                      >
+                        {item.name}
+                      </button>
+                    ))}
+                  </aside>
+
+                  <section className="rohit-cheatsheet-content">
+                    <iframe
+                      key={selectedCheatsheet}
+                      title="ROHIT-CODE Cheatsheet"
+                      src={`/cheatsheet/cheatsheets/${encodeURIComponent(
+                        selectedCheatsheet,
+                      )}`}
+                      className="rohit-cheatsheet-frame"
+                    />
+                  </section>
+                </div>
+              </div>
+            </div>
+          )}
           {/* =================================================
               CODE EDITOR
           ================================================== */}
@@ -1636,6 +1759,149 @@ int main() {
       ====================================================== */}
 
       <style>{`
+        /* ==============================================
+           CHEATSHEET
+        ============================================== */
+
+        .rohit-cheatsheet-overlay {
+          position: absolute;
+          inset: 0;
+          z-index: 25000;
+          display: flex;
+          align-items: stretch;
+          justify-content: stretch;
+          background: #1e1e1e;
+        }
+
+        .rohit-cheatsheet-panel {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          background: #1e1e1e;
+          color: #cccccc;
+          font-family: "Segoe UI", Inter, system-ui, sans-serif;
+        }
+
+        .rohit-cheatsheet-header {
+          min-height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 12px 0 16px;
+          background: #252526;
+          border-bottom: 1px solid #3a3a3a;
+        }
+
+        .rohit-cheatsheet-title {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+
+        .rohit-cheatsheet-title strong {
+          color: #ffffff;
+          font-size: 13px;
+          font-weight: 600;
+        }
+
+        .rohit-cheatsheet-title span {
+          color: #858585;
+          font-size: 10px;
+        }
+
+        .rohit-cheatsheet-close {
+          width: 30px;
+          height: 30px;
+          border: 0;
+          border-radius: 4px;
+          background: transparent;
+          color: #858585;
+          font-size: 22px;
+          cursor: pointer;
+        }
+
+        .rohit-cheatsheet-close:hover {
+          background: #3a3a3a;
+          color: #ffffff;
+        }
+
+        .rohit-cheatsheet-body {
+          min-height: 0;
+          flex: 1;
+          display: flex;
+          overflow: hidden;
+        }
+
+        .rohit-cheatsheet-list {
+          width: 190px;
+          min-width: 190px;
+          overflow-y: auto;
+          padding: 8px 0;
+          background: #181818;
+          border-right: 1px solid #303030;
+        }
+
+        .rohit-cheatsheet-list-title {
+          padding: 7px 14px;
+          color: #858585;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: .6px;
+        }
+
+        .rohit-cheatsheet-item {
+          width: 100%;
+          min-height: 32px;
+          padding: 0 14px;
+          border: 0;
+          border-left: 2px solid transparent;
+          background: transparent;
+          color: #aaaaaa;
+          text-align: left;
+          font-size: 12px;
+          cursor: pointer;
+        }
+
+        .rohit-cheatsheet-item:hover {
+          background: #252526;
+          color: #ffffff;
+        }
+
+        .rohit-cheatsheet-item.active {
+          background: #37373d;
+          border-left-color: #007acc;
+          color: #ffffff;
+        }
+
+        .rohit-cheatsheet-content {
+          min-width: 0;
+          min-height: 0;
+          flex: 1;
+          background: #ffffff;
+        }
+
+        .rohit-cheatsheet-frame {
+          width: 100%;
+          height: 100%;
+          display: block;
+          border: 0;
+          background: #ffffff;
+        }
+
+        @media (max-width: 700px) {
+          .rohit-cheatsheet-list {
+            width: 145px;
+            min-width: 145px;
+          }
+
+          .rohit-cheatsheet-item {
+            padding-left: 10px;
+            font-size: 11px;
+          }
+        }
+
         /* ==============================================
            AI OVERLAY
         ============================================== */
