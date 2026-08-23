@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>C Online Compiler - Free C Compiler | ROHIT-CODE</title>
+
+    <meta
+      name="description"
+      content="Use ROHIT-CODE's free C online compiler to write, compile, run and test C programs directly in your browser. No installation required."
+    />
+
+    <meta
+      name="robots"
+      content="index, follow"
+    />
+
+    <link
+      rel="canonical"
+      href="https://rohit-code-frontend.onrender.com/online-compiler/c/"
+    />
+
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="C Online Compiler - Free C Compiler | ROHIT-CODE"
+    />
+
+    <meta
+      property="og:description"
+      content="Write, compile and run C programs online for free with ROHIT-CODE."
+    />
+
+    <meta
+      property="og:type"
+      content="website"
+    />
+
+    <meta
+      property="og:url"
+      content="https://rohit-code-frontend.onrender.com/online-compiler/c/"
+    />
+
+    <meta
+      property="og:site_name"
+      content="ROHIT-CODE"
+    />
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon.svg"
+    />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "ROHIT-CODE C Online Compiler",
+        "url": "https://rohit-code-frontend.onrender.com/online-compiler/c/",
+        "description": "Free C online compiler for writing, compiling, running and testing C programs in a web browser.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web Browser",
+        "browserRequirements": "Requires JavaScript",
+        "softwareVersion": "1.0",
+        "author": {
+          "@type": "Person",
+          "name": "Rohit Prajapati"
+        },
+        "featureList": [
+          "C code editor",
+          "C compiler",
+          "Online C code execution",
+          "Interactive terminal",
+          "Browser-based programming"
+        ]
+      }
+    </script>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: #0f1117;
+        color: #e6edf3;
+        font-family:
+          Inter,
+          "Segoe UI",
+          Arial,
+          sans-serif;
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1050px, calc(100% - 40px));
+        margin: auto;
+      }
+
+      header {
+        border-bottom: 1px solid #252a34;
+        background: #11141b;
+      }
+
+      .nav {
+        min-height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo {
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      .logo span {
+        color: #4fc1ff;
+      }
+
+      .nav-link {
+        padding: 8px 14px;
+        border: 1px solid #303744;
+        border-radius: 6px;
+        font-size: 14px;
+        color: #c9d1d9;
+      }
+
+      .nav-link:hover {
+        border-color: #4fc1ff;
+        color: #ffffff;
+      }
+
+      .hero {
+        padding: 85px 0 65px;
+        text-align: center;
+      }
+
+      .badge {
+        display: inline-block;
+        margin-bottom: 18px;
+        padding: 6px 12px;
+        border: 1px solid #303744;
+        border-radius: 999px;
+        color: #8b949e;
+        font-size: 13px;
+      }
+
+      h1 {
+        max-width: 850px;
+        margin: 0 auto 20px;
+        font-size: clamp(38px, 6vw, 62px);
+        line-height: 1.08;
+      }
+
+      h1 span {
+        color: #4fc1ff;
+      }
+
+      .hero-text {
+        max-width: 720px;
+        margin: 0 auto 30px;
+        color: #9da7b3;
+        font-size: 18px;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .button {
+        padding: 11px 20px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .primary {
+        background: #007acc;
+        color: white;
+      }
+
+      .primary:hover {
+        background: #008bd8;
+      }
+
+      .secondary {
+        border: 1px solid #303744;
+        color: #d8dee4;
+      }
+
+      .section {
+        padding: 60px 0;
+        border-top: 1px solid #20252e;
+      }
+
+      .section h2 {
+        margin: 0 0 12px;
+        font-size: 30px;
+      }
+
+      .section-intro {
+        max-width: 750px;
+        color: #8b949e;
+        margin-bottom: 28px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .card {
+        padding: 22px;
+        background: #161a22;
+        border: 1px solid #292f3a;
+        border-radius: 8px;
+      }
+
+      .card h3 {
+        margin: 0 0 8px;
+        font-size: 17px;
+      }
+
+      .card p {
+        margin: 0;
+        color: #8b949e;
+        font-size: 14px;
+      }
+
+      .faq {
+        max-width: 800px;
+      }
+
+      .faq-item {
+        padding: 18px 0;
+        border-bottom: 1px solid #292f3a;
+      }
+
+      .faq-item h3 {
+        margin: 0 0 6px;
+        font-size: 17px;
+      }
+
+      .faq-item p {
+        margin: 0;
+        color: #8b949e;
+      }
+
+      footer {
+        padding: 30px 0;
+        border-top: 1px solid #252a34;
+        color: #707985;
+        font-size: 13px;
+      }
+
+      @media (max-width: 800px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding: 65px 0 50px;
+        }
+
+        .hero-text {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="container nav">
+        <a href="/" class="logo">
+          <span>ROHIT</span>-CODE
+        </a>
+
+        <a href="/" class="nav-link">
+          Open Compiler
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="badge">
+            Free C Online Compiler
+          </div>
+
+          <h1>
+            C Online Compiler with
+            <span>ROHIT-CODE</span>
+          </h1>
+
+          <p class="hero-text">
+            Write, compile, run and test C programs directly
+            in your browser with ROHIT-CODE. No local compiler
+            installation is required.
+          </p>
+
+          <div class="buttons">
+            <a href="/" class="button primary">
+              Start Coding in C
+            </a>
+
+            <a href="/online-compiler/" class="button secondary">
+              Online Compiler
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2>Free C Online Compiler</h2>
+
+          <p class="section-intro">
+            ROHIT-CODE provides a browser-based C compiler for
+            students, developers and programming learners. Write
+            your C source code, execute it online and view the
+            output without installing a compiler locally.
+          </p>
+
+          <div class="grid">
+            <article class="card">
+              <h3>Write C Code Online</h3>
+              <p>
+                Use the ROHIT-CODE editor to create and edit C
+                programs directly from your browser.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Compile and Run C</h3>
+              <p>
+                Compile and execute C programs online and
+                check the program output.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Practice C Programming</h3>
+              <p>
+                Practice C programming problems without setting
+                up a local development environment.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2>Why Use a C Online Compiler?</h2>
+
+          <p class="section-intro">
+            An online C compiler makes it easy to practice
+            programming from any device with a modern web browser.
+          </p>
+
+          <div class="grid">
+            <article class="card">
+              <h3>No Installation</h3>
+              <p>
+                Start writing C programs without installing
+                GCC or configuring a local development environment.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Fast Programming Practice</h3>
+              <p>
+                Quickly test C programs while learning data
+                structures, algorithms and programming fundamentals.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Browser Based</h3>
+              <p>
+                Access the compiler from a supported browser
+                without installing additional desktop software.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container faq">
+          <h2>C Online Compiler FAQ</h2>
+
+          <div class="faq-item">
+            <h3>What is a C online compiler?</h3>
+            <p>
+              A C online compiler lets you write, compile and
+              execute C programs through a web browser.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>Can I run C programs online with ROHIT-CODE?</h3>
+            <p>
+              Yes. ROHIT-CODE provides a browser-based environment
+              for writing and running supported C programs.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>Do I need to install a C compiler?</h3>
+            <p>
+              No local compiler installation is required to use
+              the browser-based ROHIT-CODE environment.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>Is the C compiler free?</h3>
+            <p>
+              ROHIT-CODE provides this online C compiler as a
+              free browser-based programming tool.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        © 2026 ROHIT-CODE — C Online Compiler
+      </div>
+    </footer>
+  </body>
+</html>
