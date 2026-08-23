@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>
+      Online Compiler - Free Code Editor | ROHIT-CODE
+    </title>
+
+    <meta
+      name="description"
+      content="ROHIT-CODE is a free online compiler and code editor for C, C++, Java, Python, JavaScript, PHP and Rust. Write, run and test code online."
+    />
+
+    <meta
+      name="robots"
+      content="index, follow"
+    />
+
+    <link
+      rel="canonical"
+      href="https://rohit-code-frontend.onrender.com/online-compiler/"
+    />
+
+    <meta
+      property="og:title"
+      content="ROHIT-CODE - Free Online Compiler"
+    />
+
+    <meta
+      property="og:description"
+      content="Write, run and test programs online with ROHIT-CODE."
+    />
+
+    <meta
+      property="og:type"
+      content="website"
+    />
+
+    <meta
+      property="og:url"
+      content="https://rohit-code-frontend.onrender.com/online-compiler/"
+    />
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon.svg"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: #0f1117;
+        color: #e6edf3;
+        font-family:
+          Inter,
+          "Segoe UI",
+          Arial,
+          sans-serif;
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1100px, calc(100% - 40px));
+        margin: auto;
+      }
+
+      header {
+        border-bottom: 1px solid #252a34;
+        background: #11141b;
+      }
+
+      .nav {
+        min-height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo {
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+
+      .logo span {
+        color: #4fc1ff;
+      }
+
+      .nav-link {
+        padding: 8px 14px;
+        border: 1px solid #303744;
+        border-radius: 6px;
+        color: #c9d1d9;
+        font-size: 14px;
+      }
+
+      .nav-link:hover {
+        border-color: #4fc1ff;
+        color: #ffffff;
+      }
+
+      .hero {
+        padding: 90px 0 70px;
+        text-align: center;
+      }
+
+      .badge {
+        display: inline-block;
+        margin-bottom: 18px;
+        padding: 6px 12px;
+        border: 1px solid #303744;
+        border-radius: 999px;
+        color: #8b949e;
+        font-size: 13px;
+      }
+
+      h1 {
+        max-width: 850px;
+        margin: 0 auto 20px;
+        font-size: clamp(38px, 6vw, 64px);
+        line-height: 1.08;
+      }
+
+      .hero h1 span {
+        color: #4fc1ff;
+      }
+
+      .hero-text {
+        max-width: 720px;
+        margin: 0 auto 30px;
+        color: #9da7b3;
+        font-size: 18px;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .button {
+        padding: 11px 20px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .primary {
+        background: #007acc;
+        color: white;
+      }
+
+      .primary:hover {
+        background: #008bd8;
+      }
+
+      .secondary {
+        border: 1px solid #303744;
+        color: #d8dee4;
+      }
+
+      .section {
+        padding: 65px 0;
+        border-top: 1px solid #20252e;
+      }
+
+      .section h2 {
+        margin: 0 0 12px;
+        font-size: 30px;
+      }
+
+      .section-intro {
+        max-width: 720px;
+        color: #8b949e;
+        margin-bottom: 30px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .card {
+        padding: 22px;
+        background: #161a22;
+        border: 1px solid #292f3a;
+        border-radius: 8px;
+      }
+
+      .card h3 {
+        margin: 0 0 8px;
+        font-size: 17px;
+      }
+
+      .card p {
+        margin: 0;
+        color: #8b949e;
+        font-size: 14px;
+      }
+
+      .languages {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .language {
+        padding: 8px 14px;
+        background: #161a22;
+        border: 1px solid #292f3a;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+
+      .faq {
+        max-width: 800px;
+      }
+
+      .faq-item {
+        padding: 18px 0;
+        border-bottom: 1px solid #292f3a;
+      }
+
+      .faq-item h3 {
+        margin: 0 0 6px;
+        font-size: 17px;
+      }
+
+      .faq-item p {
+        margin: 0;
+        color: #8b949e;
+      }
+
+      footer {
+        padding: 30px 0;
+        border-top: 1px solid #252a34;
+        color: #707985;
+        font-size: 13px;
+      }
+
+      @media (max-width: 800px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding: 65px 0 50px;
+        }
+
+        .hero-text {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="container nav">
+        <a href="/" class="logo">
+          <span>ROHIT</span>-CODE
+        </a>
+
+        <a href="/" class="nav-link">
+          Open Compiler
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="badge">
+            Free Online Code Compiler
+          </div>
+
+          <h1>
+            Write and Run Code Online with
+            <span>ROHIT-CODE</span>
+          </h1>
+
+          <p class="hero-text">
+            ROHIT-CODE is a browser-based online compiler and
+            code editor that lets you write, run and test programs
+            without installing a local development environment.
+          </p>
+
+          <div class="buttons">
+            <a href="/" class="button primary">
+              Start Coding
+            </a>
+
+            <a href="#languages" class="button secondary">
+              Supported Languages
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2>Online Code Compiler</h2>
+
+          <p class="section-intro">
+            Use ROHIT-CODE to practice programming, test code,
+            experiment with different languages and learn
+            programming directly from your browser.
+          </p>
+
+          <div class="grid">
+            <article class="card">
+              <h3>Online Code Editor</h3>
+              <p>
+                Write and edit your programs using a browser-based
+                development environment.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Run Your Programs</h3>
+              <p>
+                Compile and execute supported programming languages
+                directly from the online editor.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Interactive Terminal</h3>
+              <p>
+                Work with program input and output using the
+                integrated execution environment.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="languages">
+        <div class="container">
+          <h2>Supported Programming Languages</h2>
+
+          <p class="section-intro">
+            Practice and experiment with multiple popular
+            programming languages using ROHIT-CODE.
+          </p>
+
+          <div class="languages">
+            <span class="language">C</span>
+            <span class="language">C++</span>
+            <span class="language">Java</span>
+            <span class="language">Python</span>
+            <span class="language">JavaScript</span>
+            <span class="language">PHP</span>
+            <span class="language">Rust</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2>Why Use ROHIT-CODE?</h2>
+
+          <div class="grid">
+            <article class="card">
+              <h3>No Local Setup</h3>
+              <p>
+                Start coding from your browser without configuring
+                a compiler on your computer.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Programming Practice</h3>
+              <p>
+                Useful for students, developers and anyone learning
+                or practicing programming.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Developer Tools</h3>
+              <p>
+                Use editor features, terminal tools, themes,
+                cheatsheets and AI-assisted coding features.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container faq">
+          <h2>Frequently Asked Questions</h2>
+
+          <div class="faq-item">
+            <h3>What is ROHIT-CODE?</h3>
+            <p>
+              ROHIT-CODE is a browser-based online compiler and
+              code editor for writing, running and testing programs.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>Is ROHIT-CODE an online compiler?</h3>
+            <p>
+              Yes. ROHIT-CODE provides an online environment for
+              compiling and running supported programming languages.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>Which programming languages are supported?</h3>
+            <p>
+              ROHIT-CODE currently provides support for C, C++,
+              Java, Python, JavaScript, PHP and Rust.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        © 2026 ROHIT-CODE — Online Compiler & Code Editor
+      </div>
+    </footer>
+  </body>
+</html>
