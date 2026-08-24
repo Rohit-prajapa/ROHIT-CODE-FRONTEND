@@ -22,7 +22,6 @@
       href="https://rohit-code-frontend.onrender.com/online-compiler/python/"
     />
 
-    <!-- Open Graph -->
     <meta
       property="og:title"
       content="Python Online Compiler - Free Python Compiler | ROHIT-CODE"
@@ -44,7 +43,6 @@
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Structured Data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -236,6 +234,32 @@
         font-size: 14px;
       }
 
+      .compiler-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .compiler-link {
+        display: inline-block;
+        padding: 9px 14px;
+        background: #161a22;
+        border: 1px solid #292f3a;
+        border-radius: 6px;
+        color: #c9d1d9;
+        font-size: 14px;
+        transition:
+          border-color 0.2s ease,
+          color 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .compiler-link:hover {
+        border-color: #4fc1ff;
+        color: #ffffff;
+        background: #1c2330;
+      }
+
       .faq {
         max-width: 800px;
       }
@@ -273,6 +297,15 @@
 
         .hero-text {
           font-size: 16px;
+        }
+
+        .compiler-links {
+          gap: 8px;
+        }
+
+        .compiler-link {
+          font-size: 13px;
+          padding: 8px 12px;
         }
       }
     </style>
@@ -395,6 +428,55 @@
                 browser without desktop software.
               </p>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- OTHER ONLINE COMPILERS -->
+      <section class="section">
+        <div class="container">
+          <h2>Other Online Compilers</h2>
+
+          <p class="section-intro">
+            Explore other ROHIT-CODE online compilers for
+            different programming languages.
+          </p>
+
+          <div class="compiler-links">
+            <a class="compiler-link" href="/online-compiler/">
+              Online Compiler
+            </a>
+
+            <a class="compiler-link" href="/online-compiler/c/">
+              C Online Compiler
+            </a>
+
+            <a class="compiler-link" href="/online-compiler/cpp/">
+              C++ Online Compiler
+            </a>
+
+            <a class="compiler-link" href="/online-compiler/java/">
+              Java Online Compiler
+            </a>
+
+            <a class="compiler-link" href="/online-compiler/python/">
+              Python Online Compiler
+            </a>
+
+            <a
+              class="compiler-link"
+              href="/online-compiler/javascript/"
+            >
+              JavaScript Online Compiler
+            </a>
+
+            <a class="compiler-link" href="/online-compiler/php/">
+              PHP Online Compiler
+            </a>
+
+            <a class="compiler-link" href="/online-compiler/rust/">
+              Rust Online Compiler
+            </a>
           </div>
         </div>
       </section>
