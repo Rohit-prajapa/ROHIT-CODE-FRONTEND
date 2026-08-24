@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <url>
-    <loc>https://rohit-code-frontend.onrender.com/</loc>
-  </url>
+    <url>
+        <loc>https://rohit-code-frontend.onrender.com/</loc>
+    </url>
 
-  <url>
-    <loc>https://rohit-code-frontend.onrender.com/online-compiler/</loc>
-  </url>
+    <url>
+        <loc>https://rohit-code-frontend.onrender.com/online-compiler/</loc>
+    </url>
 
-  <url>
-    <loc>https://rohit-code-frontend.onrender.com/online-compiler/c/</loc>
-  </url>
+    <url>
+        <loc>https://rohit-code-frontend.onrender.com/online-compiler/c/</loc>
+    </url>
 
-  <url>
-    <loc>https://rohit-code-frontend.onrender.com/online-compiler/cpp/</loc>
-  </url>
+    <url>
+        <loc>https://rohit-code-frontend.onrender.com/online-compiler/cpp/</loc>
+    </url>
 
-  <url>
-    <loc>https://rohit-code-frontend.onrender.com/online-compiler/java/</loc>
-  </url>
+    <url>
+        <loc>https://rohit-code-frontend.onrender.com/online-compiler/java/</loc>
+    </url>
 
-  <url>
-    <loc>https://rohit-code-frontend.onrender.com/online-compiler/python/</loc>
-  </url>
+    <url>
+        <loc>https://rohit-code-frontend.onrender.com/online-compiler/python/</loc>
+    </url>
 
-  <url>
-    <loc>https://rohit-code-frontend.onrender.com/online-compiler/javascript/</loc>
-  </url>
+    <url>
+        <loc>https://rohit-code-frontend.onrender.com/online-compiler/javascript/</loc>
+    </url>
 
-  <url>
-    <loc>https://rohit-code-frontend.onrender.com/online-compiler/php/</loc>
-  </url>
+    <url>
+        <loc>https://rohit-code-frontend.onrender.com/online-compiler/php/</loc>
+    </url>
 
-  <url>
-    <loc>https://rohit-code-frontend.onrender.com/online-compiler/rust/</loc>
-  </url>
+    <url>
+        <loc>https://rohit-code-frontend.onrender.com/online-compiler/rust/</loc>
+    </url>
 
 </urlset>
