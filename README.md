@@ -1,16 +1,81 @@
-# React + Vite
+# ROHIT-CODE
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+ROHIT-CODE is a free online code compiler and browser-based code editor for students, developers, and programming learners.
 
-Currently, two official plugins are available:
+Write, run, test, and practice programming directly from your browser without installing a local development environment.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌐 Live Website
 
-## React Compiler
+https://rohit-code-frontend.onrender.com/
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Online Compilers
 
-## Expanding the Oxlint configuration
+- [Online Compiler](https://rohit-code-frontend.onrender.com/online-compiler/)
+- [C Online Compiler](https://rohit-code-frontend.onrender.com/online-compiler/c/)
+- [C++ Online Compiler](https://rohit-code-frontend.onrender.com/online-compiler/cpp/)
+- [Java Online Compiler](https://rohit-code-frontend.onrender.com/online-compiler/java/)
+- [Python Online Compiler](https://rohit-code-frontend.onrender.com/online-compiler/python/)
+- [JavaScript Online Compiler](https://rohit-code-frontend.onrender.com/online-compiler/javascript/)
+- [PHP Online Compiler](https://rohit-code-frontend.onrender.com/online-compiler/php/)
+- [Rust Online Compiler](https://rohit-code-frontend.onrender.com/online-compiler/rust/)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## 💻 Supported Languages
+
+ROHIT-CODE supports:
+
+- C
+- C++
+- Java
+- Python
+- JavaScript
+- PHP
+- Rust
+
+## ✨ Features
+
+- Browser-based code editor
+- Online code execution
+- Interactive terminal
+- Multiple programming languages
+- Programming practice environment
+- No local compiler setup required
+- Fast browser-based development
+- Student-friendly coding environment
+
+## 🎯 Why ROHIT-CODE?
+
+ROHIT-CODE makes programming practice easier by providing an online environment where users can write and execute code without installing a local compiler.
+
+It is designed for students, developers, beginners, and anyone who wants to practice programming online.
+
+## 🛠️ Technology
+
+The project uses modern web development technologies including:
+
+- React
+- Vite
+- JavaScript
+- CSS
+- Node.js
+- Express.js
+- Docker
+- Monaco Editor
+- Socket.IO
+
+## 📂 Project Structure
+
+```text
+ROHIT-CODE-FRONTEND/
+├── public/
+│   └── online-compiler/
+│       ├── c/
+│       ├── cpp/
+│       ├── java/
+│       ├── python/
+│       ├── javascript/
+│       ├── php/
+│       └── rust/
+├── src/
+├── package.json
+├── vite.config.js
+└── README.md
