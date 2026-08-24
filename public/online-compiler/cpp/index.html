@@ -22,6 +22,7 @@
       href="https://rohit-code-frontend.onrender.com/online-compiler/cpp/"
     />
 
+    <!-- Open Graph -->
     <meta
       property="og:title"
       content="C++ Online Compiler - Free C++ Compiler | ROHIT-CODE"
@@ -41,7 +42,11 @@
 
     <meta property="og:site_name" content="ROHIT-CODE" />
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon.svg"
+    />
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -235,6 +240,32 @@
         font-size: 14px;
       }
 
+      .compiler-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .compiler-link {
+        display: inline-block;
+        padding: 9px 14px;
+        background: #161a22;
+        border: 1px solid #292f3a;
+        border-radius: 6px;
+        color: #c9d1d9;
+        font-size: 14px;
+        transition:
+          border-color 0.2s ease,
+          color 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .compiler-link:hover {
+        border-color: #4fc1ff;
+        color: #ffffff;
+        background: #1c2330;
+      }
+
       .faq {
         max-width: 800px;
       }
@@ -291,6 +322,7 @@
     </header>
 
     <main>
+      <!-- HERO -->
       <section class="hero">
         <div class="container">
           <div class="badge">
@@ -320,6 +352,7 @@
         </div>
       </section>
 
+      <!-- C++ COMPILER -->
       <section class="section">
         <div class="container">
           <h2>Free C++ Online Compiler</h2>
@@ -359,6 +392,7 @@
         </div>
       </section>
 
+      <!-- WHY USE C++ -->
       <section class="section">
         <div class="container">
           <h2>Why Use a C++ Online Compiler?</h2>
@@ -397,6 +431,52 @@
         </div>
       </section>
 
+      <!-- OTHER COMPILERS -->
+      <section class="section">
+        <div class="container">
+          <h2>Other Online Compilers</h2>
+
+          <p class="section-intro">
+            Explore other ROHIT-CODE online compilers for
+            different programming languages.
+          </p>
+
+          <div class="compiler-links">
+            <a class="compiler-link" href="/online-compiler/">
+              Online Compiler
+            </a>
+
+            <a class="compiler-link" href="/online-compiler/c/">
+              C Online Compiler
+            </a>
+
+            <a class="compiler-link" href="/online-compiler/java/">
+              Java Online Compiler
+            </a>
+
+            <a class="compiler-link" href="/online-compiler/python/">
+              Python Online Compiler
+            </a>
+
+            <a
+              class="compiler-link"
+              href="/online-compiler/javascript/"
+            >
+              JavaScript Online Compiler
+            </a>
+
+            <a class="compiler-link" href="/online-compiler/php/">
+              PHP Online Compiler
+            </a>
+
+            <a class="compiler-link" href="/online-compiler/rust/">
+              Rust Online Compiler
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
       <section class="section">
         <div class="container faq">
           <h2>C++ Online Compiler FAQ</h2>
@@ -410,7 +490,9 @@
           </div>
 
           <div class="faq-item">
-            <h3>Can I run C++ programs online with ROHIT-CODE?</h3>
+            <h3>
+              Can I run C++ programs online with ROHIT-CODE?
+            </h3>
             <p>
               Yes. ROHIT-CODE provides a browser-based
               environment for writing and running C++ programs.
