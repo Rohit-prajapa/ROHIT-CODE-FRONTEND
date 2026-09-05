@@ -14,7 +14,7 @@ import SettingsPanel from "./components/SettingsPanel";
 const SOCKET_URL = "https://rohit-code-backend.onrender.com";
 const AI_API_URL = "https://rohit-code-backend.onrender.com/api/ai/generate";
 const EXECUTION_API_URL = "https://rohit-code-execution-service.onrender.com";
-const EXECUTION_API_URL = "http://localhost:10001";
+// const EXECUTION_API_URL = "http://localhost:10001";
 
 
 const STORAGE_KEY = "rohit-code-project";
