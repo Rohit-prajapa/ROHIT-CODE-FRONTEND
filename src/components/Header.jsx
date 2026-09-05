@@ -78,6 +78,7 @@ function Header({
     { value: "css", label: "CSS" },
     { value: "json", label: "JSON" },
     { value: "sql", label: "SQL" },
+    { value: "csharp", label: "C#" },
   ];
 
   const currentLanguage =
