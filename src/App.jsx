@@ -129,6 +129,15 @@ int main() {
   const [activeBottomPanel, setActiveBottomPanel] = useState("terminal");
 
   // =========================================================
+  // HTML / CSS PREVIEW
+  // =========================================================
+
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewTitle, setPreviewTitle] = useState("Live Preview");
+  const [previewDocument, setPreviewDocument] = useState("");
+  const [outputTabOpen, setOutputTabOpen] = useState(false);
+
+  // =========================================================
   // UI STATE
   // =========================================================
 
@@ -759,10 +768,93 @@ int main() {
   };
 
   // =========================================================
+  // HTML / CSS PREVIEW
+  // =========================================================
+
+  const buildPreviewDocument = (file) => {
+    if (!file) {
+      return "";
+    }
+
+    const htmlFile = file.language === "html"
+      ? file
+      : files.find((item) => item.language === "html");
+
+    const cssFile = file.language === "css"
+      ? file
+      : files.find((item) => item.language === "css");
+
+    let html = htmlFile?.content?.trim() || "";
+    const css = cssFile?.content || "";
+
+    if (!html) {
+      html = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeForge Preview</title>
+</head>
+<body>
+  <div class="codeforge-empty-preview">
+    <h1>CodeForge</h1>
+    <p>Start writing HTML to see your live preview.</p>
+  </div>
+</body>
+</html>`;
+    }
+
+    if (css.trim()) {
+      const styleBlock = `<style>\n${css}\n</style>`;
+
+      if (/<\/head\s*>/i.test(html)) {
+        html = html.replace(/<\/head\s*>/i, `${styleBlock}\n</head>`);
+      } else if (/<body[^>]*>/i.test(html)) {
+        html = html.replace(/<body[^>]*>/i, `${styleBlock}\n$&`);
+      } else {
+        html = `${styleBlock}\n${html}`;
+      }
+
+      html = html.replace(
+        /<link[^>]+href=["'][^"']+\.css["'][^>]*>/gi,
+        "",
+      );
+    }
+
+    return html;
+  };
+
+  const openCodePreview = (file) => {
+    const document = buildPreviewDocument(file);
+
+    setPreviewDocument(document);
+    setPreviewTitle(
+      file?.language === "css"
+        ? `CSS Preview — ${file.name}`
+        : `HTML Preview — ${file?.name || "index.html"}`,
+    );
+    setOutputTabOpen(false);
+    setPreviewOpen(true);
+    setExecutionStatus("Success");
+    setExecutionTime("Preview");
+    setTerminalVisible(false);
+    setOutput([
+      `✓ ${file?.language === "css" ? "CSS" : "HTML"} live preview ready.`,
+    ]);
+  };
+
+  // =========================================================
   // RUN PROGRAM
   // =========================================================
 
   const handleRun = async () => {
+    if (
+      currentFile &&
+      (currentFile.language === "html" || currentFile.language === "css")
+    ) {
+      openCodePreview(currentFile);
+      return;
+    }
     if (!currentFile) {
       return;
     }
@@ -770,8 +862,9 @@ int main() {
     if (!currentFile.content || !currentFile.content.trim()) {
       setOutput(["❌ Code is empty."]);
       setExecutionStatus("Error");
-      setTerminalVisible(true);
-      setActiveBottomPanel("terminal");
+      setOutputTabOpen(true);
+      setPreviewOpen(false);
+      setTerminalVisible(false);
       return;
     }
 
@@ -786,8 +879,9 @@ int main() {
 
     setExecutionStatus("Running");
     setExecutionTime(null);
-    setTerminalVisible(true);
-    setActiveBottomPanel("terminal");
+    setOutputTabOpen(true);
+    setPreviewOpen(false);
+    setTerminalVisible(false);
 
     setOutput([`> Running ${currentFile.name}...`, ""]);
 
@@ -1645,6 +1739,138 @@ int main() {
             </div>
           )}
           {/* =================================================
+              RUN OUTPUT EDITOR TAB
+          ================================================== */}
+
+          {outputTabOpen && (
+            <div className="codeforge-output-tab-overlay">
+              <div className="codeforge-output-editor">
+                <div className="codeforge-output-tabbar">
+                  <div className="codeforge-output-tab active">
+                    <span className="codeforge-output-tab-icon">▶</span>
+                    <span>Output</span>
+                    <button
+                      type="button"
+                      className="codeforge-output-tab-close"
+                      onClick={() => setOutputTabOpen(false)}
+                      aria-label="Close output tab"
+                    >
+                      ×
+                    </button>
+                  </div>
+                </div>
+
+                <div className="codeforge-output-toolbar">
+                  <span>{currentFile?.name || "Program Output"}</span>
+                  <div className="codeforge-output-toolbar-actions">
+                    {executionStatus === "Running" && (
+                      <button
+                        type="button"
+                        onClick={handleStopExecution}
+                      >
+                        Stop
+                      </button>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => setOutput([])}
+                    >
+                      Clear
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleRun}
+                    >
+                      Run Again
+                    </button>
+                  </div>
+                </div>
+
+                <div className="codeforge-output-content">
+                  {Array.isArray(output) && output.length > 0 ? (
+                    output.map((line, index) => (
+                      <div
+                        key={`output-${index}`}
+                        className="codeforge-output-line"
+                      >
+                        {String(line ?? "")}
+                      </div>
+                    ))
+                  ) : (
+                    <div className="codeforge-output-empty">
+                      No output yet.
+                    </div>
+                  )}
+                </div>
+
+                {executionStatus === "Running" && (
+                  <div className="codeforge-output-inputbar">
+                    <span className="codeforge-output-prompt">&gt;</span>
+                    <input
+                      type="text"
+                      placeholder="Enter input and press Enter"
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter") {
+                          event.preventDefault();
+                          handleTerminalInput(event.currentTarget.value);
+                          event.currentTarget.value = "";
+                        }
+                      }}
+                      autoFocus
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* =================================================
+              HTML / CSS LIVE PREVIEW
+          ================================================== */}
+
+          {previewOpen && (
+            <div className="codeforge-preview-overlay">
+              <div className="codeforge-preview-panel">
+                <div className="codeforge-preview-header">
+                  <div className="codeforge-preview-title">
+                    <strong>Live Preview</strong>
+                    <span>{previewTitle}</span>
+                  </div>
+
+                  <div className="codeforge-preview-actions">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (currentFile) {
+                          openCodePreview(currentFile);
+                        }
+                      }}
+                    >
+                      Refresh
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setPreviewOpen(false)}
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+
+                <div className="codeforge-preview-body">
+                  <iframe
+                    title="CodeForge Live Preview"
+                    srcDoc={previewDocument}
+                    sandbox="allow-scripts allow-forms"
+                    className="codeforge-preview-frame"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* =================================================
               CODE EDITOR
           ================================================== */}
 
@@ -1747,6 +1973,252 @@ int main() {
       ====================================================== */}
 
       <style>{`
+        /* ==============================================
+           HTML / CSS LIVE PREVIEW
+        ============================================== */
+
+        .codeforge-output-tab-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 23000;
+  display: flex;
+  background: #1e1e1e;
+}
+
+.codeforge-output-editor {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #1e1e1e;
+  color: #cccccc;
+}
+
+.codeforge-output-tabbar {
+  height: 36px;
+  display: flex;
+  align-items: flex-end;
+  background: #181818;
+  border-bottom: 1px solid #2d2d2d;
+}
+
+.codeforge-output-tab {
+  height: 36px;
+  min-width: 130px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 10px;
+  background: #1e1e1e;
+  border-right: 1px solid #2d2d2d;
+  border-top: 1px solid #3a3a3a;
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.codeforge-output-tab-icon {
+  color: #4fc1ff;
+  font-size: 10px;
+}
+
+.codeforge-output-tab-close {
+  margin-left: auto;
+  width: 22px;
+  height: 22px;
+  border: 0;
+  background: transparent;
+  color: #858585;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.codeforge-output-tab-close:hover {
+  color: #ffffff;
+  background: #333333;
+}
+
+.codeforge-output-toolbar {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 12px 0 16px;
+  background: #252526;
+  border-bottom: 1px solid #333333;
+  color: #cccccc;
+  font-size: 11px;
+}
+
+.codeforge-output-toolbar-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.codeforge-output-toolbar-actions button {
+  height: 27px;
+  padding: 0 9px;
+  border: 1px solid #454545;
+  border-radius: 3px;
+  background: #2d2d30;
+  color: #cccccc;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.codeforge-output-toolbar-actions button:hover {
+  background: #3a3a3a;
+  color: #ffffff;
+}
+
+.codeforge-output-content {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 16px 18px;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1e1e1e;
+}
+
+.codeforge-output-line {
+  min-height: 20px;
+}
+
+.codeforge-output-empty {
+  color: #666666;
+}
+
+.codeforge-output-inputbar {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  background: #252526;
+  border-top: 1px solid #333333;
+}
+
+.codeforge-output-prompt {
+  color: #4fc1ff;
+  font-family: Consolas, "Courier New", monospace;
+}
+
+.codeforge-output-inputbar input {
+  flex: 1;
+  min-width: 0;
+  height: 30px;
+  border: 1px solid #3f3f46;
+  border-radius: 3px;
+  outline: none;
+  padding: 0 9px;
+  background: #1e1e1e;
+  color: #ffffff;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 12px;
+}
+
+.codeforge-output-inputbar input:focus {
+  border-color: #007acc;
+}
+
+.codeforge-output-inputbar input::placeholder {
+  color: #6a6a6a;
+}
+
+.codeforge-preview-overlay {
+          position: absolute;
+          inset: 0;
+          z-index: 24000;
+          display: flex;
+          flex-direction: column;
+          background: #1e1e1e;
+        }
+
+        .codeforge-preview-panel {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          background: #ffffff;
+        }
+
+        .codeforge-preview-header {
+          min-height: 48px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          padding: 0 12px 0 16px;
+          background: #252526;
+          border-bottom: 1px solid #3a3a3a;
+          color: #cccccc;
+        }
+
+        .codeforge-preview-title {
+          min-width: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+
+        .codeforge-preview-title strong {
+          color: #ffffff;
+          font-size: 13px;
+          font-weight: 600;
+        }
+
+        .codeforge-preview-title span {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          color: #858585;
+          font-size: 10px;
+        }
+
+        .codeforge-preview-actions {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .codeforge-preview-actions button {
+          min-width: 64px;
+          height: 30px;
+          padding: 0 10px;
+          border: 1px solid #454545;
+          border-radius: 4px;
+          background: #2d2d30;
+          color: #cccccc;
+          font-size: 11px;
+          cursor: pointer;
+        }
+
+        .codeforge-preview-actions button:hover {
+          background: #3a3a3a;
+          color: #ffffff;
+        }
+
+        .codeforge-preview-body {
+          min-width: 0;
+          min-height: 0;
+          flex: 1;
+          background: #ffffff;
+        }
+
+        .codeforge-preview-frame {
+          width: 100%;
+          height: 100%;
+          display: block;
+          border: 0;
+          background: #ffffff;
+        }
+
         /* ==============================================
            CHEATSHEET
         ============================================== */
