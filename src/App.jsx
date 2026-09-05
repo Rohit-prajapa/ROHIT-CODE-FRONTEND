@@ -799,6 +799,7 @@ int main() {
           body: JSON.stringify({
             language: currentFile.language,
             code: currentFile.content,
+            fileName: currentFile.name,
           }),
         },
       );
@@ -1564,7 +1565,6 @@ int main() {
       ====================================================== */}
 
       <div className="main-layout">
-  
         {/* ===================================================
             SIDEBAR
         ==================================================== */}
@@ -1588,7 +1588,6 @@ int main() {
         ==================================================== */}
 
         <main className="main-area">
-
           {cheatsheetOpen && (
             <div className="rohit-cheatsheet-overlay">
               <div className="rohit-cheatsheet-panel">
