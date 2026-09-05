@@ -593,7 +593,7 @@ function CodeEditor({
             </div>
 
             <div className="empty-editor-title">
-              ROHIT-CODE
+              CodeForge
             </div>
 
             <div className="empty-editor-subtitle">

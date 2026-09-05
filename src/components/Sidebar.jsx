@@ -1431,7 +1431,7 @@ function Sidebar({
 
                   <FolderOpen size={15} color="#dcb67a" />
 
-                  <span className="rohit-sidebar-project-name">ROHIT-CODE</span>
+                  <span className="rohit-sidebar-project-name">CodeForge</span>
                 </div>
 
                 {/* FOLDERS */}

@@ -754,7 +754,7 @@ function SettingsPanel({
           <div>
             <h2 id="settings-panel-title">Settings</h2>
 
-            <span>ROHIT-CODE editor preferences</span>
+            <span>CodeForge editor preferences</span>
           </div>
 
           <button

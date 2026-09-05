@@ -494,7 +494,7 @@ function RunDebugPanel({
 
       <div className="rohit-run-footer">
         Run uses your existing
-        ROHIT-CODE execution system.
+        CodeForge execution system.
         <br />
         Debugger integration can be
         added later.

@@ -64,7 +64,7 @@ function BottomPanel({
 
   const [isDragging, setIsDragging] = useState(false);
 
-  const [terminalName, setTerminalName] = useState("ROHIT-CODE");
+  const [terminalName, setTerminalName] = useState("CodeForge");
 
   const [terminalMenuOpen, setTerminalMenuOpen] = useState(false);
 
@@ -271,7 +271,7 @@ function BottomPanel({
   };
 
   const createTerminalView = () => {
-    setTerminalName(`ROHIT-CODE-${Date.now().toString().slice(-3)}`);
+    setTerminalName(`CodeForge-${Date.now().toString().slice(-3)}`);
 
     setTerminalMenuOpen(false);
   };
@@ -825,12 +825,12 @@ function BottomPanel({
                       type="button"
                       className="bp-menu-item"
                       onClick={() => {
-                        setTerminalName("ROHIT-CODE");
+                        setTerminalName("CodeForge");
 
                         setTerminalMenuOpen(false);
                       }}
                     >
-                      ROHIT-CODE
+                      CodeForge
                     </button>
 
                     <button
@@ -901,7 +901,7 @@ function BottomPanel({
                       marginBottom: "4px",
                     }}
                   >
-                    ROHIT-CODE $
+                    CodeForge $
                   </div>
 
                   <div>

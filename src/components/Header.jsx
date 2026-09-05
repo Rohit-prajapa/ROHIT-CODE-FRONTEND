@@ -218,7 +218,7 @@ function Header({
     }
 
     alert(
-      "ROHIT-CODE\n\n" +
+      "CodeForge\n\n" +
         "Browser-based code editor\n\n" +
         "Shortcuts:\n" +
         "Ctrl + Enter  → Run Code\n" +
@@ -579,7 +579,7 @@ function Header({
 
         <div className="logo">
           <Code2 size={22} />
-          <span>ROHIT-CODE</span>
+          <span>CodeForge</span>
         </div>
 
         {/* =====================================

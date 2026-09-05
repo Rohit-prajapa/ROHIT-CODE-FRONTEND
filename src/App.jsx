@@ -1426,7 +1426,7 @@ int main() {
               <div>
                 <strong>✦ Gemini AI</strong>
 
-                <span>ROHIT-CODE Assistant</span>
+                <span>CodeForge Assistant</span>
               </div>
 
               <button

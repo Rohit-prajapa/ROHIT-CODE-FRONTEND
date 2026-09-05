@@ -11,7 +11,7 @@ function Breadcrumbs({ file, folders = [], onNavigateFolder }) {
   );
 
   const parts = [
-    { label: "ROHIT-CODE", type: "root" },
+    { label: "CodeForge", type: "root" },
     ...(folder ? [{ label: folder.name, type: "folder", id: folder.id }] : []),
     { label: file.name, type: "file" },
   ];

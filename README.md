@@ -1,6 +1,6 @@
-# ROHIT-CODE
+CodeForge
 
-ROHIT-CODE is a free online code compiler and browser-based code editor for students, developers, and programming learners.
+CodeForge is a free online code compiler and browser-based code editor for students, developers, and programming learners.
 
 Write, run, test, and practice programming directly from your browser without installing a local development environment.
 
@@ -21,7 +21,7 @@ https://rohit-code-frontend.onrender.com/
 
 ## 💻 Supported Languages
 
-ROHIT-CODE supports:
+CodeForge  supports:
 
 - C
 - C++
@@ -42,9 +42,9 @@ ROHIT-CODE supports:
 - Fast browser-based development
 - Student-friendly coding environment
 
-## 🎯 Why ROHIT-CODE?
+## 🎯 Why CodeForge?
 
-ROHIT-CODE makes programming practice easier by providing an online environment where users can write and execute code without installing a local compiler.
+CodeForge makes programming practice easier by providing an online environment where users can write and execute code without installing a local compiler.
 
 It is designed for students, developers, beginners, and anyone who wants to practice programming online.
 
@@ -65,7 +65,7 @@ The project uses modern web development technologies including:
 ## 📂 Project Structure
 
 ```text
-ROHIT-CODE-FRONTEND/
+CODEFORGE/
 ├── public/
 │   └── online-compiler/
 │       ├── c/

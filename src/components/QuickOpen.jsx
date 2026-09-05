@@ -543,7 +543,7 @@ function QuickOpen({
                       </span>
 
                       <span className="rohit-quick-open-file-path">
-                        ROHIT-CODE / src
+                        CodeForge / src
                       </span>
                     </span>
 
