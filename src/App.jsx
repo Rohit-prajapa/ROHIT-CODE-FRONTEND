@@ -13,7 +13,8 @@ import SettingsPanel from "./components/SettingsPanel";
 
 const SOCKET_URL = "https://rohit-code-backend.onrender.com";
 const AI_API_URL = "https://rohit-code-backend.onrender.com/api/ai/generate";
-const EXECUTION_API_URL = "https://rohit-code-execution-service.onrender.com";
+// const EXECUTION_API_URL = "https://rohit-code-execution-service.onrender.com";
+const EXECUTION_API_URL = "http://localhost:10001";
 
 
 const STORAGE_KEY = "rohit-code-project";
@@ -887,7 +888,6 @@ int main() {
 
                 for (let line of lines) {
                   let currentLine = String(line);
-                  let consumed = false;
 
                   while (pendingEchoes.length) {
                     const expected = String(pendingEchoes[0] ?? "");
@@ -903,7 +903,6 @@ int main() {
                     if (lineTrimmed === expectedTrimmed) {
                       pendingEchoes.shift();
                       currentLine = "";
-                      consumed = true;
                       break;
                     }
 
@@ -928,9 +927,7 @@ int main() {
                     break;
                   }
 
-                  // Keep empty lines that are real program output, but discard
-                  // a line that existed only for the local input echo.
-                  if (!consumed || currentLine !== "") {
+                  if (currentLine !== "") {
                     filteredLines.push(currentLine);
                   }
                 }

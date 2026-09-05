@@ -302,10 +302,7 @@ function BottomPanel({
      * We intentionally do NOT store an output-array index here.
      * Docker/Socket.IO can split stdout into arbitrary chunks.
      */
-    setSubmittedInputs((previous) => [
-      ...previous,
-      inputValue,
-    ]);
+    setSubmittedInputs((previous) => [...previous, inputValue]);
 
     /*
      * Send input to backend.
@@ -337,7 +334,7 @@ function BottomPanel({
     }
 
     event.preventDefault();
-
+    event.stopPropagation();
     sendInput();
   };
 
@@ -386,8 +383,7 @@ function BottomPanel({
     return (
       /\b(enter|input|choice|select|password|value|number|name|age)\b/i.test(
         value,
-      ) ||
-      /[:?]\s*$/.test(value)
+      ) || /[:?]\s*$/.test(value)
     );
   };
 
