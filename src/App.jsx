@@ -16,7 +16,6 @@ const AI_API_URL = "https://rohit-code-backend.onrender.com/api/ai/generate";
 const EXECUTION_API_URL = "https://rohit-code-execution-service.onrender.com";
 // const EXECUTION_API_URL = "http://localhost:10001";
 
-
 const STORAGE_KEY = "rohit-code-project";
 const THEME_STORAGE_KEY = "rohit-code-theme";
 const FONT_SIZE_KEY = "rohit-code-font-size";
@@ -776,13 +775,15 @@ int main() {
       return "";
     }
 
-    const htmlFile = file.language === "html"
-      ? file
-      : files.find((item) => item.language === "html");
+    const htmlFile =
+      file.language === "html"
+        ? file
+        : files.find((item) => item.language === "html");
 
-    const cssFile = file.language === "css"
-      ? file
-      : files.find((item) => item.language === "css");
+    const cssFile =
+      file.language === "css"
+        ? file
+        : files.find((item) => item.language === "css");
 
     let html = htmlFile?.content?.trim() || "";
     const css = cssFile?.content || "";
@@ -815,10 +816,7 @@ int main() {
         html = `${styleBlock}\n${html}`;
       }
 
-      html = html.replace(
-        /<link[^>]+href=["'][^"']+\.css["'][^>]*>/gi,
-        "",
-      );
+      html = html.replace(/<link[^>]+href=["'][^"']+\.css["'][^>]*>/gi, "");
     }
 
     return html;
@@ -879,11 +877,15 @@ int main() {
 
     setExecutionStatus("Running");
     setExecutionTime(null);
-    setOutputTabOpen(true);
-    setPreviewOpen(false);
-    setTerminalVisible(false);
 
-    setOutput([`> Running ${currentFile.name}...`, ""]);
+    // VS Code-style behavior:
+    // show the integrated terminal at the bottom when a program starts.
+    setOutputTabOpen(false);
+    setPreviewOpen(false);
+    setTerminalVisible(true);
+    setActiveBottomPanel("terminal");
+
+    setOutput([`$ ${currentFile.name}`, ""]);
 
     try {
       const response = await fetch(
@@ -1110,17 +1112,62 @@ int main() {
     }
 
     try {
-      const normalizedInput = String(input ?? "")
+      const rawInput = String(input ?? "")
         .replace(/\r\n/g, "\n")
         .replace(/\r/g, "\n");
 
-      const inputLines = normalizedInput
-        .split("\n")
-        .filter((line) => line.length > 0);
+      /*
+       * Render terminal input immediately, exactly where the cursor is.
+       * The PTY will echo the same characters back, so the existing
+       * interactiveInputEchoRef filtering removes that duplicate echo.
+       *
+       * Pressing Enter also creates a new terminal line. This is the
+       * important part that prevents:
+       *
+       * Enter the 1st Number: 4Enter the 2nd Number: 5
+       *
+       * and instead produces:
+       *
+       * Enter the 1st Number: 4
+       * Enter the 2nd Number: 5
+       */
+      const inputLines = rawInput.split("\n");
 
-      if (inputLines.length) {
-        interactiveInputEchoRef.current.push(...inputLines);
+      const nonEmptyInputLines = inputLines.filter((line) => line.length > 0);
+
+      if (nonEmptyInputLines.length) {
+        interactiveInputEchoRef.current.push(...nonEmptyInputLines);
       }
+
+      setOutput((previous) => {
+        const updated = Array.isArray(previous) ? [...previous] : [];
+
+        if (!updated.length) {
+          updated.push("");
+        }
+
+        inputLines.forEach((line, index) => {
+          const lastIndex = updated.length - 1;
+          const currentLine = String(updated[lastIndex] ?? "");
+
+          if (line.length > 0) {
+            const separator =
+              currentLine.length > 0 && !/\s$/.test(currentLine) ? " " : "";
+
+            updated[lastIndex] = `${currentLine}${separator}${line}`;
+          }
+
+          /*
+           * Enter moves the cursor to the next terminal line.
+           * Do this after every submitted line, including an empty line.
+           */
+          if (index < inputLines.length - 1 || line.length >= 0) {
+            updated.push("");
+          }
+        });
+
+        return updated;
+      });
 
       const response = await fetch(
         `${EXECUTION_API_URL}/api/interactive/input`,
@@ -1764,23 +1811,14 @@ int main() {
                   <span>{currentFile?.name || "Program Output"}</span>
                   <div className="codeforge-output-toolbar-actions">
                     {executionStatus === "Running" && (
-                      <button
-                        type="button"
-                        onClick={handleStopExecution}
-                      >
+                      <button type="button" onClick={handleStopExecution}>
                         Stop
                       </button>
                     )}
-                    <button
-                      type="button"
-                      onClick={() => setOutput([])}
-                    >
+                    <button type="button" onClick={() => setOutput([])}>
                       Clear
                     </button>
-                    <button
-                      type="button"
-                      onClick={handleRun}
-                    >
+                    <button type="button" onClick={handleRun}>
                       Run Again
                     </button>
                   </div>
@@ -1797,9 +1835,7 @@ int main() {
                       </div>
                     ))
                   ) : (
-                    <div className="codeforge-output-empty">
-                      No output yet.
-                    </div>
+                    <div className="codeforge-output-empty">No output yet.</div>
                   )}
                 </div>
 
@@ -1849,10 +1885,7 @@ int main() {
                       Refresh
                     </button>
 
-                    <button
-                      type="button"
-                      onClick={() => setPreviewOpen(false)}
-                    >
+                    <button type="button" onClick={() => setPreviewOpen(false)}>
                       Close
                     </button>
                   </div>

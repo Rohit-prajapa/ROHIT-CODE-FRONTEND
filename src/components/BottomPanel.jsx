@@ -64,7 +64,7 @@ function BottomPanel({
 
   const [isDragging, setIsDragging] = useState(false);
 
-  const [terminalName, setTerminalName] = useState("CodeForge");
+  const [terminalName, setTerminalName] = useState("ROHIT-CODE");
 
   const [terminalMenuOpen, setTerminalMenuOpen] = useState(false);
 
@@ -271,7 +271,7 @@ function BottomPanel({
   };
 
   const createTerminalView = () => {
-    setTerminalName(`CodeForge-${Date.now().toString().slice(-3)}`);
+    setTerminalName(`ROHIT-CODE-${Date.now().toString().slice(-3)}`);
 
     setTerminalMenuOpen(false);
   };
@@ -334,7 +334,7 @@ function BottomPanel({
     }
 
     event.preventDefault();
-    event.stopPropagation();
+
     sendInput();
   };
 
@@ -365,85 +365,6 @@ function BottomPanel({
   const terminalLines = Array.isArray(output)
     ? output.map((item) => String(item ?? ""))
     : [String(output ?? "")];
-
-  /*
-   * App.jsx already provides terminal output as entries.
-   * Keep those entries separate so newlines are not lost.
-   */
-
-  // =========================================
-  // TERMINAL INPUT ECHO
-  // =========================================
-
-  const isPromptText = (text) => {
-    const value = String(text ?? "").trim();
-
-    if (!value) return false;
-
-    return (
-      /\b(enter|input|choice|select|password|value|number|name|age)\b/i.test(
-        value,
-      ) || /[:?]\s*$/.test(value)
-    );
-  };
-
-  /*
-   * Render submitted values directly after their prompts.
-   *
-   * Important:
-   * stdout can arrive in arbitrary chunks. For example:
-   *
-   * "Enter the 1st Number: Enter the 2nd Number: Sum = "
-   *
-   * can arrive as ONE chunk. We therefore split prompt boundaries
-   * before attaching submitted values.
-   */
-  const buildTerminalDisplay = () => {
-    const values = [...submittedInputs];
-    let valueIndex = 0;
-    const display = [];
-
-    for (const rawLine of terminalLines) {
-      const line = String(rawLine ?? "");
-
-      if (!line) {
-        display.push("");
-        continue;
-      }
-
-      let remaining = line;
-
-      while (remaining.length > 0) {
-        const promptMatch = remaining.match(
-          /^(.*?\b(?:enter|input|choice|select|password|value|number|name|age)\b[^:?\n]*[:?]\s*)/i,
-        );
-
-        if (!promptMatch) {
-          display.push(remaining);
-          remaining = "";
-          continue;
-        }
-
-        const prompt = promptMatch[1];
-        display.push(prompt);
-
-        if (valueIndex < values.length) {
-          display.push(String(values[valueIndex]));
-          valueIndex += 1;
-        }
-
-        remaining = remaining.slice(prompt.length);
-      }
-    }
-
-    /*
-     * If some submitted values have not yet appeared in stdout,
-     * keep them out of the terminal until their prompt arrives.
-     */
-    return display;
-  };
-
-  const displayedTerminalLines = buildTerminalDisplay();
 
   // =========================================
   // STYLES
@@ -821,12 +742,12 @@ function BottomPanel({
                       type="button"
                       className="bp-menu-item"
                       onClick={() => {
-                        setTerminalName("CodeForge");
+                        setTerminalName("ROHIT-CODE");
 
                         setTerminalMenuOpen(false);
                       }}
                     >
-                      CodeForge
+                      ROHIT-CODE
                     </button>
 
                     <button
@@ -886,7 +807,6 @@ function BottomPanel({
               {terminalLines.length === 0 ? (
                 <div
                   style={{
-                    minHeight: "100%",
                     color: "#777777",
                     userSelect: "none",
                   }}
@@ -897,77 +817,81 @@ function BottomPanel({
                       marginBottom: "4px",
                     }}
                   >
-                    CodeForge $
+                    ROHIT-CODE $
                   </div>
 
                   <div>
-                    Terminal ready.
                     {isRunning
-                      ? " Waiting for program input..."
-                      : " Run a program to see output here."}
+                      ? "Waiting for program input..."
+                      : "Run a program to see output here."}
                   </div>
                 </div>
               ) : (
-                <>
-                  {displayedTerminalLines.map((line, index) => (
-                    <div
-                      key={`terminal-line-${index}`}
-                      style={{
-                        minHeight: "20px",
-                        whiteSpace: "pre-wrap",
-                        overflowWrap: "break-word",
-                      }}
-                    >
-                      {line || "\u00a0"}
-                    </div>
-                  ))}
+                terminalLines.map((line, index) => (
+                  <div
+                    key={`terminal-line-${index}`}
+                    style={{
+                      minHeight: "20px",
+                      whiteSpace: "pre-wrap",
+                      overflowWrap: "break-word",
+                    }}
+                  >
+                    {line || "\u00a0"}
+                  </div>
+                ))
+              )}
 
-                  {/* CURRENT INPUT */}
+              {isRunning && (
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    minHeight: "20px",
+                    marginTop: "4px",
+                  }}
+                >
+                  <span
+                    style={{
+                      color: "#4ec9b0",
+                      marginRight: "7px",
+                      fontFamily:
+                        'Consolas, "Cascadia Code", "Courier New", monospace',
+                      fontSize: "13px",
+                    }}
+                  >
+                    $
+                  </span>
 
-                  {isRunning && (
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        minHeight: "20px",
-                        fontFamily:
-                          'Consolas, "Cascadia Code", "Courier New", monospace',
-                        fontSize: "13px",
-                        lineHeight: "1.55",
-                      }}
-                    >
-                      <input
-                        ref={inputRef}
-                        className="bp-terminal-input"
-                        type="text"
-                        value={input}
-                        onChange={(event) => setInput(event.target.value)}
-                        onKeyDown={handleInputKeyDown}
-                        autoFocus
-                        autoComplete="off"
-                        autoCorrect="off"
-                        spellCheck={false}
-                        aria-label="Terminal input"
-                        placeholder=""
-                        style={{
-                          flex: 1,
-                          minWidth: 0,
-                          background: "transparent",
-                          border: "none",
-                          outline: "none",
-                          color: "#d4d4d4",
-                          fontFamily:
-                            'Consolas, "Cascadia Code", "Courier New", monospace',
-                          fontSize: "13px",
-                          lineHeight: "1.55",
-                          padding: 0,
-                          margin: 0,
-                          caretColor: "#ffffff",
-                        }}
-                      />
-                    </div>
-                  )}
-                </>
+                  <input
+                    ref={inputRef}
+                    className="bp-terminal-input"
+                    type="text"
+                    value={input}
+                    onChange={(event) => setInput(event.target.value)}
+                    onKeyDown={handleInputKeyDown}
+                    autoFocus
+                    autoComplete="off"
+                    autoCorrect="off"
+                    spellCheck={false}
+                    aria-label="Terminal input"
+                    placeholder=""
+                    style={{
+                      flex: 1,
+                      minWidth: 0,
+                      background: "transparent",
+                      border: "none",
+                      outline: "none",
+                      color: "#d4d4d4",
+                      fontFamily:
+                        'Consolas, "Cascadia Code", "Courier New", monospace',
+                      fontSize: "13px",
+                      lineHeight: "1.55",
+                      padding: 0,
+                      margin: 0,
+                      caretColor: "#ffffff",
+                    }}
+                  />
+                </div>
               )}
             </div>
           </div>
